@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  wineFineThankyou
 //
-//  Created by suding on 2022/01/04.
+//  Created by on 2022/01/04.
 //
 
 import UIKit
