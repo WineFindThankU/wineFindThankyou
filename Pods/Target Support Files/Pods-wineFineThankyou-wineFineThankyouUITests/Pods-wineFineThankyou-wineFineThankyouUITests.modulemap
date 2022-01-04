@@ -1,0 +1,6 @@
+framework module Pods_wineFineThankyou_wineFineThankyouUITests {
+  umbrella header "Pods-wineFineThankyou-wineFineThankyouUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
