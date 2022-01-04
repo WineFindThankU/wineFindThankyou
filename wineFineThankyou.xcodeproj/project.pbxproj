@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0023D49208FEC32A119E1781 /* Pods_wineFineThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1709255243E4ECFC7CE836DF /* Pods_wineFineThankyouTests.framework */; };
+		15BD198AC7DFB4AC40BE8CF9 /* Pods_wineFineThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA220429529CD5F9C0FAF51 /* Pods_wineFineThankyou.framework */; };
+		3A6FD10DC6A7701A12383C88 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B95EEF70C95C3E2E5C680 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework */; };
 		44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CBE278471A700FD8567 /* AppDelegate.swift */; };
 		44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC0278471A700FD8567 /* SceneDelegate.swift */; };
 		44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC2278471A700FD8567 /* ViewController.swift */; };
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004F783C4087B6DA725CDB98 /* Pods-wineFineThankyouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyouTests.release.xcconfig"; path = "Target Support Files/Pods-wineFineThankyouTests/Pods-wineFineThankyouTests.release.xcconfig"; sourceTree = "<group>"; };
+		1709255243E4ECFC7CE836DF /* Pods_wineFineThankyouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFineThankyouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CBB278471A700FD8567 /* wineFineThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFineThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CBE278471A700FD8567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FF1CC0278471A700FD8567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		44FF1CDB278471AA00FD8567 /* wineFineThankyouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wineFineThankyouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CDF278471AA00FD8567 /* wineFineThankyouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wineFineThankyouUITests.swift; sourceTree = "<group>"; };
 		44FF1CE1278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wineFineThankyouUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		54A17EDCD46540D5093DB3B0 /* Pods-wineFineThankyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyou.release.xcconfig"; path = "Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou.release.xcconfig"; sourceTree = "<group>"; };
+		5C8CC6FE9D67DD19C9EF6FD1 /* Pods-wineFineThankyouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyouTests.debug.xcconfig"; path = "Target Support Files/Pods-wineFineThankyouTests/Pods-wineFineThankyouTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5E5640DF27C54B3B970977E0 /* Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8DA220429529CD5F9C0FAF51 /* Pods_wineFineThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFineThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E754531D684B848A3BC5405 /* Pods-wineFineThankyou-wineFineThankyouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyou-wineFineThankyouUITests.debug.xcconfig"; path = "Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B85ED4350BB63EE5D3D456A1 /* Pods-wineFineThankyou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyou.debug.xcconfig"; path = "Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou.debug.xcconfig"; sourceTree = "<group>"; };
+		EE3B95EEF70C95C3E2E5C680 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFineThankyou_wineFineThankyouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15BD198AC7DFB4AC40BE8CF9 /* Pods_wineFineThankyou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0023D49208FEC32A119E1781 /* Pods_wineFineThankyouTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A6FD10DC6A7701A12383C88 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		404D13175F7D7F353963B2E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8DA220429529CD5F9C0FAF51 /* Pods_wineFineThankyou.framework */,
+				EE3B95EEF70C95C3E2E5C680 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework */,
+				1709255243E4ECFC7CE836DF /* Pods_wineFineThankyouTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		44FF1CB2278471A700FD8567 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				44FF1CD4278471AA00FD8567 /* wineFineThankyouTests */,
 				44FF1CDE278471AA00FD8567 /* wineFineThankyouUITests */,
 				44FF1CBC278471A700FD8567 /* Products */,
+				D55090A1FA48D46D11A58126 /* Pods */,
+				404D13175F7D7F353963B2E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +154,20 @@
 			path = wineFineThankyouUITests;
 			sourceTree = "<group>";
 		};
+		D55090A1FA48D46D11A58126 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B85ED4350BB63EE5D3D456A1 /* Pods-wineFineThankyou.debug.xcconfig */,
+				54A17EDCD46540D5093DB3B0 /* Pods-wineFineThankyou.release.xcconfig */,
+				9E754531D684B848A3BC5405 /* Pods-wineFineThankyou-wineFineThankyouUITests.debug.xcconfig */,
+				5E5640DF27C54B3B970977E0 /* Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig */,
+				5C8CC6FE9D67DD19C9EF6FD1 /* Pods-wineFineThankyouTests.debug.xcconfig */,
+				004F783C4087B6DA725CDB98 /* Pods-wineFineThankyouTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44FF1CE5278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyou" */;
 			buildPhases = (
+				9FCE2AAC5DC3BABEF1EF7548 /* [CP] Check Pods Manifest.lock */,
 				44FF1CB7278471A700FD8567 /* Sources */,
 				44FF1CB8278471A700FD8567 /* Frameworks */,
 				44FF1CB9278471A700FD8567 /* Resources */,
+				A133D5579A281113599E77E9 /* [CP] Embed Pods Frameworks */,
+				2688E9CAC66C11B1900F1A45 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44FF1CE8278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyouTests" */;
 			buildPhases = (
+				DB2E065B357F0A4E37156BE3 /* [CP] Check Pods Manifest.lock */,
 				44FF1CCD278471AA00FD8567 /* Sources */,
 				44FF1CCE278471AA00FD8567 /* Frameworks */,
 				44FF1CCF278471AA00FD8567 /* Resources */,
@@ -169,9 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44FF1CEB278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyouUITests" */;
 			buildPhases = (
+				C0E0F1941005FC5C2BDC36EB /* [CP] Check Pods Manifest.lock */,
 				44FF1CD7278471AA00FD8567 /* Sources */,
 				44FF1CD8278471AA00FD8567 /* Frameworks */,
 				44FF1CD9278471AA00FD8567 /* Resources */,
+				BF9C78582F27254FE94A67B3 /* [CP] Embed Pods Frameworks */,
+				F8338BF82090A2B1089D8161 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +300,143 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2688E9CAC66C11B1900F1A45 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FCE2AAC5DC3BABEF1EF7548 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wineFineThankyou-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A133D5579A281113599E77E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF9C78582F27254FE94A67B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0E0F1941005FC5C2BDC36EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wineFineThankyou-wineFineThankyouUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB2E065B357F0A4E37156BE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wineFineThankyouTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8338BF82090A2B1089D8161 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44FF1CB7278471A700FD8567 /* Sources */ = {
@@ -434,6 +619,7 @@
 		};
 		44FF1CE6278471AA00FD8567 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B85ED4350BB63EE5D3D456A1 /* Pods-wineFineThankyou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -462,6 +648,7 @@
 		};
 		44FF1CE7278471AA00FD8567 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54A17EDCD46540D5093DB3B0 /* Pods-wineFineThankyou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -490,6 +677,7 @@
 		};
 		44FF1CE9278471AA00FD8567 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C8CC6FE9D67DD19C9EF6FD1 /* Pods-wineFineThankyouTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +703,7 @@
 		};
 		44FF1CEA278471AA00FD8567 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 004F783C4087B6DA725CDB98 /* Pods-wineFineThankyouTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -540,6 +729,7 @@
 		};
 		44FF1CEC278471AA00FD8567 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E754531D684B848A3BC5405 /* Pods-wineFineThankyou-wineFineThankyouUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +753,7 @@
 		};
 		44FF1CED278471AA00FD8567 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E5640DF27C54B3B970977E0 /* Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
