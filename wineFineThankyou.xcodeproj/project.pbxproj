@@ -164,7 +164,6 @@
 				5C8CC6FE9D67DD19C9EF6FD1 /* Pods-wineFineThankyouTests.debug.xcconfig */,
 				004F783C4087B6DA725CDB98 /* Pods-wineFineThankyouTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -638,7 +637,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.betty.wineFineThankyou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WFT.wineFineThankyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -667,7 +666,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.betty.wineFineThankyou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WFT.wineFineThankyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
