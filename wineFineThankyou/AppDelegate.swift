@@ -32,8 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+       
+        // Kakao
         KakaoSDKCommon.initSDK(appKey: "612ec0765f0106cc23de9b487a836fec")
+        
+        
+        // Google
+        //FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = "824951586402-6sessam73hmlrg01dpggfotfjkot26kv.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
         return true
