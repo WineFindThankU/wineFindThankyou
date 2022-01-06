@@ -21,6 +21,8 @@
 		44FF1CE2278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CE1278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift */; };
 		44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CEE27869EA700FD8567 /* LoginViewController.swift */; };
 		44FF1CF42786A6D000FD8567 /* exam.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CF32786A6D000FD8567 /* exam.jpeg */; };
+		44FF1CF72786BCFF00FD8567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */; };
+		44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 44FF1CF92786C03000FD8567 /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,7 @@
 		44FF1CE1278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wineFineThankyouUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44FF1CEE27869EA700FD8567 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44FF1CF32786A6D000FD8567 /* exam.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = exam.jpeg; sourceTree = "<group>"; };
+		44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54A17EDCD46540D5093DB3B0 /* Pods-wineFineThankyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyou.release.xcconfig"; path = "Target Support Files/Pods-wineFineThankyou/Pods-wineFineThankyou.release.xcconfig"; sourceTree = "<group>"; };
 		5C8CC6FE9D67DD19C9EF6FD1 /* Pods-wineFineThankyouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyouTests.debug.xcconfig"; path = "Target Support Files/Pods-wineFineThankyouTests/Pods-wineFineThankyouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E5640DF27C54B3B970977E0 /* Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFineThankyou-wineFineThankyouUITests/Pods-wineFineThankyou-wineFineThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BD198AC7DFB4AC40BE8CF9 /* Pods_wineFineThankyou.framework in Frameworks */,
+				44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
+				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				44FF1CF52786A6D300FD8567 /* etc */,
 				44FF1CF027869ED000FD8567 /* 00_Login */,
 				44FF1CBE278471A700FD8567 /* AppDelegate.swift */,
@@ -208,6 +213,9 @@
 			dependencies = (
 			);
 			name = wineFineThankyou;
+			packageProductDependencies = (
+				44FF1CF92786C03000FD8567 /* FirebaseAuth */,
+			);
 			productName = wineFineThankyou;
 			productReference = 44FF1CBB278471A700FD8567 /* wineFineThankyou.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 44FF1CB2278471A700FD8567;
+			packageReferences = (
+				44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 44FF1CBC278471A700FD8567 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,6 +313,7 @@
 			files = (
 				44FF1CCB278471A900FD8567 /* LaunchScreen.storyboard in Resources */,
 				44FF1CF42786A6D000FD8567 /* exam.jpeg in Resources */,
+				44FF1CF72786BCFF00FD8567 /* GoogleService-Info.plist in Resources */,
 				44FF1CC8278471A900FD8567 /* Assets.xcassets in Resources */,
 				44FF1CC6278471A700FD8567 /* Main.storyboard in Resources */,
 			);
@@ -838,6 +850,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		44FF1CF92786C03000FD8567 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 44FF1CB3278471A700FD8567 /* Project object */;
 }

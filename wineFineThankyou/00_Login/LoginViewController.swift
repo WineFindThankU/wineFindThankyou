@@ -14,30 +14,27 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var buttonKakao: UIButton!
     
+    @IBOutlet weak var buttonGoogle: UIButton!
+    
+    // MARK: 카카오 로그인
     @IBAction func onClickKakao(_ sender: Any) {
-        // 카카오톡 설치 여부 확인
           if (UserApi.isKakaoTalkLoginAvailable()) {
-            // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
               UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
-                    // 예외 처리 (로그인 취소 등)
                     print(error)
                 } else {
-                    print("loginWithKakaoTalk() success.")
-                   // do something
+                    print("loginWithKakaoTalk() 성공")
                     _ = oauthToken
-                   let accessToken = oauthToken?.accessToken
+                    _ = oauthToken?.accessToken
                 }
-            }
-          } else {
+              }
+          } else { // 카카오톡 안깔려있을 때
               UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                  if let error = error {
                    print(error)
                  }
                  else {
-                  print("loginWithKakaoAccount() success.")
-                  
-                  //do something
+                  print("loginWithKakaoAccount() 성공")
                   _ = oauthToken
                  }
               }
@@ -45,6 +42,11 @@ class LoginViewController: UIViewController {
         }
     
     
+    
+    // MARK: 구글 로그인
+    @IBAction func onClickGoogle(_ sender: Any) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

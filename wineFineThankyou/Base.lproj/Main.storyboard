@@ -50,6 +50,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="google_login"/>
+                                <connections>
+                                    <action selector="onClickGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGr-qv-g7t"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd7-eb-R6R">
                                 <rect key="frame" x="112" y="752" width="190" height="55"/>
@@ -81,6 +84,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonGoogle" destination="dT0-A7-zYb" id="A7w-Id-lvV"/>
                         <outlet property="buttonKakao" destination="k67-fk-USu" id="8j1-lS-FCu"/>
                     </connections>
                 </viewController>
