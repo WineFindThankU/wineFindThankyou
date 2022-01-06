@@ -8,7 +8,7 @@
 import UIKit
 import KakaoSDKAuth
 import KakaoSDKUser
-
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
@@ -45,11 +45,12 @@ class LoginViewController: UIViewController {
     
     // MARK: 구글 로그인
     @IBAction func onClickGoogle(_ sender: Any) {
-        
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
 
