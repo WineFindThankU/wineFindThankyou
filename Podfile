@@ -10,7 +10,7 @@ target 'wineFineThankyou' do
   pod 'KakaoSDKCommon' # 필수 요소를 담은 공통 모듈 
   pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
   pod 'GoogleSignIn'  # 구글 로그인
-
+  pod 'naveridlogin-sdk-ios' #naver login
   target 'wineFineThankyouTests' do
     inherit! :search_paths
     # Pods for testing

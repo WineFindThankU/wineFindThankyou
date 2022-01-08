@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKCommon
 import GoogleSignIn
+import NaverThirdPartyLogin
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -41,10 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = "824951586402-6sessam73hmlrg01dpggfotfjkot26kv.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
+        setLogin2Naver()
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
+        
         return (GIDSignIn.sharedInstance()?.handle(url))!
     }
     
@@ -65,6 +69,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    func setLogin2Naver() {
+        //MARK: login naver
+        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+    
+        instance?.isNaverAppOauthEnable = true
+        instance?.isInAppOauthEnable = true
+        instance?.isOnlyPortraitSupportedInIphone()
+        
+        instance?.serviceUrlScheme = kServiceAppUrlScheme
+        instance?.consumerKey = kConsumerKey
+        instance?.consumerSecret = kConsumerSecret
+        instance?.appName = kServiceAppName
+    }
 }
 
