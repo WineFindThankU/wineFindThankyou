@@ -11,11 +11,14 @@ import KakaoSDKUser
 import GoogleSignIn
 import NaverThirdPartyLogin
 import Alamofire
+import AuthenticationServices
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var buttonKakao: UIButton!
     @IBOutlet weak var buttonGoogle: UIButton!
-    var naverConnection : NaverThirdPartyLoginConnection?
+    @IBOutlet weak var appleSignInButton: UIButton!
+    
+    private var naverConnection : NaverThirdPartyLoginConnection?
     // MARK: 카카오 로그인
     @IBAction func onClickKakao(_ sender: Any) {
         if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -52,9 +55,36 @@ class LoginViewController: UIViewController {
         naverConnection?.requestThirdPartyLogin()
     }
     
+    // Apple ID 로그인 버튼 생성
+    func setAppleSignInButton() {
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+        authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
+        self.appleSignInButton.addSubview(authorizationButton)
+        authorizationButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            authorizationButton.topAnchor.constraint(equalTo: self.appleSignInButton.topAnchor),
+            authorizationButton.bottomAnchor.constraint(equalTo: self.appleSignInButton.bottomAnchor),
+            authorizationButton.leadingAnchor.constraint(equalTo: self.appleSignInButton.leadingAnchor),
+            authorizationButton.trailingAnchor.constraint(equalTo: self.appleSignInButton.trailingAnchor)
+        ])
+    }
+    
+    // Apple Login Button Pressed
+    @objc func appleSignInButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+            
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
+        setAppleSignInButton()
     }
 }
 
@@ -102,5 +132,34 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
             print("result")
             //TODO: result dictionary. 추후 localDB저장 혹은 서버 전송할 데이터
         }
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    // Apple ID 연동 성공 시
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        // Apple ID
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            // 계정 정보 가져오기
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+                
+            print("User ID : \(userIdentifier)")
+            print("User Email : \(email ?? "")")
+            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+     
+        default:
+            break
+        }
+    }
+        
+    // Apple ID 연동 실패 시
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
     }
 }

@@ -87,6 +87,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appleSignInButton" destination="nd7-eb-R6R" id="tWA-Vh-URq"/>
                         <outlet property="buttonGoogle" destination="dT0-A7-zYb" id="A7w-Id-lvV"/>
                         <outlet property="buttonKakao" destination="k67-fk-USu" id="8j1-lS-FCu"/>
                     </connections>
