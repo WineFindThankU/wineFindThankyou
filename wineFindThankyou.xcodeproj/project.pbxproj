@@ -10,6 +10,12 @@
 		0023D49208FEC32A119E1781 /* Pods_wineFineThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1709255243E4ECFC7CE836DF /* Pods_wineFineThankyouTests.framework */; };
 		15BD198AC7DFB4AC40BE8CF9 /* Pods_wineFineThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA220429529CD5F9C0FAF51 /* Pods_wineFineThankyou.framework */; };
 		3A6FD10DC6A7701A12383C88 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B95EEF70C95C3E2E5C680 /* Pods_wineFineThankyou_wineFineThankyouUITests.framework */; };
+		441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441951A8279B123D00D0D381 /* OnboardingSlide.swift */; };
+		44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44234AF52796878C00848E44 /* MainQAViewController.swift */; };
+		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
+		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
+		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
+		44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */; };
 		44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CBE278471A700FD8567 /* AppDelegate.swift */; };
 		44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC0278471A700FD8567 /* SceneDelegate.swift */; };
 		44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC2278471A700FD8567 /* ViewController.swift */; };
@@ -45,7 +51,13 @@
 /* Begin PBXFileReference section */
 		004F783C4087B6DA725CDB98 /* Pods-wineFineThankyouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFineThankyouTests.release.xcconfig"; path = "Target Support Files/Pods-wineFineThankyouTests/Pods-wineFineThankyouTests.release.xcconfig"; sourceTree = "<group>"; };
 		1709255243E4ECFC7CE836DF /* Pods_wineFineThankyouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFineThankyouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		44FF1CBB278471A700FD8567 /* wineFineThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFineThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		441951A8279B123D00D0D381 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		44234AF52796878C00848E44 /* MainQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQAViewController.swift; sourceTree = "<group>"; };
+		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
+		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
+		44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdQAViewController.swift; sourceTree = "<group>"; };
+		44FF1CBB278471A700FD8567 /* wineFindThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFindThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CBE278471A700FD8567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FF1CC0278471A700FD8567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		44FF1CC2278471A700FD8567 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,9 +65,9 @@
 		44FF1CC7278471A900FD8567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44FF1CCA278471A900FD8567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44FF1CCC278471A900FD8567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44FF1CD1278471AA00FD8567 /* wineFineThankyouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wineFineThankyouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44FF1CD1278471AA00FD8567 /* wineFindThankyouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wineFindThankyouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CD5278471AA00FD8567 /* wineFineThankyouTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wineFineThankyouTests.swift; sourceTree = "<group>"; };
-		44FF1CDB278471AA00FD8567 /* wineFineThankyouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wineFineThankyouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44FF1CDB278471AA00FD8567 /* wineFindThankyouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wineFindThankyouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CDF278471AA00FD8567 /* wineFineThankyouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wineFineThankyouUITests.swift; sourceTree = "<group>"; };
 		44FF1CE1278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wineFineThankyouUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44FF1CEE27869EA700FD8567 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +121,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		441951A6279B024100D0D381 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		441951A7279B024900D0D381 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				441951A8279B123D00D0D381 /* OnboardingSlide.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44AE4C5C2795AEEA00923F24 /* 01_Question */ = {
+			isa = PBXGroup;
+			children = (
+				44AE4C5D2795AF5A00923F24 /* PageViewController.swift */,
+				44234AF52796878C00848E44 /* MainQAViewController.swift */,
+				44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */,
+				44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */,
+				44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */,
+			);
+			path = 01_Question;
+			sourceTree = "<group>";
+		};
 		44FF1CB2278471A700FD8567 = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +163,9 @@
 		44FF1CBC278471A700FD8567 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44FF1CBB278471A700FD8567 /* wineFineThankyou.app */,
-				44FF1CD1278471AA00FD8567 /* wineFineThankyouTests.xctest */,
-				44FF1CDB278471AA00FD8567 /* wineFineThankyouUITests.xctest */,
+				44FF1CBB278471A700FD8567 /* wineFindThankyou.app */,
+				44FF1CD1278471AA00FD8567 /* wineFindThankyouTests.xctest */,
+				44FF1CDB278471AA00FD8567 /* wineFindThankyouUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,11 +173,14 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
+				441951A7279B024900D0D381 /* Models */,
+				441951A6279B024100D0D381 /* Views */,
 				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				44FF1CF52786A6D300FD8567 /* etc */,
 				44FF1CF027869ED000FD8567 /* 00_Login */,
-				44FF1CBE278471A700FD8567 /* AppDelegate.swift */,
+				44AE4C5C2795AEEA00923F24 /* 01_Question */,
 				44FF1CC0278471A700FD8567 /* SceneDelegate.swift */,
+				44FF1CBE278471A700FD8567 /* AppDelegate.swift */,
 				44FF1CC2278471A700FD8567 /* ViewController.swift */,
 				44FF1CC4278471A700FD8567 /* Main.storyboard */,
 				44FF1CC7278471A900FD8567 /* Assets.xcassets */,
@@ -197,9 +239,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44FF1CBA278471A700FD8567 /* wineFineThankyou */ = {
+		44FF1CBA278471A700FD8567 /* wineFindThankyou */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44FF1CE5278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyou" */;
+			buildConfigurationList = 44FF1CE5278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyou" */;
 			buildPhases = (
 				9FCE2AAC5DC3BABEF1EF7548 /* [CP] Check Pods Manifest.lock */,
 				44FF1CB7278471A700FD8567 /* Sources */,
@@ -212,17 +254,17 @@
 			);
 			dependencies = (
 			);
-			name = wineFineThankyou;
+			name = wineFindThankyou;
 			packageProductDependencies = (
 				44FF1CF92786C03000FD8567 /* FirebaseAuth */,
 			);
 			productName = wineFineThankyou;
-			productReference = 44FF1CBB278471A700FD8567 /* wineFineThankyou.app */;
+			productReference = 44FF1CBB278471A700FD8567 /* wineFindThankyou.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44FF1CD0278471AA00FD8567 /* wineFineThankyouTests */ = {
+		44FF1CD0278471AA00FD8567 /* wineFindThankyouTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44FF1CE8278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyouTests" */;
+			buildConfigurationList = 44FF1CE8278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyouTests" */;
 			buildPhases = (
 				DB2E065B357F0A4E37156BE3 /* [CP] Check Pods Manifest.lock */,
 				44FF1CCD278471AA00FD8567 /* Sources */,
@@ -234,14 +276,14 @@
 			dependencies = (
 				44FF1CD3278471AA00FD8567 /* PBXTargetDependency */,
 			);
-			name = wineFineThankyouTests;
+			name = wineFindThankyouTests;
 			productName = wineFineThankyouTests;
-			productReference = 44FF1CD1278471AA00FD8567 /* wineFineThankyouTests.xctest */;
+			productReference = 44FF1CD1278471AA00FD8567 /* wineFindThankyouTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		44FF1CDA278471AA00FD8567 /* wineFineThankyouUITests */ = {
+		44FF1CDA278471AA00FD8567 /* wineFindThankyouUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44FF1CEB278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyouUITests" */;
+			buildConfigurationList = 44FF1CEB278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyouUITests" */;
 			buildPhases = (
 				C0E0F1941005FC5C2BDC36EB /* [CP] Check Pods Manifest.lock */,
 				44FF1CD7278471AA00FD8567 /* Sources */,
@@ -255,9 +297,9 @@
 			dependencies = (
 				44FF1CDD278471AA00FD8567 /* PBXTargetDependency */,
 			);
-			name = wineFineThankyouUITests;
+			name = wineFindThankyouUITests;
 			productName = wineFineThankyouUITests;
-			productReference = 44FF1CDB278471AA00FD8567 /* wineFineThankyouUITests.xctest */;
+			productReference = 44FF1CDB278471AA00FD8567 /* wineFindThankyouUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -283,7 +325,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 44FF1CB6278471A700FD8567 /* Build configuration list for PBXProject "wineFineThankyou" */;
+			buildConfigurationList = 44FF1CB6278471A700FD8567 /* Build configuration list for PBXProject "wineFindThankyou" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -299,9 +341,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44FF1CBA278471A700FD8567 /* wineFineThankyou */,
-				44FF1CD0278471AA00FD8567 /* wineFineThankyouTests */,
-				44FF1CDA278471AA00FD8567 /* wineFineThankyouUITests */,
+				44FF1CBA278471A700FD8567 /* wineFindThankyou */,
+				44FF1CD0278471AA00FD8567 /* wineFindThankyouTests */,
+				44FF1CDA278471AA00FD8567 /* wineFindThankyouUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -477,8 +519,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */,
+				44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
+				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,
+				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
+				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
 				44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */,
+				44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */,
 				44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */,
 				44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */,
 			);
@@ -506,12 +554,12 @@
 /* Begin PBXTargetDependency section */
 		44FF1CD3278471AA00FD8567 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44FF1CBA278471A700FD8567 /* wineFineThankyou */;
+			target = 44FF1CBA278471A700FD8567 /* wineFindThankyou */;
 			targetProxy = 44FF1CD2278471AA00FD8567 /* PBXContainerItemProxy */;
 		};
 		44FF1CDD278471AA00FD8567 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44FF1CBA278471A700FD8567 /* wineFineThankyou */;
+			target = 44FF1CBA278471A700FD8567 /* wineFindThankyou */;
 			targetProxy = 44FF1CDC278471AA00FD8567 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -660,7 +708,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -673,11 +721,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.WFT.wineFineThankyou-";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wft.winefindthanku-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -689,7 +737,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -703,11 +751,11 @@
 				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.WFT.wineFineThankyou-";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wft.winefindthanku-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -733,7 +781,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wineFineThankyou.app/wineFineThankyou";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wineFindThankyou.app/wineFindThankyou";
 			};
 			name = Debug;
 		};
@@ -759,7 +807,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wineFineThankyou.app/wineFineThankyou";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wineFindThankyou.app/wineFindThankyou";
 			};
 			name = Release;
 		};
@@ -814,7 +862,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44FF1CB6278471A700FD8567 /* Build configuration list for PBXProject "wineFineThankyou" */ = {
+		44FF1CB6278471A700FD8567 /* Build configuration list for PBXProject "wineFindThankyou" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44FF1CE3278471AA00FD8567 /* Debug */,
@@ -823,7 +871,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44FF1CE5278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyou" */ = {
+		44FF1CE5278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyou" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44FF1CE6278471AA00FD8567 /* Debug */,
@@ -832,7 +880,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44FF1CE8278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyouTests" */ = {
+		44FF1CE8278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyouTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44FF1CE9278471AA00FD8567 /* Debug */,
@@ -841,7 +889,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44FF1CEB278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFineThankyouUITests" */ = {
+		44FF1CEB278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyouUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44FF1CEC278471AA00FD8567 /* Debug */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0s7-9n-J6W">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="wineFineThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
                                     <action selector="onClickNaver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7md-9e-85I"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-A7-zYb">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-A7-zYb">
                                 <rect key="frame" x="45" y="701" width="324" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="1Ut-Y2-ukc"/>
@@ -74,16 +74,24 @@
                         <constraints>
                             <constraint firstItem="7VU-kc-zEy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0M1-nx-Gjg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7VU-kc-zEy" secondAttribute="trailing" constant="20" id="6Ky-Iv-xtW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nd7-eb-R6R" secondAttribute="trailing" constant="45" id="6rk-2n-gdr"/>
                             <constraint firstItem="ggj-zd-6aI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9Bx-lM-Icy"/>
+                            <constraint firstItem="dT0-A7-zYb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="DGa-iI-lQk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd7-eb-R6R" secondAttribute="bottom" constant="55" id="EYS-rK-QSp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k67-fk-USu" secondAttribute="trailing" constant="45" id="GwA-Io-KtP"/>
                             <constraint firstItem="k67-fk-USu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="J9r-bL-tZf"/>
                             <constraint firstItem="dT0-A7-zYb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JLU-Ag-mcK"/>
                             <constraint firstItem="7VU-kc-zEy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="Nsv-G7-gPc"/>
+                            <constraint firstItem="k67-fk-USu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="PgV-rY-owo"/>
+                            <constraint firstItem="ggj-zd-6aI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="el6-pe-5te"/>
                             <constraint firstItem="nd7-eb-R6R" firstAttribute="top" secondItem="dT0-A7-zYb" secondAttribute="bottom" constant="10" id="fJk-Jg-sa3"/>
                             <constraint firstItem="k67-fk-USu" firstAttribute="top" secondItem="7VU-kc-zEy" secondAttribute="bottom" constant="40" id="nzK-0w-RRQ"/>
                             <constraint firstItem="nd7-eb-R6R" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="o72-xc-eTb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ggj-zd-6aI" secondAttribute="trailing" constant="45" id="oer-Rj-BQd"/>
                             <constraint firstItem="ggj-zd-6aI" firstAttribute="top" secondItem="k67-fk-USu" secondAttribute="bottom" constant="10" id="pGG-3L-Z6t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dT0-A7-zYb" secondAttribute="trailing" constant="45" id="rJg-5F-F3n"/>
                             <constraint firstItem="dT0-A7-zYb" firstAttribute="top" secondItem="ggj-zd-6aI" secondAttribute="bottom" constant="10" id="s1U-mc-TtN"/>
+                            <constraint firstItem="nd7-eb-R6R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="yaz-09-rkD"/>
                         </constraints>
                     </view>
                     <connections>
@@ -96,15 +104,616 @@
             </objects>
             <point key="canvasLocation" x="50.724637681159422" y="93.75"/>
         </scene>
+        <!--MainQA View Controller-->
+        <scene sceneID="uK5-4Z-hO2">
+            <objects>
+                <viewController id="0s7-9n-J6W" customClass="MainQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h2g-cy-IAh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2n-tf-yWY">
+                                <rect key="frame" x="0.0" y="44" width="394" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKd-8J-2z6">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrow-left"/>
+                                        <connections>
+                                            <action selector="onClickback:" destination="0s7-9n-J6W" eventType="touchUpInside" id="PTG-DM-FMJ"/>
+                                        </connections>
+                                    </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Xd-d4-Joe">
+                                        <rect key="frame" x="129" y="12" width="156" height="26"/>
+                                        <color key="pageIndicatorTintColor" red="0.87833553549999999" green="0.87848657370000005" blue="0.8783260584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="pageChanged:" destination="0s7-9n-J6W" eventType="valueChanged" id="off-Yb-mda"/>
+                                        </connections>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="sKd-8J-2z6" firstAttribute="leading" secondItem="p2n-tf-yWY" secondAttribute="leading" id="0qL-S9-bx4"/>
+                                    <constraint firstAttribute="bottom" secondItem="sKd-8J-2z6" secondAttribute="bottom" id="ISy-bA-W06"/>
+                                    <constraint firstItem="sKd-8J-2z6" firstAttribute="top" secondItem="p2n-tf-yWY" secondAttribute="top" id="aEl-oq-N4s"/>
+                                    <constraint firstItem="7Xd-d4-Joe" firstAttribute="centerY" secondItem="p2n-tf-yWY" secondAttribute="centerY" id="lXi-FN-dSL"/>
+                                    <constraint firstAttribute="height" constant="50" id="yGR-Wa-ih2"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIa-we-TyZ">
+                                <rect key="frame" x="0.0" y="94" width="414" height="623"/>
+                                <connections>
+                                    <segue destination="77n-1T-n3W" kind="embed" id="spS-nP-3HV"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-k0-Hc6">
+                                <rect key="frame" x="172.5" y="717" width="69" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="MpQ-s8-xI6"/>
+                                    <constraint firstAttribute="height" constant="69" id="zcy-Vz-GNE"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Ellipse 1"/>
+                                <state key="selected" image="Quetion"/>
+                                <connections>
+                                    <action selector="onClickNext:" destination="0s7-9n-J6W" eventType="touchUpInside" id="L89-fw-MAX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U7F-Uo-a0z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dIa-we-TyZ" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="7DH-R6-Xv2"/>
+                            <constraint firstItem="p2n-tf-yWY" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="DvR-et-vUy"/>
+                            <constraint firstItem="dIa-we-TyZ" firstAttribute="top" secondItem="p2n-tf-yWY" secondAttribute="bottom" id="Hnn-Iu-XyV"/>
+                            <constraint firstItem="1cG-k0-Hc6" firstAttribute="centerX" secondItem="U7F-Uo-a0z" secondAttribute="centerX" id="Smi-TL-6Z3"/>
+                            <constraint firstItem="U7F-Uo-a0z" firstAttribute="bottom" secondItem="1cG-k0-Hc6" secondAttribute="bottom" constant="76" id="X9e-XK-kx6"/>
+                            <constraint firstItem="p2n-tf-yWY" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="fTG-ak-8NZ"/>
+                            <constraint firstItem="7Xd-d4-Joe" firstAttribute="centerX" secondItem="U7F-Uo-a0z" secondAttribute="centerX" id="g6p-Jg-lLS"/>
+                            <constraint firstItem="p2n-tf-yWY" firstAttribute="top" secondItem="U7F-Uo-a0z" secondAttribute="top" id="jCe-qc-gmk"/>
+                            <constraint firstItem="1cG-k0-Hc6" firstAttribute="top" secondItem="dIa-we-TyZ" secondAttribute="bottom" id="ksQ-mB-LoA"/>
+                            <constraint firstItem="U7F-Uo-a0z" firstAttribute="trailing" secondItem="dIa-we-TyZ" secondAttribute="trailing" id="nyn-b0-hpA"/>
+                            <constraint firstItem="U7F-Uo-a0z" firstAttribute="trailing" secondItem="p2n-tf-yWY" secondAttribute="trailing" constant="20" id="zY7-hX-iX2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="dIa-we-TyZ" id="4UY-CE-NRm"/>
+                        <outlet property="nextButton" destination="1cG-k0-Hc6" id="X7f-jT-pM8"/>
+                        <outlet property="pageControl" destination="7Xd-d4-Joe" id="ld0-BY-W9k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21C-yi-juq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800.00000000000011" y="93.75"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="ZkS-C3-tsQ">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="77n-1T-n3W" customClass="PageViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XvO-yF-fts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557" y="82"/>
+        </scene>
+        <!--FirstQA View Controller-->
+        <scene sceneID="XeQ-CK-Aye">
+            <objects>
+                <viewController storyboardIdentifier="FirstPageVC" id="VUv-Q5-SXY" customClass="FirstQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PTU-zG-M8c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7g-lK-zHh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q. 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CG-ar-gas">
+                                        <rect key="frame" x="189" y="0.0" width="36.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인을 마실 때 나에게 가장 중요한 것은?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB1-i5-nsA">
+                                        <rect key="frame" x="20" y="55" width="374" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-py-NRM">
+                                        <rect key="frame" x="174" y="134" width="66" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="SDI-hQ-rmo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="가성비" backgroundImage="Quesbutton">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickCost:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="HLP-QG-Rib"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAx-RN-pry">
+                                        <rect key="frame" x="166.5" y="178" width="81" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="wXn-PD-BEh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="포도 품종" backgroundImage="Quesbutton">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickKind:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="zgK-sH-mUH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1Q-kz-liG">
+                                        <rect key="frame" x="161" y="222" width="92" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="lml-9c-P9L"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="와인 브랜드" backgroundImage="Quesbutton">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickBrand:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="NlR-OL-pbS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfv-xQ-4Jf">
+                                        <rect key="frame" x="166.5" y="266" width="81" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="kDZ-bh-wm3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="생산 지역" backgroundImage="Quesbutton">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickArea:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="8d4-bQ-dcD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAp-9t-J1z">
+                                        <rect key="frame" x="103.5" y="310" width="207" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="niU-Mr-gci"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="와인 종류 (레드/화이트/내추럴 등)" backgroundImage="Quesbutton">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickKindOfWine:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="tMO-SV-PdX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XZ-Ct-ASC">
+                                        <rect key="frame" x="148.5" y="354" width="117" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="A3f-6h-vfo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="기타 (직접 입력)" backgroundImage="Quesbutton">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickOther:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="lGv-cI-K1t"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="x1Q-kz-liG" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="5rb-E3-03f"/>
+                                    <constraint firstItem="lAx-RN-pry" firstAttribute="top" secondItem="PVh-py-NRM" secondAttribute="bottom" constant="8" id="6Ra-XA-9RT"/>
+                                    <constraint firstAttribute="trailing" secondItem="vB1-i5-nsA" secondAttribute="trailing" constant="20" id="BUn-zr-n4Z"/>
+                                    <constraint firstItem="x1Q-kz-liG" firstAttribute="top" secondItem="lAx-RN-pry" secondAttribute="bottom" constant="8" id="H5L-ll-QIe"/>
+                                    <constraint firstItem="9CG-ar-gas" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="J0N-jG-Tr9"/>
+                                    <constraint firstItem="PVh-py-NRM" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="JnV-Rl-LPS"/>
+                                    <constraint firstItem="PVh-py-NRM" firstAttribute="top" secondItem="vB1-i5-nsA" secondAttribute="bottom" constant="26" id="Psb-78-hwn"/>
+                                    <constraint firstItem="9CG-ar-gas" firstAttribute="top" secondItem="z7g-lK-zHh" secondAttribute="top" id="YGD-1M-yTW"/>
+                                    <constraint firstItem="KAp-9t-J1z" firstAttribute="top" secondItem="mfv-xQ-4Jf" secondAttribute="bottom" constant="8" symbolic="YES" id="g0V-PR-TSM"/>
+                                    <constraint firstItem="mfv-xQ-4Jf" firstAttribute="top" secondItem="x1Q-kz-liG" secondAttribute="bottom" constant="8" id="hmL-Ls-01O"/>
+                                    <constraint firstItem="vB1-i5-nsA" firstAttribute="leading" secondItem="z7g-lK-zHh" secondAttribute="leading" constant="20" id="oTx-A4-i55"/>
+                                    <constraint firstItem="9XZ-Ct-ASC" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="oXb-D4-Mif"/>
+                                    <constraint firstItem="vB1-i5-nsA" firstAttribute="top" secondItem="9CG-ar-gas" secondAttribute="bottom" constant="28" id="px2-pz-Uwn"/>
+                                    <constraint firstItem="mfv-xQ-4Jf" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="r5k-Aw-OLc"/>
+                                    <constraint firstItem="9XZ-Ct-ASC" firstAttribute="top" secondItem="KAp-9t-J1z" secondAttribute="bottom" constant="8" id="uww-Za-cVb"/>
+                                    <constraint firstItem="KAp-9t-J1z" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="vTJ-zK-qlh"/>
+                                    <constraint firstItem="lAx-RN-pry" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="yun-Xk-mF1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Ko-m4-kxZ"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="z7g-lK-zHh" firstAttribute="leading" secondItem="7Ko-m4-kxZ" secondAttribute="leading" id="Rvu-IQ-Vek"/>
+                            <constraint firstItem="z7g-lK-zHh" firstAttribute="top" secondItem="7Ko-m4-kxZ" secondAttribute="top" id="gMy-74-xg5"/>
+                            <constraint firstItem="7Ko-m4-kxZ" firstAttribute="trailing" secondItem="z7g-lK-zHh" secondAttribute="trailing" id="jfd-N9-xcD"/>
+                            <constraint firstItem="7Ko-m4-kxZ" firstAttribute="bottom" secondItem="z7g-lK-zHh" secondAttribute="bottom" id="oRc-PE-axd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonArea" destination="mfv-xQ-4Jf" id="8oe-XD-6dC"/>
+                        <outlet property="buttonBrand" destination="x1Q-kz-liG" id="lDd-8k-pRA"/>
+                        <outlet property="buttonCost" destination="PVh-py-NRM" id="9Hd-3H-T8v"/>
+                        <outlet property="buttonKindOfWine" destination="KAp-9t-J1z" id="9GV-0h-DC9"/>
+                        <outlet property="buttonOther" destination="9XZ-Ct-ASC" id="5Mv-62-j2g"/>
+                        <outlet property="buttonkind" destination="lAx-RN-pry" id="cTf-5d-fxD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U9Z-fN-4Qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2263" y="11"/>
+        </scene>
+        <!--SecondQA View Controller-->
+        <scene sceneID="nLY-jW-md4">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageVC" id="32m-Zj-4ld" customClass="SecondQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3UK-Rw-RwU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lp4-oy-Q6J">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q. 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3r-Hd-Hdd">
+                                        <rect key="frame" x="187.5" y="0.0" width="39.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 일상적으로 마시는 와인은 얼마? " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ph-X8-VLj">
+                                        <rect key="frame" x="20" y="51" width="374" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98q-pn-5c5">
+                                        <rect key="frame" x="0.0" y="152" width="414" height="228"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQJ-y1-yGV">
+                                                <rect key="frame" x="162.5" y="8" width="89" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="F5R-Dz-NNQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="2만원 이하" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClick2m:" destination="32m-Zj-4ld" eventType="touchUpInside" id="wqj-ZO-kkR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZB-Z8-95c">
+                                                <rect key="frame" x="156.5" y="52" width="101" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="R1J-6h-Z3M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="3 ~ 4만원 대" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClick3m:" destination="32m-Zj-4ld" eventType="touchUpInside" id="Rtj-SE-QCy"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQB-iL-M0a">
+                                                <rect key="frame" x="157" y="96" width="100" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="s3k-FN-9GE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="5 ~ 7만원 대" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClick5m:" destination="32m-Zj-4ld" eventType="touchUpInside" id="5cu-bC-Uyt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhL-gA-6Xq">
+                                                <rect key="frame" x="153.5" y="140" width="107" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="nqZ-NB-tYn"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="8 ~ 10만원 대" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClick8m:" destination="32m-Zj-4ld" eventType="touchUpInside" id="Xxh-ps-cbj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0M-Fx-gp0">
+                                                <rect key="frame" x="104.5" y="184" width="205" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="pW7-8u-jQ8"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="퀄리티가 된다면 가격은 상관없음!" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickdontcare:" destination="32m-Zj-4ld" eventType="touchUpInside" id="g30-4p-IFr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="OQB-iL-M0a" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="1k4-55-JZU"/>
+                                            <constraint firstItem="TQJ-y1-yGV" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="FbU-us-4O1"/>
+                                            <constraint firstItem="RZB-Z8-95c" firstAttribute="top" secondItem="TQJ-y1-yGV" secondAttribute="bottom" constant="8" id="I7y-wu-vPP"/>
+                                            <constraint firstItem="c0M-Fx-gp0" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="OtH-ON-bjW"/>
+                                            <constraint firstItem="TQJ-y1-yGV" firstAttribute="top" secondItem="98q-pn-5c5" secondAttribute="top" constant="8" id="QZZ-l1-mCs"/>
+                                            <constraint firstAttribute="height" constant="228" id="T2c-7J-4rh"/>
+                                            <constraint firstItem="c0M-Fx-gp0" firstAttribute="top" secondItem="AhL-gA-6Xq" secondAttribute="bottom" constant="8" symbolic="YES" id="bAh-hE-FHm"/>
+                                            <constraint firstItem="AhL-gA-6Xq" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="gQ1-11-wbZ"/>
+                                            <constraint firstItem="AhL-gA-6Xq" firstAttribute="top" secondItem="OQB-iL-M0a" secondAttribute="bottom" constant="8" id="h7G-ay-LwJ"/>
+                                            <constraint firstItem="RZB-Z8-95c" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="i1F-P4-c9f"/>
+                                            <constraint firstItem="OQB-iL-M0a" firstAttribute="top" secondItem="RZB-Z8-95c" secondAttribute="bottom" constant="8" id="mSf-nA-wyR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5ph-X8-VLj" secondAttribute="trailing" constant="20" id="4tU-Df-9mV"/>
+                                    <constraint firstAttribute="trailing" secondItem="98q-pn-5c5" secondAttribute="trailing" id="BDu-Eh-7YG"/>
+                                    <constraint firstItem="5ph-X8-VLj" firstAttribute="top" secondItem="Y3r-Hd-Hdd" secondAttribute="bottom" constant="24" id="dRG-XD-xhA"/>
+                                    <constraint firstItem="5ph-X8-VLj" firstAttribute="leading" secondItem="lp4-oy-Q6J" secondAttribute="leading" constant="20" id="gCx-TZ-3W7"/>
+                                    <constraint firstItem="98q-pn-5c5" firstAttribute="leading" secondItem="lp4-oy-Q6J" secondAttribute="leading" id="kST-mN-THw"/>
+                                    <constraint firstItem="Y3r-Hd-Hdd" firstAttribute="centerX" secondItem="lp4-oy-Q6J" secondAttribute="centerX" id="lBA-r1-IHj"/>
+                                    <constraint firstItem="98q-pn-5c5" firstAttribute="top" secondItem="5ph-X8-VLj" secondAttribute="bottom" constant="48" id="qcz-2d-RWz"/>
+                                    <constraint firstItem="Y3r-Hd-Hdd" firstAttribute="top" secondItem="lp4-oy-Q6J" secondAttribute="top" id="zLY-2m-eby"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qbo-pO-sya"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstItem="Qbo-pO-sya" firstAttribute="bottom" secondItem="lp4-oy-Q6J" secondAttribute="bottom" id="RSs-T1-1e7"/>
+                            <constraint firstItem="lp4-oy-Q6J" firstAttribute="leading" secondItem="Qbo-pO-sya" secondAttribute="leading" id="pdj-XN-aeS"/>
+                            <constraint firstItem="Qbo-pO-sya" firstAttribute="trailing" secondItem="lp4-oy-Q6J" secondAttribute="trailing" id="ple-0V-hmP"/>
+                            <constraint firstItem="Qbo-pO-sya" firstAttribute="top" secondItem="lp4-oy-Q6J" secondAttribute="top" id="tsh-IM-ULb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button2m" destination="TQJ-y1-yGV" id="N2K-cq-UgI"/>
+                        <outlet property="button3m" destination="RZB-Z8-95c" id="XxT-WF-0Fw"/>
+                        <outlet property="button5m" destination="OQB-iL-M0a" id="IBf-cd-kYr"/>
+                        <outlet property="button8m" destination="AhL-gA-6Xq" id="FSZ-8i-khb"/>
+                        <outlet property="buttonDontCare" destination="c0M-Fx-gp0" id="jZl-6P-qic"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ad-r8-ejA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2957.971014492754" y="15.401785714285714"/>
+        </scene>
+        <!--ThirdQA View Controller-->
+        <scene sceneID="pO8-ap-YgA">
+            <objects>
+                <viewController storyboardIdentifier="ThirdPageVC" id="x1A-4Y-tBd" customClass="ThirdQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k1P-rh-a59">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SL6-3e-9Lv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q. 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAM-1P-5Se">
+                                        <rect key="frame" x="187" y="0.0" width="40" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인을 주로 구입하는 이유는? " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnL-mq-gFb">
+                                        <rect key="frame" x="20" y="51" width="374" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZz-eC-WCb">
+                                        <rect key="frame" x="0.0" y="196" width="414" height="228"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-ik-nBP">
+                                                <rect key="frame" x="142" y="8" width="130" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="Eec-MM-XIK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="내가 마시기 위해서" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickMe:" destination="x1A-4Y-tBd" eventType="touchUpInside" id="UZy-QE-mJe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YV-Wm-6tf">
+                                                <rect key="frame" x="136.5" y="52" width="141" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="3dd-4H-bMy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="모임과 파티를 위해서" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickParty:" destination="x1A-4Y-tBd" eventType="touchUpInside" id="gUw-WT-tHV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-re-Zn1">
+                                                <rect key="frame" x="149.5" y="96" width="115" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="Kmv-df-orL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="선물하기 위해서" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickPresent:" destination="x1A-4Y-tBd" eventType="touchUpInside" id="nJV-4a-JOf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="bBF-re-Zn1" firstAttribute="centerX" secondItem="sZz-eC-WCb" secondAttribute="centerX" id="11t-4z-RWA"/>
+                                            <constraint firstItem="iOp-ik-nBP" firstAttribute="centerX" secondItem="sZz-eC-WCb" secondAttribute="centerX" id="6AE-Cl-xta"/>
+                                            <constraint firstItem="bBF-re-Zn1" firstAttribute="top" secondItem="2YV-Wm-6tf" secondAttribute="bottom" constant="8" id="BJl-EB-gpH"/>
+                                            <constraint firstItem="2YV-Wm-6tf" firstAttribute="top" secondItem="iOp-ik-nBP" secondAttribute="bottom" constant="8" id="JjB-Bu-Qi0"/>
+                                            <constraint firstAttribute="height" constant="228" id="RUO-ee-rKX"/>
+                                            <constraint firstItem="iOp-ik-nBP" firstAttribute="top" secondItem="sZz-eC-WCb" secondAttribute="top" constant="8" id="UBw-6V-hBU"/>
+                                            <constraint firstItem="2YV-Wm-6tf" firstAttribute="centerX" secondItem="sZz-eC-WCb" secondAttribute="centerX" id="whm-tA-3Uq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="sZz-eC-WCb" firstAttribute="leading" secondItem="SL6-3e-9Lv" secondAttribute="leading" id="8i3-aQ-zKc"/>
+                                    <constraint firstItem="dnL-mq-gFb" firstAttribute="top" secondItem="AAM-1P-5Se" secondAttribute="bottom" constant="24" id="Eig-gg-Rqg"/>
+                                    <constraint firstAttribute="trailing" secondItem="sZz-eC-WCb" secondAttribute="trailing" id="H4S-yO-4n6"/>
+                                    <constraint firstAttribute="trailing" secondItem="dnL-mq-gFb" secondAttribute="trailing" constant="20" id="Q4l-AZ-bV4"/>
+                                    <constraint firstItem="AAM-1P-5Se" firstAttribute="top" secondItem="SL6-3e-9Lv" secondAttribute="top" id="V3y-gd-ocm"/>
+                                    <constraint firstItem="AAM-1P-5Se" firstAttribute="centerX" secondItem="SL6-3e-9Lv" secondAttribute="centerX" id="ZKT-Xv-NYQ"/>
+                                    <constraint firstItem="sZz-eC-WCb" firstAttribute="top" secondItem="dnL-mq-gFb" secondAttribute="bottom" constant="92" id="ZSR-NI-7S9"/>
+                                    <constraint firstItem="dnL-mq-gFb" firstAttribute="leading" secondItem="SL6-3e-9Lv" secondAttribute="leading" constant="20" id="m97-Qq-sCt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sFu-4w-2ng"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstItem="sFu-4w-2ng" firstAttribute="trailing" secondItem="SL6-3e-9Lv" secondAttribute="trailing" id="70k-HG-4KA"/>
+                            <constraint firstItem="sFu-4w-2ng" firstAttribute="leading" secondItem="SL6-3e-9Lv" secondAttribute="leading" id="Bjq-11-sKT"/>
+                            <constraint firstItem="sFu-4w-2ng" firstAttribute="top" secondItem="SL6-3e-9Lv" secondAttribute="top" id="QCh-de-4tr"/>
+                            <constraint firstItem="sFu-4w-2ng" firstAttribute="bottom" secondItem="SL6-3e-9Lv" secondAttribute="bottom" id="mnR-0N-QVC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonMe" destination="iOp-ik-nBP" id="0kP-xx-p0H"/>
+                        <outlet property="buttonParty" destination="2YV-Wm-6tf" id="SJw-EC-6QQ"/>
+                        <outlet property="buttonPresent" destination="bBF-re-Zn1" id="hFV-59-9D2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kn4-PQ-pDB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3661" y="15"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gxe-Yp-hMl">
+            <objects>
+                <viewController id="z6B-gw-Qsx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RmL-6i-o78">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOI-D3-Ddk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjD-CP-slo">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
+                                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <state key="normal" image="arrow-left"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="jjD-CP-slo" firstAttribute="leading" secondItem="cOI-D3-Ddk" secondAttribute="leading" id="6Cz-Do-Tbh"/>
+                                    <constraint firstItem="jjD-CP-slo" firstAttribute="top" secondItem="cOI-D3-Ddk" secondAttribute="top" id="GNc-3n-DtP"/>
+                                    <constraint firstAttribute="height" constant="50" id="h51-Hn-rez"/>
+                                    <constraint firstAttribute="bottom" secondItem="jjD-CP-slo" secondAttribute="bottom" id="s9v-mh-0Jd"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 25" translatesAutoresizingMaskIntoConstraints="NO" id="AQc-uP-eQE">
+                                <rect key="frame" x="99" y="103" width="216" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="EWD-6g-pba"/>
+                                    <constraint firstAttribute="height" constant="216" id="ZQe-oA-e1T"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나는 와인종류가 중요하고 마실 때는 3 ~ 4만원 대를, 주로 선물하려고 구입하는 포도알이야!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-4Z-4rK">
+                                <rect key="frame" x="95.5" y="366" width="223" height="131.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pj-9L-vy6">
+                                <rect key="frame" x="172.5" y="557.5" width="69" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="bSA-LV-Q9Y"/>
+                                    <constraint firstAttribute="height" constant="69" id="zw4-QZ-Wc7"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Quetion">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="shu-5o-dyc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cOI-D3-Ddk" firstAttribute="top" secondItem="shu-5o-dyc" secondAttribute="top" id="Fny-8M-g5a"/>
+                            <constraint firstItem="AQc-uP-eQE" firstAttribute="top" secondItem="cOI-D3-Ddk" secondAttribute="bottom" constant="9" id="L4R-uj-vZO"/>
+                            <constraint firstItem="mA9-4Z-4rK" firstAttribute="centerX" secondItem="shu-5o-dyc" secondAttribute="centerX" id="M6x-mc-ZDa"/>
+                            <constraint firstItem="1pj-9L-vy6" firstAttribute="centerX" secondItem="shu-5o-dyc" secondAttribute="centerX" id="Pdc-Ah-b6u"/>
+                            <constraint firstItem="cOI-D3-Ddk" firstAttribute="leading" secondItem="shu-5o-dyc" secondAttribute="leading" id="PfY-Ac-PYU"/>
+                            <constraint firstItem="1pj-9L-vy6" firstAttribute="top" secondItem="mA9-4Z-4rK" secondAttribute="bottom" constant="60" id="c8B-hT-SwG"/>
+                            <constraint firstItem="shu-5o-dyc" firstAttribute="trailing" secondItem="cOI-D3-Ddk" secondAttribute="trailing" id="fpj-1d-rlw"/>
+                            <constraint firstItem="mA9-4Z-4rK" firstAttribute="top" secondItem="AQc-uP-eQE" secondAttribute="bottom" constant="47" id="oCz-LB-7sL"/>
+                            <constraint firstItem="AQc-uP-eQE" firstAttribute="centerX" secondItem="shu-5o-dyc" secondAttribute="centerX" id="pjO-xd-H92"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0uC-eE-GtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4344.927536231884" y="14.732142857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Ellipse 1" width="69" height="69"/>
         <image name="Frame 10" width="324" height="48"/>
         <image name="Frame 11" width="324" height="48"/>
         <image name="Frame 8" width="324" height="48"/>
         <image name="Frame 9" width="324" height="48"/>
+        <image name="Group 25" width="216" height="216"/>
+        <image name="Quesbutton" width="34" height="36"/>
+        <image name="Quetion" width="69" height="69"/>
+        <image name="arrow-left" width="24" height="24"/>
         <image name="winezz" width="896" height="1188"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
