@@ -9,10 +9,11 @@ import UIKit
 import NMapsMap
 class MainViewController: UIViewController {
     
+  //  @IBOutlet weak var mapView: NMFMapView!
+    
     override func viewDidLoad() {
             super.viewDidLoad()
-            let naverMapView = NMFNaverMapView(frame: view.frame)
-            view.addSubview(naverMapView)
+           
     }
 
 }
