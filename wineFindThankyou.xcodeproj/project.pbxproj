@@ -12,6 +12,7 @@
 		44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44234AF52796878C00848E44 /* MainQAViewController.swift */; };
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
 		44442491279D4C9000903DC7 /* FinalQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44442490279D4C9000903DC7 /* FinalQAViewController.swift */; };
+		4466D256279D6F7400F8A535 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */; };
 		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
 		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
 		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
@@ -60,6 +61,7 @@
 		44234AF52796878C00848E44 /* MainQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQAViewController.swift; sourceTree = "<group>"; };
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		44442490279D4C9000903DC7 /* FinalQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalQAViewController.swift; sourceTree = "<group>"; };
+		4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
+				4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */,
 			);
 			path = 02_Main;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
 				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,
+				4466D256279D6F7400F8A535 /* MainCollectionViewCell.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
 				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
 				44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */,
