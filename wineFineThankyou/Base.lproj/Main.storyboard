@@ -691,6 +691,21 @@
             </objects>
             <point key="canvasLocation" x="4344.927536231884" y="14.732142857142856"/>
         </scene>
+        <!--Main View Controller-->
+        <scene sceneID="n2u-Ug-8ID">
+            <objects>
+                <viewController id="nnv-bG-R26" customClass="MainViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ayq-HR-zyT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4l4-eK-h9q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7b-qc-Qdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5120" y="15"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Ellipse 1" width="69" height="69"/>
