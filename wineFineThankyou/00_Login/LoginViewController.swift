@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
                     print(error)
                 } else {
                     print("loginWithKakaoTalk() 성공")
+                    print("munyong > ")
                     _ = oauthToken
                     _ = oauthToken?.accessToken
                 }
@@ -50,6 +51,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onClickNaver(_ sender: UIButton){
+        print("munyong > on")
         naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
         naverConnection?.delegate = self
         naverConnection?.requestThirdPartyLogin()
@@ -106,6 +108,7 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
     
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
         // 로그인 실패시에 호출되며 실패 이유와 메시지 확인 가능합니다.
+        print("munyong > error: \(error)")
     }
     
     // TODO: (문용) 추후 분리 필요.
@@ -129,7 +132,7 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
         
         req.responseJSON { response in
             guard let result = response.value as? [String: Any] else { return }
-            print("result")
+            print("\(result)")
             //TODO: result dictionary. 추후 localDB저장 혹은 서버 전송할 데이터
         }
     }
@@ -148,7 +151,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
-                
+            print("\(appleIDCredential.fullName)")
+            print("\(appleIDCredential.fullName)")
             print("User ID : \(userIdentifier)")
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
