@@ -77,6 +77,21 @@ func setTopView(_ view: UIView, height: CGFloat) -> TopView {
     return topView
 }
 
+func setBackground(superView: UIView) -> UIView {
+    let backgroundView = UIView()
+    superView.addSubview(backgroundView)
+    backgroundView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+        backgroundView.topAnchor.constraint(equalTo: superView.topAnchor),
+        backgroundView.leftAnchor.constraint(equalTo: superView.leftAnchor),
+        backgroundView.rightAnchor.constraint(equalTo: superView.rightAnchor),
+        backgroundView.bottomAnchor.constraint(equalTo: superView.bottomAnchor),
+    ])
+    backgroundView.backgroundColor = Theme.black.color.withAlphaComponent(0.5)
+    
+    return backgroundView
+}
+
 func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView {
     let storeContentsView = StoreButtonsView()
     superView.addSubview(storeContentsView)

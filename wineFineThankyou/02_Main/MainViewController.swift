@@ -26,34 +26,23 @@ class MainViewController: UIViewController {
    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
-    weak var storeSummaryView : StoreSumamryView?
+    
+    var background: UIView?
     override func viewDidLoad() {
             super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        showSummaryView()
     }
     
-    private func showSummaryView() {
-        let storeSummaryView = StoreSumamryView()
-        self.mapView.addSubview(storeSummaryView)
-        storeSummaryView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            storeSummaryView.leftAnchor.constraint(equalTo: self.mapView.leftAnchor),
-            storeSummaryView.rightAnchor.constraint(equalTo: self.mapView.rightAnchor),
-            storeSummaryView.bottomAnchor.constraint(equalTo: self.mapView.bottomAnchor),
-            storeSummaryView.heightAnchor.constraint(equalToConstant: 267)
-        ])
-        storeSummaryView.topView?.storeName.text = "뱅가드 와인 머천트 분당지점"
-        storeSummaryView.topView?.storeClassification.text = "개인샵"
-        storeSummaryView.topView?.rightButton.addTarget(self, action: #selector(goToStore), for: .touchUpInside)
-        storeSummaryView.topView?.rightButton.setBackgroundImage(UIImage(named: "rightArrow"), for: .normal)
-        
-        self.storeSummaryView = storeSummaryView
-    }
-    
-    @objc private func goToStore() {
-        print("goToStore")
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.async {
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController {
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true)
+                }
+            }
+        }
     }
 }
 
