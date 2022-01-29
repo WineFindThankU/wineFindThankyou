@@ -45,6 +45,9 @@
 		BA8BB7BC27A44E430010F05A /* StoreInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */; };
 		BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BD27A45CDC0010F05A /* DataModel.swift */; };
 		BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */; };
+		BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */; };
+		BA8BB7C527A4F7CD0010F05A /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C427A4F7CD0010F05A /* ExtString.swift */; };
+		BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C627A50FAD0010F05A /* QAViewController.swift */; };
 		BE079B647C3647D1729B49DE /* Pods_wineFindThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBE8C73875BAC8D7B8C35AD /* Pods_wineFindThankyou.framework */; };
 		DB0DD976C1EE74D9698F5CF5 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69CAA88CC8A97C57AB529FB1 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
 /* End PBXBuildFile section */
@@ -112,6 +115,9 @@
 		BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		BA8BB7BD27A45CDC0010F05A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreWinesViewController.swift; sourceTree = "<group>"; };
+		BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		BA8BB7C427A4F7CD0010F05A /* ExtString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
+		BA8BB7C627A50FAD0010F05A /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		C298F6F2D3770E8DF5A6C26E /* Pods-wineFindThankyouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D804DD9B94A2C7CC1A929D41 /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EEBE8C73875BAC8D7B8C35AD /* Pods_wineFindThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,28 +161,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		44442489279D373C00903DC7 /* 02_Main */ = {
+		44442489279D373C00903DC7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */,
+				44FF1CF027869ED000FD8567 /* Login */,
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
 				BA8BB7B727A444310010F05A /* WinesInfoStackView.swift */,
 				BA8BB7B927A444410010F05A /* WinesInfoStackView.xib */,
 				4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */,
 			);
-			path = 02_Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
-		44AE4C5C2795AEEA00923F24 /* 01_Question */ = {
+		44AE4C5C2795AEEA00923F24 /* Question */ = {
 			isa = PBXGroup;
 			children = (
 				44AE4C5D2795AF5A00923F24 /* PageViewController.swift */,
 				44234AF52796878C00848E44 /* MainQAViewController.swift */,
+				BA8BB7C627A50FAD0010F05A /* QAViewController.swift */,
 				44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */,
 				44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */,
 				44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */,
 				44442490279D4C9000903DC7 /* FinalQAViewController.swift */,
 			);
-			path = 01_Question;
+			path = Question;
 			sourceTree = "<group>";
 		};
 		44FF1CB2278471A700FD8567 = {
@@ -206,11 +215,9 @@
 			children = (
 				441951A7279B024900D0D381 /* Models */,
 				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
-				44FF1CF52786A6D300FD8567 /* etc */,
-				44FF1CF027869ED000FD8567 /* 00_Login */,
-				44AE4C5C2795AEEA00923F24 /* 01_Question */,
-				44442489279D373C00903DC7 /* 02_Main */,
-				BA77CFDE279EF7EF00832389 /* 03_Store */,
+				BA8BB7C127A4E2550010F05A /* Launch */,
+				44442489279D373C00903DC7 /* Main */,
+				BA77CFDE279EF7EF00832389 /* Store */,
 				BA77CFE3279EF91A00832389 /* 99_Ext */,
 				44FF1CBE278471A700FD8567 /* AppDelegate.swift */,
 				44FF1CC0278471A700FD8567 /* SceneDelegate.swift */,
@@ -218,8 +225,8 @@
 				44FF1CC4278471A700FD8567 /* Main.storyboard */,
 				BA8BB7BD27A45CDC0010F05A /* DataModel.swift */,
 				44FF1CC7278471A900FD8567 /* Assets.xcassets */,
-				44FF1CC9278471A900FD8567 /* LaunchScreen.storyboard */,
 				44FF1CCC278471A900FD8567 /* Info.plist */,
+				44FF1CF52786A6D300FD8567 /* etc */,
 			);
 			path = wineFineThankyou;
 			sourceTree = "<group>";
@@ -241,12 +248,13 @@
 			path = wineFineThankyouUITests;
 			sourceTree = "<group>";
 		};
-		44FF1CF027869ED000FD8567 /* 00_Login */ = {
+		44FF1CF027869ED000FD8567 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				44AE4C5C2795AEEA00923F24 /* Question */,
 				44FF1CEE27869EA700FD8567 /* LoginViewController.swift */,
 			);
-			path = 00_Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		44FF1CF52786A6D300FD8567 /* etc */ = {
@@ -267,7 +275,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BA77CFDE279EF7EF00832389 /* 03_Store */ = {
+		BA77CFDE279EF7EF00832389 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 				BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */,
@@ -275,7 +283,7 @@
 				BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */,
 				BA8BB7B627A43BA20010F05A /* Cell */,
 			);
-			path = 03_Store;
+			path = Store;
 			sourceTree = "<group>";
 		};
 		BA77CFE3279EF91A00832389 /* 99_Ext */ = {
@@ -285,6 +293,7 @@
 				BA77CFE6279EFA5600832389 /* ExtUIColor.swift */,
 				BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */,
 				BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */,
+				BA8BB7C427A4F7CD0010F05A /* ExtString.swift */,
 			);
 			path = 99_Ext;
 			sourceTree = "<group>";
@@ -299,6 +308,14 @@
 				BA8BB7AF27A4256F0010F05A /* WineInfoCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		BA8BB7C127A4E2550010F05A /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				44FF1CC9278471A900FD8567 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		D55090A1FA48D46D11A58126 /* Pods */ = {
@@ -601,12 +618,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8BB7C527A4F7CD0010F05A /* ExtString.swift in Sources */,
 				441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
+				BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
 				44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */,
 				BA8BB7B827A444310010F05A /* WinesInfoStackView.swift in Sources */,
+				BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
 				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,

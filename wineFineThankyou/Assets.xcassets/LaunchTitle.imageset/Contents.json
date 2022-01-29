@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "winezz.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Union.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ghG-fH-qwr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RLv-TK-igk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,13 +13,13 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="winezz" translatesAutoresizingMaskIntoConstraints="NO" id="7VU-kc-zEy">
-                                <rect key="frame" x="20" y="134" width="374" height="411"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7VU-kc-zEy">
+                                <rect key="frame" x="100" y="213" width="214" height="332"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k67-fk-USu">
                                 <rect key="frame" x="26" y="585" width="362" height="48"/>
@@ -70,16 +70,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7VU-kc-zEy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0M1-nx-Gjg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7VU-kc-zEy" secondAttribute="trailing" constant="20" id="6Ky-Iv-xtW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7VU-kc-zEy" secondAttribute="trailing" constant="100" id="04j-fX-H8O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nd7-eb-R6R" secondAttribute="trailing" constant="26" id="6rk-2n-gdr"/>
                             <constraint firstItem="dT0-A7-zYb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="DGa-iI-lQk"/>
+                            <constraint firstItem="7VU-kc-zEy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="EBU-t5-dXy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd7-eb-R6R" secondAttribute="bottom" constant="55" id="EYS-rK-QSp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k67-fk-USu" secondAttribute="trailing" constant="26" id="GwA-Io-KtP"/>
-                            <constraint firstItem="7VU-kc-zEy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="Nsv-G7-gPc"/>
                             <constraint firstItem="k67-fk-USu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="PgV-rY-owo"/>
                             <constraint firstItem="ggj-zd-6aI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="el6-pe-5te"/>
                             <constraint firstItem="nd7-eb-R6R" firstAttribute="top" secondItem="dT0-A7-zYb" secondAttribute="bottom" constant="10" id="fJk-Jg-sa3"/>
+                            <constraint firstItem="7VU-kc-zEy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="169" id="mjN-sQ-HqU"/>
                             <constraint firstItem="k67-fk-USu" firstAttribute="top" secondItem="7VU-kc-zEy" secondAttribute="bottom" constant="40" id="nzK-0w-RRQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ggj-zd-6aI" secondAttribute="trailing" constant="26" id="oer-Rj-BQd"/>
                             <constraint firstItem="ggj-zd-6aI" firstAttribute="top" secondItem="k67-fk-USu" secondAttribute="bottom" constant="10" id="pGG-3L-Z6t"/>
@@ -96,12 +96,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5194" y="15"/>
+            <point key="canvasLocation" x="5081" y="15"/>
         </scene>
         <!--MainQA View Controller-->
         <scene sceneID="uK5-4Z-hO2">
             <objects>
-                <viewController id="0s7-9n-J6W" customClass="MainQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainQAViewController" id="0s7-9n-J6W" customClass="MainQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h2g-cy-IAh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,6 +174,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="sKd-8J-2z6" id="1fh-xT-eIx"/>
                         <outlet property="contentView" destination="dIa-we-TyZ" id="4UY-CE-NRm"/>
                         <outlet property="nextButton" destination="1cG-k0-Hc6" id="X7f-jT-pM8"/>
                         <outlet property="pageControl" destination="7Xd-d4-Joe" id="ld0-BY-W9k"/>
@@ -181,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21C-yi-juq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800.00000000000011" y="93.75"/>
+            <point key="canvasLocation" x="929" y="15"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="ZkS-C3-tsQ">
@@ -189,7 +190,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="77n-1T-n3W" customClass="PageViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvO-yF-fts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1557" y="82"/>
+            <point key="canvasLocation" x="1607" y="-77"/>
         </scene>
         <!--FirstQA View Controller-->
         <scene sceneID="XeQ-CK-Aye">
@@ -692,7 +693,7 @@
         <!--Main View Controller-->
         <scene sceneID="n2u-Ug-8ID">
             <objects>
-                <viewController id="nnv-bG-R26" customClass="MainViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="nnv-bG-R26" customClass="MainViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ayq-HR-zyT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -907,6 +908,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="mRm-uJ-C7O"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="XSb-hy-Daa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
@@ -1019,10 +1021,36 @@
             </objects>
             <point key="canvasLocation" x="7144.9275362318849" y="10.714285714285714"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="6pU-ag-hY4">
+            <objects>
+                <viewController storyboardIdentifier="LaunchViewController" id="RLv-TK-igk" customClass="LaunchViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcV-Nm-Zzv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ciO-pI-i1t">
+                                <rect key="frame" x="100" y="213" width="214" height="70"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LVy-nb-hwC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ciO-pI-i1t" firstAttribute="top" secondItem="LVy-nb-hwC" secondAttribute="top" constant="169" id="77F-jx-FPr"/>
+                            <constraint firstItem="ciO-pI-i1t" firstAttribute="leading" secondItem="LVy-nb-hwC" secondAttribute="leading" constant="100" id="RRQ-xE-z7Y"/>
+                            <constraint firstItem="LVy-nb-hwC" firstAttribute="trailing" secondItem="ciO-pI-i1t" secondAttribute="trailing" constant="100" id="o5A-Wk-E2f"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J5F-9W-RTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55" y="15"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Ellipse 1" width="69" height="69"/>
         <image name="Group 25" width="216" height="216"/>
+        <image name="LaunchTitle" width="175" height="70"/>
         <image name="Quesbutton" width="34" height="36"/>
         <image name="Quetion" width="69" height="69"/>
         <image name="Rectangle 5" width="54" height="46"/>
@@ -1036,7 +1064,6 @@
         <image name="naverLogin" width="324" height="44"/>
         <image name="smile" width="24" height="24"/>
         <image name="start" width="69" height="69"/>
-        <image name="winezz" width="896" height="1188"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

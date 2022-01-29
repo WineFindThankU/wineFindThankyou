@@ -13,6 +13,13 @@ import NaverThirdPartyLogin
 import Alamofire
 import AuthenticationServices
 
+
+struct UsersWineType : Codable {
+    let question1 : String
+    let question2: String
+    let question3: String
+}
+
 class LoginViewController: UIViewController {
     @IBOutlet weak var buttonKakao: UIButton!
     @IBOutlet weak var buttonGoogle: UIButton!

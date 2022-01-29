@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.clientID = "824951586402-6sessam73hmlrg01dpggfotfjkot26kv.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
         setLogin2Naver()
+        
         return true
     }
     
