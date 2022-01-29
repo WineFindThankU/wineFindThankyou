@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         // Kakao
-        KakaoSDKCommon.initSDK(appKey: "612ec0765f0106cc23de9b487a836fec")
+        KakaoSDK.initSDK(appKey: "612ec0765f0106cc23de9b487a836fec")
         
         
         // Google
