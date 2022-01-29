@@ -5,8 +5,19 @@
       "scale" : "1x"
     },
     {
-      "filename" : "home.png",
+      "filename" : "Search Box.pdf",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 11,
+          "right" : 18
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "2x"
     },
     {

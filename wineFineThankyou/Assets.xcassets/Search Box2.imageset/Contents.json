@@ -1,11 +1,22 @@
 {
   "images" : [
     {
+      "filename" : "Search Box2.pdf",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 18,
+          "right" : 18
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "1x"
     },
     {
-      "filename" : "home.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

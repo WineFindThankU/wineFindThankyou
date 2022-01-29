@@ -6,6 +6,7 @@ target 'wineFindThankyou' do
   use_frameworks!
 
   # Pods for wineFindThankyou
+  pod 'Alamofire', '~> 5.1'
   pod 'NMapsMap'
   pod 'KakaoSDKAuth'  # 사용자 인증
   pod 'KakaoSDKCommon' # 필수 요소를 담은 공통 모듈 

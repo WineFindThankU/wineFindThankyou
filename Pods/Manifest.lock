@@ -28,6 +28,7 @@ PODS:
   - NMapsMap (3.14.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.1)
   - GoogleSignIn
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -60,6 +61,6 @@ SPEC CHECKSUMS:
   naveridlogin-sdk-ios: b9d7c20677981177ed994ecb1c8c2b49f223277d
   NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
 
-PODFILE CHECKSUM: fc769943a245cbdba7f03ae5ef436a88908717a0
+PODFILE CHECKSUM: 2d46fca393532b97d66a259671359481328c69dc
 
 COCOAPODS: 1.11.2

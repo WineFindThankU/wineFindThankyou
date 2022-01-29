@@ -59,7 +59,19 @@ class MainViewController: UIViewController {
         //MARK: 문용. storeInfoFromServer
         done?(true)
     }
+    
+    
+    func getShopLists() {
+        let requestNetworking = RequestNetworking()
+        requestNetworking.getShopsList()
+    }
+   
+    
+    
 }
+
+
+
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
