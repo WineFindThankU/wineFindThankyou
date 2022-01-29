@@ -94,6 +94,7 @@ extension LoginViewController: EndLoginProtocol{
     func endLogin(_ type: AfterLogin) {
         switch type {
         case .success:
+            UserData.isUserLogin = true
             goToMain()
         default:
             //TEST
@@ -104,10 +105,10 @@ extension LoginViewController: EndLoginProtocol{
     func goToMain() {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else { return }
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             vc.modalTransitionStyle = .flipHorizontal
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            self?.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -117,7 +118,9 @@ extension LoginViewController: EndLoginProtocol{
             alert.dismiss(animated: true)
         }
         alert.addAction(ok)
-        alert.present(self, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
     }
 }
 extension LoginViewController {

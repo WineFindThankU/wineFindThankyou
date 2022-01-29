@@ -48,25 +48,27 @@ class LoginController: NSObject {
     internal func loginByKakao() {
         //MARK: 수진. 아래 조건문 always false.
         // 항상 카카오앱을 열지 않고 웹을 이용합니다.
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                } else {
-                    _ = oauthToken
-                    _ = oauthToken?.accessToken
-                }
+        guard UserApi.isKakaoTalkLoginAvailable() else {
+            UserApi.shared.loginWithKakaoAccount {
+                self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
             }
-        } else { // 카카오톡 안깔려있을 때
-            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    _ = oauthToken
-                }
-            }
+            return
         }
+        
+        UserApi.shared.loginWithKakaoTalk {
+            self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
+        }
+    }
+    
+    private func logInKakao(token: OAuthToken?, error: Error?) -> AfterLogin {
+        if let error = error {
+            print(error)
+            return .fail
+        }
+        
+        _ = token
+        _ = token?.accessToken
+        return .success
     }
     
     internal func loginByGoogle() {
@@ -116,6 +118,7 @@ extension LoginController: GIDSignInDelegate {
             } else {
                 print(error.localizedDescription)
             }
+            
             delegate?.endLogin(.fail)
         } else {
             delegate?.endLogin(.success)
@@ -123,7 +126,6 @@ extension LoginController: GIDSignInDelegate {
         
         // singleton 객체 - user가 로그인을 하면, AppDelegate.user로 다른곳에서 사용 가능
         AppDelegate.user = user
-        return
     }
 }
 

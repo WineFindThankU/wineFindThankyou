@@ -24,6 +24,8 @@ class MainViewController: UIViewController {
     var arrCategoryImage: [String] = ["Tag","Tag","Tag","Tag","Tag","Tag","Tag","Tag"]
   //  @IBOutlet weak var mapView: NMFMapView!
    
+    @IBOutlet weak var leftBtn: UIButton!
+    @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
     
@@ -32,16 +34,18 @@ class MainViewController: UIViewController {
             super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        //MARK: TEST
+        rightBtn.addTarget(self, action: #selector(openStore), for: .touchUpInside)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            DispatchQueue.main.async {
-                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController {
-                    vc.modalPresentationStyle = .overFullScreen
-                    self.present(vc, animated: true)
-                }
-            }
+    @objc
+    private func openStore() {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
+        
+        vc.modalPresentationStyle = .overFullScreen
+        DispatchQueue.main.async {
+            self.present(vc, animated: true)
         }
     }
 }

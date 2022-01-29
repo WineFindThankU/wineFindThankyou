@@ -50,7 +50,7 @@ class LaunchViewController: UIViewController{
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.77, delay: 0, animations: {
             self.view.backgroundColor = Theme.white.color
         }, completion: { _ in
-            done?(UserData.IsUserLogin)
+            done?(UserData.isUserLogin)
         })
     }
 }

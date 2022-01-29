@@ -871,7 +871,9 @@
                     <navigationItem key="navigationItem" id="lY7-iP-JYN"/>
                     <connections>
                         <outlet property="collectionView" destination="iKh-W4-byU" id="YtT-Jr-4U9"/>
+                        <outlet property="leftBtn" destination="Fni-rR-FmI" id="sjO-6d-cLK"/>
                         <outlet property="mapView" destination="UMR-Ac-D3M" id="4CJ-Xb-zld"/>
+                        <outlet property="rightBtn" destination="4Ou-By-vHd" id="b0z-nG-9qF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7b-qc-Qdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
