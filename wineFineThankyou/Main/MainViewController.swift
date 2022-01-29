@@ -8,7 +8,6 @@
 import UIKit
 import NMapsMap
 class MainViewController: UIViewController {
-    
     private let arrCategoryName: [String] = [
             "전체 ",
             "개인샵",
@@ -29,7 +28,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
     
-    var background: UIView?
+    var wineStoreInfo: WineStoreInfo?
     override func viewDidLoad() {
             super.viewDidLoad()
         self.collectionView.delegate = self
@@ -41,12 +40,24 @@ class MainViewController: UIViewController {
     
     @objc
     private func openStore() {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
-        
-        vc.modalPresentationStyle = .overFullScreen
-        DispatchQueue.main.async {
-            self.present(vc, animated: true)
+        loadStoreInfoFromServer {
+            guard $0 else { return }
+            showStoreInfoSummary()
         }
+        
+        func showStoreInfoSummary() {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
+            
+            vc.modalPresentationStyle = .overFullScreen
+            DispatchQueue.main.async { [weak self] in
+                self?.present(vc, animated: true)
+            }
+        }
+    }
+    
+    private func loadStoreInfoFromServer(done: ((Bool) -> Void)?) {
+        //MARK: 문용. storeInfoFromServer
+        done?(true)
     }
 }
 

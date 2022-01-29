@@ -30,7 +30,11 @@ struct WineStoreInfo {
     let location: String
     let openingHours: String
     let homepage: String
-    let wines: [WineInfo]
+    var wines: [WineInfo]
+    
+    mutating func addWines(_ wineInfo: WineInfo){
+        wines.append(wineInfo)
+    }
 }
 
 struct WineInfo {
