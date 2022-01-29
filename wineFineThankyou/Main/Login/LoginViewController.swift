@@ -10,9 +10,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import GoogleSignIn
 import NaverThirdPartyLogin
-import Alamofire
 import AuthenticationServices
-
 
 struct UsersWineType : Codable {
     let question1 : String
@@ -20,53 +18,67 @@ struct UsersWineType : Codable {
     let question3: String
 }
 
+enum AfterLogin {
+    case success
+    case fail
+    case cannotAccess
+    
+    //TEST
+    var str: String{
+        switch self {
+        case .success:
+            return "로그인 성공"
+        case .fail:
+            return "로그인 실패"
+        case .cannotAccess:
+            return "나이가 어려요"
+        }
+    }
+    
+    var detail: String {
+        switch self {
+        case .success:
+            return ""
+        case .fail:
+            return "인증 문제로 로그인 할 수 없습니다. 개발자에게 화를 내주세요."
+        case .cannotAccess:
+            return "애들은 가라, 애들은 가.🤬"
+        }
+    }
+}
+protocol EndLoginProtocol: AnyObject {
+    func endLogin(_ type: AfterLogin)
+}
 class LoginViewController: UIViewController {
     @IBOutlet weak var buttonKakao: UIButton!
     @IBOutlet weak var buttonGoogle: UIButton!
     @IBOutlet weak var appleSignInButton: UIButton!
     
-    private var naverConnection : NaverThirdPartyLoginConnection?
-    // MARK: 카카오 로그인
+    lazy var loginController : LoginController = {
+        let con = LoginController(self)
+        con.delegate = self
+        return con
+    }()
+
     @IBAction func onClickKakao(_ sender: Any) {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                } else {
-                    print("loginWithKakaoTalk() 성공")
-                    print("munyong > ")
-                    _ = oauthToken
-                    _ = oauthToken?.accessToken
-                }
-            }
-        } else { // 카카오톡 안깔려있을 때
-            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoAccount() 성공")
-                    _ = oauthToken
-                }
-            }
-        }
+        loginController.loginByKakao()
     }
-    
-    // MARK: 구글 로그인
     @IBAction func onClickGoogle(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.signIn()
+        loginController.loginByGoogle()
     }
-    
     @IBAction func onClickNaver(_ sender: UIButton){
-        print("munyong > on")
-        naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
-        naverConnection?.delegate = self
-        naverConnection?.requestThirdPartyLogin()
+        loginController.loginByNaver()
     }
     
-    // Apple ID 로그인 버튼 생성
-    func setAppleSignInButton() {
-        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+    }
+    
+    private func configure() {
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+        authorizationButton.cornerRadius = .maximum(20, 20)
         authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
         self.appleSignInButton.addSubview(authorizationButton)
         authorizationButton.translatesAutoresizingMaskIntoConstraints = false
@@ -77,100 +89,40 @@ class LoginViewController: UIViewController {
             authorizationButton.trailingAnchor.constraint(equalTo: self.appleSignInButton.trailingAnchor)
         ])
     }
-    
-    // Apple Login Button Pressed
-    @objc func appleSignInButtonPress() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-            
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        setAppleSignInButton()
-    }
 }
-
-//TODO: (문용) 추후 분리 예정
-extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
-    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        // 로그인이 성공했을 경우 호출
-        naverSDKDidLoginSuccess()
-    }
-    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        // 이미 로그인이 되어있는 경우 access 토큰을 업데이트 하는 경우
-        naverSDKDidLoginSuccess()
-    }
-    
-    func oauth20ConnectionDidFinishDeleteToken() {
-        // 로그아웃이나 토큰이 삭제되는 경우
-        naverConnection?.requestDeleteToken()
-    }
-    
-    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        // 로그인 실패시에 호출되며 실패 이유와 메시지 확인 가능합니다.
-        print("munyong > error: \(error)")
-    }
-    
-    // TODO: (문용) 추후 분리 필요.
-    private func naverSDKDidLoginSuccess() {
-        guard let isValidAccessToken = naverConnection?.isValidAccessTokenExpireTimeNow() else { return }
-        
-        if !isValidAccessToken {
-            print("InvalidAccessToken")
-            return
-        }
-        
-        guard let tokenType = naverConnection?.tokenType else { return }
-        guard let accessToken = naverConnection?.accessToken else { return }
-        
-        let urlStr = "https://openapi.naver.com/v1/nid/me"
-        let url = URL(string: urlStr)!
-        
-        let authorization = "\(tokenType) \(accessToken)"
-        
-        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
-        
-        req.responseJSON { response in
-            guard let result = response.value as? [String: Any] else { return }
-            print("\(result)")
-            //TODO: result dictionary. 추후 localDB저장 혹은 서버 전송할 데이터
-        }
-    }
-}
-
-extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
-    }
-    // Apple ID 연동 성공 시
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        switch authorization.credential {
-        // Apple ID
-        case let appleIDCredential as ASAuthorizationAppleIDCredential:
-            // 계정 정보 가져오기
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
-            print("\(appleIDCredential.fullName)")
-            print("\(appleIDCredential.fullName)")
-            print("User ID : \(userIdentifier)")
-            print("User Email : \(email ?? "")")
-            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-     
+extension LoginViewController: EndLoginProtocol{
+    func endLogin(_ type: AfterLogin) {
+        switch type {
+        case .success:
+            goToMain()
         default:
-            break
+            //TEST
+            makeAlert(type: type)
         }
     }
+    
+    func goToMain() {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else { return }
         
-    // Apple ID 연동 실패 시
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
+        DispatchQueue.main.async {
+            vc.modalTransitionStyle = .flipHorizontal
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    func makeAlert(type: AfterLogin) {
+        let alert = UIAlertController(title: type.str, message: type.detail, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel){ _ in
+            alert.dismiss(animated: true)
+        }
+        alert.addAction(ok)
+        alert.present(self, animated: true)
+    }
+}
+extension LoginViewController {
+    @objc
+    private func appleSignInButtonPress() {
+        loginController.loginByApple()
     }
 }

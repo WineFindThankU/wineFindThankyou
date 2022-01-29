@@ -48,6 +48,8 @@
 		BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */; };
 		BA8BB7C527A4F7CD0010F05A /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C427A4F7CD0010F05A /* ExtString.swift */; };
 		BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C627A50FAD0010F05A /* QAViewController.swift */; };
+		BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C827A5280B0010F05A /* LoginController.swift */; };
+		BA8BB7CB27A529D40010F05A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7CA27A529D40010F05A /* Login.swift */; };
 		BE079B647C3647D1729B49DE /* Pods_wineFindThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBE8C73875BAC8D7B8C35AD /* Pods_wineFindThankyou.framework */; };
 		DB0DD976C1EE74D9698F5CF5 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69CAA88CC8A97C57AB529FB1 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +120,9 @@
 		BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		BA8BB7C427A4F7CD0010F05A /* ExtString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
 		BA8BB7C627A50FAD0010F05A /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
+		BA8BB7C827A5280B0010F05A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BA8BB7CA27A529D40010F05A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		BA8BB7CC27A52CAE0010F05A /* wineFindThankyou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wineFindThankyou.entitlements; sourceTree = "<group>"; };
 		C298F6F2D3770E8DF5A6C26E /* Pods-wineFindThankyouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D804DD9B94A2C7CC1A929D41 /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EEBE8C73875BAC8D7B8C35AD /* Pods_wineFindThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +196,7 @@
 		44FF1CB2278471A700FD8567 = {
 			isa = PBXGroup;
 			children = (
+				BA8BB7CC27A52CAE0010F05A /* wineFindThankyou.entitlements */,
 				44FF1CBD278471A700FD8567 /* wineFineThankyou */,
 				44FF1CD4278471AA00FD8567 /* wineFineThankyouTests */,
 				44FF1CDE278471AA00FD8567 /* wineFineThankyouUITests */,
@@ -253,6 +259,8 @@
 			children = (
 				44AE4C5C2795AEEA00923F24 /* Question */,
 				44FF1CEE27869EA700FD8567 /* LoginViewController.swift */,
+				BA8BB7C827A5280B0010F05A /* LoginController.swift */,
+				BA8BB7CA27A529D40010F05A /* Login.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -621,6 +629,7 @@
 				BA8BB7C527A4F7CD0010F05A /* ExtString.swift in Sources */,
 				441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
+				BA8BB7CB27A529D40010F05A /* Login.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
 				BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
@@ -631,6 +640,7 @@
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
 				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,
 				4466D256279D6F7400F8A535 /* MainCollectionViewCell.swift in Sources */,
+				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
 				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
 				44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */,
@@ -822,6 +832,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
@@ -832,6 +843,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -852,6 +864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
@@ -862,6 +875,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
