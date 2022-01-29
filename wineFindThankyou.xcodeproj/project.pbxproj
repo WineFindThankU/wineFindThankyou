@@ -226,6 +226,7 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
+				44FF470427A5713A0063924D /* Views */,
 				44FF470127A563230063924D /* Model */,
 				44FF46FE27A5620B0063924D /* Network */,
 				44FF46FA27A55C470063924D /* Application */,
@@ -236,9 +237,7 @@
 				BA77CFDE279EF7EF00832389 /* Store */,
 				BA77CFE3279EF91A00832389 /* 99_Ext */,
 				44FF1CC2278471A700FD8567 /* ViewController.swift */,
-				44FF1CC4278471A700FD8567 /* Main.storyboard */,
 				BA8BB7BD27A45CDC0010F05A /* DataModel.swift */,
-				44FF1CC7278471A900FD8567 /* Assets.xcassets */,
 				44FF1CCC278471A900FD8567 /* Info.plist */,
 				44FF1CF52786A6D300FD8567 /* etc */,
 			);
@@ -312,6 +311,15 @@
 				44FF470227A563310063924D /* Shops.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		44FF470427A5713A0063924D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				44FF1CC4278471A700FD8567 /* Main.storyboard */,
+				44FF1CC7278471A900FD8567 /* Assets.xcassets */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		97D92C9E512BF1AB9EE52AC6 /* Frameworks */ = {

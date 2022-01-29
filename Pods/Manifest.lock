@@ -26,6 +26,7 @@ PODS:
     - KakaoSDKAuth (= 2.5.3)
   - naveridlogin-sdk-ios (4.1.3)
   - NMapsMap (3.14.0)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.1)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - KakaoSDKUser
   - naveridlogin-sdk-ios
   - NMapsMap
+  - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
@@ -48,6 +50,7 @@ SPEC REPOS:
     - KakaoSDKUser
     - naveridlogin-sdk-ios
     - NMapsMap
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -60,7 +63,8 @@ SPEC CHECKSUMS:
   KakaoSDKUser: 5d2de71fe070455bbaaad6a37af3eb500fbc8972
   naveridlogin-sdk-ios: b9d7c20677981177ed994ecb1c8c2b49f223277d
   NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 2d46fca393532b97d66a259671359481328c69dc
+PODFILE CHECKSUM: c432739849fa664d00a6df168f4df427933f9adc
 
 COCOAPODS: 1.11.2

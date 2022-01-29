@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 import NMapsMap
+
 class MainViewController: UIViewController {
     private let arrCategoryName: [String] = [
             "전체 ",
@@ -46,9 +48,18 @@ class MainViewController: UIViewController {
         }
         
         func showStoreInfoSummary() {
-            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
-            
-            vc.modalPresentationStyle = .overFullScreen
+            /*
+             let bundle = Bundle(for: CustomView.self)
+                 bundle.loadNibNamed("CustomView", owner: self, options: nil)
+                 addSubview(customView)
+                 customView.frame = self.bounds
+             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+             
+             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
+             
+             vc.modalPresentationStyle = .overFullScreen
+             */
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
@@ -68,6 +79,11 @@ class MainViewController: UIViewController {
    
     
     
+    @IBAction func onClickSearchBar(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+    }
 }
 
 

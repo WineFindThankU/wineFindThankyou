@@ -6,6 +6,7 @@ target 'wineFindThankyou' do
   use_frameworks!
 
   # Pods for wineFindThankyou
+  pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.1'
   pod 'NMapsMap'
   pod 'KakaoSDKAuth'  # 사용자 인증

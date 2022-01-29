@@ -1,23 +1,23 @@
 {
   "images" : [
     {
-      "filename" : "Tag.png",
       "idiom" : "universal",
-      "resizing" : {
-        "cap-insets" : {
-          "left" : 13,
-          "right" : 14
-        },
-        "center" : {
-          "mode" : "tile",
-          "width" : 2
-        },
-        "mode" : "3-part-horizontal"
-      },
       "scale" : "1x"
     },
     {
+      "filename" : "Tag.pdf",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 20,
+          "right" : 20
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "2x"
     },
     {
