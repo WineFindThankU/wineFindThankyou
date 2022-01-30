@@ -18,7 +18,6 @@
 		44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */; };
 		44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CBE278471A700FD8567 /* AppDelegate.swift */; };
 		44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC0278471A700FD8567 /* SceneDelegate.swift */; };
-		44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC2278471A700FD8567 /* ViewController.swift */; };
 		44FF1CC6278471A700FD8567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CC4278471A700FD8567 /* Main.storyboard */; };
 		44FF1CC8278471A900FD8567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CC7278471A900FD8567 /* Assets.xcassets */; };
 		44FF1CCB278471A900FD8567 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CC9278471A900FD8567 /* LaunchScreen.storyboard */; };
@@ -45,8 +44,6 @@
 		BA8BB7B327A4256F0010F05A /* WineInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8BB7AF27A4256F0010F05A /* WineInfoCollectionViewCell.xib */; };
 		BA8BB7B427A4256F0010F05A /* AllOfWineInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8BB7B027A4256F0010F05A /* AllOfWineInfoTableViewCell.xib */; };
 		BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7B127A4256F0010F05A /* AllOfWineInfoTableViewCell.swift */; };
-		BA8BB7B827A444310010F05A /* WinesInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7B727A444310010F05A /* WinesInfoStackView.swift */; };
-		BA8BB7BA27A444410010F05A /* WinesInfoStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8BB7B927A444410010F05A /* WinesInfoStackView.xib */; };
 		BA8BB7BC27A44E430010F05A /* StoreInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */; };
 		BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BD27A45CDC0010F05A /* DataModel.swift */; };
 		BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */; };
@@ -90,7 +87,6 @@
 		44FF1CBB278471A700FD8567 /* wineFindThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFindThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CBE278471A700FD8567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FF1CC0278471A700FD8567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44FF1CC2278471A700FD8567 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		44FF1CC5278471A700FD8567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44FF1CC7278471A900FD8567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44FF1CCA278471A900FD8567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 		BA8BB7AF27A4256F0010F05A /* WineInfoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WineInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		BA8BB7B027A4256F0010F05A /* AllOfWineInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllOfWineInfoTableViewCell.xib; sourceTree = "<group>"; };
 		BA8BB7B127A4256F0010F05A /* AllOfWineInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllOfWineInfoTableViewCell.swift; sourceTree = "<group>"; };
-		BA8BB7B727A444310010F05A /* WinesInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinesInfoStackView.swift; sourceTree = "<group>"; };
-		BA8BB7B927A444410010F05A /* WinesInfoStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WinesInfoStackView.xib; sourceTree = "<group>"; };
 		BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		BA8BB7BD27A45CDC0010F05A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreWinesViewController.swift; sourceTree = "<group>"; };
@@ -175,12 +169,10 @@
 		44442489279D373C00903DC7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BAB4078E27A60D9000B6E352 /* Cell */,
 				BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */,
 				44FF1CF027869ED000FD8567 /* Login */,
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
-				BA8BB7B727A444310010F05A /* WinesInfoStackView.swift */,
-				BA8BB7B927A444410010F05A /* WinesInfoStackView.xib */,
-				4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */,
 				44FF46FB27A55F1A0063924D /* Search */,
 			);
 			path = Main;
@@ -235,8 +227,7 @@
 				BA8BB7C127A4E2550010F05A /* Launch */,
 				44442489279D373C00903DC7 /* Main */,
 				BA77CFDE279EF7EF00832389 /* Store */,
-				BA77CFE3279EF91A00832389 /* 99_Ext */,
-				44FF1CC2278471A700FD8567 /* ViewController.swift */,
+				BA77CFE3279EF91A00832389 /* Ext */,
 				BA8BB7BD27A45CDC0010F05A /* DataModel.swift */,
 				44FF1CCC278471A900FD8567 /* Info.plist */,
 				44FF1CF52786A6D300FD8567 /* etc */,
@@ -343,7 +334,7 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
-		BA77CFE3279EF91A00832389 /* 99_Ext */ = {
+		BA77CFE3279EF91A00832389 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
 				BA77CFE4279EF94A00832389 /* ExtUIView.swift */,
@@ -352,7 +343,7 @@
 				BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */,
 				BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */,
 			);
-			path = 99_Ext;
+			path = Ext;
 			sourceTree = "<group>";
 		};
 		BA8BB7B627A43BA20010F05A /* Cell */ = {
@@ -373,6 +364,14 @@
 				44FF1CC9278471A900FD8567 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		BAB4078E27A60D9000B6E352 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D55090A1FA48D46D11A58126 /* Pods */ = {
@@ -505,7 +504,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA8BB7BA27A444410010F05A /* WinesInfoStackView.xib in Resources */,
 				44FF1CCB278471A900FD8567 /* LaunchScreen.storyboard in Resources */,
 				BA1EE24D27A4177D00FDE9BD /* WineInfoView.xib in Resources */,
 				44FF1CF42786A6D000FD8567 /* exam.jpeg in Resources */,
@@ -684,7 +682,6 @@
 				BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
 				44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */,
-				BA8BB7B827A444310010F05A /* WinesInfoStackView.swift in Sources */,
 				BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
@@ -693,7 +690,6 @@
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
 				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
-				44FF1CC3278471A700FD8567 /* ViewController.swift in Sources */,
 				44FF470327A563310063924D /* Shops.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,

@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
     
+    @IBOutlet weak var searchButtonOutlet: UIButton!
     var wineStoreInfo: WineStoreInfo?
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -48,18 +49,16 @@ class MainViewController: UIViewController {
         }
         
         func showStoreInfoSummary() {
-            /*
-             let bundle = Bundle(for: CustomView.self)
-                 bundle.loadNibNamed("CustomView", owner: self, options: nil)
-                 addSubview(customView)
-                 customView.frame = self.bounds
-             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-             
+            
+//             let bundle = Bundle(for: CustomView.self)
+//                 bundle.loadNibNamed("CustomView", owner: self, options: nil)
+//                 addSubview(customView)
+//                 customView.frame = self.bounds
+//             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+//
              guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
              
              vc.modalPresentationStyle = .overFullScreen
-             */
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
@@ -79,7 +78,8 @@ class MainViewController: UIViewController {
    
     
     
-    @IBAction func onClickSearchBar(_ sender: Any) {
+    @IBAction func onClickSearchBar(_ sender: UIButton) {
+        print(sender)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: false, completion: nil)

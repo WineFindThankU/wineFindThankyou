@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nnv-bG-R26">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nnv-bG-R26">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -119,7 +119,7 @@
                                         </connections>
                                     </button>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Xd-d4-Joe">
-                                        <rect key="frame" x="129.5" y="12" width="155.5" height="26"/>
+                                        <rect key="frame" x="149.5" y="12" width="115.5" height="26"/>
                                         <color key="pageIndicatorTintColor" red="0.87833553549999999" green="0.87848657370000005" blue="0.8783260584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -767,7 +767,7 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" backgroundImage="Rectangle 5"/>
                                                 <connections>
-                                                    <action selector="onClickSearchBar:" destination="nnv-bG-R26" eventType="touchUpInside" id="6x4-Oq-fc6"/>
+                                                    <action selector="onClickSearchBar:" destination="nnv-bG-R26" eventType="touchDown" id="71B-gf-HCT"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Union" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-eT-btk">
@@ -881,6 +881,7 @@
                         <outlet property="leftBtn" destination="Fni-rR-FmI" id="sjO-6d-cLK"/>
                         <outlet property="mapView" destination="UMR-Ac-D3M" id="4CJ-Xb-zld"/>
                         <outlet property="rightBtn" destination="4Ou-By-vHd" id="b0z-nG-9qF"/>
+                        <outlet property="searchButtonOutlet" destination="3kd-CN-OYM" id="Qkw-vg-qjJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7b-qc-Qdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
