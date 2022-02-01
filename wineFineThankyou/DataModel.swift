@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+
 enum StoreType {
     case privateShop
     case chainShop

@@ -76,8 +76,6 @@ class MainViewController: UIViewController {
         requestNetworking.getShopsList()
     }
    
-    
-    
     @IBAction func onClickSearchBar(_ sender: UIButton) {
         print(sender)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
