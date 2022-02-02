@@ -12,6 +12,7 @@ enum Theme {
     case gray
     case purple
     case black
+    case blacktext
     case white
     var color: UIColor {
         switch self {
@@ -21,6 +22,8 @@ enum Theme {
             return UIColor(rgb: 0x7B61FF)
         case .black:
             return UIColor.black
+        case .blacktext:
+            return UIColor.black.withAlphaComponent(0.8)
         case .white:
             return UIColor.white
         }

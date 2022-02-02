@@ -70,7 +70,7 @@ func setTopView(_ view: UIView, height: CGFloat) -> TopView {
     
     topView.backgroundColor = Theme.white.color
     topView.titleLabel = titleLabel
-    topView.titleLabel?.textColor = Theme.black.color
+    topView.titleLabel?.textColor = Theme.blacktext.color
     topView.leftButton = leftBtn
     topView.rightButton = rightBtn
     
@@ -126,7 +126,7 @@ func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView 
             $0.img.widthAnchor.constraint(equalToConstant: 24),
             $0.img.heightAnchor.constraint(equalToConstant: 24),
 
-            $0.label.topAnchor.constraint(equalTo: $0.img.bottomAnchor),
+            $0.label.topAnchor.constraint(equalTo: $0.img.bottomAnchor, constant: -1),
             $0.label.centerXAnchor.constraint(equalTo: $0.btn.centerXAnchor),
             $0.label.bottomAnchor.constraint(equalTo: $0.btn.bottomAnchor)
         ])
@@ -140,12 +140,13 @@ func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView 
     
     [favorites, maps, adds].forEach {
         $0.btn.backgroundColor = Theme.white.color
-        $0.label.textColor = Theme.black.color
+        $0.label.textColor = Theme.blacktext.color
+        $0.label.font = .systemFont(ofSize: 11)
     }
     
-    favorites.label.text = "favorites"
-    maps.label.text = "map"
-    adds.label.text = "add"
+    favorites.label.text = "즐겨찾기"
+    maps.label.text = "길찾기"
+    adds.label.text = "와인추가"
     
     favorites.img.image = UIImage(named: "favorites")
     maps.img.image = UIImage(named: "findRoad")

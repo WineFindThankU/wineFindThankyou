@@ -13,7 +13,9 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     @IBOutlet private weak var contentsView: UIView!
     @IBOutlet private weak var contentsTopView: UIView!
     @IBOutlet private weak var contentsButtonView: UIView!
+    @IBOutlet private weak var emptyView: UIImageView!
     @IBOutlet private weak var winesCollectionView: UICollectionView!
+    @IBOutlet weak var viewTopAnchor: NSLayoutConstraint!
     
     private var storeButtonsView: StoreButtonsView?
     internal var wineStoreInfo: WineStoreInfo?
@@ -27,10 +29,24 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
                                            classification: .privateShop,
                                            callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
                                            openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                           wines: [WineInfo(img: UIImage(named: "clock")!, name: "wine1"), WineInfo(img: UIImage(named: "addPhoto")!, name: "wine2"), WineInfo(img: UIImage(named: "home")!, name: "wine3"), WineInfo(img: UIImage(named: "clock")!, name: "wine4")])
+                                           wines: [])
         registerAction()
         configure()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard wineStoreInfo?.wines.count ?? 0 > 0 else {
+            emptyView.isHidden = false
+            winesCollectionView.isHidden = true
+            viewTopAnchor.constant = UIScreen.main.bounds.height - 267
+            return
+        }
+        emptyView.isHidden = true
+        winesCollectionView.isHidden = false
+    }
+    
     private func configure() {
         setTopView()
         storeButtonsView = setStoreButtonView(superView: contentsButtonView, contentsTopView)
@@ -73,12 +89,12 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            storeName.centerYAnchor.constraint(equalTo: contentsTopView.centerYAnchor),
+            storeName.topAnchor.constraint(equalTo: contentsTopView.topAnchor),
             storeName.leftAnchor.constraint(equalTo: contentsTopView.leftAnchor, constant: 17),
             storeName.widthAnchor.constraint(equalToConstant: 217),
             
             storeClassification.leftAnchor.constraint(equalTo: storeName.rightAnchor, constant: 8),
-            storeClassification.centerYAnchor.constraint(equalTo: storeName.centerYAnchor),
+            storeClassification.bottomAnchor.constraint(equalTo: storeName.bottomAnchor),
             
             rightButton.topAnchor.constraint(equalTo: contentsTopView.topAnchor),
             rightButton.leftAnchor.constraint(equalTo: contentsTopView.leftAnchor),
@@ -92,7 +108,11 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
         ])
         
         storeName.text = wineStoreInfo?.storeName ?? ""
+        storeName.font = .boldSystemFont(ofSize: 20)
+        storeName.textColor = Theme.blacktext.color
         storeClassification.text = wineStoreInfo?.classification.str ?? ""
+        storeClassification.font = .systemFont(ofSize: 13)
+        storeClassification.textColor = Theme.blacktext.color
         imageView.image = UIImage(named: "rightArrow")
         rightButton.addTarget(self, action: #selector(goToStore), for: .touchUpInside)
     }

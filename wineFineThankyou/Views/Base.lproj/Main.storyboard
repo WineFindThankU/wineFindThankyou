@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9tn-w1-CEk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nnv-bG-R26">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1124,6 +1124,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ld3-bm-ao0">
                                         <rect key="frame" x="0.0" y="116" width="414" height="380"/>
                                         <subviews>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wineEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-Na-NkE">
+                                                <rect key="frame" x="112" y="247" width="240" height="113"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="113" id="8lW-FP-G2D"/>
+                                                </constraints>
+                                            </imageView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hGz-dm-myd">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1147,10 +1153,13 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="USQ-Na-NkE" firstAttribute="leading" secondItem="ld3-bm-ao0" secondAttribute="leading" constant="112" id="2mI-IV-L73"/>
                                             <constraint firstItem="hGz-dm-myd" firstAttribute="leading" secondItem="ld3-bm-ao0" secondAttribute="leading" id="69D-xW-fKX"/>
                                             <constraint firstAttribute="trailing" secondItem="hGz-dm-myd" secondAttribute="trailing" id="Eyp-PL-wfF"/>
                                             <constraint firstAttribute="bottom" secondItem="hGz-dm-myd" secondAttribute="bottom" id="GLi-QX-E2s"/>
                                             <constraint firstItem="hGz-dm-myd" firstAttribute="top" secondItem="ld3-bm-ao0" secondAttribute="top" id="U5f-Gw-FmL"/>
+                                            <constraint firstAttribute="trailing" secondItem="USQ-Na-NkE" secondAttribute="trailing" constant="62" id="XLK-js-AVK"/>
+                                            <constraint firstAttribute="bottom" secondItem="USQ-Na-NkE" secondAttribute="bottom" constant="20" id="kic-Z9-dHF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1187,6 +1196,8 @@
                         <outlet property="contentsButtonView" destination="2GF-bc-BYh" id="Vq2-Vg-SWI"/>
                         <outlet property="contentsTopView" destination="Bdt-bw-fif" id="DWj-30-pew"/>
                         <outlet property="contentsView" destination="heW-9B-mVu" id="Kfx-3E-eTc"/>
+                        <outlet property="emptyView" destination="USQ-Na-NkE" id="7N8-vw-WAH"/>
+                        <outlet property="viewTopAnchor" destination="y76-bw-EoS" id="hqm-wX-oPU"/>
                         <outlet property="winesCollectionView" destination="hGz-dm-myd" id="sXU-Wm-LWq"/>
                     </connections>
                 </viewController>
@@ -1241,6 +1252,7 @@
         <image name="search" width="24" height="24"/>
         <image name="smile" width="24" height="24"/>
         <image name="start" width="69" height="69"/>
+        <image name="wineEmpty" width="205" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
