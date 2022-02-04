@@ -53,6 +53,7 @@
 		BAB4079327A7900000B6E352 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = BAB4079227A7900000B6E352 /* SwiftSMTP */; };
 		BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB4079527A7B20A00B6E352 /* MyPageViewController.swift */; };
 		BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB4079827A7B4C500B6E352 /* ConnectUsViewController.swift */; };
+		C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A494C27AD220A0080CBE2 /* StartViewController.swift */; };
 		D92EA1305351BDF24F7EC5DB /* Pods_wineFindThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C138C96EEFE675EC1F2EA8E /* Pods_wineFindThankyouTests.framework */; };
 		F257ECA9C79900A61657E955 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794686BF3E03FCAB862EE32 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
 /* End PBXBuildFile section */
@@ -129,6 +130,7 @@
 		BA8BB7CD27A543D10010F05A /* ExtUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIViewController.swift; sourceTree = "<group>"; };
 		BAB4079527A7B20A00B6E352 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		BAB4079827A7B4C500B6E352 /* ConnectUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectUsViewController.swift; sourceTree = "<group>"; };
+		C56A494C27AD220A0080CBE2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		E5C31D6F6E5D4CC62391909C /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7B875589738C02B9FE2E865 /* Pods-wineFindThankyouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.release.xcconfig"; sourceTree = "<group>"; };
 		E925A8EC3D85A820B5DB23FA /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				44FF1CEE27869EA700FD8567 /* LoginViewController.swift */,
 				BA8BB7C827A5280B0010F05A /* LoginController.swift */,
 				BA8BB7CA27A529D40010F05A /* Login.swift */,
+				C56A494C27AD220A0080CBE2 /* StartViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				44FF470027A5623A0063924D /* RequestNetworking.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
 				BA8BB7CB27A529D40010F05A /* Login.swift in Sources */,
+				C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
 				BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
@@ -903,7 +907,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -935,7 +939,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
