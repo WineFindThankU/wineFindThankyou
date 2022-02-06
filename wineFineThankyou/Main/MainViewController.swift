@@ -38,7 +38,15 @@ class MainViewController: UIViewController {
         self.collectionView.dataSource = self
         
         //MARK: TEST
-        rightBtn.addTarget(self, action: #selector(openStore), for: .touchUpInside)
+        rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
+    }
+    
+    @objc
+    private func openMyPage() {
+        guard let vc = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else { return }
+        
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     @objc

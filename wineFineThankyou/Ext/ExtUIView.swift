@@ -27,7 +27,7 @@ class StoreButtonsView: UIView {
     var right: StoreContent?
 }
 
-func setTopView(_ view: UIView, height: CGFloat) -> TopView {
+func setTopView(_ superView: UIView, height: CGFloat) -> TopView {
     let topView = TopView()
     let titleLabel = UILabel()
     let leftBtn = UIButton()
@@ -38,20 +38,15 @@ func setTopView(_ view: UIView, height: CGFloat) -> TopView {
     leftBtn.translatesAutoresizingMaskIntoConstraints = false
     rightBtn.translatesAutoresizingMaskIntoConstraints = false
     
-    view.addSubview(topView)
+    superView.addSubview(topView)
     topView.addSubview(titleLabel)
     topView.addSubview(leftBtn)
     topView.addSubview(rightBtn)
     
     NSLayoutConstraint.activate([
-        view.topAnchor.constraint(equalTo: view.topAnchor),
-        view.leftAnchor.constraint(equalTo: view.leftAnchor),
-        view.rightAnchor.constraint(equalTo: view.rightAnchor),
-        view.heightAnchor.constraint(equalToConstant: 43),
-        
-        view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topView.topAnchor),
-        view.safeAreaLayoutGuide.leftAnchor.constraint(equalTo: topView.leftAnchor),
-        view.safeAreaLayoutGuide.rightAnchor.constraint(equalTo: topView.rightAnchor),
+        superView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: topView.topAnchor),
+        superView.safeAreaLayoutGuide.leftAnchor.constraint(equalTo: topView.leftAnchor),
+        superView.safeAreaLayoutGuide.rightAnchor.constraint(equalTo: topView.rightAnchor),
         topView.heightAnchor.constraint(equalToConstant: 44),
         
         titleLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
@@ -62,7 +57,7 @@ func setTopView(_ view: UIView, height: CGFloat) -> TopView {
         leftBtn.widthAnchor.constraint(equalToConstant: 24),
         leftBtn.heightAnchor.constraint(equalToConstant: 24),
         
-        rightBtn.rightAnchor.constraint(equalTo: topView.rightAnchor, constant: 18),
+        rightBtn.rightAnchor.constraint(equalTo: topView.rightAnchor, constant: -18),
         rightBtn.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
         rightBtn.widthAnchor.constraint(equalToConstant: 24),
         rightBtn.heightAnchor.constraint(equalToConstant: 24)
@@ -182,5 +177,13 @@ extension CALayer {
             border.backgroundColor = color.cgColor;
             self.addSublayer(border)
         }
+    }
+}
+
+extension UITextField {
+    func addLeftPadding() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
     }
 }
