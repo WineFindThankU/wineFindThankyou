@@ -184,6 +184,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4401478427B2A1F400C8E85A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				44442489279D373C00903DC7 /* Main */,
+				BA77CFDE279EF7EF00832389 /* Store */,
+				BAB4079427A7B1F200B6E352 /* MyPage */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		441951A7279B024900D0D381 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,16 +254,14 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
+				4401478427B2A1F400C8E85A /* Presentation */,
+				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				44FF470427A5713A0063924D /* Views */,
 				44FF470127A563230063924D /* Model */,
 				44FF46FE27A5620B0063924D /* Network */,
 				44FF46FA27A55C470063924D /* Application */,
 				441951A7279B024900D0D381 /* Models */,
-				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				BA8BB7C127A4E2550010F05A /* Launch */,
-				44442489279D373C00903DC7 /* Main */,
-				BA77CFDE279EF7EF00832389 /* Store */,
-				BAB4079427A7B1F200B6E352 /* MyPage */,
 				BA77CFE3279EF91A00832389 /* Ext */,
 				BA8BB7BD27A45CDC0010F05A /* DataModel.swift */,
 				44FF1CCC278471A900FD8567 /* Info.plist */,
