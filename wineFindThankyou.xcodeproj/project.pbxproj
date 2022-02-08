@@ -11,7 +11,6 @@
 		44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44234AF52796878C00848E44 /* MainQAViewController.swift */; };
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
 		44442491279D4C9000903DC7 /* FinalQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44442490279D4C9000903DC7 /* FinalQAViewController.swift */; };
-		4466D256279D6F7400F8A535 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */; };
 		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
 		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
 		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
@@ -86,7 +85,6 @@
 		44234AF52796878C00848E44 /* MainQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQAViewController.swift; sourceTree = "<group>"; };
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		44442490279D4C9000903DC7 /* FinalQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalQAViewController.swift; sourceTree = "<group>"; };
-		4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +185,9 @@
 		4401478427B2A1F400C8E85A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				44AE4C5C2795AEEA00923F24 /* Question */,
+				44FF1CF027869ED000FD8567 /* Login */,
+				44FF46FB27A55F1A0063924D /* Search */,
 				44442489279D373C00903DC7 /* Main */,
 				BA77CFDE279EF7EF00832389 /* Store */,
 				BAB4079427A7B1F200B6E352 /* MyPage */,
@@ -207,9 +208,7 @@
 			children = (
 				BAB4078E27A60D9000B6E352 /* Cell */,
 				BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */,
-				44FF1CF027869ED000FD8567 /* Login */,
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
-				44FF46FB27A55F1A0063924D /* Search */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -290,7 +289,6 @@
 		44FF1CF027869ED000FD8567 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				44AE4C5C2795AEEA00923F24 /* Question */,
 				44FF1CEE27869EA700FD8567 /* LoginViewController.swift */,
 				BA8BB7C827A5280B0010F05A /* LoginController.swift */,
 				BA8BB7CA27A529D40010F05A /* Login.swift */,
@@ -413,7 +411,6 @@
 		BAB4078E27A60D9000B6E352 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4466D255279D6F7400F8A535 /* MainCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -747,7 +744,6 @@
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
 				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,
-				4466D256279D6F7400F8A535 /* MainCollectionViewCell.swift in Sources */,
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
 				BA1E472927AFEC20005C3319 /* SettingCell.swift in Sources */,

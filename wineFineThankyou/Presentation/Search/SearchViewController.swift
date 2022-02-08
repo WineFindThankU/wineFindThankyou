@@ -20,56 +20,60 @@ class SearchViewController: UIViewController {
             "행정동",
             "법정동",
             "이매동"
-        ]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
     }
     
     @IBAction func onClickDismiss(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
+ 
+  
+    
+
     
     private func setupView() {
-           view.backgroundColor = .white
-           setupCollectionView()
+        view.backgroundColor = .white
+        setupCollectionView()
     }
-       
+    
     private func setupCollectionView() {
-            let flowLayout = UICollectionViewFlowLayout()
-            flowLayout.minimumLineSpacing = .zero
-            flowLayout.minimumInteritemSpacing = 16
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.sectionInset = .init(top: 5, left: 16, bottom: 5, right: 16)
-            
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = .zero
+        flowLayout.minimumInteritemSpacing = 12
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 12)
+        
         searchCollectionView.setCollectionViewLayout(flowLayout, animated: false)
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self
         searchCollectionView.backgroundColor = .white
         searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
-        }
-    
+    }
     
 }
 
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return items.count
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as! SearchCollectionViewCell
-            cell.configure(name: items[indexPath.item])
-            return cell
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return SearchCollectionViewCell.fittingSize(availableHeight: 45, name: items[indexPath.item])
-        }
+        return items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as! SearchCollectionViewCell
+        cell.configure(name: items[indexPath.item])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return SearchCollectionViewCell.fittingSize(availableHeight: 32, name: items[indexPath.item])
+    }
+    
 }
-
 
 final class SearchCollectionViewCell: UICollectionViewCell {
     
@@ -82,6 +86,7 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     private let titleLabel: UILabel = UILabel()
+    private var titleImage: UIImage = UIImage()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -95,17 +100,24 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        //layer.cornerRadius = 20
         layer.cornerRadius = frame.height / 2
+        
+        layer.borderWidth = 0.8
+        layer.borderColor = UIColor.lightGray.cgColor
     }
     
     private func setupView() {
-        backgroundColor = .black
+        backgroundColor = .white
         titleLabel.textAlignment = .center
         titleLabel.textColor = .black
-        
+        titleLabel.font = titleLabel.font.withSize(15)
+       
         contentView.addSubview(titleLabel)
+
         titleLabel.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(15)
+        //    make.edges.equalToSuperview().inset(2)
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
     }
     

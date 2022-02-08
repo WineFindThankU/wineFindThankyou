@@ -20,10 +20,6 @@ class MainViewController: UIViewController {
             "창고형매장",
             "백화점"
     ]
-    
-   
-    var arrCategoryImage: [String] = ["Tag","Tag","Tag","Tag","Tag","Tag","Tag","Tag"]
-  //  @IBOutlet weak var mapView: NMFMapView!
    
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
@@ -57,17 +53,10 @@ class MainViewController: UIViewController {
         }
         
         func showStoreInfoSummary() {
-            
-//             let bundle = Bundle(for: CustomView.self)
-//                 bundle.loadNibNamed("CustomView", owner: self, options: nil)
-//                 addSubview(customView)
-//                 customView.frame = self.bounds
-//             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-//
              guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
              
              vc.modalPresentationStyle = .overFullScreen
-            DispatchQueue.main.async { [weak self] in
+             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
         }
@@ -102,8 +91,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
-        cell.imageCell.image = UIImage(named: arrCategoryImage[indexPath.row]) ?? UIImage()
-        cell.labelCell.text = arrCategoryName[indexPath.row]
+        cell.configure(name: arrCategoryName[indexPath.item])
         return cell
     }
     
@@ -119,4 +107,57 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4.0
     }
+}
+
+
+
+final class MainCollectionViewCell: UICollectionViewCell {
+    
+    static func fittingSize(availableHeight: CGFloat, name: String?) -> CGSize {
+        let cell = MainCollectionViewCell()
+        cell.configure(name: name)
+        
+        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: availableHeight)
+        return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .required)
+    }
+    
+    private let titleLabel: UILabel = UILabel()
+    private var titleImage: UIImage = UIImage()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //layer.cornerRadius = 20
+        layer.cornerRadius = frame.height / 2
+        
+        layer.borderWidth = 0.8
+        layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    private func setupView() {
+        backgroundColor = .white
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .black
+        titleLabel.font = titleLabel.font.withSize(15)
+       
+        contentView.addSubview(titleLabel)
+
+        titleLabel.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+        }
+    }
+    
+    func configure(name: String?) {
+        titleLabel.text = name
+    }
+    
 }

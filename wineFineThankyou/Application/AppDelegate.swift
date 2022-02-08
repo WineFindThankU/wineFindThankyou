@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import KakaoSDKCommon
+// import KakaoSDKCommon
 import GoogleSignIn
 import NaverThirdPartyLogin
 
@@ -17,13 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public static var user: GIDGoogleUser!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
-        // Kakao
-        KakaoSDK.initSDK(appKey: "612ec0765f0106cc23de9b487a836fec")
+        // MARK: Kakao 로그인
+        // KakaoSDK.initSDK(appKey: "612ec0765f0106cc23de9b487a836fec")
         
         
-        // Google
-        //FirebaseApp.configure()
+        // MARK: Google 로그인
+        // FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = "824951586402-6sessam73hmlrg01dpggfotfjkot26kv.apps.googleusercontent.com"
+        
+        // MARK: Naver 로그인
         setLogin2Naver()
         
         return true

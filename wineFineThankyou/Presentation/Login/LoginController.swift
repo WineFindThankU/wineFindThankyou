@@ -8,8 +8,8 @@
 import Foundation
 import Alamofire
 import NaverThirdPartyLogin
-import KakaoSDKAuth
-import KakaoSDKUser
+// import KakaoSDKAuth
+// import KakaoSDKUser
 import GoogleSignIn
 import AuthenticationServices
 
@@ -46,29 +46,29 @@ class LoginController: NSObject {
     }
     
     internal func loginByKakao() {
-        //MARK: 수진. 아래 조건문 always false.
-        // 항상 카카오앱을 열지 않고 웹을 이용합니다.
-        guard UserApi.isKakaoTalkLoginAvailable() else {
-            UserApi.shared.loginWithKakaoAccount {
-                self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
-            }
-            return
-        }
-        
-        UserApi.shared.loginWithKakaoTalk {
-            self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
-        }
-    }
-    
-    private func logInKakao(token: OAuthToken?, error: Error?) -> AfterLogin {
-        if let error = error {
-            print(error)
-            return .fail
-        }
-        
-        _ = token
-        _ = token?.accessToken
-        return .success
+//        //MARK: 수진. 아래 조건문 always false.
+//        // 항상 카카오앱을 열지 않고 웹을 이용합니다.
+//        guard UserApi.isKakaoTalkLoginAvailable() else {
+//            UserApi.shared.loginWithKakaoAccount {
+//                self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
+//            }
+//            return
+//        }
+//        
+//        UserApi.shared.loginWithKakaoTalk {
+//            self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
+//        }
+//    }
+//    
+//    private func logInKakao(token: OAuthToken?, error: Error?) -> AfterLogin {
+//        if let error = error {
+//            print(error)
+//            return .fail
+//        }
+//        
+//        _ = token
+//        _ = token?.accessToken
+//        return .success
     }
     
     internal func loginByGoogle() {
