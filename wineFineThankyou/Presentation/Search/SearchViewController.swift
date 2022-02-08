@@ -14,6 +14,10 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchCollectionView: UICollectionView!
     
+    @IBOutlet weak var emptySearchHistory: UIView!
+    
+    @IBOutlet weak var viewLine: UIView!
+    
     // 일단 하드코딩 (API 안됨ㅠ)
     private let items: [String] = [
             "서현동",
@@ -30,13 +34,12 @@ class SearchViewController: UIViewController {
     @IBAction func onClickDismiss(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
- 
-  
-    
 
     
     private func setupView() {
         view.backgroundColor = .white
+        viewLine.backgroundColor = UIColor(red: 245.0, green: 245.0, blue: 245.0, alpha: 1.0)
+        emptySearchHistory.isHidden = false
         setupCollectionView()
     }
     
@@ -45,8 +48,7 @@ class SearchViewController: UIViewController {
         flowLayout.minimumLineSpacing = .zero
         flowLayout.minimumInteritemSpacing = 12
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 12)
-        
+       // flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 12)
         searchCollectionView.setCollectionViewLayout(flowLayout, animated: false)
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self
@@ -100,9 +102,7 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //layer.cornerRadius = 20
         layer.cornerRadius = frame.height / 2
-        
         layer.borderWidth = 0.8
         layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -114,10 +114,8 @@ final class SearchCollectionViewCell: UICollectionViewCell {
         titleLabel.font = titleLabel.font.withSize(15)
        
         contentView.addSubview(titleLabel)
-
         titleLabel.snp.makeConstraints { (make) in
-        //    make.edges.equalToSuperview().inset(2)
-            make.edges.equalTo(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+            make.edges.equalTo(UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
         }
     }
     

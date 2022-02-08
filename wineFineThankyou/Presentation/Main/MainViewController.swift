@@ -25,14 +25,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
-    
     @IBOutlet weak var searchButtonOutlet: UIButton!
     var wineStoreInfo: WineStoreInfo?
+    
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
         //MARK: TEST
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
     }
@@ -76,8 +75,8 @@ class MainViewController: UIViewController {
     @IBAction func onClickSearchBar(_ sender: UIButton) {
         print(sender)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: false, completion: nil)
+         vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
 }
 
@@ -95,7 +94,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    // CollectionView Cell의 Size
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width: CGFloat = collectionView.frame.width / 3 - 1.0
@@ -103,10 +102,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: width, height: width)
     }
     
-    // CollectionView Cell의 옆 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4.0
     }
+
 }
 
 
@@ -136,9 +135,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //layer.cornerRadius = 20
         layer.cornerRadius = frame.height / 2
-        
         layer.borderWidth = 0.8
         layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -146,15 +143,47 @@ final class MainCollectionViewCell: UICollectionViewCell {
     private func setupView() {
         backgroundColor = .white
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .black
         titleLabel.font = titleLabel.font.withSize(15)
-       
         contentView.addSubview(titleLabel)
-
         titleLabel.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+            make.edges.equalTo(UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
+        }
+        
+        if titleLabel.text == "전체" {
+            titleLabel.textColor = .black
+        } else if titleLabel.text == "개인샵" {
+            titleLabel.textColor = UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+        } else if titleLabel.text == "체인샵" {
+            titleLabel.textColor = UIColor(red: 253.0, green: 139.0, blue: 188.0, alpha: 1.0)
+        } else if titleLabel.text == "편의점" {
+            titleLabel.textColor = UIColor(red: 246.0, green: 195.0, blue: 49.0, alpha: 1.0)
+        } else if titleLabel.text == "대형마트" {
+            titleLabel.textColor = UIColor(red: 252.0, green: 145.0, blue: 51.0, alpha: 1.0)
+        } else if titleLabel.text == "창고형 매장" {
+            titleLabel.textColor = UIColor(red: 242.0, green: 44.0, blue: 62.0, alpha: 1.0)
+        } else if titleLabel.text == "백화점" {
+            titleLabel.textColor = UIColor(red: 61.0, green: 183.0, blue: 229.0, alpha: 1.0)
         }
     }
+    
+    override var isSelected: Bool {
+            didSet{
+                if isSelected {
+                    titleLabel.textColor = .white
+                    
+                    if titleLabel.text == "전체" {
+                        titleLabel.backgroundColor = .black
+                    } else if titleLabel.text == "개인샵" {
+                        titleLabel.backgroundColor = UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+                    }
+                    
+                }
+                else {
+                    titleLabel.backgroundColor = .clear
+                }
+            }
+        }
+    
     
     func configure(name: String?) {
         titleLabel.text = name

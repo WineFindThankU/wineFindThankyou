@@ -26,7 +26,7 @@ class LaunchViewController: UIViewController{
     }
     
     private func goToMain()  {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StartViewController") as? StartViewController
         else { return }
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
@@ -35,7 +35,9 @@ class LaunchViewController: UIViewController{
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "인터넷 연결 오류", message: "유저 데이터를 받아오는데, 실패하였습니다.\n인터넷 연결을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "인터넷 연결 오류",
+                                      message: "유저 데이터를 받아오는데, 실패하였습니다.\n인터넷 연결을 확인하고 다시 시도해주세요.",
+                                      preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .cancel){ _ in
             alert.dismiss(animated: true) {
                 self.loadUserDataFromServer { isSuccess in
@@ -71,7 +73,7 @@ class LaunchViewController: UIViewController{
     }
     
     private func loadUserDataFromServer(downDone: ((Bool) -> Void)?) {
-        //MARK: 서버로부터 유저 데이터 받아오는 곳.
+        // MARK: 서버로부터 유저 데이터 받아오는 곳.
         downDone?(true)
     }
     
