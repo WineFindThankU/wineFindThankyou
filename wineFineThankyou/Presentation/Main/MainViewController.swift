@@ -149,6 +149,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
             make.edges.equalTo(UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
         }
         
+        // MARK: 이부분... 더 효율적으로 짜겠습니다.
         if titleLabel.text == "전체" {
             titleLabel.textColor = .black
         } else if titleLabel.text == "개인샵" {
@@ -166,6 +167,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: 이부분... 더 효율적으로 짜겠습니다.
     override var isSelected: Bool {
             didSet{
                 if isSelected {

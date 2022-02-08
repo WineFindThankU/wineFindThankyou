@@ -38,7 +38,7 @@ class SearchViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        viewLine.backgroundColor = UIColor(red: 245.0, green: 245.0, blue: 245.0, alpha: 1.0)
+        //viewLine.backgroundColor = UIColor(red: 245.0, green: 245.0, blue: 245.0, alpha: 1.0)
         emptySearchHistory.isHidden = false
         setupCollectionView()
     }

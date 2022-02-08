@@ -11,7 +11,7 @@ class LaunchViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         initConfigure()
-        
+        goToMain()
         /*
          animateAndGoTo { [weak self] isLogIn in
          guard isLogIn else { self?.goToQuestionVC(); return }

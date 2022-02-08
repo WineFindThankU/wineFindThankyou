@@ -42,6 +42,7 @@ enum AfterLogin {
         case .fail:
             return "인증 문제로 로그인 할 수 없습니다. 개발자에게 화를 내주세요."
         case .cannotAccess:
+            let alert = AlertViewController()
             return "애들은 가라, 애들은 가.🤬"
         }
     }
