@@ -57,6 +57,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire
   - Alamofire (~> 5.1)
   - FirebaseAuth
   - GoogleSignIn (~> 5.0)
@@ -99,6 +100,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: aaab75b1b681e85cd7042e8cdd553fdf95c8e480
+PODFILE CHECKSUM: 653ced13a215fcca88bdbc2bd7b6801dc6c43ae9
 
 COCOAPODS: 1.11.2
