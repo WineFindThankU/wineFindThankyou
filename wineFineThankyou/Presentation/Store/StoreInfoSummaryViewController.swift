@@ -207,6 +207,9 @@ extension StoreInfoSummaryViewController: CapturedImageProtocol{
         guard let uiImage = uiImage else {
             return
         }
+        WineLabelReader.doStartToOCR(uiImage) {
+            print($0)
+        }
         //uiimage넘겨서 텍스트 읽어야 함.
     }
 }

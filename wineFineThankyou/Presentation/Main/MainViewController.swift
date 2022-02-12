@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         //MARK: TEST
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
         //TEST
-        //makeTestButtonCode()
+        makeTestButtonCode()
     }
     
     @objc

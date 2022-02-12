@@ -7,7 +7,6 @@ target 'wineFindThankyou' do
 
 
   # Pods for wineFindThankyou
-  pod 'Alamofire'
   pod 'FirebaseAuth'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.1'
@@ -17,6 +16,8 @@ target 'wineFindThankyou' do
  #pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
   pod 'GoogleSignIn', '~>5.0'  # 구글 로그인
   pod 'naveridlogin-sdk-ios' #naver login
+  pod 'GoogleMLKit/TextRecognitionKorean'
+
   target 'wineFindThankyouTests' do
     inherit! :search_paths
     # Pods for testing
