@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Store Info View Controller-->
+        <scene sceneID="t9X-9e-Ffo">
+            <objects>
+                <viewController storyboardIdentifier="StoreInfoViewController" id="zxt-UW-3Ou" customClass="StoreInfoViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mJz-vt-0ro">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9e7-IH-Y01"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOm-Tr-iH2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7996" y="15"/>
+        </scene>
+        <!--Camera Capture View Controller-->
+        <scene sceneID="T4I-07-EWM">
+            <objects>
+                <viewController storyboardIdentifier="CameraCaptureViewController" id="Hwd-er-xwO" customClass="CameraCaptureViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fsH-eN-N2S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aF3-Ve-OAC">
+                                <rect key="frame" x="8" y="52" width="398" height="802"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xHl-Wr-PAi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aF3-Ve-OAC" firstAttribute="leading" secondItem="xHl-Wr-PAi" secondAttribute="leading" constant="8" id="AsV-5b-NfJ"/>
+                            <constraint firstItem="xHl-Wr-PAi" firstAttribute="bottom" secondItem="aF3-Ve-OAC" secondAttribute="bottom" constant="8" id="Igy-Xw-pbd"/>
+                            <constraint firstItem="aF3-Ve-OAC" firstAttribute="top" secondItem="xHl-Wr-PAi" secondAttribute="top" constant="8" id="TVf-IK-9La"/>
+                            <constraint firstItem="xHl-Wr-PAi" firstAttribute="trailing" secondItem="aF3-Ve-OAC" secondAttribute="trailing" constant="8" id="rRC-0h-R2Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="aF3-Ve-OAC" id="gb5-jZ-2JB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jjz-nZ-bAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7966.666666666667" y="692.41071428571422"/>
+        </scene>
+        <!--Store Wines View Controller-->
+        <scene sceneID="Mw4-D4-xkl">
+            <objects>
+                <viewController storyboardIdentifier="StoreWinesViewController" id="kTa-O6-Mj5" customClass="StoreWinesViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uXJ-ie-gyQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnE-7c-eVc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="9sb-BP-OLR"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="aEN-be-k1Q"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9ew-aX-tUh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="PnE-7c-eVc" id="Z7I-NB-Ib9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ojb-5K-827" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8926.0869565217399" y="6.6964285714285712"/>
+        </scene>
+        <!--Store Info Summary View Controller-->
+        <scene sceneID="TVn-uo-wz1">
+            <objects>
+                <viewController storyboardIdentifier="StoreInfoSummaryViewController" id="ThI-R6-Jr4" customClass="StoreInfoSummaryViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hXy-go-HaY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1o7-5g-Fzj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIb-7q-FCh">
+                                <rect key="frame" x="0.0" y="400" width="414" height="496"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAh-CM-ocu">
+                                        <rect key="frame" x="0.0" y="17" width="414" height="41"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="iwh-pd-bM4"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-sc-LXc">
+                                        <rect key="frame" x="0.0" y="58" width="414" height="58"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="R9R-uZ-htb"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jw7-BW-Z3A">
+                                        <rect key="frame" x="0.0" y="116" width="414" height="380"/>
+                                        <subviews>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wineEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="uAb-vA-Irx">
+                                                <rect key="frame" x="112" y="247" width="240" height="113"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="113" id="ZDN-g2-Tp2"/>
+                                                </constraints>
+                                            </imageView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OVn-6c-sbG">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g76-Mn-Vv2">
+                                                    <size key="itemSize" width="105" height="129"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WHF-hd-J3o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="129"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Cz1-zm-OIM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="105" height="129"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </collectionViewCellContentView>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="uAb-vA-Irx" secondAttribute="bottom" constant="20" id="0oP-Xr-1bk"/>
+                                            <constraint firstItem="uAb-vA-Irx" firstAttribute="leading" secondItem="Jw7-BW-Z3A" secondAttribute="leading" constant="112" id="3Z7-nj-w0Z"/>
+                                            <constraint firstItem="OVn-6c-sbG" firstAttribute="leading" secondItem="Jw7-BW-Z3A" secondAttribute="leading" id="EcG-Jj-7le"/>
+                                            <constraint firstItem="OVn-6c-sbG" firstAttribute="top" secondItem="Jw7-BW-Z3A" secondAttribute="top" id="am2-vM-Zlq"/>
+                                            <constraint firstAttribute="bottom" secondItem="OVn-6c-sbG" secondAttribute="bottom" id="y1p-BN-w7I"/>
+                                            <constraint firstAttribute="trailing" secondItem="OVn-6c-sbG" secondAttribute="trailing" id="yLg-rT-zhw"/>
+                                            <constraint firstAttribute="trailing" secondItem="uAb-vA-Irx" secondAttribute="trailing" constant="62" id="z6H-MF-DWj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Jw7-BW-Z3A" secondAttribute="bottom" id="0zA-5s-DLo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jw7-BW-Z3A" secondAttribute="trailing" id="Fot-jv-lWJ"/>
+                                    <constraint firstItem="HAh-CM-ocu" firstAttribute="leading" secondItem="WIb-7q-FCh" secondAttribute="leading" id="IjT-dm-NH0"/>
+                                    <constraint firstItem="HAh-CM-ocu" firstAttribute="top" secondItem="WIb-7q-FCh" secondAttribute="top" constant="17" id="U3w-Fo-Ibb"/>
+                                    <constraint firstItem="Jw7-BW-Z3A" firstAttribute="top" secondItem="gc9-sc-LXc" secondAttribute="bottom" id="eyS-Bi-aOV"/>
+                                    <constraint firstAttribute="trailing" secondItem="HAh-CM-ocu" secondAttribute="trailing" id="f2i-Ho-c9e"/>
+                                    <constraint firstItem="gc9-sc-LXc" firstAttribute="top" secondItem="HAh-CM-ocu" secondAttribute="bottom" id="o1T-pA-OL6"/>
+                                    <constraint firstItem="gc9-sc-LXc" firstAttribute="leading" secondItem="WIb-7q-FCh" secondAttribute="leading" id="x2R-MW-GKH"/>
+                                    <constraint firstItem="Jw7-BW-Z3A" firstAttribute="leading" secondItem="WIb-7q-FCh" secondAttribute="leading" id="yx6-xL-9iS"/>
+                                    <constraint firstAttribute="trailing" secondItem="gc9-sc-LXc" secondAttribute="trailing" id="zs0-Tg-wtJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="o7C-VP-1Wv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="o7C-VP-1Wv" firstAttribute="trailing" secondItem="WIb-7q-FCh" secondAttribute="trailing" id="B2R-wy-t5r"/>
+                            <constraint firstItem="1o7-5g-Fzj" firstAttribute="top" secondItem="hXy-go-HaY" secondAttribute="top" id="KBD-7u-4UA"/>
+                            <constraint firstItem="1o7-5g-Fzj" firstAttribute="trailing" secondItem="o7C-VP-1Wv" secondAttribute="trailing" id="d3r-RB-xM3"/>
+                            <constraint firstItem="1o7-5g-Fzj" firstAttribute="leading" secondItem="o7C-VP-1Wv" secondAttribute="leading" id="lWe-P5-58m"/>
+                            <constraint firstItem="WIb-7q-FCh" firstAttribute="leading" secondItem="o7C-VP-1Wv" secondAttribute="leading" id="mN2-oq-C2m"/>
+                            <constraint firstAttribute="bottom" secondItem="WIb-7q-FCh" secondAttribute="bottom" id="oQW-Mz-CHd"/>
+                            <constraint firstItem="WIb-7q-FCh" firstAttribute="top" secondItem="hXy-go-HaY" secondAttribute="top" constant="400" id="z24-5u-ao5"/>
+                            <constraint firstAttribute="bottom" secondItem="1o7-5g-Fzj" secondAttribute="bottom" id="zZG-Ww-RBX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="1o7-5g-Fzj" id="jbd-VF-I8G"/>
+                        <outlet property="contentsButtonView" destination="gc9-sc-LXc" id="Lyr-nT-MOU"/>
+                        <outlet property="contentsTopView" destination="HAh-CM-ocu" id="xcg-O8-50m"/>
+                        <outlet property="contentsView" destination="WIb-7q-FCh" id="akU-cQ-iHd"/>
+                        <outlet property="emptyView" destination="uAb-vA-Irx" id="fAR-Tu-0EM"/>
+                        <outlet property="viewTopAnchor" destination="z24-5u-ao5" id="fog-Uy-4fL"/>
+                        <outlet property="winesCollectionView" destination="OVn-6c-sbG" id="OEw-sg-RG9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kub-If-7ga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7144.9275362318849" y="10.714285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="wineEmpty" width="205" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

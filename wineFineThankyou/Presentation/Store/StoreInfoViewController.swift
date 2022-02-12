@@ -45,7 +45,7 @@ class StoreInfoViewController: UIViewController, SelectedWineCellProtocol {
     }
     
     func selectedCell(_ row: Int) {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
+        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
              return
         }
         vc.crntIndex = row

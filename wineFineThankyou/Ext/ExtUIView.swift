@@ -18,7 +18,6 @@ struct StoreContent {
     let img = UIImageView()
     let label = UILabel()
     let btn = UIButton()
-    var btnAction : (() -> Void)?
 }
 
 class StoreButtonsView: UIView {

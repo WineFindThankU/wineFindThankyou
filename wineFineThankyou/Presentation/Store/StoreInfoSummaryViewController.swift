@@ -50,16 +50,10 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     private func configure() {
         setTopView()
         storeButtonsView = setStoreButtonView(superView: contentsButtonView, contentsTopView)
-        storeButtonsView?.left?.btnAction = {
-            //즐겨찾기 추가 기능
-        }
-        storeButtonsView?.middle?.btnAction = {
-            //길찾기 버튼
-        }
-        storeButtonsView?.right?.btnAction = {
-            //사진찍기 버튼
-        }
-        
+        storeButtonsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
+        storeButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
+        storeButtonsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
+            
         winesCollectionView.delegate = self
         winesCollectionView.dataSource = self
         winesCollectionView.register(UINib(nibName: "WineInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WineInfoCollectionViewCell")
@@ -116,12 +110,32 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
         imageView.image = UIImage(named: "rightArrow")
         rightButton.addTarget(self, action: #selector(goToStore), for: .touchUpInside)
     }
+}
+
+//objc button Action
+extension StoreInfoSummaryViewController {
+    @objc
+    func addFavorites() {
+        
+    }
     
+    @objc
+    func findRoad() {
+        
+    }
+    
+    @objc
+    func takePicture() {
+        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "CameraCaptureViewController") as? CameraCaptureViewController else { return }
+        
+        self.present(vc, animated: true, completion: {
+            vc.delegate = self
+        })
+    }
     
     @objc
     private func goToStore() {
-        print("gotoStore")
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoViewController") as? StoreInfoViewController else { return }
+        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoViewController") as? StoreInfoViewController else { return }
         vc.wineStoreInfo = wineStoreInfo
         
         self.present(vc, animated: true, completion: {
@@ -153,8 +167,7 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("munyong > selected")
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
+        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
              return
         }
         vc.crntIndex = indexPath.row
@@ -186,5 +199,14 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
             }
             return attributes
         }
+    }
+}
+
+extension StoreInfoSummaryViewController: CapturedImageProtocol{
+    func captured(_ uiImage: UIImage?) {
+        guard let uiImage = uiImage else {
+            return
+        }
+        //uiimage넘겨서 텍스트 읽어야 함.
     }
 }

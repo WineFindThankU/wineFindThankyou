@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
         self.collectionView.dataSource = self
         //MARK: TEST
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
+        //TEST
+        //makeTestButtonCode()
     }
     
     @objc
@@ -44,6 +46,24 @@ class MainViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
+    
+    private func makeTestButtonCode() {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        self.mapView.addSubview(button)
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: self.mapView.topAnchor, constant: 200),
+            button.rightAnchor.constraint(equalTo: self.mapView.rightAnchor, constant: -20),
+            button.widthAnchor.constraint(equalToConstant: 75),
+            button.heightAnchor.constraint(equalToConstant: 40),
+        ])
+        button.setTitle("TEST", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .purple
+        button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(openStore), for: .touchDown)
+    }
+    
     @objc
     private func openStore() {
         loadStoreInfoFromServer {
@@ -52,7 +72,7 @@ class MainViewController: UIViewController {
         }
         
         func showStoreInfoSummary() {
-             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
+             guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
              
              vc.modalPresentationStyle = .overFullScreen
              DispatchQueue.main.async { [weak self] in
