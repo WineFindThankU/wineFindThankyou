@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-class RequestNetworking {
-    
-    
-    func getShopsList() {
-            let url = "http://125.6.36.157:3001/v1/shops"
+final class RequestNetworking {
+
+    // MARK: 로그인 체크 API
+    func getLoginCheckAPI() {
+            let url = "http://125.6.36.157:3001/auth/sign"
             AF.request(url,
                        method: .get,
                        parameters: nil,
@@ -20,9 +20,36 @@ class RequestNetworking {
                        headers: ["Content-Type":"application/json", "Accept":"application/json"])
                 .validate(statusCode: 200..<300)
                 .responseJSON { (json) in
-                    //여기서 가져온 데이터를 자유롭게 활용하세요.
                     print(json)
             }
         }
-  
+    
+    // MARK: 로그인 API
+    func getLoginCheckAPI() {
+            let url = "http://125.6.36.157:3001/auth/sign"
+            AF.request(url,
+                       method: .get,
+                       parameters: nil,
+                       encoding: URLEncoding.default,
+                       headers: ["Content-Type":"application/json", "Accept":"application/json"])
+                .validate(statusCode: 200..<300)
+                .responseJSON { (json) in
+                    print(json)
+            }
+        }
+    
+    // MARK: 가게목록 API
+    func getLoginCheckAPI() {
+            let url = "http://125.6.36.157:3001/auth/shops"
+            AF.request(url,
+                       method: .get,
+                       parameters: nil,
+                       encoding: URLEncoding.default,
+                       headers: ["Content-Type":"application/json", "Accept":"application/json"])
+                .validate(statusCode: 200..<300)
+                .responseJSON { (json) in
+                    print(json)
+            }
+        }
+    
 }
