@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nnv-bG-R26">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nnv-bG-R26">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -119,7 +119,7 @@
                                         </connections>
                                     </button>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Xd-d4-Joe">
-                                        <rect key="frame" x="130" y="12" width="115.5" height="26"/>
+                                        <rect key="frame" x="110" y="12" width="155.5" height="26"/>
                                         <color key="pageIndicatorTintColor" red="0.87833553549999999" green="0.87848657370000005" blue="0.8783260584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -349,6 +349,94 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9Z-fN-4Qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2263" y="11"/>
+        </scene>
+        <!--Bottom Sheet-->
+        <scene sceneID="1Hg-Jp-kyi">
+            <objects>
+                <viewController storyboardIdentifier="QABottomSheet" id="MYN-7M-xPD" customClass="QABottomSheet" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EuY-Nc-KAH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="519-6Z-4Fg">
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BottomSheet" translatesAutoresizingMaskIntoConstraints="NO" id="XGS-Dq-P1L">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기타" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iU5-8B-pp9">
+                                        <rect key="frame" x="22" y="26" width="29.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6g5-dx-ogN">
+                                        <rect key="frame" x="22" y="49" width="279" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="kMG-Kg-5mD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGF-B1-xfT">
+                                        <rect key="frame" x="16" y="85" width="285" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Qjy-kx-ZjV"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6A-lf-AEg">
+                                        <rect key="frame" x="303" y="48" width="55" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="W5c-7f-txw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="확인" backgroundImage="confirmBtn">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickButton:" destination="MYN-7M-xPD" eventType="touchUpInside" id="dbt-rz-vDk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="XGS-Dq-P1L" firstAttribute="leading" secondItem="519-6Z-4Fg" secondAttribute="leading" id="1uw-an-QcC"/>
+                                    <constraint firstItem="VGF-B1-xfT" firstAttribute="top" secondItem="6g5-dx-ogN" secondAttribute="bottom" id="4LM-rG-aGa"/>
+                                    <constraint firstItem="XGS-Dq-P1L" firstAttribute="top" secondItem="519-6Z-4Fg" secondAttribute="top" id="ABb-e8-gkN"/>
+                                    <constraint firstAttribute="height" constant="100" id="IoM-Dc-JC7"/>
+                                    <constraint firstItem="iU5-8B-pp9" firstAttribute="top" secondItem="519-6Z-4Fg" secondAttribute="top" constant="26" id="SMa-q8-06t"/>
+                                    <constraint firstItem="6g5-dx-ogN" firstAttribute="leading" secondItem="519-6Z-4Fg" secondAttribute="leading" constant="22" id="VbP-5G-0Dc"/>
+                                    <constraint firstItem="6g5-dx-ogN" firstAttribute="top" secondItem="iU5-8B-pp9" secondAttribute="bottom" constant="2" id="X3T-V5-OOm"/>
+                                    <constraint firstAttribute="bottom" secondItem="q6A-lf-AEg" secondAttribute="bottom" constant="16" id="h3b-FS-krM"/>
+                                    <constraint firstItem="iU5-8B-pp9" firstAttribute="leading" secondItem="519-6Z-4Fg" secondAttribute="leading" constant="22" id="juu-Tw-5NX"/>
+                                    <constraint firstItem="VGF-B1-xfT" firstAttribute="leading" secondItem="519-6Z-4Fg" secondAttribute="leading" constant="16" id="lLh-iQ-eT6"/>
+                                    <constraint firstAttribute="trailing" secondItem="VGF-B1-xfT" secondAttribute="trailing" constant="74" id="mWe-zR-KjC"/>
+                                    <constraint firstAttribute="trailing" secondItem="6g5-dx-ogN" secondAttribute="trailing" constant="74" id="nQq-vs-RAE"/>
+                                    <constraint firstAttribute="bottom" secondItem="XGS-Dq-P1L" secondAttribute="bottom" id="ruG-Jj-M6O"/>
+                                    <constraint firstAttribute="trailing" secondItem="XGS-Dq-P1L" secondAttribute="trailing" id="tpL-vI-Vl3"/>
+                                    <constraint firstAttribute="trailing" secondItem="q6A-lf-AEg" secondAttribute="trailing" constant="17" id="wWb-52-Lxn"/>
+                                    <constraint firstItem="q6A-lf-AEg" firstAttribute="leading" secondItem="6g5-dx-ogN" secondAttribute="trailing" constant="2" id="xUH-ig-JK1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7jE-Sl-AKb"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37042094855908525" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7jE-Sl-AKb" firstAttribute="bottom" secondItem="519-6Z-4Fg" secondAttribute="bottom" id="Gq2-bU-BpK"/>
+                            <constraint firstItem="7jE-Sl-AKb" firstAttribute="trailing" secondItem="519-6Z-4Fg" secondAttribute="trailing" id="dcT-d0-nXB"/>
+                            <constraint firstItem="519-6Z-4Fg" firstAttribute="leading" secondItem="7jE-Sl-AKb" secondAttribute="leading" id="tgd-Hv-dvn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="checkButton" destination="q6A-lf-AEg" id="Ijp-2J-Sok"/>
+                        <outlet property="textField" destination="6g5-dx-ogN" id="f0f-0N-6cf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3u-y7-LiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2261.5999999999999" y="706.59670164917543"/>
         </scene>
         <!--SecondQA View Controller-->
         <scene sceneID="nLY-jW-md4">
@@ -1151,6 +1239,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BottomSheet" width="375" height="100"/>
         <image name="Ellipse 1" width="69" height="69"/>
         <image name="EmptySearch" width="34" height="34"/>
         <image name="Group 25" width="216" height="216"/>
@@ -1164,6 +1253,7 @@
         <image name="appleLogin" width="324" height="44"/>
         <image name="arrow-left" width="24" height="24"/>
         <image name="char" width="176" height="216"/>
+        <image name="confirmBtn" width="55" height="36"/>
         <image name="googleLogin" width="324" height="44"/>
         <image name="houseIcon" width="24" height="24"/>
         <image name="kakaoLogin" width="324" height="44"/>

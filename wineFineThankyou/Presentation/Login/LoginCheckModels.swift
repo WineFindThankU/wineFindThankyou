@@ -1,11 +1,10 @@
 //
-//  LoginModel.swift
+//  LoginCheckModels.swift
 //  wineFindThankyou
 //
-//  Created by suding on 2022/02/13.
-//
+//  Created by suding on 2022/02/14.
 
-import Foundation
+import UIKit
 
 enum Login
 {
