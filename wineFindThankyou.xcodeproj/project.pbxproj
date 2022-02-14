@@ -12,6 +12,8 @@
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
 		44442491279D4C9000903DC7 /* FinalQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44442490279D4C9000903DC7 /* FinalQAViewController.swift */; };
 		4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */; };
+		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
+		44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A98627B921F8004C8E6C /* LoginModel.swift */; };
 		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
 		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
 		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
@@ -90,6 +92,8 @@
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		44442490279D4C9000903DC7 /* FinalQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalQAViewController.swift; sourceTree = "<group>"; };
 		4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
+		44A8A98627B921F8004C8E6C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */,
 				44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */,
 				44442490279D4C9000903DC7 /* FinalQAViewController.swift */,
+				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				BA8BB7C827A5280B0010F05A /* LoginController.swift */,
 				BA8BB7CA27A529D40010F05A /* Login.swift */,
 				C56A494C27AD220A0080CBE2 /* StartViewController.swift */,
+				44A8A98627B921F8004C8E6C /* LoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -761,6 +767,8 @@
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
 				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
+				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
+				44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
 				BA1E472927AFEC20005C3319 /* SettingCell.swift in Sources */,
 				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
