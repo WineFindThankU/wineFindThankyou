@@ -8,7 +8,7 @@
 
 |수진 와인|문어 와인|
 |:-:|:-:|
-|<img src="https://avatars.githubusercontent.com/u/77449223?v=4" width=200>|<img src="https://avatars.githubusercontent.com/u/46087477?v=4" width=200>|
+|<img src="" width=200>|<img src="" width=200>|
 |[@sudingcream](https://github.com/sudingcream)|[@gjansdyd](https://github.com/gjansdyd)|
 
 ## Coding Convention
