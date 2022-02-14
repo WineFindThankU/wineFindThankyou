@@ -11,7 +11,7 @@ import Alamofire
 final class RequestNetworking {
 
     // MARK: 로그인 체크 API
-    func getLoginCheckAPI() {
+    func getLoginAPI() {
             let url = "http://125.6.36.157:3001/v1/auth/sign"
             AF.request(url,
                        method: .get,
@@ -39,7 +39,7 @@ final class RequestNetworking {
         }
     
     // MARK: 가게목록 API
-    func getLoginCheckAPI() {
+    func getShopsList() {
             let url = "http://125.6.36.157:3001/v1/auth/shops"
             AF.request(url,
                        method: .get,

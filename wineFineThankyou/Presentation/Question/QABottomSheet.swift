@@ -17,11 +17,6 @@ class QABottomSheet: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-    }
-    
-    private let setUI() {
-        checkButton.isEnabled = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -31,10 +26,10 @@ class QABottomSheet: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let image: UIImage = UIImage(named:"textFieldButton")!
-        
         checkButton.isEnabled = true
-        checkButton.setImage(image, for: UIControlState.normal)
+        checkButton.setImage(image, for: .normal)
     }
+    
     @IBAction func onClickButton(_ sender: Any) {
         self.dismiss(animated: false)
     }

@@ -46,27 +46,31 @@ class LoginController: NSObject {
     }
     
     internal func loginByKakao() {
-         if (AuthApi.isKakaoTalkLoginAvailable()) {
-           AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-               if let error = error {
-                   print(error)
-               }
-               else {
-                   print("Kakao Login success.")
-                   _ = oauthToken
-                  let accessToken = oauthToken?.accessToken
-               }
-           }
-         }
+        guard UserApi.isKakaoTalkLoginAvailable() else {
+                    UserApi.shared.loginWithKakaoAccount {
+                        self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
+                    }
+                    return
+                }
+        
+                UserApi.shared.loginWithKakaoTalk {
+                    self.delegate?.endLogin(self.logInKakao(token: $0, error: $1))
+                }
+            }
+        
+            private func logInKakao(token: OAuthToken?, error: Error?) -> AfterLogin {
+                if let error = error {
+                    print(error)
+                    return .fail
+                }
+        
+                _ = token
+                _ = token?.accessToken
+                return .success
     }
     
     internal func loginByGoogle() {
         //MARK: 수진. 구글오류 아래와 같이 실패합니다. 확인 바랍니다.
-        // Error 403: redirected_client
-        /*
-         This app is not yet configured to make OAuth requests.
-         To do that, set up the app’s OAuth consent screen in the Google Cloud Console https://console.developers.google.com/apis/credentials/consent?project=${your_project_number}
-         */
         GIDSignIn.sharedInstance()?.signIn()
     }
 }
@@ -83,7 +87,6 @@ extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     }
     
     func oauth20ConnectionDidFinishDeleteToken() {
-        // 로그아웃이나 토큰이 삭제되는 경우
         naverConnection?.requestDeleteToken()
     }
     

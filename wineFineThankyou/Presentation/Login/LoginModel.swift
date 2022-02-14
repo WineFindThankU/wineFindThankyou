@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Login
+enum LoginAPI
 {
   // MARK: Use cases
   
