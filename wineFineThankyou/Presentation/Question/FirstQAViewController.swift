@@ -39,7 +39,7 @@ class FirstQAViewController: QAViewController {
         delegate?.renewButtons(sender, btns: buttons)
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QABottomSheet") as? QABottomSheet else { return }
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: false, completion: nil)
     }
     
     

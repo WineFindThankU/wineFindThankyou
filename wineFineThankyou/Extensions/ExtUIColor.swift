@@ -14,6 +14,7 @@ enum Theme {
     case black
     case blacktext
     case white
+
     var color: UIColor {
         switch self {
         case .gray:
@@ -30,7 +31,7 @@ enum Theme {
     }
 }
 
-//For Using RGB hexa value
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
         self.init(
@@ -53,4 +54,34 @@ extension UIColor {
     func getLineColor() -> UIColor {
         return UIColor(rgb: 0xEEEEEE)
     }
+}
+
+
+extension UIColor {
+ 
+    
+    @nonobjc class var personalShop: UIColor {
+        return UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var chainShop: UIColor {
+        return UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var convinStore: UIColor {
+        return UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var bigMart: UIColor {
+        return UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var boxMarket: UIColor {
+        return UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var departStore: UIColor {
+        return UIColor(red: 123.0, green: 103.0, blue: 251.0, alpha: 1.0)
+    }
+    
 }

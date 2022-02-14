@@ -26,16 +26,20 @@ class MainQAViewController: UIViewController {
             return
         }
     }
-    
+   
     @IBAction func onClickback(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
     @IBAction func onClickNext(_ sender: UIButton) {
         //MARK: 문용 For Test
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        if currentPage == 2 {
+            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        } else {
+        //...
+        }
     }
     
     @IBAction func pageChanged(_ sender: Any) {

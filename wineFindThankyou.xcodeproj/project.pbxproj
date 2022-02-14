@@ -274,7 +274,7 @@
 				44FF46FA27A55C470063924D /* Application */,
 				441951A7279B024900D0D381 /* Models */,
 				BA8BB7C127A4E2550010F05A /* Launch */,
-				BA77CFE3279EF91A00832389 /* Ext */,
+				BA77CFE3279EF91A00832389 /* Extensions */,
 				BA8BB7BD27A45CDC0010F05A /* DataModel.swift */,
 				44FF1CCC278471A900FD8567 /* Info.plist */,
 				44FF1CF52786A6D300FD8567 /* etc */,
@@ -393,7 +393,7 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
-		BA77CFE3279EF91A00832389 /* Ext */ = {
+		BA77CFE3279EF91A00832389 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				BA77CFE4279EF94A00832389 /* ExtUIView.swift */,
@@ -402,7 +402,7 @@
 				BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */,
 				BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */,
 			);
-			path = Ext;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BA8BB7B627A43BA20010F05A /* Cell */ = {
