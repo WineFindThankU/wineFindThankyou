@@ -10,6 +10,12 @@ import Alamofire
 
 final class RequestNetworking {
 
+    /*
+     
+     미 완 성 
+     
+     */
+    
     // MARK: 로그인 체크 API
     func getLoginAPI() {
             let url = "http://125.6.36.157:3001/v1/auth/sign"

@@ -400,7 +400,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="XGS-Dq-P1L" firstAttribute="leading" secondItem="519-6Z-4Fg" secondAttribute="leading" id="1uw-an-QcC"/>
                                     <constraint firstItem="VGF-B1-xfT" firstAttribute="top" secondItem="6g5-dx-ogN" secondAttribute="bottom" id="4LM-rG-aGa"/>
@@ -422,9 +421,9 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7jE-Sl-AKb"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.37042094855908525" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12174250116411424" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7jE-Sl-AKb" firstAttribute="bottom" secondItem="519-6Z-4Fg" secondAttribute="bottom" id="Gq2-bU-BpK"/>
+                            <constraint firstItem="7jE-Sl-AKb" firstAttribute="bottom" secondItem="519-6Z-4Fg" secondAttribute="bottom" id="Ky4-8O-bnB"/>
                             <constraint firstItem="7jE-Sl-AKb" firstAttribute="trailing" secondItem="519-6Z-4Fg" secondAttribute="trailing" id="dcT-d0-nXB"/>
                             <constraint firstItem="519-6Z-4Fg" firstAttribute="leading" secondItem="7jE-Sl-AKb" secondAttribute="leading" id="tgd-Hv-dvn"/>
                         </constraints>
