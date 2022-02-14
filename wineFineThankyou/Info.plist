@@ -7,9 +7,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>KakaoLogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao612ec0765f0106cc23de9b487a836fec</string>
+				<string>kakaof3ddb8ca9f07d6b7a52acd8faab10df1</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,6 +37,8 @@
 	<array>
 		<string>naversearchapp</string>
 		<string>naversearchthirdlogin</string>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
 	</array>
 	<key>NMFClientId</key>
 	<string>n19w8fu40u</string>

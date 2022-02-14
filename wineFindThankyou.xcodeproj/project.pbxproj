@@ -219,7 +219,6 @@
 		44442489279D373C00903DC7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BAB4078E27A60D9000B6E352 /* Cell */,
 				BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */,
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
 			);
@@ -424,13 +423,6 @@
 				44FF1CC9278471A900FD8567 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		BAB4078E27A60D9000B6E352 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		BAB4079427A7B1F200B6E352 /* MyPage */ = {

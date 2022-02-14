@@ -6,7 +6,7 @@
 //
 
 import UIKit
-// import KakaoSDKCommon
+import KakaoSDKCommon
 import GoogleSignIn
 import NaverThirdPartyLogin
 
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         // MARK: Kakao 로그인
-        // KakaoSDK.initSDK(appKey: "612ec0765f0106cc23de9b487a836fec")
+        KakaoSDK.initSDK(appKey: "f3ddb8ca9f07d6b7a52acd8faab10df1")
         
         
         // MARK: Google 로그인

@@ -5,20 +5,6 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - FirebaseAuth (8.12.0):
-    - FirebaseCore (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GTMSessionFetcher/Core (~> 1.5)
-  - FirebaseCore (8.12.1):
-    - FirebaseCoreDiagnostics (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (8.12.0):
-    - GoogleDataTransport (~> 9.1)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/Logger (~> 7.7)
-    - nanopb (~> 2.30908.0)
   - GoogleDataTransport (9.1.2):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
@@ -44,21 +30,10 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.3.2)
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.3.2)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.3.2)"
-  - GoogleUtilities/AppDelegateSwizzler (7.7.0):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
   - GoogleUtilities/Environment (7.7.0):
     - PromisesObjC (< 3.0, >= 1.2)
   - GoogleUtilities/Logger (7.7.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/Network (7.7.0):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.7.0)"
-  - GoogleUtilities/Reachability (7.7.0):
-    - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
   - GoogleUtilitiesComponents (1.1.0):
@@ -67,6 +42,38 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
+  - KakaoSDK (2.8.5):
+    - KakaoSDKAuth (= 2.8.5)
+    - KakaoSDKCommon (= 2.8.5)
+    - KakaoSDKLink (= 2.8.5)
+    - KakaoSDKNavi (= 2.8.5)
+    - KakaoSDKStory (= 2.8.5)
+    - KakaoSDKTalk (= 2.8.5)
+    - KakaoSDKTemplate (= 2.8.5)
+    - KakaoSDKUser (= 2.8.5)
+  - KakaoSDKAuth (2.8.5):
+    - KakaoSDKCommon (= 2.8.5)
+  - KakaoSDKCommon (2.8.5):
+    - KakaoSDKCommon/Common (= 2.8.5)
+    - KakaoSDKCommon/Network (= 2.8.5)
+  - KakaoSDKCommon/Common (2.8.5)
+  - KakaoSDKCommon/Network (2.8.5):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.8.5)
+  - KakaoSDKLink (2.8.5):
+    - KakaoSDKCommon (= 2.8.5)
+    - KakaoSDKTemplate (= 2.8.5)
+  - KakaoSDKNavi (2.8.5):
+    - KakaoSDKCommon/Common (= 2.8.5)
+  - KakaoSDKStory (2.8.5):
+    - KakaoSDKUser (= 2.8.5)
+  - KakaoSDKTalk (2.8.5):
+    - KakaoSDKTemplate (= 2.8.5)
+    - KakaoSDKUser (= 2.8.5)
+  - KakaoSDKTemplate (2.8.5):
+    - KakaoSDKCommon/Common (= 2.8.5)
+  - KakaoSDKUser (2.8.5):
+    - KakaoSDKAuth (= 2.8.5)
   - MLImage (1.0.0-beta2)
   - MLKitCommon (5.0.0):
     - GoogleDataTransport (~> 9.0)
@@ -104,9 +111,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.1)
-  - FirebaseAuth
   - GoogleMLKit/TextRecognitionKorean
   - GoogleSignIn (~> 5.0)
+  - KakaoSDK
   - naveridlogin-sdk-ios
   - NMapsMap
   - SnapKit (~> 5.0.0)
@@ -115,9 +122,6 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
-    - FirebaseAuth
-    - FirebaseCore
-    - FirebaseCoreDiagnostics
     - GoogleDataTransport
     - GoogleMLKit
     - GoogleSignIn
@@ -126,6 +130,15 @@ SPEC REPOS:
     - GoogleUtilitiesComponents
     - GTMAppAuth
     - GTMSessionFetcher
+    - KakaoSDK
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
     - MLImage
     - MLKitCommon
     - MLKitTextRecognitionCommon
@@ -141,9 +154,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  FirebaseAuth: 5250d7bdba35e57cc34ec7ddc525f82b2757f2a0
-  FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
-  FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleMLKit: 0d7f5aa2f8a2f2ea9d849a05abdbe80974b0ec83
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
@@ -152,6 +162,15 @@ SPEC CHECKSUMS:
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  KakaoSDK: f634244173eccab9198766e5f974c605095f80e8
+  KakaoSDKAuth: a9033bd3fbbb9a8c74dcd0dbd7705f7a2bc50ff1
+  KakaoSDKCommon: b98d08cf838effdc9b82aca7dee3e50c048880ca
+  KakaoSDKLink: 0c93cf5ad2bf73c4e2cb8db5820cd71a9c97feb8
+  KakaoSDKNavi: 278b8e8435fe964bd525d683b35313257b2890a7
+  KakaoSDKStory: 65793d1dd46e01bed461a8cb453c13dbd4bc8721
+  KakaoSDKTalk: 782952e48f8343db5ff3be434cd4b9fd5fed1b1d
+  KakaoSDKTemplate: 903808a8e0bfcae8f00f8561c3e8cb9eef5ed7e6
+  KakaoSDKUser: a76667bb06c1d5072178eea5cee4ac9fdba94679
   MLImage: a454f9f8ecfd537783a12f9488f5be1a68820829
   MLKitCommon: 3bc17c6f7d25ce3660f030350b46ae7ec9ebca6e
   MLKitTextRecognitionCommon: 3e84602c928fe2b775fae81376f2136324cbd763
@@ -164,6 +183,6 @@ SPEC CHECKSUMS:
   Protobuf: 235750e4696ff59fb07d949a9dbbc92b3c0700fe
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d2f1d18c8dd85a4d392264451ef46b981d9cb2c8
+PODFILE CHECKSUM: d4e478d568d4e4e32f9f8abfdfb886d5bc17a0e8
 
 COCOAPODS: 1.11.2
