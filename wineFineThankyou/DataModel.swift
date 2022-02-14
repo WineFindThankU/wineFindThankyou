@@ -38,9 +38,52 @@ struct WineStoreInfo {
     }
 }
 
+enum WineType {
+    case white
+    case red
+    case rose
+    case sparkling
+    case fortified
+    var str: String {
+        switch self {
+        case .white:
+            return "화이트"
+        case .red:
+            return "레드"
+        case .rose:
+            return "로제"
+        case .sparkling:
+            return "스파클링"
+        case .fortified:
+            return "주정강화"
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .white:
+            return UIColor(rgb: 0x8FDA00)
+        case .red:
+            return UIColor(rgb: 0xE10051)
+        case .rose:
+            return UIColor(rgb: 0xFD8DA1)
+        case .sparkling:
+            return UIColor(rgb: 0xFE9220)
+        case .fortified:
+            return UIColor(rgb: 0x8215C4)
+        }
+    }
+}
+
 struct WineInfo {
     let img: UIImage
-    let name: String
+    let korName: String
+    let engName: String
+    let wineType: WineType
+    let cepage: [String]
+    let from: String
+    let vintage: String
+    let alchol: String
 }
 
 class UserData {

@@ -30,6 +30,10 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
                                            callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
                                            openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
                                            wines: [])
+        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+        
         registerAction()
         configure()
     }
@@ -37,18 +41,21 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        viewTopAnchor.constant = UIScreen.main.bounds.height - 267
         guard wineStoreInfo?.wines.count ?? 0 > 0 else {
             emptyView.isHidden = false
             winesCollectionView.isHidden = true
-            viewTopAnchor.constant = UIScreen.main.bounds.height - 267
+            
             return
         }
+        
         emptyView.isHidden = true
         winesCollectionView.isHidden = false
     }
     
     private func configure() {
         setTopView()
+        contentsView.layer.cornerRadius = 12
         storeButtonsView = setStoreButtonView(superView: contentsButtonView, contentsTopView)
         storeButtonsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
         storeButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
@@ -57,7 +64,6 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
         winesCollectionView.delegate = self
         winesCollectionView.dataSource = self
         winesCollectionView.register(UINib(nibName: "WineInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WineInfoCollectionViewCell")
-        winesCollectionView.collectionViewLayout = CollectionViewLeftAlignFlowLayout()
     }
     
     private func registerAction() {
@@ -137,7 +143,7 @@ extension StoreInfoSummaryViewController {
     private func goToStore() {
         guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoViewController") as? StoreInfoViewController else { return }
         vc.wineStoreInfo = wineStoreInfo
-        
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: {
 
         })
@@ -151,18 +157,19 @@ extension StoreInfoSummaryViewController {
 
 extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wineStoreInfo?.wines.count ?? 0
+        guard let wines = wineStoreInfo?.wines else { return 0 }
+        return wines.count > 3 ? 3 : wines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell,
-              let wineInfo = wineStoreInfo?.wines[indexPath.row]
+              let wineStoreInfo = wineStoreInfo
         else { return UICollectionViewCell() }
+        cell.wineInfo = wineStoreInfo.wines[indexPath.row]
         
-        cell.img.isHidden = true
-        cell.contentView.backgroundColor = UIColor.systemPink
-        cell.name.text = wineInfo.name
-        
+        if indexPath.row == 2, wineStoreInfo.wines.count - 3 > 0 {
+            cell.setMoreView(wineStoreInfo.wines.count - 3)
+        }
         return cell
     }
     
@@ -172,33 +179,12 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
         }
         vc.crntIndex = indexPath.row
         vc.wines = self.wineStoreInfo?.wines ?? []
+        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 105, height: 129)
-    }
-    
-    class CollectionViewLeftAlignFlowLayout: UICollectionViewFlowLayout {
-        let cellSpacing: CGFloat = 10
-     
-        override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-            self.minimumLineSpacing = 10.0
-            self.sectionInset = UIEdgeInsets(top: 12.0, left: 16.0, bottom: 0.0, right: 16.0)
-            let attributes = super.layoutAttributesForElements(in: rect)
-     
-            var leftMargin = sectionInset.left
-            var maxY: CGFloat = -1.0
-            attributes?.forEach { layoutAttribute in
-                if layoutAttribute.frame.origin.y >= maxY {
-                    leftMargin = sectionInset.left
-                }
-                layoutAttribute.frame.origin.x = leftMargin
-                leftMargin += layoutAttribute.frame.width + cellSpacing
-                maxY = max(layoutAttribute.frame.maxY, maxY)
-            }
-            return attributes
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
     }
 }
 
@@ -211,5 +197,49 @@ extension StoreInfoSummaryViewController: CapturedImageProtocol{
             print($0)
         }
         //uiimage넘겨서 텍스트 읽어야 함.
+    }
+}
+
+extension StoreInfoSummaryViewController {
+    //MARK: TEST
+    private func getWines() -> [WineInfo] {
+        guard let img = UIImage(named: "TestWineImg") else { return [] }
+    
+        var wineInfos = [WineInfo]()
+        wineInfos.append(
+            WineInfo(img: img,
+                     korName: "비카스 초이스 소비뇽 블랑 스파클링",
+                     engName: "Vicar's Choice Sauvignon Blanc Bubbles",
+                     wineType: WineType.sparkling,
+                     cepage: ["소비뇽 블랑 (Sauvignon Blanc)"],
+                     from: "뉴질랜드",
+                     vintage: "2010",
+                     alchol: "Alc. 15%")
+        )
+        
+        wineInfos.append(
+            WineInfo(img: img,
+                     korName: "카피텔 산 로코 발폴리첼라 리파쏘 수페리오레",
+                     engName: "Capitel San Rocco Valpolicella Ripasso Superiore",
+                     wineType: WineType.red,
+                     cepage: ["코르비나(Corvina)", "코르비노네(Corvinone)",
+                              "론디넬라(Rondinella)", "기타(Others)"],
+                     from: "아르헨티나",
+                     vintage: "2010",
+                     alchol: "Alc. 15%")
+        )
+        
+        wineInfos.append(
+            WineInfo(img: img,
+                     korName: "젠틀 타이거 화이트",
+                     engName: "Gentle Tiger White",
+                     wineType: WineType.white,
+                     cepage: ["샤르도네 (Chardonnay)", "비우라 (Viura)"],
+                     from: "뉴질랜드",
+                     vintage: "2010",
+                     alchol: "Alc. 15%")
+        )
+        
+        return wineInfos
     }
 }
