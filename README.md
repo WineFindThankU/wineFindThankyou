@@ -8,7 +8,7 @@
 
 |수진 와인|문어 와인|
 |:-:|:-:|
-|<img src="" width=200>|<img src="" width=200>|
+|<img src="![sud](https://user-images.githubusercontent.com/79178843/153866536-0da34202-a53a-4664-9713-e17c49babb2f.png)" width=200>|<img src="" width=200>|
 |[@sudingcream](https://github.com/sudingcream)|[@gjansdyd](https://github.com/gjansdyd)|
 
 ## Coding Convention
@@ -82,6 +82,7 @@ ex) onClickStartButton
 * Code + Storyboard로 UI 구현 
 
 <br>
+
 
 
 
