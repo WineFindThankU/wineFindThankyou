@@ -975,7 +975,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
@@ -1009,7 +1009,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
