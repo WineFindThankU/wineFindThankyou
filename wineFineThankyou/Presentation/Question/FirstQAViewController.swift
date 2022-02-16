@@ -37,9 +37,12 @@ class FirstQAViewController: QAViewController {
     }
     @IBAction func onClickOther(_ sender: UIButton) {
         delegate?.renewButtons(sender, btns: buttons)
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QABottomSheet") as? QABottomSheet else { return }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let popupVC = storyBoard.instantiateViewController(withIdentifier: "QABottomSheet")
+        popupVC.modalPresentationStyle = .overCurrentContext
+        present(popupVC, animated: true, completion: nil)
+       
     }
     
     
