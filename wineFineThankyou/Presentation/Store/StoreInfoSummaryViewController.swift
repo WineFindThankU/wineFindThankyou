@@ -19,7 +19,8 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     
     private var storeButtonsView: StoreButtonsView?
     internal var wineStoreInfo: WineStoreInfo?
-    
+    //MARK: TestView
+    var testView : UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
@@ -194,9 +195,35 @@ extension StoreInfoSummaryViewController: CapturedImageProtocol{
             return
         }
         WineLabelReader.doStartToOCR(uiImage) {
+        //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
             print($0)
+            testOCRView($0)
         }
-        //uiimage넘겨서 텍스트 읽어야 함.
+        
+        func testOCRView(_ str: String?) {
+            let view = UIView()
+            self.view.addSubview(view)
+            print(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            let textView = UITextView()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(textView)
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200),
+                view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 45),
+                view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -45),
+                view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -45),
+                
+                textView.topAnchor.constraint(equalTo: view.topAnchor),
+                textView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                textView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+            textView.isEditable = false
+            textView.text = str
+            testView = view
+        }
+        
     }
 }
 
@@ -211,7 +238,7 @@ extension StoreInfoSummaryViewController {
                      korName: "비카스 초이스 소비뇽 블랑 스파클링",
                      engName: "Vicar's Choice Sauvignon Blanc Bubbles",
                      wineType: WineType.sparkling,
-                     cepage: ["소비뇽 블랑 (Sauvignon Blanc)"],
+                     cepage: "소비뇽 블랑 (Sauvignon Blanc)",
                      from: "뉴질랜드",
                      vintage: "2010",
                      alchol: "Alc. 15%")
@@ -222,8 +249,7 @@ extension StoreInfoSummaryViewController {
                      korName: "카피텔 산 로코 발폴리첼라 리파쏘 수페리오레",
                      engName: "Capitel San Rocco Valpolicella Ripasso Superiore",
                      wineType: WineType.red,
-                     cepage: ["코르비나(Corvina)", "코르비노네(Corvinone)",
-                              "론디넬라(Rondinella)", "기타(Others)"],
+                     cepage: "코르비나(Corvina), 코르비노네(Corvinone), 론디넬라(Rondinella), 기타(Others)",
                      from: "아르헨티나",
                      vintage: "2010",
                      alchol: "Alc. 15%")
@@ -234,7 +260,7 @@ extension StoreInfoSummaryViewController {
                      korName: "젠틀 타이거 화이트",
                      engName: "Gentle Tiger White",
                      wineType: WineType.white,
-                     cepage: ["샤르도네 (Chardonnay)", "비우라 (Viura)"],
+                     cepage: "샤르도네 (Chardonnay), 비우라 (Viura)",
                      from: "뉴질랜드",
                      vintage: "2010",
                      alchol: "Alc. 15%")

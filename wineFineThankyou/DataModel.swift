@@ -80,7 +80,7 @@ struct WineInfo {
     let korName: String
     let engName: String
     let wineType: WineType
-    let cepage: [String]
+    let cepage: String
     let from: String
     let vintage: String
     let alchol: String
