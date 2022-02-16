@@ -196,22 +196,23 @@ extension StoreInfoSummaryViewController: CapturedImageProtocol{
         }
         WineLabelReader.doStartToOCR(uiImage) {
         //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
+            print($0)
             testOCRView($0)
         }
         
         func testOCRView(_ str: String?) {
-            let gesture = UIGestureRecognizer(target: self, action: #selector(dismissThisView))
             let view = UIView()
-            guard let top = topViewController() else { return }
-            top.view.addSubview(view)
+            self.view.addSubview(view)
+            print(view)
             view.translatesAutoresizingMaskIntoConstraints = false
             let textView = UITextView()
+            textView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(textView)
             NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: top.view.topAnchor, constant: 200),
-                view.leftAnchor.constraint(equalTo: top.view.leftAnchor, constant: 45),
-                view.rightAnchor.constraint(equalTo: top.view.rightAnchor, constant: -45),
-                view.bottomAnchor.constraint(equalTo: top.view.bottomAnchor, constant: -200),
+                view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200),
+                view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 45),
+                view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -45),
+                view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -45),
                 
                 textView.topAnchor.constraint(equalTo: view.topAnchor),
                 textView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -223,9 +224,6 @@ extension StoreInfoSummaryViewController: CapturedImageProtocol{
             testView = view
         }
         
-    }
-    @objc func dismissThisView() {
-        testView?.removeFromSuperview()
     }
 }
 
