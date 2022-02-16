@@ -62,10 +62,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vGi-6n-Gk9">
-                                <rect key="frame" x="131" y="393" width="113" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cce-HU-2ql">
                                 <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,12 +69,20 @@
                                     <constraint firstAttribute="height" constant="44" id="Gbr-8c-68m"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnE-7c-eVc">
-                                <rect key="frame" x="0.0" y="140" width="375" height="305"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="9sb-BP-OLR"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="aEN-be-k1Q"/>
-                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ip2-Ml-H2O">
+                                <rect key="frame" x="0.0" y="132" width="375" height="312"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="312" id="XY0-Y4-alE"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Qb-IM-ikN">
+                                    <size key="itemSize" width="312" height="312"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-N0-AiH">
                                 <rect key="frame" x="160.66666666666666" y="433" width="54" height="23"/>
                                 <constraints>
@@ -89,30 +93,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mj-bH-9ts" customClass="WineDetailsView" customModule="wineFindThankyou" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="476" width="375" height="302"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9ew-aX-tUh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Cce-HU-2ql" firstAttribute="leading" secondItem="9ew-aX-tUh" secondAttribute="leading" id="2o1-nO-EED"/>
-                            <constraint firstItem="0mj-bH-9ts" firstAttribute="top" secondItem="aBN-N0-AiH" secondAttribute="bottom" constant="20" id="ORy-si-LNY"/>
+                            <constraint firstItem="ip2-Ml-H2O" firstAttribute="leading" secondItem="9ew-aX-tUh" secondAttribute="leading" id="GiW-vS-bt4"/>
                             <constraint firstItem="9ew-aX-tUh" firstAttribute="trailing" secondItem="Cce-HU-2ql" secondAttribute="trailing" id="TaN-fB-llS"/>
+                            <constraint firstItem="9ew-aX-tUh" firstAttribute="trailing" secondItem="ip2-Ml-H2O" secondAttribute="trailing" id="WHG-uY-2Pi"/>
+                            <constraint firstItem="ip2-Ml-H2O" firstAttribute="top" secondItem="Cce-HU-2ql" secondAttribute="bottom" id="s7h-Oh-aaM"/>
                             <constraint firstItem="aBN-N0-AiH" firstAttribute="top" secondItem="9ew-aX-tUh" secondAttribute="top" constant="389" id="tT5-dV-Al6"/>
-                            <constraint firstItem="9ew-aX-tUh" firstAttribute="bottom" secondItem="0mj-bH-9ts" secondAttribute="bottom" id="tVT-lb-uIH"/>
                             <constraint firstItem="Cce-HU-2ql" firstAttribute="top" secondItem="9ew-aX-tUh" secondAttribute="top" constant="44" id="u9H-kt-s97"/>
-                            <constraint firstItem="9ew-aX-tUh" firstAttribute="trailing" secondItem="0mj-bH-9ts" secondAttribute="trailing" id="ufA-Fh-hG9"/>
-                            <constraint firstItem="0mj-bH-9ts" firstAttribute="leading" secondItem="9ew-aX-tUh" secondAttribute="leading" id="x9z-93-2fW"/>
                             <constraint firstItem="aBN-N0-AiH" firstAttribute="centerX" secondItem="uXJ-ie-gyQ" secondAttribute="centerX" id="zXR-9o-zSF"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="pageControl" destination="vGi-6n-Gk9" id="rvH-UR-yCU"/>
-                        <outlet property="scrollView" destination="PnE-7c-eVc" id="Z7I-NB-Ib9"/>
+                        <outlet property="collectionView" destination="ip2-Ml-H2O" id="7rl-vs-LeF"/>
                         <outlet property="topView" destination="Cce-HU-2ql" id="fak-FG-YCv"/>
-                        <outlet property="wineDetailsView" destination="0mj-bH-9ts" id="LCv-JY-Dae"/>
                         <outlet property="wineTypeLabel" destination="aBN-N0-AiH" id="SdM-op-tvr"/>
                     </connections>
                 </viewController>

@@ -19,7 +19,8 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     
     private var storeButtonsView: StoreButtonsView?
     internal var wineStoreInfo: WineStoreInfo?
-    
+    //MARK: TestView
+    var testView : UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
@@ -194,9 +195,37 @@ extension StoreInfoSummaryViewController: CapturedImageProtocol{
             return
         }
         WineLabelReader.doStartToOCR(uiImage) {
-            print($0)
+        //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
+            testOCRView($0)
         }
-        //uiimage넘겨서 텍스트 읽어야 함.
+        
+        func testOCRView(_ str: String?) {
+            let gesture = UIGestureRecognizer(target: self, action: #selector(dismissThisView))
+            let view = UIView()
+            guard let top = topViewController() else { return }
+            top.view.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            let textView = UITextView()
+            view.addSubview(textView)
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: top.view.topAnchor, constant: 200),
+                view.leftAnchor.constraint(equalTo: top.view.leftAnchor, constant: 45),
+                view.rightAnchor.constraint(equalTo: top.view.rightAnchor, constant: -45),
+                view.bottomAnchor.constraint(equalTo: top.view.bottomAnchor, constant: -200),
+                
+                textView.topAnchor.constraint(equalTo: view.topAnchor),
+                textView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                textView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+            textView.isEditable = false
+            textView.text = str
+            testView = view
+        }
+        
+    }
+    @objc func dismissThisView() {
+        testView?.removeFromSuperview()
     }
 }
 
@@ -211,7 +240,7 @@ extension StoreInfoSummaryViewController {
                      korName: "비카스 초이스 소비뇽 블랑 스파클링",
                      engName: "Vicar's Choice Sauvignon Blanc Bubbles",
                      wineType: WineType.sparkling,
-                     cepage: ["소비뇽 블랑 (Sauvignon Blanc)"],
+                     cepage: "소비뇽 블랑 (Sauvignon Blanc)",
                      from: "뉴질랜드",
                      vintage: "2010",
                      alchol: "Alc. 15%")
@@ -222,8 +251,7 @@ extension StoreInfoSummaryViewController {
                      korName: "카피텔 산 로코 발폴리첼라 리파쏘 수페리오레",
                      engName: "Capitel San Rocco Valpolicella Ripasso Superiore",
                      wineType: WineType.red,
-                     cepage: ["코르비나(Corvina)", "코르비노네(Corvinone)",
-                              "론디넬라(Rondinella)", "기타(Others)"],
+                     cepage: "코르비나(Corvina), 코르비노네(Corvinone), 론디넬라(Rondinella), 기타(Others)",
                      from: "아르헨티나",
                      vintage: "2010",
                      alchol: "Alc. 15%")
@@ -234,7 +262,7 @@ extension StoreInfoSummaryViewController {
                      korName: "젠틀 타이거 화이트",
                      engName: "Gentle Tiger White",
                      wineType: WineType.white,
-                     cepage: ["샤르도네 (Chardonnay)", "비우라 (Viura)"],
+                     cepage: "샤르도네 (Chardonnay), 비우라 (Viura)",
                      from: "뉴질랜드",
                      vintage: "2010",
                      alchol: "Alc. 15%")

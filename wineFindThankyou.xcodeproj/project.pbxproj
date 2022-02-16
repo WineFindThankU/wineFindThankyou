@@ -42,6 +42,8 @@
 		BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47878B27B7880400AAB5EA /* ExtFunc.swift */; };
 		BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47878D27B78E3600AAB5EA /* CameraCaptureViewController.swift */; };
 		BA47879027B7B15700AAB5EA /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA47878F27B7B15700AAB5EA /* Store.storyboard */; };
+		BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */; };
+		BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */; };
 		BA77CFE0279EF80800832389 /* StoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFDF279EF80800832389 /* StoreInfoViewController.swift */; };
 		BA77CFE5279EF94A00832389 /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFE4279EF94A00832389 /* ExtUIView.swift */; };
 		BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFE6279EFA5600832389 /* ExtUIColor.swift */; };
@@ -58,8 +60,6 @@
 		BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C627A50FAD0010F05A /* QAViewController.swift */; };
 		BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C827A5280B0010F05A /* LoginController.swift */; };
 		BA8BB7CB27A529D40010F05A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7CA27A529D40010F05A /* Login.swift */; };
-		BAA04B1927BACC1200E30078 /* WineDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA04B1827BACC1200E30078 /* WineDetailsView.xib */; };
-		BAA04B1B27BACC1D00E30078 /* WineDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA04B1A27BACC1D00E30078 /* WineDetailsView.swift */; };
 		BAA4031627BA944A00C50221 /* WineListTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA4031527BA944A00C50221 /* WineListTitle.xib */; };
 		BAA4031827BA945700C50221 /* WineListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4031727BA945700C50221 /* WineListTitle.swift */; };
 		BAB4079327A7900000B6E352 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = BAB4079227A7900000B6E352 /* SwiftSMTP */; };
@@ -133,6 +133,8 @@
 		BA47878B27B7880400AAB5EA /* ExtFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtFunc.swift; sourceTree = "<group>"; };
 		BA47878D27B78E3600AAB5EA /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		BA47878F27B7B15700AAB5EA /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
+		BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineImageCell.xib; sourceTree = "<group>"; };
+		BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineImageCell.swift; sourceTree = "<group>"; };
 		BA77CFDF279EF80800832389 /* StoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewController.swift; sourceTree = "<group>"; };
 		BA77CFE4279EF94A00832389 /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		BA77CFE6279EFA5600832389 /* ExtUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIColor.swift; sourceTree = "<group>"; };
@@ -150,8 +152,6 @@
 		BA8BB7C827A5280B0010F05A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BA8BB7CA27A529D40010F05A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BA8BB7CC27A52CAE0010F05A /* wineFindThankyou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wineFindThankyou.entitlements; sourceTree = "<group>"; };
-		BAA04B1827BACC1200E30078 /* WineDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineDetailsView.xib; sourceTree = "<group>"; };
-		BAA04B1A27BACC1D00E30078 /* WineDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailsView.swift; sourceTree = "<group>"; };
 		BAA4031527BA944A00C50221 /* WineListTitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineListTitle.xib; sourceTree = "<group>"; };
 		BAA4031727BA945700C50221 /* WineListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineListTitle.swift; sourceTree = "<group>"; };
 		BAB4079527A7B20A00B6E352 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -407,8 +407,6 @@
 				BA77CFE4279EF94A00832389 /* ExtUIView.swift */,
 				BA77CFE6279EFA5600832389 /* ExtUIColor.swift */,
 				BA47878B27B7880400AAB5EA /* ExtFunc.swift */,
-				BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */,
-				BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -421,8 +419,10 @@
 				BA8BB7B027A4256F0010F05A /* AllOfWineInfoTableViewCell.xib */,
 				BA8BB7AE27A4256F0010F05A /* WineInfoCollectionViewCell.swift */,
 				BA8BB7AF27A4256F0010F05A /* WineInfoCollectionViewCell.xib */,
-				BAA04B1827BACC1200E30078 /* WineDetailsView.xib */,
-				BAA04B1A27BACC1D00E30078 /* WineDetailsView.swift */,
+				BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */,
+				BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */,
+				BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */,
+				BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */,
 				BAA4031527BA944A00C50221 /* WineListTitle.xib */,
 				BAA4031727BA945700C50221 /* WineListTitle.swift */,
 			);
@@ -584,10 +584,10 @@
 				BA1EE24D27A4177D00FDE9BD /* WineInfoView.xib in Resources */,
 				44FF1CF42786A6D000FD8567 /* exam.jpeg in Resources */,
 				BAA4031627BA944A00C50221 /* WineListTitle.xib in Resources */,
+				BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */,
 				BA8BB7B427A4256F0010F05A /* AllOfWineInfoTableViewCell.xib in Resources */,
 				BA1E472327AF9D23005C3319 /* MyPage.storyboard in Resources */,
 				44FF1CF72786BCFF00FD8567 /* GoogleService-Info.plist in Resources */,
-				BAA04B1927BACC1200E30078 /* WineDetailsView.xib in Resources */,
 				BA1E472B27AFEC2D005C3319 /* SettingCell.xib in Resources */,
 				BA8BB7B327A4256F0010F05A /* WineInfoCollectionViewCell.xib in Resources */,
 				44FF1CC8278471A900FD8567 /* Assets.xcassets in Resources */,
@@ -777,9 +777,9 @@
 				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
 				44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
-				BAA04B1B27BACC1D00E30078 /* WineDetailsView.swift in Sources */,
 				BA1E472927AFEC20005C3319 /* SettingCell.swift in Sources */,
 				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
+				BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */,
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
 				44FF470327A563310063924D /* Shops.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
