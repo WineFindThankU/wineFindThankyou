@@ -137,7 +137,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIa-we-TyZ">
-                                <rect key="frame" x="0.0" y="50" width="375" height="472"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="442"/>
                                 <connections>
                                     <segue destination="77n-1T-n3W" kind="embed" id="spS-nP-3HV"/>
                                 </connections>
@@ -162,13 +162,13 @@
                         <constraints>
                             <constraint firstItem="dIa-we-TyZ" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="7DH-R6-Xv2"/>
                             <constraint firstItem="p2n-tf-yWY" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="DvR-et-vUy"/>
-                            <constraint firstItem="dIa-we-TyZ" firstAttribute="top" secondItem="p2n-tf-yWY" secondAttribute="bottom" id="Hnn-Iu-XyV"/>
+                            <constraint firstItem="dIa-we-TyZ" firstAttribute="top" secondItem="p2n-tf-yWY" secondAttribute="bottom" constant="20" id="Hnn-Iu-XyV"/>
                             <constraint firstItem="1cG-k0-Hc6" firstAttribute="centerX" secondItem="U7F-Uo-a0z" secondAttribute="centerX" id="Smi-TL-6Z3"/>
                             <constraint firstItem="U7F-Uo-a0z" firstAttribute="bottom" secondItem="1cG-k0-Hc6" secondAttribute="bottom" constant="76" id="X9e-XK-kx6"/>
                             <constraint firstItem="p2n-tf-yWY" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="fTG-ak-8NZ"/>
                             <constraint firstItem="7Xd-d4-Joe" firstAttribute="centerX" secondItem="U7F-Uo-a0z" secondAttribute="centerX" id="g6p-Jg-lLS"/>
                             <constraint firstItem="p2n-tf-yWY" firstAttribute="top" secondItem="U7F-Uo-a0z" secondAttribute="top" id="jCe-qc-gmk"/>
-                            <constraint firstItem="1cG-k0-Hc6" firstAttribute="top" secondItem="dIa-we-TyZ" secondAttribute="bottom" id="ksQ-mB-LoA"/>
+                            <constraint firstItem="1cG-k0-Hc6" firstAttribute="top" secondItem="dIa-we-TyZ" secondAttribute="bottom" constant="10" id="ksQ-mB-LoA"/>
                             <constraint firstItem="U7F-Uo-a0z" firstAttribute="trailing" secondItem="dIa-we-TyZ" secondAttribute="trailing" id="nyn-b0-hpA"/>
                             <constraint firstItem="U7F-Uo-a0z" firstAttribute="trailing" secondItem="p2n-tf-yWY" secondAttribute="trailing" constant="20" id="zY7-hX-iX2"/>
                         </constraints>
@@ -204,127 +204,121 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q. 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CG-ar-gas">
-                                        <rect key="frame" x="169.5" y="0.0" width="36.5" height="27"/>
+                                        <rect key="frame" x="169.5" y="0.0" width="36.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인을 마실 때 나에게 가장 중요한 것은?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB1-i5-nsA">
-                                        <rect key="frame" x="20" y="55" width="335" height="53"/>
+                                        <rect key="frame" x="20" y="54.5" width="335" height="53"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-py-NRM">
-                                        <rect key="frame" x="154.5" y="134" width="66" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="SDI-hQ-rmo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="가성비" backgroundImage="Quesbutton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClickCost:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="HLP-QG-Rib"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAx-RN-pry">
-                                        <rect key="frame" x="147" y="178" width="81" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="wXn-PD-BEh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="포도 품종" backgroundImage="Quesbutton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClickKind:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="zgK-sH-mUH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1Q-kz-liG">
-                                        <rect key="frame" x="141.5" y="222" width="92" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="lml-9c-P9L"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="와인 브랜드" backgroundImage="Quesbutton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClickBrand:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="NlR-OL-pbS"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfv-xQ-4Jf">
-                                        <rect key="frame" x="147" y="266" width="81" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="kDZ-bh-wm3"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="생산 지역" backgroundImage="Quesbutton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClickArea:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="8d4-bQ-dcD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAp-9t-J1z">
-                                        <rect key="frame" x="84" y="310" width="207" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="niU-Mr-gci"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="와인 종류 (레드/화이트/내추럴 등)" backgroundImage="Quesbutton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClickKindOfWine:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="tMO-SV-PdX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XZ-Ct-ASC">
-                                        <rect key="frame" x="129" y="354" width="117" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="A3f-6h-vfo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="기타 (직접 입력)" backgroundImage="Quesbutton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClickOther:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="lGv-cI-K1t"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bh0-wS-GcL">
+                                        <rect key="frame" x="71" y="139.5" width="233" height="268"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-py-NRM">
+                                                <rect key="frame" x="81" y="0.0" width="71" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="SDI-hQ-rmo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="가성비" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickCost:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="HLP-QG-Rib"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAx-RN-pry">
+                                                <rect key="frame" x="72.5" y="46" width="88" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="wXn-PD-BEh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="포도 품종" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickKind:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="zgK-sH-mUH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1Q-kz-liG">
+                                                <rect key="frame" x="66" y="92" width="101" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="lml-9c-P9L"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="와인 브랜드" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickBrand:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="NlR-OL-pbS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfv-xQ-4Jf">
+                                                <rect key="frame" x="72.5" y="138" width="88" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="kDZ-bh-wm3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="생산 지역" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickArea:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="8d4-bQ-dcD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAp-9t-J1z">
+                                                <rect key="frame" x="0.0" y="184" width="233" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="niU-Mr-gci"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="와인 종류 (레드/화이트/내추럴 등)" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickKindOfWine:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="tMO-SV-PdX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XZ-Ct-ASC">
+                                                <rect key="frame" x="52" y="230" width="129" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="A3f-6h-vfo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="기타 (직접 입력)" backgroundImage="Quesbutton">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickOther:" destination="VUv-Q5-SXY" eventType="touchUpInside" id="lGv-cI-K1t"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="x1Q-kz-liG" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="5rb-E3-03f"/>
-                                    <constraint firstItem="lAx-RN-pry" firstAttribute="top" secondItem="PVh-py-NRM" secondAttribute="bottom" constant="8" id="6Ra-XA-9RT"/>
                                     <constraint firstAttribute="trailing" secondItem="vB1-i5-nsA" secondAttribute="trailing" constant="20" id="BUn-zr-n4Z"/>
-                                    <constraint firstItem="x1Q-kz-liG" firstAttribute="top" secondItem="lAx-RN-pry" secondAttribute="bottom" constant="8" id="H5L-ll-QIe"/>
+                                    <constraint firstItem="bh0-wS-GcL" firstAttribute="top" secondItem="vB1-i5-nsA" secondAttribute="bottom" constant="32" id="DAn-aV-smv"/>
                                     <constraint firstItem="9CG-ar-gas" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="J0N-jG-Tr9"/>
-                                    <constraint firstItem="PVh-py-NRM" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="JnV-Rl-LPS"/>
-                                    <constraint firstItem="PVh-py-NRM" firstAttribute="top" secondItem="vB1-i5-nsA" secondAttribute="bottom" constant="26" id="Psb-78-hwn"/>
                                     <constraint firstItem="9CG-ar-gas" firstAttribute="top" secondItem="z7g-lK-zHh" secondAttribute="top" id="YGD-1M-yTW"/>
-                                    <constraint firstItem="KAp-9t-J1z" firstAttribute="top" secondItem="mfv-xQ-4Jf" secondAttribute="bottom" constant="8" symbolic="YES" id="g0V-PR-TSM"/>
-                                    <constraint firstItem="mfv-xQ-4Jf" firstAttribute="top" secondItem="x1Q-kz-liG" secondAttribute="bottom" constant="8" id="hmL-Ls-01O"/>
                                     <constraint firstItem="vB1-i5-nsA" firstAttribute="leading" secondItem="z7g-lK-zHh" secondAttribute="leading" constant="20" id="oTx-A4-i55"/>
-                                    <constraint firstItem="9XZ-Ct-ASC" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="oXb-D4-Mif"/>
                                     <constraint firstItem="vB1-i5-nsA" firstAttribute="top" secondItem="9CG-ar-gas" secondAttribute="bottom" constant="28" id="px2-pz-Uwn"/>
-                                    <constraint firstItem="mfv-xQ-4Jf" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="r5k-Aw-OLc"/>
-                                    <constraint firstItem="9XZ-Ct-ASC" firstAttribute="top" secondItem="KAp-9t-J1z" secondAttribute="bottom" constant="8" id="uww-Za-cVb"/>
-                                    <constraint firstItem="KAp-9t-J1z" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="vTJ-zK-qlh"/>
-                                    <constraint firstItem="lAx-RN-pry" firstAttribute="centerX" secondItem="z7g-lK-zHh" secondAttribute="centerX" id="yun-Xk-mF1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -334,6 +328,7 @@
                             <constraint firstItem="z7g-lK-zHh" firstAttribute="leading" secondItem="7Ko-m4-kxZ" secondAttribute="leading" id="Rvu-IQ-Vek"/>
                             <constraint firstItem="z7g-lK-zHh" firstAttribute="top" secondItem="7Ko-m4-kxZ" secondAttribute="top" id="gMy-74-xg5"/>
                             <constraint firstItem="7Ko-m4-kxZ" firstAttribute="trailing" secondItem="z7g-lK-zHh" secondAttribute="trailing" id="jfd-N9-xcD"/>
+                            <constraint firstItem="bh0-wS-GcL" firstAttribute="centerX" secondItem="7Ko-m4-kxZ" secondAttribute="centerX" id="l8n-4L-Lvk"/>
                             <constraint firstItem="7Ko-m4-kxZ" firstAttribute="bottom" secondItem="z7g-lK-zHh" secondAttribute="bottom" id="oRc-PE-axd"/>
                         </constraints>
                     </view>
@@ -449,26 +444,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q. 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3r-Hd-Hdd">
-                                        <rect key="frame" x="168" y="0.0" width="39.5" height="27"/>
+                                        <rect key="frame" x="168" y="0.0" width="39.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 일상적으로 마시는 와인은 얼마? " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ph-X8-VLj">
-                                        <rect key="frame" x="20" y="51" width="335" height="53"/>
+                                        <rect key="frame" x="20" y="50.5" width="335" height="53"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98q-pn-5c5">
-                                        <rect key="frame" x="0.0" y="152" width="375" height="228"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ulq-zG-yp2">
+                                        <rect key="frame" x="72" y="135.5" width="231" height="222"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQJ-y1-yGV">
-                                                <rect key="frame" x="143" y="8" width="89" height="36"/>
+                                                <rect key="frame" x="67" y="0.0" width="97" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="F5R-Dz-NNQ"/>
+                                                    <constraint firstAttribute="height" constant="38" id="F5R-Dz-NNQ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="2만원 이하" backgroundImage="Quesbutton">
@@ -479,11 +474,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZB-Z8-95c">
-                                                <rect key="frame" x="137" y="52" width="101" height="36"/>
+                                                <rect key="frame" x="60" y="46" width="111" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="R1J-6h-Z3M"/>
+                                                    <constraint firstAttribute="height" constant="38" id="R1J-6h-Z3M"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="3 ~ 4만원 대" backgroundImage="Quesbutton">
@@ -494,11 +489,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQB-iL-M0a">
-                                                <rect key="frame" x="137.5" y="96" width="100" height="36"/>
+                                                <rect key="frame" x="60.5" y="92" width="110" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="s3k-FN-9GE"/>
+                                                    <constraint firstAttribute="height" constant="38" id="s3k-FN-9GE"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="5 ~ 7만원 대" backgroundImage="Quesbutton">
@@ -509,11 +504,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhL-gA-6Xq">
-                                                <rect key="frame" x="134" y="140" width="107" height="36"/>
+                                                <rect key="frame" x="56.5" y="138" width="118" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="nqZ-NB-tYn"/>
+                                                    <constraint firstAttribute="height" constant="38" id="nqZ-NB-tYn"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="8 ~ 10만원 대" backgroundImage="Quesbutton">
@@ -524,11 +519,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0M-Fx-gp0">
-                                                <rect key="frame" x="85" y="184" width="205" height="36"/>
+                                                <rect key="frame" x="0.0" y="184" width="231" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="pW7-8u-jQ8"/>
+                                                    <constraint firstAttribute="height" constant="38" id="pW7-8u-jQ8"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="퀄리티가 된다면 가격은 상관없음!" backgroundImage="Quesbutton">
@@ -539,31 +534,15 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="OQB-iL-M0a" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="1k4-55-JZU"/>
-                                            <constraint firstItem="TQJ-y1-yGV" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="FbU-us-4O1"/>
-                                            <constraint firstItem="RZB-Z8-95c" firstAttribute="top" secondItem="TQJ-y1-yGV" secondAttribute="bottom" constant="8" id="I7y-wu-vPP"/>
-                                            <constraint firstItem="c0M-Fx-gp0" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="OtH-ON-bjW"/>
-                                            <constraint firstItem="TQJ-y1-yGV" firstAttribute="top" secondItem="98q-pn-5c5" secondAttribute="top" constant="8" id="QZZ-l1-mCs"/>
-                                            <constraint firstAttribute="height" constant="228" id="T2c-7J-4rh"/>
-                                            <constraint firstItem="c0M-Fx-gp0" firstAttribute="top" secondItem="AhL-gA-6Xq" secondAttribute="bottom" constant="8" symbolic="YES" id="bAh-hE-FHm"/>
-                                            <constraint firstItem="AhL-gA-6Xq" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="gQ1-11-wbZ"/>
-                                            <constraint firstItem="AhL-gA-6Xq" firstAttribute="top" secondItem="OQB-iL-M0a" secondAttribute="bottom" constant="8" id="h7G-ay-LwJ"/>
-                                            <constraint firstItem="RZB-Z8-95c" firstAttribute="centerX" secondItem="98q-pn-5c5" secondAttribute="centerX" id="i1F-P4-c9f"/>
-                                            <constraint firstItem="OQB-iL-M0a" firstAttribute="top" secondItem="RZB-Z8-95c" secondAttribute="bottom" constant="8" id="mSf-nA-wyR"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="5ph-X8-VLj" secondAttribute="trailing" constant="20" id="4tU-Df-9mV"/>
-                                    <constraint firstAttribute="trailing" secondItem="98q-pn-5c5" secondAttribute="trailing" id="BDu-Eh-7YG"/>
+                                    <constraint firstItem="Ulq-zG-yp2" firstAttribute="top" secondItem="5ph-X8-VLj" secondAttribute="bottom" constant="32" id="cvS-97-aOJ"/>
                                     <constraint firstItem="5ph-X8-VLj" firstAttribute="top" secondItem="Y3r-Hd-Hdd" secondAttribute="bottom" constant="24" id="dRG-XD-xhA"/>
                                     <constraint firstItem="5ph-X8-VLj" firstAttribute="leading" secondItem="lp4-oy-Q6J" secondAttribute="leading" constant="20" id="gCx-TZ-3W7"/>
-                                    <constraint firstItem="98q-pn-5c5" firstAttribute="leading" secondItem="lp4-oy-Q6J" secondAttribute="leading" id="kST-mN-THw"/>
                                     <constraint firstItem="Y3r-Hd-Hdd" firstAttribute="centerX" secondItem="lp4-oy-Q6J" secondAttribute="centerX" id="lBA-r1-IHj"/>
-                                    <constraint firstItem="98q-pn-5c5" firstAttribute="top" secondItem="5ph-X8-VLj" secondAttribute="bottom" constant="48" id="qcz-2d-RWz"/>
                                     <constraint firstItem="Y3r-Hd-Hdd" firstAttribute="top" secondItem="lp4-oy-Q6J" secondAttribute="top" id="zLY-2m-eby"/>
                                 </constraints>
                             </view>
@@ -572,6 +551,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qbo-pO-sya" firstAttribute="bottom" secondItem="lp4-oy-Q6J" secondAttribute="bottom" id="RSs-T1-1e7"/>
+                            <constraint firstItem="Ulq-zG-yp2" firstAttribute="centerX" secondItem="Qbo-pO-sya" secondAttribute="centerX" id="YT4-Xc-0lj"/>
                             <constraint firstItem="lp4-oy-Q6J" firstAttribute="leading" secondItem="Qbo-pO-sya" secondAttribute="leading" id="pdj-XN-aeS"/>
                             <constraint firstItem="Qbo-pO-sya" firstAttribute="trailing" secondItem="lp4-oy-Q6J" secondAttribute="trailing" id="ple-0V-hmP"/>
                             <constraint firstItem="Qbo-pO-sya" firstAttribute="top" secondItem="lp4-oy-Q6J" secondAttribute="top" id="tsh-IM-ULb"/>
@@ -601,26 +581,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Q. 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAM-1P-5Se">
-                                        <rect key="frame" x="167.5" y="0.0" width="40" height="27"/>
+                                        <rect key="frame" x="167.5" y="0.0" width="40" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와인을 주로 구입하는 이유는? " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnL-mq-gFb">
-                                        <rect key="frame" x="20" y="51" width="335" height="53"/>
+                                        <rect key="frame" x="20" y="50.5" width="335" height="53"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZz-eC-WCb">
-                                        <rect key="frame" x="0.0" y="196" width="375" height="228"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QkJ-yB-5XQ">
+                                        <rect key="frame" x="109" y="135.5" width="157" height="130"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-ik-nBP">
-                                                <rect key="frame" x="122.5" y="8" width="130" height="36"/>
+                                                <rect key="frame" x="6.5" y="0.0" width="144" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="Eec-MM-XIK"/>
+                                                    <constraint firstAttribute="height" constant="38" id="Eec-MM-XIK"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="내가 마시기 위해서" backgroundImage="Quesbutton">
@@ -631,11 +611,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YV-Wm-6tf">
-                                                <rect key="frame" x="117" y="52" width="141" height="36"/>
+                                                <rect key="frame" x="0.0" y="46" width="157" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="3dd-4H-bMy"/>
+                                                    <constraint firstAttribute="height" constant="38" id="3dd-4H-bMy"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="모임과 파티를 위해서" backgroundImage="Quesbutton">
@@ -646,11 +626,11 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-re-Zn1">
-                                                <rect key="frame" x="130" y="96" width="115" height="36"/>
+                                                <rect key="frame" x="15" y="92" width="127" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="Kmv-df-orL"/>
+                                                    <constraint firstAttribute="height" constant="38" id="Kmv-df-orL"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="9" maxX="16" maxY="9"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="선물하기 위해서" backgroundImage="Quesbutton">
@@ -661,27 +641,15 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="bBF-re-Zn1" firstAttribute="centerX" secondItem="sZz-eC-WCb" secondAttribute="centerX" id="11t-4z-RWA"/>
-                                            <constraint firstItem="iOp-ik-nBP" firstAttribute="centerX" secondItem="sZz-eC-WCb" secondAttribute="centerX" id="6AE-Cl-xta"/>
-                                            <constraint firstItem="bBF-re-Zn1" firstAttribute="top" secondItem="2YV-Wm-6tf" secondAttribute="bottom" constant="8" id="BJl-EB-gpH"/>
-                                            <constraint firstItem="2YV-Wm-6tf" firstAttribute="top" secondItem="iOp-ik-nBP" secondAttribute="bottom" constant="8" id="JjB-Bu-Qi0"/>
-                                            <constraint firstAttribute="height" constant="228" id="RUO-ee-rKX"/>
-                                            <constraint firstItem="iOp-ik-nBP" firstAttribute="top" secondItem="sZz-eC-WCb" secondAttribute="top" constant="8" id="UBw-6V-hBU"/>
-                                            <constraint firstItem="2YV-Wm-6tf" firstAttribute="centerX" secondItem="sZz-eC-WCb" secondAttribute="centerX" id="whm-tA-3Uq"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="sZz-eC-WCb" firstAttribute="leading" secondItem="SL6-3e-9Lv" secondAttribute="leading" id="8i3-aQ-zKc"/>
+                                    <constraint firstItem="QkJ-yB-5XQ" firstAttribute="top" secondItem="dnL-mq-gFb" secondAttribute="bottom" constant="32" id="Cf5-G8-TO0"/>
                                     <constraint firstItem="dnL-mq-gFb" firstAttribute="top" secondItem="AAM-1P-5Se" secondAttribute="bottom" constant="24" id="Eig-gg-Rqg"/>
-                                    <constraint firstAttribute="trailing" secondItem="sZz-eC-WCb" secondAttribute="trailing" id="H4S-yO-4n6"/>
                                     <constraint firstAttribute="trailing" secondItem="dnL-mq-gFb" secondAttribute="trailing" constant="20" id="Q4l-AZ-bV4"/>
                                     <constraint firstItem="AAM-1P-5Se" firstAttribute="top" secondItem="SL6-3e-9Lv" secondAttribute="top" id="V3y-gd-ocm"/>
                                     <constraint firstItem="AAM-1P-5Se" firstAttribute="centerX" secondItem="SL6-3e-9Lv" secondAttribute="centerX" id="ZKT-Xv-NYQ"/>
-                                    <constraint firstItem="sZz-eC-WCb" firstAttribute="top" secondItem="dnL-mq-gFb" secondAttribute="bottom" constant="92" id="ZSR-NI-7S9"/>
                                     <constraint firstItem="dnL-mq-gFb" firstAttribute="leading" secondItem="SL6-3e-9Lv" secondAttribute="leading" constant="20" id="m97-Qq-sCt"/>
                                 </constraints>
                             </view>
@@ -692,6 +660,7 @@
                             <constraint firstItem="sFu-4w-2ng" firstAttribute="trailing" secondItem="SL6-3e-9Lv" secondAttribute="trailing" id="70k-HG-4KA"/>
                             <constraint firstItem="sFu-4w-2ng" firstAttribute="leading" secondItem="SL6-3e-9Lv" secondAttribute="leading" id="Bjq-11-sKT"/>
                             <constraint firstItem="sFu-4w-2ng" firstAttribute="top" secondItem="SL6-3e-9Lv" secondAttribute="top" id="QCh-de-4tr"/>
+                            <constraint firstItem="QkJ-yB-5XQ" firstAttribute="centerX" secondItem="sFu-4w-2ng" secondAttribute="centerX" id="Wex-6K-RhQ"/>
                             <constraint firstItem="sFu-4w-2ng" firstAttribute="bottom" secondItem="SL6-3e-9Lv" secondAttribute="bottom" id="mnR-0N-QVC"/>
                         </constraints>
                     </view>
@@ -1243,7 +1212,7 @@
         <image name="EmptySearch" width="34" height="34"/>
         <image name="Group 25" width="216" height="216"/>
         <image name="LaunchTitle" width="175" height="70"/>
-        <image name="Quesbutton" width="34" height="36"/>
+        <image name="Quesbutton" width="36.5" height="38"/>
         <image name="Quetion" width="69" height="69"/>
         <image name="Search Box2" width="37" height="36"/>
         <image name="Search bar" width="351" height="43"/>

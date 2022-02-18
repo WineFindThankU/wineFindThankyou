@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "Quesbutton.png",
+      "filename" : "Standard.png",
       "idiom" : "universal",
       "resizing" : {
         "cap-insets" : {
-          "left" : 16,
-          "right" : 17
+          "left" : 18,
+          "right" : 18
         },
         "center" : {
           "mode" : "tile",
@@ -17,11 +17,35 @@
       "scale" : "1x"
     },
     {
+      "filename" : "Standard@2x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 36,
+          "right" : 36
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "2x"
     },
     {
+      "filename" : "Standard@3x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 55,
+          "right" : 55
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "3x"
     }
   ],
