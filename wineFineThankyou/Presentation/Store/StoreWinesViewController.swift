@@ -104,7 +104,7 @@ class StoreWinesViewController: UIViewController {
 
 extension StoreWinesViewController {
     private func updateUI(){
-        self.crntIndexLabel.text = "\(self.crntIndex) / \(wines.count)"
+        self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wines.count)"
         self.collectionView.scrollToItem(at: IndexPath(row: self.crntIndex, section: 0), at: .centeredHorizontally, animated: true)
         self.wineInfoView.wineInfo = wines[self.crntIndex]
     }

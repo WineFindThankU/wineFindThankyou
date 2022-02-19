@@ -38,12 +38,15 @@ struct WineStoreInfo {
     }
 }
 
-enum WineType {
-    case white
-    case red
-    case rose
-    case sparkling
-    case fortified
+enum WineType: Int, CaseIterable {
+    case white = 0
+    case red = 1
+    case rose = 2
+    case sparkling = 3
+    case fortified = 4
+    var idx: Int {
+        return self.rawValue
+    }
     var str: String {
         switch self {
         case .white:
