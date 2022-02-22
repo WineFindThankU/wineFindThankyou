@@ -101,9 +101,13 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
         guard let imageData = photo.fileDataRepresentation() else { return }
         guard let uiImage = UIImage(data: imageData) else { return }
         
-        delegate?.captured(uiImage)
-        self.dismiss(animated: true, completion: {
-            self.captureSession.stopRunning()
-        })
+//        delegate?.captured(uiImage)
+        DispatchQueue.main.async {
+            guard let vc = UIStoryboard(name: "ReadWine", bundle: nil).instantiateViewController(withIdentifier: "AddWineInfomationViewController") as? AddWineInfomationViewController else { return }
+            self.present(vc, animated: true, completion: nil)
+        }
+//        self.dismiss(animated: true, completion: {
+//            self.captureSession.stopRunning()
+//        })
     }
 }

@@ -26,7 +26,7 @@ class StoreButtonsView: UIView {
     var right: StoreContent?
 }
 
-func setTopView(_ superView: UIView, height: CGFloat) -> TopView {
+func getGlobalTopView(_ superView: UIView, height: CGFloat) -> TopView {
     let topView = TopView()
     let titleLabel = UILabel()
     let leftBtn = UIButton()

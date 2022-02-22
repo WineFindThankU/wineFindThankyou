@@ -25,7 +25,7 @@ class StoreInfoViewController: UIViewController, SelectedWineCellProtocol {
     
     private func configure() {
         self.view.backgroundColor = Theme.white.color
-        topView = setTopView(self.view, height: 44)
+        topView = getGlobalTopView(self.view, height: 44)
         storeButtonView = setStoreButtonView(superView: self.view, topView!)
         self.topView?.titleLabel?.text = wineStoreInfo?.storeName
         self.topView?.leftButton?.setBackgroundImage(UIImage(named: "backArrow"), for: .normal)

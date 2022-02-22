@@ -52,7 +52,7 @@ class StoreWinesViewController: UIViewController {
     }
     
     private func setUpTopView() {
-        topView = setTopView(self.view, height: 44)
+        topView = getGlobalTopView(self.view, height: 44)
         topView.backgroundColor = .clear
         topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow")?.withTintColor(.white), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)

@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController{
     }
     
     private func configure() {
-        let topView = setTopView(self.view, height: 44)
+        let topView = getGlobalTopView(self.view, height: 44)
         topView.titleLabel?.text = "설정"
         topView.rightButton?.setBackgroundImage(UIImage(named: "close"), for: .normal)
         topView.rightButton?.addTarget(self, action: #selector(close), for: .touchUpInside)

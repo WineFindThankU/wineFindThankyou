@@ -43,7 +43,7 @@ class MyPageViewController : UIViewController{
 //profileView
 extension MyPageViewController {
     private func setUpTopView() {
-        let topView = setTopView(self.view, height: 44)
+        let topView = getGlobalTopView(self.view, height: 44)
         topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
         topView.rightButton?.setBackgroundImage(UIImage(named: "settings"), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)

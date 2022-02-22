@@ -24,36 +24,6 @@
             </objects>
             <point key="canvasLocation" x="7996" y="15"/>
         </scene>
-        <!--Camera Capture View Controller-->
-        <scene sceneID="T4I-07-EWM">
-            <objects>
-                <viewController storyboardIdentifier="CameraCaptureViewController" id="Hwd-er-xwO" customClass="CameraCaptureViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fsH-eN-N2S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aF3-Ve-OAC">
-                                <rect key="frame" x="8" y="52" width="359" height="718"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="xHl-Wr-PAi"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="aF3-Ve-OAC" firstAttribute="leading" secondItem="xHl-Wr-PAi" secondAttribute="leading" constant="8" id="AsV-5b-NfJ"/>
-                            <constraint firstItem="xHl-Wr-PAi" firstAttribute="bottom" secondItem="aF3-Ve-OAC" secondAttribute="bottom" constant="8" id="Igy-Xw-pbd"/>
-                            <constraint firstItem="aF3-Ve-OAC" firstAttribute="top" secondItem="xHl-Wr-PAi" secondAttribute="top" constant="8" id="TVf-IK-9La"/>
-                            <constraint firstItem="xHl-Wr-PAi" firstAttribute="trailing" secondItem="aF3-Ve-OAC" secondAttribute="trailing" constant="8" id="rRC-0h-R2Y"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="cameraView" destination="aF3-Ve-OAC" id="gb5-jZ-2JB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jjz-nZ-bAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7966.666666666667" y="692.41071428571422"/>
-        </scene>
         <!--Store Wines View Controller-->
         <scene sceneID="Mw4-D4-xkl">
             <objects>

@@ -133,7 +133,7 @@ extension StoreInfoSummaryViewController {
     
     @objc
     func takePicture() {
-        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "CameraCaptureViewController") as? CameraCaptureViewController else { return }
+        guard let vc = UIStoryboard(name: "ReadWine", bundle: nil).instantiateViewController(withIdentifier: "CameraCaptureViewController") as? CameraCaptureViewController else { return }
         
         self.present(vc, animated: true, completion: {
             vc.delegate = self

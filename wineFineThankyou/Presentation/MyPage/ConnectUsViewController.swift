@@ -32,7 +32,7 @@ class ConnectUsViewController: UIViewController {
     }
     
     private func configure() {
-        topView = setTopView(self.view, height: 44)
+        topView = getGlobalTopView(self.view, height: 44)
         topView.titleLabel?.text = "1:1문의하기"
         topView.rightButton?.setBackgroundImage(UIImage(named: "close"), for: .normal)
         topView.rightButton?.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
