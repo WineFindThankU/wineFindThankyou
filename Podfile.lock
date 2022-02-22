@@ -122,8 +122,8 @@ DEPENDENCIES:
   - KakaoSDK
   - naveridlogin-sdk-ios
   - NMapsMap
-  - RxCocoa
-  - RxSwift
+  - RxCocoa (= 6.5.0)
+  - RxSwift (= 6.5.0)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
@@ -197,6 +197,6 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d8084eb3d2906b2872e64724a2edfabecd2487a2
+PODFILE CHECKSUM: b40c6854c0de681e38eedb7e3c75da9c9e2b5285
 
 COCOAPODS: 1.11.2

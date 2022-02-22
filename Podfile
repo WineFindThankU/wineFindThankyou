@@ -7,9 +7,10 @@ target 'wineFindThankyou' do
 
 
   # Pods for wineFindThankyou
-  pod 'RxSwift'
-  pod 'RxCocoa'
- # pod 'FirebaseAuth', '~> 8.12.0'
+  # pod 'FirebaseAuth', '~> 8.12.0'
+ 
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.1'
   pod 'NMapsMap'
