@@ -107,6 +107,12 @@ PODS:
   - NMapsMap (3.14.1)
   - PromisesObjC (2.0.0)
   - Protobuf (3.19.4)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
@@ -116,6 +122,8 @@ DEPENDENCIES:
   - KakaoSDK
   - naveridlogin-sdk-ios
   - NMapsMap
+  - RxCocoa
+  - RxSwift
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
@@ -149,6 +157,9 @@ SPEC REPOS:
     - NMapsMap
     - PromisesObjC
     - Protobuf
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
@@ -181,8 +192,11 @@ SPEC CHECKSUMS:
   NMapsMap: 79bae4e0d7cc5214dd6dabdb95687a1356616556
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Protobuf: 235750e4696ff59fb07d949a9dbbc92b3c0700fe
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d4e478d568d4e4e32f9f8abfdfb886d5bc17a0e8
+PODFILE CHECKSUM: d8084eb3d2906b2872e64724a2edfabecd2487a2
 
 COCOAPODS: 1.11.2
