@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import RxSwift
 import CoreLocation
 
@@ -33,9 +32,9 @@ class LocationManager: NSObject, LocationManagerProtocol {
       self.manager.startUpdatingLocation()
       
       return self.locationPublisher
-    } else {
-      return .error(LocationError.disableLocationService)
-    }
+    }else {
+        return .error(LocationError.disableLocationService)
+      }
   }
 }
 

@@ -10,7 +10,7 @@ import SnapKit
 import NMapsMap
 import RxSwift
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     private let arrCategoryName: [String] = [
             "전체 ",
             "개인샵",
@@ -38,12 +38,13 @@ class MainViewController: UIViewController {
     var mapAnimatedFlag = false
     var previousOffset: CGFloat = 0
     var markers: [NMFMarker] = []
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
-        self.fetchStoresFromCurrentLocation()
-        self.initilizeNaverMap()
+        self.setMap()
+        
     }
     
     private func setupUI() {
@@ -51,7 +52,7 @@ class MainViewController: UIViewController {
         self.collectionView.dataSource = self
         //MARK: TEST
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
-        //MARK: TEST
+
         makeTestButtonCode()
     }
     
@@ -65,29 +66,19 @@ class MainViewController: UIViewController {
               lng: location.coordinate.longitude
             ))
             camera.animation = .easeIn
-            
+
             self.mapView.moveCamera(camera)
-            
-            if !self.mapAnimatedFlag {
-              self.viewModel.input.mapLocation.onNext(nil)
-              self.viewModel.input.currentLocation.onNext(location)
-              self.viewModel.input.locationForAddress
-                .onNext((
-                  location.coordinate.latitude,
-                  location.coordinate.longitude
-                ))
-            }
-          },
-          onError: self.handleLocationError(error:)
-        )
+          })
         .disposed(by: self.disposeBag)
     }
     
-    private func initilizeNaverMap() {
-      self.mapView.positionMode = .direction
-      self.mapView.zoomLevel = 15
-      self.mapView.addCameraDelegate(delegate: self)
+    private func setMap() {
+        mapView.positionMode = .direction
+        mapView.zoomLevel = 15
+        mapView.addCameraDelegate(delegate: self)
+        
     }
+    
     
     private func selectMarker(selectedIndex: Int, stores: [Store]) {
       self.clearMarker()
@@ -150,7 +141,7 @@ class MainViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(openStore), for: .touchDown)
     }
-    
+  
     @objc
     private func openStore() {
         loadStoreInfoFromServer {
