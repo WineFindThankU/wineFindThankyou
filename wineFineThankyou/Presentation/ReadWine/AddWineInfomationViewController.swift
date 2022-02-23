@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  addWine
+//  AddWineInfomationViewController.swift
+//  wineFindThankyou
 //
 //  Created by mun on 2022/02/21.
 //

@@ -74,6 +74,8 @@
 		BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB4079827A7B4C500B6E352 /* ConnectUsViewController.swift */; };
 		BABB595727C50415000E24C5 /* ReadWine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BABB595627C50415000E24C5 /* ReadWine.storyboard */; };
 		BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */; };
+		BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */; };
+		BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */; };
 		BAE7964A27C1160D00D2AC1F /* TypeDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7964927C1160D00D2AC1F /* TypeDetailStackView.swift */; };
 		BAE7964C27C1161600D2AC1F /* TypeDetailStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7964B27C1161600D2AC1F /* TypeDetailStackView.xib */; };
 		BAE7964E27C1C20A00D2AC1F /* MyPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7964D27C1C20A00D2AC1F /* MyPageTableViewCell.xib */; };
@@ -176,6 +178,8 @@
 		BAB4079827A7B4C500B6E352 /* ConnectUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectUsViewController.swift; sourceTree = "<group>"; };
 		BABB595627C50415000E24C5 /* ReadWine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReadWine.storyboard; sourceTree = "<group>"; };
 		BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWineInfomationViewController.swift; sourceTree = "<group>"; };
+		BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtWineListViewController.swift; sourceTree = "<group>"; };
+		BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoTableViewCell.swift; sourceTree = "<group>"; };
 		BAE7964927C1160D00D2AC1F /* TypeDetailStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDetailStackView.swift; sourceTree = "<group>"; };
 		BAE7964B27C1161600D2AC1F /* TypeDetailStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeDetailStackView.xib; sourceTree = "<group>"; };
 		BAE7964D27C1C20A00D2AC1F /* MyPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageTableViewCell.xib; sourceTree = "<group>"; };
@@ -397,6 +401,7 @@
 				BAE7964B27C1161600D2AC1F /* TypeDetailStackView.xib */,
 				BA913C0A27C0BD410055B2A4 /* StatisticsOfWineView.swift */,
 				BA913C0E27C0C2450055B2A4 /* StatisticsOfWineView.xib */,
+				BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */,
 				BA913C1327C0EF950055B2A4 /* Calculator.swift */,
 			);
 			path = View;
@@ -468,6 +473,7 @@
 			children = (
 				BA1E472627AFA002005C3319 /* View */,
 				BAB4079527A7B20A00B6E352 /* MyPageViewController.swift */,
+				BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */,
 				BA1E472427AF9F03005C3319 /* SettingsViewController.swift */,
 				BAB4079827A7B4C500B6E352 /* ConnectUsViewController.swift */,
 			);
@@ -806,10 +812,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */,
 				44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */,
 				BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */,
 				441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */,
 				44FF470027A5623A0063924D /* RequestNetworking.swift in Sources */,
+				BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
 				BA913C0927C0B6050055B2A4 /* DonutGraphView.swift in Sources */,
 				BA8BB7CB27A529D40010F05A /* Login.swift in Sources */,

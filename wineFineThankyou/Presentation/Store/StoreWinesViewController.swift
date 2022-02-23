@@ -11,7 +11,7 @@ import UIKit
 class StoreWinesViewController: UIViewController {
     @IBOutlet private weak var topView: TopView!
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var wineTypeLabel: UILabel!
+    @IBOutlet private weak var wineTypeLabel: TagLabel!
     private unowned var wineInfoView: WineInfoView!
     
     private weak var crntIndexLabel : UILabel!

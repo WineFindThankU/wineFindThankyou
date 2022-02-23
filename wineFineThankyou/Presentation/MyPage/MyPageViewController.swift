@@ -17,6 +17,14 @@ class MyPageViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        
+        //MARK: TEST
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            guard let vc = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "BoughtWineListViewController") as? BoughtWineListViewController else { return }
+            vc.wineInfos = self.getWines()
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
     
     private func configure() {
@@ -79,9 +87,11 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableView.register(UINib(nibName: "MyPageTableViewCell", bundle: nil), forCellReuseIdentifier: "MyPageTableViewCell")
         tableView.estimatedRowHeight = 227
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return MypageTableViewSection.allCases.count
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let type = MypageTableViewSection(rawValue: section)
         else { return 0 }
