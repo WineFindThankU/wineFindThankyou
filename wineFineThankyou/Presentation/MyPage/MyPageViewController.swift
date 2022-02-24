@@ -19,11 +19,8 @@ class MyPageViewController : UIViewController{
         configure()
         
         //MARK: TEST
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            guard let vc = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "BoughtWineListViewController") as? BoughtWineListViewController else { return }
-            vc.wineInfos = self.getWines()
-            self.present(vc, animated: true, completion: nil)
-        }
+//
+        
         
     }
     

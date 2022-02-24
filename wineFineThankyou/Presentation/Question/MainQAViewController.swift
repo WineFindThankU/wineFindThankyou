@@ -18,6 +18,10 @@ class MainQAViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+   
+    private func setupUI() {
         pageControl.currentPage = 0
         backButton.isHidden = true
         pageControl.pageIndicatorTintColor = UIColor.lightGray
@@ -26,7 +30,7 @@ class MainQAViewController: UIViewController {
             return
         }
     }
-   
+    
     @IBAction func onClickback(_ sender: Any) {
         self.dismiss(animated: true)
     }

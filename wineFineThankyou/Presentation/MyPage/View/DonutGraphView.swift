@@ -85,13 +85,12 @@ class DonutGraphView: UIView {
         
         if graphResource.type == .shop{
             colors = ShopType.allCases.compactMap { $0.color }
-            values = Calculator.fromIntToPercent(graphResource.cntArr).compactMap { CGFloat($0)}
+            values = fromIntToPercent(graphResource.cntArr).compactMap { CGFloat($0)}
         } else {
             colors = WineType.allCases.compactMap { $0.color }
-            values = Calculator.fromIntToPercent(graphResource.cntArr).compactMap { CGFloat($0)}
+            values = fromIntToPercent(graphResource.cntArr).compactMap { CGFloat($0)}
         }
         
-        //x degree = x * π / 180 radian
         var startAngle: CGFloat = (-(.pi) / 2)
         var endAngle: CGFloat = 0.0
         
@@ -124,5 +123,10 @@ class DonutGraphView: UIView {
                                       clockwise: true)
         UIColor.white.set()
         semiCircle.fill()
+    }
+    
+    private func fromIntToPercent(_ values: [Int]) -> [Double]{
+        let total = values.reduce(0, +)
+        return values.compactMap { Double($0) / Double(total) }
     }
 }

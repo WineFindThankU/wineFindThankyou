@@ -45,8 +45,8 @@ final class RequestNetworking {
         }
     
     // MARK: 가게목록 API
-    func getShopsList() {
-            let url = "http://125.6.36.157:3001/v1/auth/shops"
+    func getShopsList(longitude: Double, latitude: Double) {
+            let url = "http://125.6.36.157:3001/v1/shop?longitude=\(longitude)&latitude=\(latitude)"
             AF.request(url,
                        method: .get,
                        parameters: nil,

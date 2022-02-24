@@ -7,10 +7,13 @@ target 'wineFindThankyou' do
 
 
   # Pods for wineFindThankyou
- # pod 'FirebaseAuth', '~> 8.12.0'
+  # pod 'FirebaseAuth', '~> 8.12.0'
+ 
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.1'
-  pod 'NMapsMap'
+  pod 'NMapsMap', '3.10.1'
   pod 'KakaoSDK'
  #pod 'KakaoSDKCommon' # 필수 요소를 담은 공통 모듈 
  #pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리

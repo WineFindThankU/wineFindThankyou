@@ -8,8 +8,9 @@
 import UIKit
 import SnapKit
 import NMapsMap
+import RxSwift
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     private let arrCategoryName: [String] = [
             "전체 ",
             "개인샵",
@@ -34,16 +35,86 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mapView: NMFMapView!
     @IBOutlet weak var searchButtonOutlet: UIButton!
     var wineStoreInfo: WineStoreInfo?
+    var mapAnimatedFlag = false
+    var previousOffset: CGFloat = 0
+    var markers: [NMFMarker] = []
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
+        self.setMap()
+        
+    }
+    
+    private func setupUI() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         //MARK: TEST
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
-        //TEST
+
         makeTestButtonCode()
     }
+    
+    func fetchStoresFromCurrentLocation() {
+      LocationManager.shared.getCurrentLocation()
+        .subscribe(
+          onNext: { [weak self] location in
+            guard let self = self else { return }
+            let camera = NMFCameraUpdate(scrollTo: NMGLatLng(
+              lat: location.coordinate.latitude,
+              lng: location.coordinate.longitude
+            ))
+            camera.animation = .easeIn
+
+            self.mapView.moveCamera(camera)
+          })
+        .disposed(by: self.disposeBag)
+    }
+    
+    private func setMap() {
+        mapView.positionMode = .direction
+        mapView.zoomLevel = 15
+        mapView.addCameraDelegate(delegate: self)
+        
+    }
+    
+    
+    private func selectMarker(selectedIndex: Int, stores: [Store]) {
+      self.clearMarker()
+      
+      for index in stores.indices {
+        let store = stores[index]
+        let marker = NMFMarker()
+        
+        marker.position = NMGLatLng(lat: store.latitude, lng: store.longitude)
+        if index == selectedIndex {
+          let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(
+            lat: store.latitude,
+            lng: store.longitude
+          ))
+          cameraUpdate.animation = .easeIn
+          self.mapView.moveCamera(cameraUpdate)
+          marker.iconImage = NMFOverlayImage(name: "Group 34")
+          marker.width = 48
+          marker.height = 59
+        } else {
+          marker.iconImage = NMFOverlayImage(name: "Group 32")
+          marker.width = 24
+          marker.height = 24
+        }
+        marker.mapView = self.mapView
+
+        self.markers.append(marker)
+      }
+    }
+    
+    private func clearMarker() {
+      for marker in self.markers {
+        marker.mapView = nil
+      }
+    }
+    
     
     @objc
     private func openMyPage() {
@@ -70,7 +141,7 @@ class MainViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(openStore), for: .touchDown)
     }
-    
+  
     @objc
     private func openStore() {
         loadStoreInfoFromServer {
@@ -96,7 +167,7 @@ class MainViewController: UIViewController {
     
     func getShopLists() {
         let requestNetworking = RequestNetworking()
-        requestNetworking.getShopsList()
+        requestNetworking.getShopsList(longitude: 126.8837913, latitude: 37.5848659)
     }
    
     @IBAction func onClickSearchBar(_ sender: UIButton) {

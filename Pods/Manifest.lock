@@ -9,9 +9,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMLKit/MLKitCore (2.5.0):
+  - GoogleMLKit/MLKitCore (2.6.0):
     - MLKitCommon (~> 5.0.0)
-  - GoogleMLKit/TextRecognitionKorean (2.5.0):
+  - GoogleMLKit/TextRecognitionKorean (2.6.0):
     - GoogleMLKit/MLKitCore
     - MLKitTextRecognitionKorean (~> 1.0.0-beta3)
   - GoogleSignIn (5.0.2):
@@ -42,38 +42,38 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
-  - KakaoSDK (2.8.5):
-    - KakaoSDKAuth (= 2.8.5)
-    - KakaoSDKCommon (= 2.8.5)
-    - KakaoSDKLink (= 2.8.5)
-    - KakaoSDKNavi (= 2.8.5)
-    - KakaoSDKStory (= 2.8.5)
-    - KakaoSDKTalk (= 2.8.5)
-    - KakaoSDKTemplate (= 2.8.5)
-    - KakaoSDKUser (= 2.8.5)
-  - KakaoSDKAuth (2.8.5):
-    - KakaoSDKCommon (= 2.8.5)
-  - KakaoSDKCommon (2.8.5):
-    - KakaoSDKCommon/Common (= 2.8.5)
-    - KakaoSDKCommon/Network (= 2.8.5)
-  - KakaoSDKCommon/Common (2.8.5)
-  - KakaoSDKCommon/Network (2.8.5):
+  - KakaoSDK (2.8.6):
+    - KakaoSDKAuth (= 2.8.6)
+    - KakaoSDKCommon (= 2.8.6)
+    - KakaoSDKLink (= 2.8.6)
+    - KakaoSDKNavi (= 2.8.6)
+    - KakaoSDKStory (= 2.8.6)
+    - KakaoSDKTalk (= 2.8.6)
+    - KakaoSDKTemplate (= 2.8.6)
+    - KakaoSDKUser (= 2.8.6)
+  - KakaoSDKAuth (2.8.6):
+    - KakaoSDKCommon (= 2.8.6)
+  - KakaoSDKCommon (2.8.6):
+    - KakaoSDKCommon/Common (= 2.8.6)
+    - KakaoSDKCommon/Network (= 2.8.6)
+  - KakaoSDKCommon/Common (2.8.6)
+  - KakaoSDKCommon/Network (2.8.6):
     - Alamofire (~> 5.1)
-    - KakaoSDKCommon/Common (= 2.8.5)
-  - KakaoSDKLink (2.8.5):
-    - KakaoSDKCommon (= 2.8.5)
-    - KakaoSDKTemplate (= 2.8.5)
-  - KakaoSDKNavi (2.8.5):
-    - KakaoSDKCommon/Common (= 2.8.5)
-  - KakaoSDKStory (2.8.5):
-    - KakaoSDKUser (= 2.8.5)
-  - KakaoSDKTalk (2.8.5):
-    - KakaoSDKTemplate (= 2.8.5)
-    - KakaoSDKUser (= 2.8.5)
-  - KakaoSDKTemplate (2.8.5):
-    - KakaoSDKCommon/Common (= 2.8.5)
-  - KakaoSDKUser (2.8.5):
-    - KakaoSDKAuth (= 2.8.5)
+    - KakaoSDKCommon/Common (= 2.8.6)
+  - KakaoSDKLink (2.8.6):
+    - KakaoSDKCommon (= 2.8.6)
+    - KakaoSDKTemplate (= 2.8.6)
+  - KakaoSDKNavi (2.8.6):
+    - KakaoSDKCommon/Common (= 2.8.6)
+  - KakaoSDKStory (2.8.6):
+    - KakaoSDKUser (= 2.8.6)
+  - KakaoSDKTalk (2.8.6):
+    - KakaoSDKTemplate (= 2.8.6)
+    - KakaoSDKUser (= 2.8.6)
+  - KakaoSDKTemplate (2.8.6):
+    - KakaoSDKCommon/Common (= 2.8.6)
+  - KakaoSDKUser (2.8.6):
+    - KakaoSDKAuth (= 2.8.6)
   - MLImage (1.0.0-beta2)
   - MLKitCommon (5.0.0):
     - GoogleDataTransport (~> 9.0)
@@ -104,9 +104,15 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - naveridlogin-sdk-ios (4.1.3)
-  - NMapsMap (3.14.1)
+  - NMapsMap (3.10.1)
   - PromisesObjC (2.0.0)
   - Protobuf (3.19.4)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
@@ -115,7 +121,9 @@ DEPENDENCIES:
   - GoogleSignIn (~> 5.0)
   - KakaoSDK
   - naveridlogin-sdk-ios
-  - NMapsMap
+  - NMapsMap (= 3.10.1)
+  - RxCocoa (= 6.5.0)
+  - RxSwift (= 6.5.0)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
@@ -149,28 +157,31 @@ SPEC REPOS:
     - NMapsMap
     - PromisesObjC
     - Protobuf
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
-  GoogleMLKit: 0d7f5aa2f8a2f2ea9d849a05abdbe80974b0ec83
+  GoogleMLKit: 755661c46990a85e42278015f26400286d98ad95
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
-  KakaoSDK: f634244173eccab9198766e5f974c605095f80e8
-  KakaoSDKAuth: a9033bd3fbbb9a8c74dcd0dbd7705f7a2bc50ff1
-  KakaoSDKCommon: b98d08cf838effdc9b82aca7dee3e50c048880ca
-  KakaoSDKLink: 0c93cf5ad2bf73c4e2cb8db5820cd71a9c97feb8
-  KakaoSDKNavi: 278b8e8435fe964bd525d683b35313257b2890a7
-  KakaoSDKStory: 65793d1dd46e01bed461a8cb453c13dbd4bc8721
-  KakaoSDKTalk: 782952e48f8343db5ff3be434cd4b9fd5fed1b1d
-  KakaoSDKTemplate: 903808a8e0bfcae8f00f8561c3e8cb9eef5ed7e6
-  KakaoSDKUser: a76667bb06c1d5072178eea5cee4ac9fdba94679
+  KakaoSDK: 29ca188341fbb8994586eac73c10209f3889b574
+  KakaoSDKAuth: 53e747a3bf343a3f3e87b14478d5a865d6c2acae
+  KakaoSDKCommon: 7e56600ff4c1bd82bed93fea4299b5a37f47e6a5
+  KakaoSDKLink: 59a6bdf7abd915aacba4c2671672ffe9654798dd
+  KakaoSDKNavi: 4df155701e60822a9f4426630ae2a38328e779be
+  KakaoSDKStory: afd97ece5b6b2a6d342533397654cea773954664
+  KakaoSDKTalk: d5b5a21281fa370f7d273a9140e82ba54aa9531a
+  KakaoSDKTemplate: 23bdcba233dce91fc948353c3b03d94f928d87d1
+  KakaoSDKUser: e79480355fa789f42e628dfba359fc21e9914f4c
   MLImage: a454f9f8ecfd537783a12f9488f5be1a68820829
   MLKitCommon: 3bc17c6f7d25ce3660f030350b46ae7ec9ebca6e
   MLKitTextRecognitionCommon: 3e84602c928fe2b775fae81376f2136324cbd763
@@ -178,11 +189,14 @@ SPEC CHECKSUMS:
   MLKitVision: e87dc3f2e456a6ab32361ebd985e078dd2746143
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   naveridlogin-sdk-ios: b9d7c20677981177ed994ecb1c8c2b49f223277d
-  NMapsMap: 79bae4e0d7cc5214dd6dabdb95687a1356616556
+  NMapsMap: 1dc27ca06eac287ce1f001a972172766dca2abe1
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Protobuf: 235750e4696ff59fb07d949a9dbbc92b3c0700fe
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d4e478d568d4e4e32f9f8abfdfb886d5bc17a0e8
+PODFILE CHECKSUM: 5ca62fdcd340494874e75e767452e25074defac4
 
 COCOAPODS: 1.11.2
