@@ -1,27 +1,29 @@
 //
-//  BoughtWineListViewController.swift
+//  UsersWineShopListViewController.swift
 //  wineFindThankyou
 //
-//  Created by mun on 2022/02/23.
+//  Created by mun on 2022/02/25.
 //
 
+import Foundation
 import UIKit
 
-class BoughtWineListViewController: UIViewController {
+class UsersWineShopListViewController: UIViewController {
+    // tableView 생성
     private unowned var tableView: UITableView!
+    internal var wineStoreInfos: [WineStoreInfo]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraint()
+        setConstraints()
         setTableView()
     }
     
-    //MARK: TEST
-    var wineInfos = [WineInfo]()
-    private func setConstraint() {
+    private func setConstraints() {
         let topView = getGlobalTopView(self.view, height: 44)
         let tableView = UITableView()
         self.view.addSubview(tableView)
+        topView.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -32,37 +34,36 @@ class BoughtWineListViewController: UIViewController {
             
             tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
+        
         topView.backgroundColor = .clear
         topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
         
         self.tableView = tableView
     }
-    
     @objc
-    private func close() {
+    func close() {
         self.dismiss(animated: true)
     }
 }
-extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSource {
+extension UsersWineShopListViewController: UITableViewDelegate, UITableViewDataSource {
     private func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(WineInfoTableViewCell.self, forCellReuseIdentifier: "WineInfoTableViewCell")
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.register(UserWineShopListTableViewCell.self, forCellReuseIdentifier: "UserWineShopListTableViewCell")
+        tableView.rowHeight = 112
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wineInfos.count
+        return wineStoreInfos?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineInfoTableViewCell", for: indexPath) as? WineInfoTableViewCell else { return UITableViewCell() }
-        cell.info = wineInfos[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserWineShopListTableViewCell", for: indexPath) as? UserWineShopListTableViewCell else { return UITableViewCell() }
+        cell.data = wineStoreInfos?[indexPath.row]
         return cell
     }
 }

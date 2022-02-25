@@ -8,20 +8,27 @@
 import Foundation
 import UIKit
 
-class MyPageViewController : UIViewController{
+class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     private weak var topView: TopView?
     @IBOutlet private weak var myProfileView: UIView!
     @IBOutlet weak var leftStatisticsView: UIView!
     @IBOutlet weak var rightStatisticsView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var myProfileViewHeight: NSLayoutConstraint!
+    var originHeight: CGFloat! = 0
+    
+    var wineInfos = [WineInfo]()
+    var visitedWineStoreInfos = [WineStoreInfo]()
+    var favoritesWineStoreInfos = [WineStoreInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        setTouchGesture()
         
-        //MARK: TEST
-//
-        
-        
+        //MARK: Test
+        wineInfos = getWines()
+        visitedWineStoreInfos = getWineStoreInfo()
+        favoritesWineStoreInfos = getWineStoreInfo()
     }
     
     private func configure() {
@@ -29,6 +36,32 @@ class MyPageViewController : UIViewController{
         setWelcomeView()
         setGraphView()
         setTableView()
+        originHeight = myProfileViewHeight.constant
+    }
+    
+    private func setTouchGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchMyProfileView))
+        tapGesture.delegate = self
+        self.myProfileView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func touchMyProfileView() {
+        myProfileViewHeight.constant < originHeight ? showMyProfileView() : hiddenMyProfileView()
+    }
+    
+    private func showMyProfileView() {
+        UIView.animate(withDuration: 0.5) {
+            self.myProfileViewHeight.constant = self.originHeight
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func hiddenMyProfileView() {
+        UIView.animate(withDuration: 0.5) {
+            self.myProfileViewHeight.constant = 137
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc
@@ -73,11 +106,35 @@ extension MyPageViewController {
         leftGraphView.graphResource = GraphResource(type: .shop, cntArr: [10, 9, 5, 4, 3, 3])
         rightGraphView.graphResource = GraphResource(type: .bought, cntArr: [10, 9, 5, 4, 3])
     }
+    
+    private func goToNextStep(_ type: MypageTableViewSection) {
+        let storyBoard = UIStoryboard(name: "MyPage", bundle: nil)
+        switch type {
+        case .recentlyBoughtWine:
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: "BoughtWineListViewController") as? BoughtWineListViewController
+            else { return }
+            vc.wineInfos = self.wineInfos
+            presentVc(vc)
+        case .recentlyVisitedShop, .favoriteShop:
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: "UsersWineShopListViewController") as? UsersWineShopListViewController
+            else { return }
+            vc.wineStoreInfos = type == .recentlyVisitedShop ? self.visitedWineStoreInfos : self.favoritesWineStoreInfos
+            presentVc(vc)
+        }
+        
+        func presentVc(_ vc: UIViewController) {
+            DispatchQueue.main.async {
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .flipHorizontal
+                self.present(vc, animated: true)
+            }
+        }
+    }
 }
 
 
 //tableView
-extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     private func setTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -86,35 +143,49 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        print(MypageTableViewSection.allCases.count)
         return MypageTableViewSection.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let type = MypageTableViewSection(rawValue: section)
-        else { return 0 }
-        
-        switch type {
-        case .recentlyBoughtWine:
-            return getWines().count
-        case .recentlyVisitedShop, .favoriteShop:
-            return getWineShop().count
-        }
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyPageTableViewCell") as? MyPageTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyPageTableViewCell")
+                as? MyPageTableViewCell,
               let type = MypageTableViewSection(rawValue: indexPath.section)
         else { return UITableViewCell() }
         
-        cell.sectionType = MypageTableViewSection(rawValue: indexPath.row) ?? MypageTableViewSection.recentlyBoughtWine
+        cell.sectionType = MypageTableViewSection(rawValue: indexPath.section) ?? MypageTableViewSection.recentlyBoughtWine
         
         if type == .recentlyBoughtWine {
-            cell.indexPath = indexPath
-            cell.cellInfos = getWines()
+            cell.cellInfos = self.wineInfos
         } else {
-            cell.cellInfos = getWineShop()
+            cell.cellInfos = type == .recentlyVisitedShop ? self.visitedWineStoreInfos : self.favoritesWineStoreInfos
+        }
+        cell.touchRightBtn = { [weak self] in
+            self?.goToNextStep(type)
         }
         return cell
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hiddenMyProfileView()
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        showMyProfileView()
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+        if Int(scrollView.contentOffset.y) <= 0 {
+            showMyProfileView()
+        }
     }
 }
 
@@ -160,16 +231,32 @@ extension MyPageViewController {
         return wineInfos
     }
     
-    func getWineShop() -> [WineShopInfo] {
+    func getWineStoreInfo() -> [WineStoreInfo] {
         
-        return [  WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "벵가드 와인머천트 분당점", type: "개인샵"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "머천트 벵가드와인", type: "백화점"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "와인 머천트 벵가드 서현점", type: "개인샵"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "벵가드 와인머천트 분당점", type: "개인샵"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "머천트 벵가드와인", type: "백화점"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "와인 머천트 벵가드 서현점", type: "개인샵"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "벵가드 와인머천트 분당점", type: "개인샵"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "머천트 벵가드와인", type: "백화점"),
-                WineShopInfo(image: UIImage(named: "TestWineShopImg")!, title: "와인 머천트 벵가드 서현점", type: "개인샵") ]
+        return [  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
+                                classification: .privateShop,
+                                callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
+                                wines: []),
+                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
+                                                     classification: .privateShop,
+                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
+                                                     wines: []),
+                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
+                                                     classification: .privateShop,
+                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
+                                                     wines: []),
+                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
+                                                     classification: .privateShop,
+                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
+                                                     wines: []),
+                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
+                                                     classification: .privateShop,
+                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
+                                                     wines: [])]
     }
 }

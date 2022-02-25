@@ -206,3 +206,29 @@ class TagLabel: UILabel {
         return contentSize
     }
 }
+
+extension UIView {
+    func addSubViews(subViews: UIView...) {
+        subViews.forEach {
+            self.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+}
+
+extension UIButton {
+    func setTitle(title: String, colorHex: Int, font: UIFont){
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(UIColor(rgb: colorHex), for: .normal)
+        self.titleLabel?.font = font
+    }
+}
+
+extension UILabel {
+    func setTitle(title: String, colorHex: Int, backColor: UIColor = .clear, font: UIFont) {
+        self.text = title
+        self.textColor = UIColor(rgb: colorHex)
+        self.backgroundColor = backColor
+        self.font = font
+    }
+}

@@ -19,19 +19,19 @@ class WineShopCell: UICollectionViewCell {
     @IBOutlet private weak var shopTitle: UILabel!
     @IBOutlet private weak var shopType: UILabel!
     
-    internal var wineShopInfo: WineShopInfo? {
+    internal var wineStoreInfo: WineStoreInfo? {
         didSet { configure() }
     }
     
     private func configure() {
-        guard let wineShopInfo = wineShopInfo else { return }
-        shopImageView.image = wineShopInfo.image
+        guard let wineStoreInfo = wineStoreInfo else { return }
+        shopImageView.image = nil
         
-        shopTitle.text = wineShopInfo.title
+        shopTitle.text = wineStoreInfo.storeName
         shopTitle.textColor = UIColor(rgb: 0x424242)
         shopTitle.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         
-        shopType.text = wineShopInfo.type
+        shopType.text = wineStoreInfo.classification.str
         shopType.textColor = UIColor(rgb: 0x9e9e9e)
         shopType.font = UIFont.systemFont(ofSize: 11, weight: .regular)
     }
