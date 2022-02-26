@@ -49,6 +49,7 @@
 		BA47879027B7B15700AAB5EA /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA47878F27B7B15700AAB5EA /* Store.storyboard */; };
 		BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */; };
 		BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */; };
+		BA70C85C27C9DCF80013BC23 /* MyPageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70C85B27C9DCF80013BC23 /* MyPageListViewController.swift */; };
 		BA77CFE0279EF80800832389 /* StoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFDF279EF80800832389 /* StoreInfoViewController.swift */; };
 		BA77CFE5279EF94A00832389 /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFE4279EF94A00832389 /* ExtUIView.swift */; };
 		BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFE6279EFA5600832389 /* ExtUIColor.swift */; };
@@ -157,6 +158,7 @@
 		BA47878F27B7B15700AAB5EA /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
 		BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineImageCell.xib; sourceTree = "<group>"; };
 		BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineImageCell.swift; sourceTree = "<group>"; };
+		BA70C85B27C9DCF80013BC23 /* MyPageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageListViewController.swift; sourceTree = "<group>"; };
 		BA77CFDF279EF80800832389 /* StoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewController.swift; sourceTree = "<group>"; };
 		BA77CFE4279EF94A00832389 /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		BA77CFE6279EFA5600832389 /* ExtUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIColor.swift; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 			children = (
 				BA1E472627AFA002005C3319 /* View */,
 				BAB4079527A7B20A00B6E352 /* MyPageViewController.swift */,
+				BA70C85B27C9DCF80013BC23 /* MyPageListViewController.swift */,
 				BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */,
 				BAAAAE5227C8E53600DFEB59 /* UsersWineShopListViewController.swift */,
 				BA1E472427AF9F03005C3319 /* SettingsViewController.swift */,
@@ -871,6 +874,7 @@
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,
 				BA77CFEF27A16FBF00832389 /* StoreInfoCell.swift in Sources */,
+				BA70C85C27C9DCF80013BC23 /* MyPageListViewController.swift in Sources */,
 				44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */,
 				BA77CFE0279EF80800832389 /* StoreInfoViewController.swift in Sources */,
 				BA1EE24F27A4178700FDE9BD /* WineInfoView.swift in Sources */,

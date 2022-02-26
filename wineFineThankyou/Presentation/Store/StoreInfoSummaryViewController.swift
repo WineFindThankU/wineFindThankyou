@@ -104,8 +104,8 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
             
             imageView.rightAnchor.constraint(equalTo: contentsTopView.rightAnchor, constant: -16),
             imageView.centerYAnchor.constraint(equalTo: storeName.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 24),
-            imageView.heightAnchor.constraint(equalToConstant: 24)
+//            imageView.widthAnchor.constraint(equalToConstant: 16),
+//            imageView.heightAnchor.constraint(equalToConstant: 16)
         ])
         
         storeName.text = wineStoreInfo?.storeName ?? ""

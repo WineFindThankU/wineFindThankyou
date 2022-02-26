@@ -42,9 +42,9 @@ class StoreWinesViewController: UIViewController {
     
     private func setUpWineTypeLabel(){
         let wine = wines[crntIndex]
-        wineTypeLabel.text = wine.wineType.str
         wineTypeLabel.textColor = Theme.white.color
         wineTypeLabel.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        wineTypeLabel.text = wine.wineType.str
         wineTypeLabel.backgroundColor = wine.wineType.color
         wineTypeLabel.clipsToBounds = true
         wineTypeLabel.layer.cornerRadius = 7
@@ -107,6 +107,8 @@ extension StoreWinesViewController {
         self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wines.count)"
         self.collectionView.scrollToItem(at: IndexPath(row: self.crntIndex, section: 0), at: .centeredHorizontally, animated: true)
         self.wineInfoView.wineInfo = wines[self.crntIndex]
+        wineTypeLabel.text = wines[self.crntIndex].wineType.str
+        wineTypeLabel.backgroundColor = wines[self.crntIndex].wineType.color
     }
 }
 
@@ -146,8 +148,8 @@ extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollec
         let index = (offsetX + collectionView.contentInset.left) / cellWidthWithSpacing
         let roundedIndex = round(index)
         let indexPath = IndexPath(item: Int(roundedIndex), section: 0)
-        if let cell = collectionView.cellForItem(at: indexPath) { animateZoom(cell)
-            
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            animateZoom(cell)
         }
         if Int(roundedIndex) != previousIndex {
             let preIndexPath = IndexPath(item: previousIndex, section: 0)
@@ -155,6 +157,8 @@ extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollec
             }
             previousIndex = indexPath.item
         }
+        
+        self.updateUI()
     }
     
     private func animateZoom(_ cell: UICollectionViewCell) {

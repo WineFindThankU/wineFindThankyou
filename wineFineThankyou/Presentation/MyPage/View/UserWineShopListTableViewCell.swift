@@ -14,7 +14,7 @@ class UserWineShopListTableViewCell: UITableViewCell {
     }
     
     private unowned var deleteBtn: UIButton!
-    private unowned var tagLabel: UILabel!
+    private unowned var tagLabel: TagLabel!
     private unowned var shopName: UILabel!
     private unowned var registeredWineCount: UILabel!
     
@@ -39,7 +39,7 @@ class UserWineShopListTableViewCell: UITableViewCell {
     
     private func setDetailConstraint(detailView: UIView) {
         let deleteBtn = UIButton()
-        let tagLabel = UILabel()
+        let tagLabel = TagLabel()
         let shopName = UILabel()
         let registeredWineCount = UILabel()
         detailView.addSubViews(subViews: deleteBtn, tagLabel, shopName, registeredWineCount)
@@ -51,7 +51,6 @@ class UserWineShopListTableViewCell: UITableViewCell {
             
             tagLabel.topAnchor.constraint(equalTo: detailView.topAnchor, constant: 13),
             tagLabel.leftAnchor.constraint(equalTo: detailView.leftAnchor),
-            tagLabel.widthAnchor.constraint(equalToConstant: 41),
             tagLabel.heightAnchor.constraint(equalToConstant: 18),
             
             shopName.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 4),
@@ -66,8 +65,11 @@ class UserWineShopListTableViewCell: UITableViewCell {
             ])
         deleteBtn.setTitle(title: "삭제", colorHex: 0x9e9e9e, font: .systemFont(ofSize: 11))
         
-        self.deleteBtn = deleteBtn
+        tagLabel.clipsToBounds = true
+        tagLabel.layer.cornerRadius = 7
+        
         self.tagLabel = tagLabel
+        self.deleteBtn = deleteBtn
         self.shopName = shopName
         self.registeredWineCount = registeredWineCount
     }

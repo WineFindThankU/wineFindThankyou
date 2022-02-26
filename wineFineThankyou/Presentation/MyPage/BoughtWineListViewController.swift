@@ -7,46 +7,19 @@
 
 import UIKit
 
-class BoughtWineListViewController: UIViewController {
-    private unowned var tableView: UITableView!
-    
+class BoughtWineListViewController: MyPageListViewController {
+    //MARK: TEST
+    var wineInfos = [WineInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraint()
         setTableView()
     }
     
-    //MARK: TEST
-    var wineInfos = [WineInfo]()
-    private func setConstraint() {
-        let topView = getGlobalTopView(self.view, height: 44)
-        let tableView = UITableView()
-        self.view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+    override func touchPlusButton() {
         
-        NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            topView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            topView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            topView.heightAnchor.constraint(equalToConstant: 44),
-            
-            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
-        ])
-        topView.backgroundColor = .clear
-        topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
-        topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
-        
-        self.tableView = tableView
-    }
-    
-    @objc
-    private func close() {
-        self.dismiss(animated: true)
     }
 }
+
 extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSource {
     private func setTableView() {
         tableView.delegate = self
