@@ -217,10 +217,12 @@ extension UIView {
 }
 
 extension UIButton {
-    func setTitle(title: String, colorHex: Int, font: UIFont){
+    func setTitle(title: String, colorHex: Int, backColor: UIColor = .clear, font: UIFont){
         self.setTitle(title, for: .normal)
         self.setTitleColor(UIColor(rgb: colorHex), for: .normal)
         self.titleLabel?.font = font
+        self.backgroundColor = backColor
+        self.layer.cornerRadius = 10
     }
 }
 

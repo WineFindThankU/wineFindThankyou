@@ -10,7 +10,6 @@ import UIKit
 class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDelegate {
     private weak var topView: TopView!
     private weak var midView: UIView!
-    private weak var bottomView: UIView!
     private weak var datePickerView: UIView!
     private weak var backgroundView: UIView!
     private weak var textFieldName: UITextField?
@@ -18,53 +17,43 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private weak var textFieldVintage: UITextField?
     private weak var textFieldBoughtDate: UIButton?
     private weak var boughtDateBtn: UIButton!
-    struct DescAndTxtField {
-        let label = UILabel()
-        let txtField = UITextField()
-        init(_ desc: String, _ placeholder: String, superView: UIView) {
-            label.text = desc
-            label.font = UIFont.systemFont(ofSize: 13)
-            label.textColor = UIColor(rgb: 0x1e1e1e)
-            
-            txtField.placeholder = placeholder
-            txtField.font = UIFont.systemFont(ofSize: 13)
-            txtField.layer.cornerRadius = 10
-            txtField.setPadding(left: 12, right: 12)
-            txtField.layer.borderWidth = 1
-            txtField.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
-            
-            superView.addSubview(self.label)
-            superView.addSubview(self.txtField)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            txtField.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
+    private var captrueStatus: CaptureStatus = .initial
     
-    struct ReadWineInfo {
-        var name: String
-        var from: String
-        var vintage: String
-        var boughtDate: Date = Date()
-        mutating func changeName(_ name: String) {
-            self.name = name
-        }
-        mutating func changeFrom(_ from: String) {
-            self.from = from
-        }
-        mutating func changeVintage(_ vintage: String) {
-            self.vintage = vintage
-        }
-        mutating func changeBoughtDate(_ date: Date) {
-            self.boughtDate = date
-        }
-    }
+    internal var readWineInfo: ReadWineInfo! = ReadWineInfo(name: "까시엘로 델 ", from: "칠레", vintage: "2019")
     
-    var readWineInfo: ReadWineInfo! = ReadWineInfo(name: "까시엘로 델 ", from: "칠레", vintage: "2019")
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        
+        self.view.backgroundColor = .clear
+        delegateSet()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nextStepByCaptureStatus()
+    }
+    
+    private func nextStepByCaptureStatus(){
+        switch captrueStatus {
+        case .initial:
+            guard let vc = UIStoryboard(name: "ReadWine", bundle: nil).instantiateViewController(withIdentifier: "CameraCaptureViewController") as? CameraCaptureViewController else { return }
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: {
+                self.captrueStatus = .cancel
+                vc.delegate = self
+            })
+            return
+        case .cancel:
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
+        case .ok:
+            DispatchQueue.main.async {
+                self.configure()
+            }
+        }
+    }
+    
+    private func delegateSet() {
         textFieldName?.delegate = self
         textFieldFrom?.delegate = self
         textFieldVintage?.delegate = self
@@ -72,6 +61,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     
     private func configure() {
         self.view.backgroundColor = UIColor(rgb: 0xf4f4f4)
+        
         setTopView()
         setMidContentsView()
         setBottomView()
@@ -81,6 +71,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
         recognizer.delegate = self
         self.backgroundView.addGestureRecognizer(recognizer)
     }
+    
     @objc
     func dismissCurrentTop(){
         if textFieldName?.isEditing == true {
@@ -96,6 +87,19 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
             }
         }
         self.backgroundView.isHidden = true
+    }
+}
+
+extension AddWineInfomationViewController: CapturedImageProtocol {
+    func captured(_ uiImage: UIImage?) {
+        guard let uiImage = uiImage else {
+            return
+        }
+        captrueStatus = .ok
+        WineLabelReader.doStartToOCR(uiImage) {
+        //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
+            print($0)
+        }
     }
 }
 
@@ -117,8 +121,8 @@ extension AddWineInfomationViewController {
     
     private func setTopView() {
         self.topView = getGlobalTopView(self.view, height: 44)
-        topView.backgroundColor = .clear
-        topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow")?.withTintColor(.white), for: .normal)
+        topView.backgroundColor = .white
+        topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
     
@@ -237,7 +241,6 @@ extension AddWineInfomationViewController {
         okButton.setTitle("등록하기", for: .normal)
         okButton.setTitleColor(UIColor(rgb: 0xbdbdbd), for: .normal)
         okButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        self.bottomView = bottomView
     }
     
     private func setDatePickerView(){
@@ -320,3 +323,48 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
     }
 }
 
+struct DescAndTxtField {
+    let label = UILabel()
+    let txtField = UITextField()
+    init(_ desc: String, _ placeholder: String, superView: UIView) {
+        label.text = desc
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = UIColor(rgb: 0x1e1e1e)
+        
+        txtField.placeholder = placeholder
+        txtField.font = UIFont.systemFont(ofSize: 13)
+        txtField.layer.cornerRadius = 10
+        txtField.setPadding(left: 12, right: 12)
+        txtField.layer.borderWidth = 1
+        txtField.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
+        
+        superView.addSubview(self.label)
+        superView.addSubview(self.txtField)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        txtField.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+struct ReadWineInfo {
+    var name: String
+    var from: String
+    var vintage: String
+    var boughtDate: Date = Date()
+    mutating func changeName(_ name: String) {
+        self.name = name
+    }
+    mutating func changeFrom(_ from: String) {
+        self.from = from
+    }
+    mutating func changeVintage(_ vintage: String) {
+        self.vintage = vintage
+    }
+    mutating func changeBoughtDate(_ date: Date) {
+        self.boughtDate = date
+    }
+}
+enum CaptureStatus {
+    case initial
+    case cancel
+    case ok
+}

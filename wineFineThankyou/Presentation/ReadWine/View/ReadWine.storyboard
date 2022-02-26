@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera Capture View Controller-->
+        <scene sceneID="cXX-d3-Rqe">
+            <objects>
+                <viewController storyboardIdentifier="CameraCaptureViewController" id="DNJ-j8-zMX" customClass="CameraCaptureViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GQr-BD-Yci">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWq-9s-afp">
+                                <rect key="frame" x="8" y="52" width="398" height="802"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvX-T7-Ypx">
+                                <rect key="frame" x="8" y="44" width="398" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTL-6b-Tzq" customClass="TopView" customModule="wineFindThankyou" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="aZ6-ms-XUD"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DescribeToCapture" translatesAutoresizingMaskIntoConstraints="NO" id="ZGu-N7-N4O">
+                                        <rect key="frame" x="0.0" y="44" width="398" height="500"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" id="8Gk-8h-skO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBj-Ch-UJq">
+                                        <rect key="frame" x="31.5" y="750" width="335" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="IHC-9s-DsU"/>
+                                            <constraint firstAttribute="width" constant="335" id="cHJ-Xh-GzI"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="okButtonAction:" destination="DNJ-j8-zMX" eventType="touchUpInside" id="eHi-Ej-AYF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZGu-N7-N4O" secondAttribute="trailing" id="GhP-98-fhs"/>
+                                    <constraint firstItem="eTL-6b-Tzq" firstAttribute="leading" secondItem="yvX-T7-Ypx" secondAttribute="leading" id="LOb-rt-XaN"/>
+                                    <constraint firstItem="IBj-Ch-UJq" firstAttribute="centerX" secondItem="yvX-T7-Ypx" secondAttribute="centerX" id="LTP-Bw-EGC"/>
+                                    <constraint firstAttribute="bottom" secondItem="IBj-Ch-UJq" secondAttribute="bottom" constant="24" id="NlP-sO-H41"/>
+                                    <constraint firstItem="ZGu-N7-N4O" firstAttribute="top" secondItem="eTL-6b-Tzq" secondAttribute="bottom" id="Rn3-sg-eoQ"/>
+                                    <constraint firstItem="eTL-6b-Tzq" firstAttribute="top" secondItem="yvX-T7-Ypx" secondAttribute="top" id="RnO-s4-jQN"/>
+                                    <constraint firstItem="ZGu-N7-N4O" firstAttribute="leading" secondItem="yvX-T7-Ypx" secondAttribute="leading" id="dUi-fg-3gR"/>
+                                    <constraint firstAttribute="trailing" secondItem="eTL-6b-Tzq" secondAttribute="trailing" id="jVH-0y-Z0F"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rMW-GG-b1H"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rMW-GG-b1H" firstAttribute="trailing" secondItem="OWq-9s-afp" secondAttribute="trailing" constant="8" id="B7R-yR-FxW"/>
+                            <constraint firstItem="OWq-9s-afp" firstAttribute="leading" secondItem="rMW-GG-b1H" secondAttribute="leading" constant="8" id="G9F-E8-Oo1"/>
+                            <constraint firstItem="rMW-GG-b1H" firstAttribute="bottom" secondItem="yvX-T7-Ypx" secondAttribute="bottom" id="H9c-P5-bsa"/>
+                            <constraint firstItem="yvX-T7-Ypx" firstAttribute="top" secondItem="rMW-GG-b1H" secondAttribute="top" id="IzU-p9-iNS"/>
+                            <constraint firstItem="rMW-GG-b1H" firstAttribute="bottom" secondItem="OWq-9s-afp" secondAttribute="bottom" constant="8" id="QLa-ld-LCm"/>
+                            <constraint firstItem="rMW-GG-b1H" firstAttribute="trailing" secondItem="yvX-T7-Ypx" secondAttribute="trailing" constant="8" id="WpF-Il-GqE"/>
+                            <constraint firstItem="yvX-T7-Ypx" firstAttribute="leading" secondItem="rMW-GG-b1H" secondAttribute="leading" constant="8" id="tQV-AS-Rbg"/>
+                            <constraint firstItem="OWq-9s-afp" firstAttribute="top" secondItem="rMW-GG-b1H" secondAttribute="top" constant="8" id="vaP-ta-Mzc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="OWq-9s-afp" id="Mdf-eW-T7c"/>
+                        <outlet property="describeView" destination="yvX-T7-Ypx" id="Gjv-U5-0v8"/>
+                        <outlet property="okButton" destination="IBj-Ch-UJq" id="lV4-1J-vhm"/>
+                        <outlet property="topView" destination="eTL-6b-Tzq" id="ulk-sr-lnw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucc-Uy-Wcc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7966.666666666667" y="692.41071428571422"/>
+        </scene>
+        <!--Add Wine Infomation View Controller-->
+        <scene sceneID="Net-xQ-Xdg">
+            <objects>
+                <viewController storyboardIdentifier="AddWineInfomationViewController" id="cd8-mf-GyN" customClass="AddWineInfomationViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="POw-8C-aI7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="C96-AA-NeQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yjR-bl-iIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8809" y="692"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="DescribeToCapture" width="375" height="400"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
