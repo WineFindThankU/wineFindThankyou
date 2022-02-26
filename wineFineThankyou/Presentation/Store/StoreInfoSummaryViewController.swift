@@ -19,6 +19,10 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     
     private var storeButtonsView: StoreButtonsView?
     internal var wineStoreInfo: WineStoreInfo?
+    private var isMoreThree: Bool {
+        return wineStoreInfo?.wines.count ?? 0 >= 3
+    }
+    
     //MARK: TestView
     var testView : UIView?
     override func viewDidLoad() {
@@ -104,8 +108,6 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
             
             imageView.rightAnchor.constraint(equalTo: contentsTopView.rightAnchor, constant: -16),
             imageView.centerYAnchor.constraint(equalTo: storeName.centerYAnchor),
-//            imageView.widthAnchor.constraint(equalToConstant: 16),
-//            imageView.heightAnchor.constraint(equalToConstant: 16)
         ])
         
         storeName.text = wineStoreInfo?.storeName ?? ""
@@ -166,62 +168,35 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
         else { return UICollectionViewCell() }
         cell.wineInfo = wineStoreInfo.wines[indexPath.row]
         
-        if indexPath.row == 2, wineStoreInfo.wines.count - 3 > 0 {
+        if indexPath.row == 2, isMoreThree {
             cell.setMoreView(wineStoreInfo.wines.count - 3)
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
-             return
+        let storyBoard = UIStoryboard(name: "Store", bundle: nil)
+        guard indexPath.row == 2, isMoreThree, let vc = storyBoard.instantiateViewController(withIdentifier: "StoreInfoViewController") as? StoreInfoViewController else {
+                goToStoreInfoVC()
+                return
         }
-        vc.crntIndex = indexPath.row
-        vc.wines = self.wineStoreInfo?.wines ?? []
-        vc.modalPresentationStyle = .overFullScreen
+        vc.wineStoreInfo = self.wineStoreInfo
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
+        
+        func goToStoreInfoVC() {
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
+                 return
+            }
+            vc.crntIndex = indexPath.row
+            vc.wines = self.wineStoreInfo?.wines ?? []
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
-    }
-}
-
-extension StoreInfoSummaryViewController: CapturedImageProtocol{
-    func captured(_ uiImage: UIImage?) {
-        guard let uiImage = uiImage else {
-            return
-        }
-        WineLabelReader.doStartToOCR(uiImage) {
-        //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
-            print($0)
-            testOCRView($0)
-        }
-        
-        func testOCRView(_ str: String?) {
-            let view = UIView()
-            self.view.addSubview(view)
-            print(view)
-            view.translatesAutoresizingMaskIntoConstraints = false
-            let textView = UITextView()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(textView)
-            NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200),
-                view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 45),
-                view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -45),
-                view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -45),
-                
-                textView.topAnchor.constraint(equalTo: view.topAnchor),
-                textView.leftAnchor.constraint(equalTo: view.leftAnchor),
-                textView.rightAnchor.constraint(equalTo: view.rightAnchor),
-                textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ])
-            textView.isEditable = false
-            textView.text = str
-            testView = view
-        }
-        
     }
 }
 

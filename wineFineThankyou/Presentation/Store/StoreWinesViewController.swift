@@ -29,7 +29,6 @@ class StoreWinesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateUI()
     }
     
     private func configure() {
@@ -38,6 +37,7 @@ class StoreWinesViewController: UIViewController {
         setupCollectionView()
         setUpWineInfoView()
         setUpWineTypeLabel()
+        self.updateUI()
     }
     
     private func setUpWineTypeLabel(){
@@ -80,6 +80,7 @@ class StoreWinesViewController: UIViewController {
         collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: "WineImageCell", bundle: nil), forCellWithReuseIdentifier: "WineImageCell")
         collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.scrollToItem(at: IndexPath(row: self.crntIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     private func setUpWineInfoView() {
@@ -105,7 +106,6 @@ class StoreWinesViewController: UIViewController {
 extension StoreWinesViewController {
     private func updateUI(){
         self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wines.count)"
-        self.collectionView.scrollToItem(at: IndexPath(row: self.crntIndex, section: 0), at: .centeredHorizontally, animated: true)
         self.wineInfoView.wineInfo = wines[self.crntIndex]
         wineTypeLabel.text = wines[self.crntIndex].wineType.str
         wineTypeLabel.backgroundColor = wines[self.crntIndex].wineType.color
@@ -131,7 +131,7 @@ extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return cellSize
     }
-    
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let cellWidthWithSpacing = cellSize.width + minItemSpacing
         var offset = targetContentOffset.pointee
@@ -140,6 +140,7 @@ extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollec
         offset = CGPoint(x: roundedIndex * cellWidthWithSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
         targetContentOffset.pointee = offset
         self.crntIndex = Int(roundedIndex)
+        self.updateUI()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -157,8 +158,6 @@ extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollec
             }
             previousIndex = indexPath.item
         }
-        
-        self.updateUI()
     }
     
     private func animateZoom(_ cell: UICollectionViewCell) {
