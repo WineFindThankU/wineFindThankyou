@@ -29,7 +29,7 @@ extension APITarget: TargetType {
     var path: String {
         switch self {
         case .shopList: return "/shop?type=location"
-        case .shopListKeyword: return "/shop?type=keyword&"
+        case .shopListKeyword: return "/shop?type=keyword"
         }
     }
 
