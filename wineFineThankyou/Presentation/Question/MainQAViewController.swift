@@ -36,7 +36,6 @@ class MainQAViewController: UIViewController {
     }
     
     @IBAction func onClickNext(_ sender: UIButton) {
-        //MARK: 문용 For Test
         if currentPage == 2 {
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
             vc.modalPresentationStyle = .fullScreen

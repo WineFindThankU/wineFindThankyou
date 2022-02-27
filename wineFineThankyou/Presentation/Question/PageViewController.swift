@@ -45,7 +45,6 @@ class PageViewController: UIPageViewController {
 
 extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    // 이전 페이지로 넘기는 부분
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcBefore = viewController as? QAViewController,
                 let vcIndex = vcArray.firstIndex(of: vcBefore)
@@ -65,8 +64,6 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
         return vcArray[prevIndex]
     }
     
-    
-    // 다음 페이지로 넘기는 부분
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vcAfter = viewController as? QAViewController,
                 let vcIndex = vcArray.firstIndex(of: vcAfter)
