@@ -52,3 +52,9 @@ extension UITextField {
         }
     }
 }
+
+extension UIViewController {
+    static var identifier: String {
+        return self.description().components(separatedBy: ".").last ?? ""
+    }
+}

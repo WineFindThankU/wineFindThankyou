@@ -64,7 +64,6 @@ class MyPageTableViewCell: UITableViewCell{
 
 extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("munyong numberOfSections: \(MypageTableViewSection.allCases.count)")
         return 1
     }
     

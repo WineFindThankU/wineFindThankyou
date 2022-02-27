@@ -40,9 +40,7 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
     }
     @objc
     private func close() {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true)
-        }
+        self.dismiss(animated: true)
     }
     
     private func showDescribeView() {
@@ -74,7 +72,6 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
             if captureSession.canAddInput(input) { captureSession.addInput(input) }
             captureSession.addOutput(photoOutput)
         } catch {
-            print(error.localizedDescription)
             return
         }
     }

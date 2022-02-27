@@ -8,53 +8,50 @@
 import Foundation
 import UIKit
 
-class StoreInfoViewController: UIViewController, SelectedWineCellProtocol {
+class StoreInfoViewController: ContainStoreButtonViewController, SelectedWineCellProtocol {
     enum TableSection: Int, CaseIterable {
         case StoreInfo = 0
         case WineList = 1
     }
-    private weak var topView: TopView?
-    private weak var storeButtonView: StoreButtonsView?
-    private weak var storeInfoTableView: UITableView?
-    var wineStoreInfo: WineStoreInfo?
+    private unowned var topView: TopView?
+    private unowned var storeInfoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        setTopView()
+        setContentsView()
     }
     
-    private func configure() {
+    func setTopView() {
+        let topView = getGlobalTopView(self.view, height: 44)
+        topView.titleLabel?.text = wineStoreInfo?.storeName
+        topView.leftButton?.setBackgroundImage(UIImage(named: "backArrow"), for: .normal)
+        topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
+        self.topView = topView
+    }
+    
+    private func setContentsView() {
+        guard let topView = topView else { return }
+        
         self.view.backgroundColor = Theme.white.color
-        topView = getGlobalTopView(self.view, height: 44)
-        storeButtonView = setStoreButtonView(superView: self.view, topView!)
-        self.topView?.titleLabel?.text = wineStoreInfo?.storeName
-        self.topView?.leftButton?.setBackgroundImage(UIImage(named: "backArrow"), for: .normal)
-        self.topView?.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
-        guard let storeButtonView = storeButtonView else {
-            return
-        }
-
+        let storeBtnsView = setStoreButtonView(superView: self.view, topView)
         let storeInfoTableView = UITableView()
         self.view.addSubview(storeInfoTableView)
         storeInfoTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            storeInfoTableView.topAnchor.constraint(equalTo: storeButtonView.bottomAnchor),
+            storeInfoTableView.topAnchor.constraint(equalTo: storeBtnsView.bottomAnchor),
             storeInfoTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             storeInfoTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             storeInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
+        storeButtonsView = storeBtnsView
         self.storeInfoTableView = storeInfoTableView
         makeTableView()
     }
     
-    @objc
-    private func close() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func selectedCell(_ row: Int) {
-        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
+        guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreWinesViewController.identifier) as? StoreWinesViewController else {
              return
         }
         vc.crntIndex = row

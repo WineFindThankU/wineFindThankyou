@@ -56,7 +56,7 @@ class SettingsViewController: UIViewController{
 
     @objc
     private func goToConnectUs(){
-        guard let vc = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ConnectUsViewController") as? ConnectUsViewController else { return }
+        guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: ConnectUsViewController.identifier) as? ConnectUsViewController else { return }
         self.present(vc, animated: true)
     }
 }

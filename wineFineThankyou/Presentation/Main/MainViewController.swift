@@ -118,8 +118,8 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     
     @objc
     private func openMyPage() {
-        guard let vc = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MyPageViewController") as? MyPageViewController else { return }
-        
+        guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: MyPageViewController.identifier) as? MyPageViewController
+        else { return }
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
@@ -150,7 +150,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         }
         
         func showStoreInfoSummary() {
-             guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoSummaryViewController") as? StoreInfoSummaryViewController  else { return }
+            guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoSummaryViewController.identifier) as? StoreInfoSummaryViewController  else { return }
              
              vc.modalPresentationStyle = .overFullScreen
              DispatchQueue.main.async { [weak self] in

@@ -42,7 +42,7 @@ class TypeDetailStackView: UIView{
             titles = WineType.allCases.compactMap { $0.str }
             colors = WineType.allCases.compactMap { $0.color } + [UIColor(rgb: 0x000000)]
         }
-        print("colors: \(colors)")
+        
         for (idx, color) in colors.enumerated() {
             let detailStacked = DetailStacked()
             stackView.addArrangedSubview(detailStacked)

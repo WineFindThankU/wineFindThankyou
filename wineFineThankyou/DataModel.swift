@@ -8,6 +8,16 @@
 import Foundation
 import UIKit
 
+enum StoryBoard: String {
+    case main = "Main"
+    case store = "Store"
+    case myPage = "MyPage"
+    case readWine = "ReadWine"
+    var name: String {
+        return self.rawValue
+    }
+}
+
 enum StoreType {
     case privateShop
     case chainShop

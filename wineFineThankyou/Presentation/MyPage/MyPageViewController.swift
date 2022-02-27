@@ -24,7 +24,6 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
         super.viewDidLoad()
         configure()
         setTouchGesture()
-        
         //MARK: Test
         wineInfos = getWines()
         visitedWineStoreInfos = getWineStoreInfo()
@@ -71,7 +70,8 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     
     @objc
     private func goToSettings() {
-        guard let vc = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { return }
+        guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: SettingsViewController.identifier) as? SettingsViewController
+        else { return }
         vc.modalTransitionStyle = .flipHorizontal
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
@@ -108,15 +108,15 @@ extension MyPageViewController {
     }
     
     private func goToNextStep(_ type: MypageTableViewSection) {
-        let storyBoard = UIStoryboard(name: "MyPage", bundle: nil)
+        let storyBoard = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil)
         switch type {
         case .recentlyBoughtWine:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: "BoughtWineListViewController") as? BoughtWineListViewController
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
             vc.wineInfos = self.wineInfos
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: "UsersWineShopListViewController") as? UsersWineShopListViewController
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
             vc.wineStoreInfos = type == .recentlyVisitedShop ? self.visitedWineStoreInfos : self.favoritesWineStoreInfos
             presentVc(vc)
@@ -143,7 +143,6 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print(MypageTableViewSection.allCases.count)
         return MypageTableViewSection.allCases.count
     }
     
@@ -182,7 +181,6 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         showMyProfileView()
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
         if Int(scrollView.contentOffset.y) <= 0 {
             showMyProfileView()
         }

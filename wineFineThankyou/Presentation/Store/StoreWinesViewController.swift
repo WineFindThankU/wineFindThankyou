@@ -24,19 +24,19 @@ class StoreWinesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        setUpTopView()
+        setupCollectionView()
+        setUpWineInfoView()
+        setUpWineTypeLabel()
+        detailConfigure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    private func configure() {
+    private func detailConfigure() {
         self.view.backgroundColor = Theme.black.color.withAlphaComponent(0.8)
-        setUpTopView()
-        setupCollectionView()
-        setUpWineInfoView()
-        setUpWineTypeLabel()
         self.updateUI()
     }
     

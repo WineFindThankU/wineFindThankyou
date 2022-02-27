@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDelegate {
+class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestureRecognizerDelegate {
     @IBOutlet private weak var backgroundView: UIView!
     @IBOutlet private weak var contentsView: UIView!
     @IBOutlet private weak var contentsTopView: UIView!
@@ -17,30 +17,17 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
     @IBOutlet private weak var winesCollectionView: UICollectionView!
     @IBOutlet weak var viewTopAnchor: NSLayoutConstraint!
     
-    private var storeButtonsView: StoreButtonsView?
-    internal var wineStoreInfo: WineStoreInfo?
     private var isMoreThree: Bool {
         return wineStoreInfo?.wines.count ?? 0 >= 3
     }
     
-    //MARK: TestView
-    var testView : UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .clear
-        backgroundView.backgroundColor = .clear
-        //MARK: TEST CODE
-        self.wineStoreInfo = WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                           classification: .privateShop,
-                                           callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                           openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                           wines: [])
-        getWines().forEach { self.wineStoreInfo?.addWines($0) }
-        getWines().forEach { self.wineStoreInfo?.addWines($0) }
-        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+        testCode()
         
+        setTopView()
+        setContentsView()
         registerAction()
-        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,26 +45,17 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
         winesCollectionView.isHidden = false
     }
     
-    private func configure() {
-        setTopView()
+    private func setContentsView() {
+        self.view.backgroundColor = .clear
+        backgroundView.backgroundColor = .clear
         contentsView.layer.cornerRadius = 12
         storeButtonsView = setStoreButtonView(superView: contentsButtonView, contentsTopView)
-        storeButtonsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
-        storeButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
-        storeButtonsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
-            
         winesCollectionView.delegate = self
         winesCollectionView.dataSource = self
         winesCollectionView.register(UINib(nibName: "WineInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WineInfoCollectionViewCell")
     }
     
-    private func registerAction() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(close))
-        self.backgroundView.addGestureRecognizer(gesture)
-        self.backgroundView.isUserInteractionEnabled = true
-    }
-    
-    private func setTopView() {
+    func setTopView() {
         let storeName = UILabel()
         let storeClassification = UILabel()
         let rightButton = UIButton()
@@ -119,40 +97,11 @@ class StoreInfoSummaryViewController: UIViewController, UIGestureRecognizerDeleg
         imageView.image = UIImage(named: "rightArrow")
         rightButton.addTarget(self, action: #selector(goToStore), for: .touchUpInside)
     }
-}
-
-//objc button Action
-extension StoreInfoSummaryViewController {
-    @objc
-    func addFavorites() {
-        
-    }
     
-    @objc
-    func findRoad() {
-        
-    }
-    
-    @objc
-    func takePicture() {
-        guard let vc = UIStoryboard(name: "ReadWine", bundle: nil).instantiateViewController(withIdentifier: "AddWineInfomationViewController") as? AddWineInfomationViewController else { return }
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: false)
-    }
-    
-    @objc
-    private func goToStore() {
-        guard let vc = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier: "StoreInfoViewController") as? StoreInfoViewController else { return }
-        vc.wineStoreInfo = wineStoreInfo
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: {
-
-        })
-    }
-    
-    @objc
-    private func close() {
-        self.dismiss(animated: true)
+    private func registerAction() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(close))
+        self.backgroundView.addGestureRecognizer(gesture)
+        self.backgroundView.isUserInteractionEnabled = true
     }
 }
 
@@ -175,8 +124,8 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "Store", bundle: nil)
-        guard indexPath.row == 2, isMoreThree, let vc = storyBoard.instantiateViewController(withIdentifier: "StoreInfoViewController") as? StoreInfoViewController else {
+        let storyBoard = UIStoryboard(name: StoryBoard.store.name, bundle: nil)
+        guard indexPath.row == 2, isMoreThree, let vc = storyBoard.instantiateViewController(withIdentifier: StoreInfoViewController.identifier) as? StoreInfoViewController else {
                 goToStoreInfoVC()
                 return
         }
@@ -201,7 +150,18 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
 }
 
 extension StoreInfoSummaryViewController {
-    //MARK: TEST
+    func testCode() {
+        //MARK: TEST CODE
+        self.wineStoreInfo = WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
+                                           classification: .privateShop,
+                                           callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                           openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
+                                           wines: [])
+        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+        getWines().forEach { self.wineStoreInfo?.addWines($0) }
+    }
+    
     private func getWines() -> [WineInfo] {
         guard let img = UIImage(named: "TestWineImg") else { return [] }
     

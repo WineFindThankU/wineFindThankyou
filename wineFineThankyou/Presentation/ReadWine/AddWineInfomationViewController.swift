@@ -35,7 +35,9 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private func nextStepByCaptureStatus(){
         switch captrueStatus {
         case .initial:
-            guard let vc = UIStoryboard(name: "ReadWine", bundle: nil).instantiateViewController(withIdentifier: "CameraCaptureViewController") as? CameraCaptureViewController else { return }
+            guard let vc = UIStoryboard(name: StoryBoard.readWine.rawValue, bundle: nil).instantiateViewController(withIdentifier: CameraCaptureViewController.identifier) as? CameraCaptureViewController
+            else { return }
+            
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: {
                 self.captrueStatus = .cancel
