@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ShopListKeyword
+enum ShopListKeywordModel
 {
     struct Request
     {

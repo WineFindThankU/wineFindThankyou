@@ -16,6 +16,10 @@
 		4433C01C27CB94E700119931 /* InquiryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01B27CB94E700119931 /* InquiryViewController.swift */; };
 		4433C04727CBB9A700119931 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C04627CBB9A700119931 /* ShopList.swift */; };
 		4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C04C27CBBB1800119931 /* ShopListKeyword.swift */; };
+		4433C05227CBBED700119931 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05127CBBED700119931 /* APITarget.swift */; };
+		4433C05527CBBF4800119931 /* TagetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05427CBBF4800119931 /* TagetType.swift */; };
+		4433C05727CBC18800119931 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05627CBC18800119931 /* HTTPHeaderField.swift */; };
+		4433C05927CBC19C00119931 /* MyRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */; };
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
 		44442491279D4C9000903DC7 /* FinalQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44442490279D4C9000903DC7 /* FinalQAViewController.swift */; };
 		4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */; };
@@ -128,6 +132,10 @@
 		4433C01B27CB94E700119931 /* InquiryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryViewController.swift; sourceTree = "<group>"; };
 		4433C04627CBB9A700119931 /* ShopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		4433C04C27CBBB1800119931 /* ShopListKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListKeyword.swift; sourceTree = "<group>"; };
+		4433C05127CBBED700119931 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
+		4433C05427CBBF4800119931 /* TagetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagetType.swift; sourceTree = "<group>"; };
+		4433C05627CBC18800119931 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
+		4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestInterceptor.swift; sourceTree = "<group>"; };
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		44442490279D4C9000903DC7 /* FinalQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalQAViewController.swift; sourceTree = "<group>"; };
 		4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -276,9 +284,35 @@
 			children = (
 				4433C04627CBB9A700119931 /* ShopList.swift */,
 				4433C04C27CBBB1800119931 /* ShopListKeyword.swift */,
-				441951A8279B123D00D0D381 /* OnboardingSlide.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4433C04E27CBBEA300119931 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4433C04327CBB99300119931 /* Models */,
+				4433C05127CBBED700119931 /* APITarget.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		4433C04F27CBBEB600119931 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				441951A8279B123D00D0D381 /* OnboardingSlide.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		4433C05327CBBF3D00119931 /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				4433C05427CBBF4800119931 /* TagetType.swift */,
+				4433C05627CBC18800119931 /* HTTPHeaderField.swift */,
+				4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */,
+			);
+			path = Bases;
 			sourceTree = "<group>";
 		};
 		44442489279D373C00903DC7 /* Main */ = {
@@ -405,8 +439,10 @@
 		44FF46FE27A5620B0063924D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4433C05327CBBF3D00119931 /* Bases */,
+				4433C04F27CBBEB600119931 /* Walkthrough */,
+				4433C04E27CBBEA300119931 /* Main */,
 				44FF46FF27A5623A0063924D /* RequestNetworking.swift */,
-				4433C04327CBB99300119931 /* Models */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -877,6 +913,7 @@
 				C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */,
 				BAA4031827BA945700C50221 /* WineListTitle.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
+				4433C05727CBC18800119931 /* HTTPHeaderField.swift in Sources */,
 				BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */,
 				BA86ADF127B7E02700580511 /* WineLabelReader.swift in Sources */,
 				4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */,
@@ -892,6 +929,7 @@
 				4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */,
 				BA913C0B27C0BD410055B2A4 /* StatisticsOfWineView.swift in Sources */,
 				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
+				4433C05527CBBF4800119931 /* TagetType.swift in Sources */,
 				4459BC0127C504BD000F79CF /* Store.swift in Sources */,
 				44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */,
 				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
@@ -905,6 +943,7 @@
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
 				44FF470327A563310063924D /* Shops.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
+				4433C05227CBBED700119931 /* APITarget.swift in Sources */,
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,
 				4433C01C27CB94E700119931 /* InquiryViewController.swift in Sources */,
@@ -919,6 +958,7 @@
 				BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */,
 				BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */,
 				BA913C0D27C0BDA90055B2A4 /* WelcomeView.swift in Sources */,
+				4433C05927CBC19C00119931 /* MyRequestInterceptor.swift in Sources */,
 				BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */,
 				44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */,
 				44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */,
