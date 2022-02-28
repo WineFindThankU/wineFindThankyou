@@ -93,7 +93,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
 }
 
 extension AddWineInfomationViewController: CapturedImageProtocol {
-    func captured(_ uiImage: UIImage?) {
+    func captured(_ uiImage: UIImage?, done: (() -> Void)?) {
         guard let uiImage = uiImage else {
             return
         }
@@ -101,6 +101,7 @@ extension AddWineInfomationViewController: CapturedImageProtocol {
         WineLabelReader.doStartToOCR(uiImage) {
         //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
             print($0)
+            done?()
         }
     }
 }

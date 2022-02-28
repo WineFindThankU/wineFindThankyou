@@ -55,10 +55,15 @@ class MyPageListViewController: UIViewController {
         self.tableView = tableView
     }
     
-    //MARK: Override
     @objc
     func touchPlusButton() {
-        //와인샵 검색페이지가 나와야 한다.
+        guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
+        else { return }
+        
+        vc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.async {
+            self.present(vc, animated: true)
+        }
     }
     
     @objc

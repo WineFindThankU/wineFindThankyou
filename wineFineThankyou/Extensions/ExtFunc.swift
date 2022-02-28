@@ -8,17 +8,27 @@
 import Foundation
 import UIKit
 
-func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+func topViewController(baseParam: UIViewController? = nil) -> UIViewController? {
+    var base = baseParam
+    if base == nil {
+        base = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first?.rootViewController
+    }
+    
     if let nav = base as? UINavigationController {
-        return topViewController(base: nav.visibleViewController)
+        return topViewController(baseParam: nav.visibleViewController)
     }
     if let tab = base as? UITabBarController {
         if let selected = tab.selectedViewController {
-            return topViewController(base: selected)
+            return topViewController(baseParam: selected)
         }
     }
     if let presented = base?.presentedViewController {
-        return topViewController(base: presented)
+        return topViewController(baseParam: presented)
     }
     return base
 }

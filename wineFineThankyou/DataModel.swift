@@ -13,6 +13,7 @@ enum StoryBoard: String {
     case store = "Store"
     case myPage = "MyPage"
     case readWine = "ReadWine"
+    
     var name: String {
         return self.rawValue
     }

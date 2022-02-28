@@ -15,10 +15,6 @@ class UsersWineShopListViewController: MyPageListViewController {
         super.viewDidLoad()
         setTableView()
     }
-    
-    override func touchPlusButton() {
-        
-    }
 }
 
 extension UsersWineShopListViewController: UITableViewDelegate, UITableViewDataSource {

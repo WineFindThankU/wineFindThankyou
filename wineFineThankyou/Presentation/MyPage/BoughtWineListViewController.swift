@@ -14,10 +14,6 @@ class BoughtWineListViewController: MyPageListViewController {
         super.viewDidLoad()
         setTableView()
     }
-    
-    override func touchPlusButton() {
-        
-    }
 }
 
 extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSource {
