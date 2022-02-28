@@ -32,7 +32,6 @@ extension MainAPITarget: TargetType {
         case .shopListKeyword: return "/shop?type=keyword"
         }
     }
-
     var parameters: RequestParams {
         switch self {
         case .shopList(let request): return .body(request as! Encodable)

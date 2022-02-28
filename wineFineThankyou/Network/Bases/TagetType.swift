@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-//  API들의 공통 Endpoint를 가지고 있는 모듈
+
 protocol TargetType: URLRequestConvertible {
     var baseURL: String { get }
     var method: HTTPMethod { get }
@@ -16,12 +16,7 @@ protocol TargetType: URLRequestConvertible {
     var parameters: RequestParams { get }
 }
 
-//protocol인 URLRequestConvertible의 asURLRequest를 구현하여
-// AF.request할 때 URLRequest객체 커스텀
-
 extension TargetType {
-
-    // URLRequestConvertible 구현
     func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL()
         var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)

@@ -7,40 +7,27 @@
 
 import Foundation
 import Alamofire
+import Foundation
+import Alamofire
 
-class APIEventLogger: EventMonitor {
+final class MyRequestInterceptor: RequestInterceptor {
+    func adapt(_ urlRequest: URLRequest, for session: Session,
+               completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        guard urlRequest.url?.absoluteString.hasPrefix("https://api.agify.io") == true,
+              let accessToken = KeychainServiceImpl.shared.accessToken else {
+                  completion(.success(urlRequest))
+                  return
+              }
 
-    let queue = DispatchQueue(label: "myNetworkLogger")
-
-    func requestDidFinish(_ request: Request) {
-      print("🛰 NETWORK Reqeust LOG")
-      print(request.description)
-
-      print(
-        "URL: " + (request.request?.url?.absoluteString ?? "")  + "\n"
-          + "Method: " + (request.request?.httpMethod ?? "") + "\n"
-          + "Headers: " + "\(request.request?.allHTTPHeaderFields ?? [:])" + "\n"
-      )
-      print("Authorization: " + (request.request?.headers["Authorization"] ?? ""))
-      print("Body: " + (request.request?.httpBody?.toPrettyPrintedString ?? ""))
+        var urlRequest = urlRequest
+        urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        completion(.success(urlRequest))
     }
 
-    func request<Value>(_ request: DataRequest, didParseResponse response: DataResponse<Value, AFError>) {
-        print("🛰 NETWORK Response LOG")
-        print(
-          "URL: " + (request.request?.url?.absoluteString ?? "") + "\n"
-            + "Result: " + "\(response.result)" + "\n"
-            + "StatusCode: " + "\(response.response?.statusCode ?? 0)" + "\n"
-            + "Data: \(response.data?.toPrettyPrintedString ?? "")"
-        )
-    }
-}
-
-extension Data {
-    var toPrettyPrintedString: String? {
-        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
-              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
-              let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
-        return prettyPrintedString as String
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
+            completion(.doNotRetryWithError(error))
+            return
+        }
     }
 }

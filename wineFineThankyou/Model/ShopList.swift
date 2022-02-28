@@ -20,8 +20,12 @@ enum ShopListModel
     }
     struct ViewModel: Decodable
     {
-        var result: Bool
+        var sh_address: Bool
     }
+}
+
+struct ShopList {
+    let sh_address: String
 }
 
 struct ShopListResponse: Decodable {
