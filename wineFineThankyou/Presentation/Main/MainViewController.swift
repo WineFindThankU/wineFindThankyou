@@ -21,14 +21,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
             "백화점"
     ]
 
-    var colors: [UIColor] = [.white,
-                            .personalShop,
-                            .chainShop,
-                             .convinStore,
-                             .bigMart,
-                             .boxMarket,
-                             .departStore]
-   
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,19 +32,39 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     var markers: [NMFMarker] = []
     let disposeBag = DisposeBag()
     
+    private lazy var currentLocationButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "Tag")
+        button.setImage(image, for: .normal)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+        button.layer.shadowOpacity = 0.15
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setMap()
         
+        // TEST
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+        marker.mapView = mapView
+        marker.iconImage = NMFOverlayImage(name: "Group 32")
     }
     
     private func setupUI() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        //MARK: TEST
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
-
+        
+        self.view.addSubview(currentLocationButton)
+        currentLocationButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(20)
+            make.height.width.equalTo(46)
+        }
         makeTestButtonCode()
     }
     
@@ -79,6 +91,19 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         
     }
     
+    fileprivate func moveCamera(position: CLLocation) {
+        let cameraPosition = NMFCameraPosition(
+            NMGLatLng(
+                lat: position.coordinate.latitude,
+                lng: position.coordinate.longitude
+            ),
+            zoom: self.mapView.zoomLevel
+        )
+        let cameraUpdate = NMFCameraUpdate(position: cameraPosition)
+        
+        cameraUpdate.animation = .easeIn
+        self.mapView.moveCamera(cameraUpdate)
+    }
     
     private func selectMarker(selectedIndex: Int, stores: [Store]) {
       self.clearMarker()
@@ -184,8 +209,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let color = colors[indexPath.row]
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
         cell.configure(name: arrCategoryName[indexPath.item])
         cell.configureColor(with: color)

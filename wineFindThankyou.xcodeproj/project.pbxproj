@@ -29,6 +29,7 @@
 		4459BC0527C50621000F79CF /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0427C50621000F79CF /* LocationError.swift */; };
 		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
 		44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A98627B921F8004C8E6C /* LoginModel.swift */; };
+		44A9DA8F27CD03F500F320EC /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A9DA8E27CD03F500F320EC /* MapService.swift */; };
 		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
 		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
 		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
@@ -145,6 +146,7 @@
 		4459BC0427C50621000F79CF /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
 		44A8A98627B921F8004C8E6C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		44A9DA8E27CD03F500F320EC /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +329,14 @@
 			path = location;
 			sourceTree = "<group>";
 		};
+		44A9DA8D27CD03EB00F320EC /* services */ = {
+			isa = PBXGroup;
+			children = (
+				44A9DA8E27CD03F500F320EC /* MapService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		44AE4C5C2795AEEA00923F24 /* Question */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +387,7 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
+				44A9DA8D27CD03EB00F320EC /* services */,
 				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				44FF470427A5713A0063924D /* Views */,
 				44FF470127A563230063924D /* Model */,
@@ -964,6 +975,7 @@
 				44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */,
 				BAAAAE5327C8E53600DFEB59 /* UsersWineShopListViewController.swift in Sources */,
 				BA8BB7BC27A44E430010F05A /* StoreInfoSummaryViewController.swift in Sources */,
+				44A9DA8F27CD03F500F320EC /* MapService.swift in Sources */,
 				BAAAAE5527C8E58B00DFEB59 /* UserWineShopListTableViewCell.swift in Sources */,
 				BAE7965027C1C21200D2AC1F /* MyPageTableViewCell.swift in Sources */,
 				BA77CFE5279EF94A00832389 /* ExtUIView.swift in Sources */,

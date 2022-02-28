@@ -18,7 +18,6 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var viewLine: UIView!
     
-    // 일단 하드코딩 (API 안됨ㅠ)
     private let items: [String] = [
             "서현동",
             "행정동",
