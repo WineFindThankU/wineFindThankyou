@@ -16,7 +16,7 @@
 		4433C01C27CB94E700119931 /* InquiryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01B27CB94E700119931 /* InquiryViewController.swift */; };
 		4433C04727CBB9A700119931 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C04627CBB9A700119931 /* ShopList.swift */; };
 		4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C04C27CBBB1800119931 /* ShopListKeyword.swift */; };
-		4433C05227CBBED700119931 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05127CBBED700119931 /* APITarget.swift */; };
+		4433C05227CBBED700119931 /* MainAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05127CBBED700119931 /* MainAPITarget.swift */; };
 		4433C05527CBBF4800119931 /* TagetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05427CBBF4800119931 /* TagetType.swift */; };
 		4433C05727CBC18800119931 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05627CBC18800119931 /* HTTPHeaderField.swift */; };
 		4433C05927CBC19C00119931 /* MyRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */; };
@@ -32,6 +32,7 @@
 		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
 		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
 		44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */; };
+		44B2D54627CCAA9C005A7EA2 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2D54527CCAA9C005A7EA2 /* MainAPI.swift */; };
 		44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CBE278471A700FD8567 /* AppDelegate.swift */; };
 		44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC0278471A700FD8567 /* SceneDelegate.swift */; };
 		44FF1CC6278471A700FD8567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CC4278471A700FD8567 /* Main.storyboard */; };
@@ -45,7 +46,6 @@
 		44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 44FF1CF92786C03000FD8567 /* FirebaseAuth */; };
 		44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FC27A55F420063924D /* SearchViewController.swift */; };
 		44FF470027A5623A0063924D /* RequestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FF27A5623A0063924D /* RequestNetworking.swift */; };
-		44FF470327A563310063924D /* Shops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF470227A563310063924D /* Shops.swift */; };
 		84A1DA12F70C7B51ABF11635 /* Pods_wineFindThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F255753E0A6373EB1FF0CF /* Pods_wineFindThankyou.framework */; };
 		BA1E472327AF9D23005C3319 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1E472227AF9D23005C3319 /* MyPage.storyboard */; };
 		BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E472427AF9F03005C3319 /* SettingsViewController.swift */; };
@@ -132,7 +132,7 @@
 		4433C01B27CB94E700119931 /* InquiryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquiryViewController.swift; sourceTree = "<group>"; };
 		4433C04627CBB9A700119931 /* ShopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		4433C04C27CBBB1800119931 /* ShopListKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListKeyword.swift; sourceTree = "<group>"; };
-		4433C05127CBBED700119931 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
+		4433C05127CBBED700119931 /* MainAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPITarget.swift; sourceTree = "<group>"; };
 		4433C05427CBBF4800119931 /* TagetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagetType.swift; sourceTree = "<group>"; };
 		4433C05627CBC18800119931 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
 		4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestInterceptor.swift; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdQAViewController.swift; sourceTree = "<group>"; };
+		44B2D54527CCAA9C005A7EA2 /* MainAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
 		44FF1CBB278471A700FD8567 /* wineFindThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFindThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CBE278471A700FD8567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FF1CC0278471A700FD8567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,7 +165,6 @@
 		44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44FF46FC27A55F420063924D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		44FF46FF27A5623A0063924D /* RequestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNetworking.swift; sourceTree = "<group>"; };
-		44FF470227A563310063924D /* Shops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shops.swift; sourceTree = "<group>"; };
 		81AEBDF1AE0EFBE3BC435F3D /* Pods-wineFindThankyou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou.debug.xcconfig"; sourceTree = "<group>"; };
 		96B9A3140C26E9FDD88BB102 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou_wineFindThankyouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1E472227AF9D23005C3319 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
@@ -279,20 +279,11 @@
 			path = PopupView;
 			sourceTree = "<group>";
 		};
-		4433C04327CBB99300119931 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4433C04627CBB9A700119931 /* ShopList.swift */,
-				4433C04C27CBBB1800119931 /* ShopListKeyword.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		4433C04E27CBBEA300119931 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4433C04327CBB99300119931 /* Models */,
-				4433C05127CBBED700119931 /* APITarget.swift */,
+				44B2D54527CCAA9C005A7EA2 /* MainAPI.swift */,
+				4433C05127CBBED700119931 /* MainAPITarget.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -309,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				4433C05427CBBF4800119931 /* TagetType.swift */,
+				44FF46FF27A5623A0063924D /* RequestNetworking.swift */,
 				4433C05627CBC18800119931 /* HTTPHeaderField.swift */,
 				4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */,
 			);
@@ -348,6 +340,15 @@
 				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
 			);
 			path = Question;
+			sourceTree = "<group>";
+		};
+		44B2D54427CCAA61005A7EA2 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				4433C04F27CBBEB600119931 /* Walkthrough */,
+				4433C04E27CBBEA300119931 /* Main */,
+			);
+			path = APIs;
 			sourceTree = "<group>";
 		};
 		44FF1CB2278471A700FD8567 = {
@@ -439,10 +440,8 @@
 		44FF46FE27A5620B0063924D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				44B2D54427CCAA61005A7EA2 /* APIs */,
 				4433C05327CBBF3D00119931 /* Bases */,
-				4433C04F27CBBEB600119931 /* Walkthrough */,
-				4433C04E27CBBEA300119931 /* Main */,
-				44FF46FF27A5623A0063924D /* RequestNetworking.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -450,7 +449,8 @@
 		44FF470127A563230063924D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				44FF470227A563310063924D /* Shops.swift */,
+				4433C04627CBB9A700119931 /* ShopList.swift */,
+				4433C04C27CBBB1800119931 /* ShopListKeyword.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -941,9 +941,9 @@
 				4433C01A27CB947400119931 /* LeaveViewController.swift in Sources */,
 				BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */,
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
-				44FF470327A563310063924D /* Shops.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
-				4433C05227CBBED700119931 /* APITarget.swift in Sources */,
+				44B2D54627CCAA9C005A7EA2 /* MainAPI.swift in Sources */,
+				4433C05227CBBED700119931 /* MainAPITarget.swift in Sources */,
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,
 				4433C01C27CB94E700119931 /* InquiryViewController.swift in Sources */,
