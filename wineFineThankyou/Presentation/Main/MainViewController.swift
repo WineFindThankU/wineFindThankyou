@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import NMapsMap
+import CoreLocation
 import RxSwift
 
 class MainViewController: UIViewController, NMFMapViewCameraDelegate {
@@ -42,6 +43,24 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         return button
     }()
     
+    private lazy var searchBarButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "Search Box2")
+        button.setImage(image, for: .normal)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+        button.layer.shadowOpacity = 0.15
+        let action = UIAction { _ in
+            let nextVC = SearchViewController()
+            nextVC.modalPresentationStyle = .overFullScreen
+            self.present(nextVC, animated: false)
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
@@ -50,6 +69,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     private func setupUI() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
         
         self.view.addSubview(currentLocationButton)
@@ -58,6 +78,13 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
             make.bottom.equalToSuperview().inset(20)
             make.height.width.equalTo(46)
         }
+        self.view.addSubview(searchBarButton)
+        searchBarButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(10)
+            make.height.equalTo(36)
+        }
+        
         makeTestButtonCode()
     }
     
@@ -84,7 +111,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
       for index in stores.indices {
         let store = stores[index]
         let marker = NMFMarker()
-        
         marker.position = NMGLatLng(lat: store.latitude, lng: store.longitude)
         if index == selectedIndex {
           let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(
@@ -101,7 +127,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
           marker.width = 24
           marker.height = 24
         }
-        marker.mapView = self.mapView
 
         self.markers.append(marker)
       }
@@ -252,3 +277,4 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
     
 }
+
