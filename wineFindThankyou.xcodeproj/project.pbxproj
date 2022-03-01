@@ -257,6 +257,7 @@
 		4401478427B2A1F400C8E85A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				44AE4C5D2795AF5A00923F24 /* PageViewController.swift */,
 				4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */,
 				44AE4C5C2795AEEA00923F24 /* Question */,
 				44FF1CF027869ED000FD8567 /* Login */,
@@ -337,7 +338,6 @@
 		44AE4C5C2795AEEA00923F24 /* Question */ = {
 			isa = PBXGroup;
 			children = (
-				44AE4C5D2795AF5A00923F24 /* PageViewController.swift */,
 				44234AF52796878C00848E44 /* MainQAViewController.swift */,
 				BA8BB7C627A50FAD0010F05A /* QAViewController.swift */,
 				44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */,
@@ -1159,7 +1159,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 385Y9B45N8;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 x86_64";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
@@ -1194,6 +1194,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 385Y9B45N8;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";

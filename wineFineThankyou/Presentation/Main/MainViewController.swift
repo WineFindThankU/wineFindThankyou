@@ -45,13 +45,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
-        self.setMap()
-        
-        // TEST
-        let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
-        marker.mapView = mapView
-        marker.iconImage = NMFOverlayImage(name: "Group 32")
     }
     
     private func setupUI() {
@@ -83,27 +76,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
           })
         .disposed(by: self.disposeBag)
     }
-    
-    private func setMap() {
-        mapView.positionMode = .direction
-        mapView.zoomLevel = 15
-        mapView.addCameraDelegate(delegate: self)
-        
-    }
-    
-    fileprivate func moveCamera(position: CLLocation) {
-        let cameraPosition = NMFCameraPosition(
-            NMGLatLng(
-                lat: position.coordinate.latitude,
-                lng: position.coordinate.longitude
-            ),
-            zoom: self.mapView.zoomLevel
-        )
-        let cameraUpdate = NMFCameraUpdate(position: cameraPosition)
-        
-        cameraUpdate.animation = .easeIn
-        self.mapView.moveCamera(cameraUpdate)
-    }
+
     
     private func selectMarker(selectedIndex: Int, stores: [Store]) {
       self.clearMarker()
