@@ -23,8 +23,10 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
 
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
+    @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchButtonOutlet: UIButton!
 
     var wineInfos: [WineInfo] = []
@@ -62,6 +64,8 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
             make.height.width.equalTo(46)
         }
         makeTestButtonCode()
+        self.mapView.bringSubviewToFront(searchView)
+        self.mapView.bringSubviewToFront(filterView)
     }
     
     func fetchStoresFromCurrentLocation() {
