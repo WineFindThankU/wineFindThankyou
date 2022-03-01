@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 
 class UserWineShopListTableViewCell: UITableViewCell {
-    var data: WineStoreInfo? {
-        didSet { updateUI() }
-    }
-    
     private unowned var deleteBtn: UIButton!
     private unowned var tagLabel: TagLabel!
     private unowned var shopName: UILabel!
     private unowned var registeredWineCount: UILabel!
+    
+    internal var wineCount = 0
+    internal var wineStoreInfo: WineStoreInfo? {
+        didSet { updateUI() }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,12 +30,13 @@ class UserWineShopListTableViewCell: UITableViewCell {
     }
     
     private func updateUI() {
-        guard let data = data else { return }
-        tagLabel.setTitle(title: data.classification.str, colorHex: 0xffffff,
-                          backColor: UIColor(rgb: 0x7b61ff),
+        guard let wineStoreInfo = wineStoreInfo else { return }
+        
+        tagLabel.setTitle(title: wineStoreInfo.classification.str, colorHex: 0xffffff,
+                          backColor: wineStoreInfo.classification.color,
                           font: .systemFont(ofSize: 11))
-        shopName.setTitle(title: data.storeName, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 13))
-        registeredWineCount.setTitle(title: "등록한 와인 10", colorHex: 0x757575, font: .systemFont(ofSize: 11))
+        shopName.setTitle(title: wineStoreInfo.storeName, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 13))
+        registeredWineCount.setTitle(title: "등록한 와인 \(wineCount)", colorHex: 0x757575, font: .systemFont(ofSize: 11))
     }
     
     private func setDetailConstraint(detailView: UIView) {

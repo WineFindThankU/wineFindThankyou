@@ -18,13 +18,12 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
     @IBOutlet weak var viewTopAnchor: NSLayoutConstraint!
     
     private var isMoreThree: Bool {
-        return wineStoreInfo?.wines.count ?? 0 >= 3
+        return wineInfos.count >= 3
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testCode()
-        
+
         setTopView()
         setContentsView()
         registerAction()
@@ -32,9 +31,9 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         viewTopAnchor.constant = UIScreen.main.bounds.height - 267
-        guard wineStoreInfo?.wines.count ?? 0 > 0 else {
+        guard wineInfos.count > 0 else {
             emptyView.isHidden = false
             winesCollectionView.isHidden = true
             
@@ -107,38 +106,34 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
 
 extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let wines = wineStoreInfo?.wines else { return 0 }
-        return wines.count > 3 ? 3 : wines.count
+        return wineInfos.count > 3 ? 3 : wineInfos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell,
-              let wineStoreInfo = wineStoreInfo
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell
         else { return UICollectionViewCell() }
-        cell.wineInfo = wineStoreInfo.wines[indexPath.row]
+        cell.wineInfo = wineInfos[indexPath.row]
         
         if indexPath.row == 2, isMoreThree {
-            cell.setMoreView(wineStoreInfo.wines.count - 3)
+            cell.setMoreView(wineInfos.count - 3)
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: StoryBoard.store.name, bundle: nil)
-        guard indexPath.row == 2, isMoreThree, let vc = storyBoard.instantiateViewController(withIdentifier: StoreInfoViewController.identifier) as? StoreInfoViewController else {
-                goToStoreInfoVC()
-                return
+        guard indexPath.row == 2, isMoreThree else {
+            goToStoreInfoVC()
+            return
         }
-        vc.wineStoreInfo = self.wineStoreInfo
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        goToStore()
         
         func goToStoreInfoVC() {
             guard let vc = storyBoard.instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
                  return
             }
             vc.crntIndex = indexPath.row
-            vc.wines = self.wineStoreInfo?.wines ?? []
+            vc.wineInfos = wineInfos
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
         }
@@ -146,59 +141,5 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
-    }
-}
-
-extension StoreInfoSummaryViewController {
-    func testCode() {
-        //MARK: TEST CODE
-        self.wineStoreInfo = WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                           classification: .privateShop,
-                                           callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                           openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                           wines: [])
-        getWines().forEach { self.wineStoreInfo?.addWines($0) }
-        getWines().forEach { self.wineStoreInfo?.addWines($0) }
-        getWines().forEach { self.wineStoreInfo?.addWines($0) }
-    }
-    
-    private func getWines() -> [WineInfo] {
-        guard let img = UIImage(named: "TestWineImg") else { return [] }
-    
-        var wineInfos = [WineInfo]()
-        wineInfos.append(
-            WineInfo(img: img,
-                     korName: "비카스 초이스 소비뇽 블랑 스파클링",
-                     engName: "Vicar's Choice Sauvignon Blanc Bubbles",
-                     wineType: WineType.sparkling,
-                     cepage: "소비뇽 블랑 (Sauvignon Blanc)",
-                     from: "뉴질랜드",
-                     vintage: "2010",
-                     alchol: "Alc. 15%")
-        )
-        
-        wineInfos.append(
-            WineInfo(img: img,
-                     korName: "카피텔 산 로코 발폴리첼라 리파쏘 수페리오레",
-                     engName: "Capitel San Rocco Valpolicella Ripasso Superiore",
-                     wineType: WineType.red,
-                     cepage: "코르비나(Corvina), 코르비노네(Corvinone), 론디넬라(Rondinella), 기타(Others)",
-                     from: "아르헨티나",
-                     vintage: "2010",
-                     alchol: "Alc. 15%")
-        )
-        
-        wineInfos.append(
-            WineInfo(img: img,
-                     korName: "젠틀 타이거 화이트",
-                     engName: "Gentle Tiger White",
-                     wineType: WineType.white,
-                     cepage: "샤르도네 (Chardonnay), 비우라 (Viura)",
-                     from: "뉴질랜드",
-                     vintage: "2010",
-                     alchol: "Alc. 15%")
-        )
-        
-        return wineInfos
     }
 }

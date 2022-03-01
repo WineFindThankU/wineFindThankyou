@@ -26,7 +26,9 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: NMFMapView!
     @IBOutlet weak var searchButtonOutlet: UIButton!
-    var wineStoreInfo: WineStoreInfo?
+
+    var wineInfos: [WineInfo] = []
+    var wineStoreInfos: [WineStoreInfo] = []
     var mapAnimatedFlag = false
     var previousOffset: CGFloat = 0
     var markers: [NMFMarker] = []
@@ -45,6 +47,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        loadTestDatas()
     }
     
     private func setupUI() {
@@ -119,6 +122,10 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: MyPageViewController.identifier) as? MyPageViewController
         else { return }
         vc.modalPresentationStyle = .fullScreen
+        vc.wineInfos = wineInfos
+        vc.visitedWineStoreInfos = wineStoreInfos.deduplicate()
+        vc.favoritesWineStoreInfos = wineStoreInfos.deduplicate()
+        
         self.present(vc, animated: true)
     }
     
@@ -149,9 +156,14 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         
         func showStoreInfoSummary() {
             guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoSummaryViewController.identifier) as? StoreInfoSummaryViewController  else { return }
-             
-             vc.modalPresentationStyle = .overFullScreen
-             DispatchQueue.main.async { [weak self] in
+            
+            vc.modalPresentationStyle = .overFullScreen
+            
+            //MARK: 문용. 테스트.
+            let randomKey = (0 ... 9).randomElement()
+            vc.wineStoreInfo = wineStoreInfos.filter { $0.key == randomKey }.first
+            vc.wineInfos = wineInfos.filter { $0.storeFk == randomKey ?? 0 }
+            DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
         }
@@ -198,7 +210,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4.0
     }
-
 }
 
 
@@ -251,4 +262,76 @@ final class MainCollectionViewCell: UICollectionViewCell {
         titleLabel.text = name
     }
     
+}
+
+//MARK: TEST DATA
+extension MainViewController {
+    func loadTestDatas() {
+        guard let img = UIImage(named: "TestWineImg") else { return }
+        (0 ... 9).forEach {
+            let type = StoreType.allCases.randomElement() ?? .privateShop
+            let wineStoreInfo = WineStoreInfo(key: $0,
+                                              storeName: "\($0)+벵가드와인머천트 분당지점",
+                                              classification: type,
+                                              callNumber: "010-1111-2222",
+                                              location: "경기도 성남시 분당구 서현이매분당동 241-5",
+                                              openingHours: "AM07:00 - PM11:00",
+                                              homepage: "https://wineFindThankYou.kr")
+            
+            let wineInfo = WineInfo(img: img,
+                                    korName: "비카스 초이스 소비뇽 블랑 스파클링",
+                                    engName: "Vicar's Choice Sauvignon Blanc Bubbles",
+                                    wineType: WineType.sparkling,
+                                    cepage: "소비뇽 블랑 (Sauvignon Blanc)",
+                                    from: "뉴질랜드",
+                                    vintage: "2010",
+                                    alchol: "Alc. 15%", storeFk: wineStoreInfo.key, boughtDate: Date())
+            let wineInfo2 = WineInfo(img: img,
+                                     korName: "젠틀 타이거 화이트",
+                                     engName: "Gentle Tiger White",
+                                     wineType: WineType.white,
+                                     cepage: "샤르도네 (Chardonnay), 비우라 (Viura)",
+                                     from: "뉴질랜드",
+                                     vintage: "2010",
+                                     alchol: "Alc. 15%", storeFk: wineStoreInfo.key, boughtDate: Date(timeInterval: TimeInterval(-86400 * $0), since: Date()))
+            let wineInfo3 = WineInfo(img: img,
+                                     korName: "카피텔 산 로코 발폴리첼라 리파쏘 수페리오레",
+                                     engName: "Capitel San Rocco Valpolicella Ripasso Superiore",
+                                     wineType: WineType.red,
+                                     cepage: "코르비나(Corvina), 코르비노네(Corvinone), 론디넬라(Rondinella), 기타(Others)",
+                                     from: "아르헨티나",
+                                     vintage: "2010",
+                                     alchol: "Alc. 15%", storeFk: wineStoreInfo.key, boughtDate: Date(timeInterval: TimeInterval(-86400 * 10 - $0), since: Date()))
+            let wineInfo4 = WineInfo(img: img,
+                                     korName: "젠틀 타이거 레드",
+                                     engName: "Gentle Tiger Red",
+                                     wineType: WineType.red,
+                                     cepage: "샤르도네 (Chardonnay)",
+                                     from: "뉴질랜드",
+                                     vintage: "2010",
+                                     alchol: "Alc. 13%", storeFk: wineStoreInfo.key, boughtDate: Date(timeInterval: TimeInterval(-86400 * 7 - $0), since: Date()))
+            
+            if $0 % 5 == 0 {
+                self.wineInfos.append(wineInfo)
+            }
+            self.wineInfos.append(wineInfo2)
+            if $0 % 2 == 0 {
+                self.wineInfos.append(wineInfo3)
+                self.wineInfos.append(wineInfo4)
+            }
+            self.wineStoreInfos.append(wineStoreInfo)
+        }
+    }
+}
+
+extension Array where Element == WineStoreInfo {
+    func deduplicate() -> [Element] {
+        var deduplicated = [WineStoreInfo]()
+        self.forEach { wineStoreInfo in
+            guard !deduplicated.contains(where: {$0.key == wineStoreInfo.key})
+            else { return }
+            deduplicated.append(wineStoreInfo)
+        }
+        return deduplicated
+    }
 }

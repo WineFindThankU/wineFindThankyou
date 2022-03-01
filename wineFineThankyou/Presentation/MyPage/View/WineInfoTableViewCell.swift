@@ -13,7 +13,8 @@ class WineInfoTableViewCell: UITableViewCell {
     private weak var wineKorName: UILabel?
     private weak var wineEngName: UILabel?
 
-    var info: WineInfo? {
+    var wineStoreInfo: WineStoreInfo?
+    var wineInfo: WineInfo? {
         didSet {
             setConstraint()
             setWineInfoDetailValue()
@@ -143,8 +144,8 @@ class WineInfoTableViewCell: UITableViewCell {
         
         tag.font = UIFont.systemFont(ofSize: 11)
         tag.textColor = .white
-        tag.backgroundColor = info?.wineType.color ?? WineType.red.color
-        tag.text = info?.wineType.str
+        tag.backgroundColor = wineInfo?.wineType.color ?? WineType.red.color
+        tag.text = wineInfo?.wineType.str
         
         tag.textAlignment = .center
         tag.clipsToBounds = true
@@ -157,12 +158,12 @@ class WineInfoTableViewCell: UITableViewCell {
         wineKorName.textColor = UIColor(rgb: 0x1e1e1e)
         wineKorName.font = UIFont.systemFont(ofSize: 13)
         wineKorName.numberOfLines = 0
-        wineKorName.text = info?.korName
+        wineKorName.text = wineInfo?.korName
         
         wineEngName.textColor = UIColor(rgb: 0x757575)
         wineEngName.font = UIFont.systemFont(ofSize: 11)
         wineEngName.numberOfLines = 0
-        wineEngName.text = info?.engName
+        wineEngName.text = wineInfo?.engName
         
         return wineInfoDetailsView
     }
@@ -206,10 +207,51 @@ class WineInfoTableViewCell: UITableViewCell {
     }
     
     private func setWineInfoDetailValue() {
-        guard let info = info else { return }
-        self.cepage?.info = ("품종", info.cepage)
-        self.from?.info = ("생산지", info.from)
-        self.vintage?.info = ("빈티지", info.vintage)
-        self.alchol?.info = ("도수", "Alc. \(info.alchol)%")
+        guard let wineInfo = wineInfo else { return }
+        self.cepage?.info = ("품종", wineInfo.cepage)
+        self.from?.info = ("생산지", wineInfo.from)
+        self.vintage?.info = ("빈티지", wineInfo.vintage)
+        self.alchol?.info = ("도수", "Alc. \(wineInfo.alchol)%")
     }
 }
+
+/*private func setWineShopButton() {
+ let buttonView = UIButton()
+ self.contentView.addSubview(buttonView)
+ buttonView.translatesAutoresizingMaskIntoConstraints = false
+ 
+ let img = UIImageView()
+ let name = UILabel()
+ let date = UILabel()
+ buttonView.addSubViews(subViews: img, name, date)
+ 
+ NSLayoutConstraint.activate([
+     buttonView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 20),
+     buttonView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -20),
+     buttonView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -17),
+     buttonView.heightAnchor.constraint(equalToConstant: 36),
+     
+     img.leftAnchor.constraint(equalTo: buttonView.leftAnchor, constant: 12),
+     img.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+     img.widthAnchor.constraint(equalToConstant: 20),
+     img.heightAnchor.constraint(equalToConstant: 20),
+     
+     name.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 8),
+     name.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+     name.widthAnchor.constraint(equalToConstant: 200),
+     
+     date.rightAnchor.constraint(equalTo: buttonView.rightAnchor, constant: -12),
+     date.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor)
+ ])
+ 
+ buttonView.layer.borderWidth = 2
+ buttonView.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
+ buttonView.layer.cornerRadius = 8
+ 
+ img.image = UIImage(named: "StoreIcon")
+ 
+ name.setTitle(title: "", colorHex: 0x7B61FF, font: .systemFont(ofSize: 11))
+ date.setTitle(title: "", colorHex: 0x9e9e9e, font: .systemFont(ofSize: 11))
+ wineStoreName = name
+ boughtDate = date
+}*/

@@ -51,10 +51,13 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nE3-kJ-Dgv">
-                                <rect key="frame" x="20" y="58" width="374" height="169"/>
+                                <rect key="frame" x="20" y="58" width="374" height="145"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="Psa-Ov-Eb3"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BLy-rs-tzF">
-                                    <size key="itemSize" width="105" height="129"/>
+                                    <size key="itemSize" width="105" height="145"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -67,9 +70,8 @@
                             <constraint firstItem="TCb-RY-oVv" firstAttribute="top" secondItem="Up5-Ut-r70" secondAttribute="top" constant="8" id="4jf-aZ-KXp"/>
                             <constraint firstItem="TCb-RY-oVv" firstAttribute="leading" secondItem="Up5-Ut-r70" secondAttribute="leading" id="FvY-gc-MpS"/>
                             <constraint firstItem="nE3-kJ-Dgv" firstAttribute="top" secondItem="TCb-RY-oVv" secondAttribute="bottom" id="IRC-kd-skS"/>
-                            <constraint firstAttribute="height" constant="227" id="Kk7-qZ-vKt"/>
+                            <constraint firstAttribute="height" constant="227" id="SJZ-wv-XS1"/>
                             <constraint firstItem="nE3-kJ-Dgv" firstAttribute="leading" secondItem="Up5-Ut-r70" secondAttribute="leading" constant="20" id="h8x-cR-1FZ"/>
-                            <constraint firstAttribute="bottom" secondItem="nE3-kJ-Dgv" secondAttribute="bottom" id="smO-cP-1YK"/>
                             <constraint firstAttribute="trailing" secondItem="TCb-RY-oVv" secondAttribute="trailing" id="yTP-f0-cDK"/>
                         </constraints>
                     </view>

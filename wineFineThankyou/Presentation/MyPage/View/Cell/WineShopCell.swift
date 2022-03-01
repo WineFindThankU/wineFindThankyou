@@ -12,7 +12,6 @@ class WineShopCell: UICollectionViewCell {
     @IBOutlet private weak var shopImageView: UIImageView!
     @IBOutlet private weak var shopTitle: UILabel!
     @IBOutlet private weak var shopType: UILabel!
-    
     internal var wineStoreInfo: WineStoreInfo? {
         didSet { configure() }
     }

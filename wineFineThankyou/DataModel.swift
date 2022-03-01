@@ -19,34 +19,71 @@ enum StoryBoard: String {
     }
 }
 
-enum StoreType {
-    case privateShop
-    case chainShop
-    case convenience24
+enum StoreType: Int, CaseIterable {
+    case privateShop = 0
+    case warehouse = 1
+    case mart = 2
+    case convenience = 3
+    case chain = 4
+    case department = 5
+
     var str: String {
         switch self {
         case .privateShop:
             return "개인샵"
-        case .chainShop:
+        case .chain:
             return "체인샵"
-        case .convenience24:
+        case .convenience:
             return "편의점"
+        case .mart:
+            return "대형마트"
+        case .warehouse:
+            return "창고형매장"
+        case .department:
+            return "백화점"
         }
     }
+    
+    var color: UIColor {
+        switch self {
+        case .privateShop:
+            return UIColor(rgb: 0x7B61FF)
+        case .warehouse:
+            return UIColor(rgb: 0xF52837)
+        case .mart:
+            return UIColor(rgb: 0xFE9220)
+        case .convenience:
+            return UIColor(rgb: 0xF7C411)
+        case .chain:
+            return UIColor(rgb: 0xFF89BC)
+        case .department:
+            return UIColor(rgb: 0x34B6E7)
+        }
+    }
+
+}
+
+struct WineInfo {
+    let img: UIImage
+    let korName: String
+    let engName: String
+    let wineType: WineType
+    let cepage: String
+    let from: String
+    let vintage: String
+    let alchol: String
+    let storeFk: Int
+    let boughtDate: Date
 }
 
 struct WineStoreInfo {
+    let key: Int
     let storeName: String
     let classification: StoreType
     let callNumber: String
     let location: String
     let openingHours: String
     let homepage: String
-    var wines: [WineInfo]
-    
-    mutating func addWines(_ wineInfo: WineInfo){
-        wines.append(wineInfo)
-    }
 }
 
 enum WineType: Int, CaseIterable {
@@ -89,16 +126,6 @@ enum WineType: Int, CaseIterable {
     }
 }
 
-struct WineInfo {
-    let img: UIImage
-    let korName: String
-    let engName: String
-    let wineType: WineType
-    let cepage: String
-    let from: String
-    let vintage: String
-    let alchol: String
-}
 
 class UserData {
     static var isUserLogin : Bool {
