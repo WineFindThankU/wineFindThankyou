@@ -11,6 +11,8 @@ import UIKit
 class MyPageListViewController: UIViewController {
     unowned var tableView: UITableView!
     
+    internal var wineStoreInfos: [WineStoreInfo] = []
+    internal var wineInfos: [WineInfo] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraint()
@@ -64,6 +66,15 @@ class MyPageListViewController: UIViewController {
         DispatchQueue.main.async {
             self.present(vc, animated: true)
         }
+    }
+    
+    @objc
+    func goToStore(_ storeKey: Int) {
+        guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoViewController.identifier) as? StoreInfoViewController else { return }
+        vc.wineInfos = wineInfos.filter { $0.storeFk == storeKey }
+        vc.wineStoreInfo = wineStoreInfos.first(where: { $0.key == storeKey})
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     @objc

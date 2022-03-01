@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 class UsersWineShopListViewController: MyPageListViewController {
-    internal var wineStoreInfos: [WineStoreInfo] = []
-    internal var wineInfos: [WineInfo] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()

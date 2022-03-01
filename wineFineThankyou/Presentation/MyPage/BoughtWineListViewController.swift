@@ -9,8 +9,7 @@ import UIKit
 
 class BoughtWineListViewController: MyPageListViewController {
     //MARK: TEST
-    var wineInfos = [WineInfo]()
-    var wineStoreInfos = [WineStoreInfo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -36,6 +35,9 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
         let wineInfo = wineInfos[indexPath.row]
         cell.wineStoreInfo = wineStoreInfos.first{ $0.key == wineInfo.storeFk }
         cell.wineInfo = wineInfo
+        cell.storeBtnClosure = { [weak self] in
+            self?.goToStore(wineInfo.storeFk)
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

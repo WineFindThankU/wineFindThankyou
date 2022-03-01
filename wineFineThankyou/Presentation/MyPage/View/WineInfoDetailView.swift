@@ -9,9 +9,12 @@ import UIKit
 
 class WineInfoDetailView: UIView {
     let superView = UIView()
-    private weak var title: UILabel!
-    private weak var content: UILabel!
+    var info: (title: String, content: String)? {
+        didSet { updateUI() }
+    }
     
+    private weak var title: UILabel?
+    private weak var content: UILabel?
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,12 +23,14 @@ class WineInfoDetailView: UIView {
         super.init(coder: coder)
         configure()
     }
-    
     private func configure() {
         let title = UILabel()
         let content = UILabel()
+        superView.addSubview(title)
+        superView.addSubview(content)
         superView.translatesAutoresizingMaskIntoConstraints = false
-        superView.addSubViews(subViews: title, content)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        content.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: superView.topAnchor),
@@ -49,8 +54,8 @@ class WineInfoDetailView: UIView {
         self.content = content
     }
     
-    func updateInfo(_ title: String, _ content: String) {
-        self.title.text = title
-        self.content.text = content
+    private func updateUI() {
+        title?.text = info?.title
+        content?.text = info?.content
     }
 }

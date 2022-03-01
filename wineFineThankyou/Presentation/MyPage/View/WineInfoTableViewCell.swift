@@ -9,69 +9,61 @@ import Foundation
 import UIKit
 
 class WineInfoTableViewCell: UITableViewCell {
-    private weak var tagLabel: UILabel?
-    private weak var wineKorName: UILabel?
-    private weak var wineEngName: UILabel?
-
+    struct WineInfoDetailsView {
+        let cepage : WineInfoDetailView
+        let from : WineInfoDetailView
+        let vintage : WineInfoDetailView
+        let alchol : WineInfoDetailView
+    }
+    
     var wineStoreInfo: WineStoreInfo?
     var wineInfo: WineInfo? {
-        didSet {
-            setConstraint()
-            setWineInfoDetailValue()
-        }
+        didSet { updateUI() }
     }
-    private var cepage: WineInfoDetailView?
-    private var from: WineInfoDetailView?
-    private var vintage: WineInfoDetailView?
-    private var alchol: WineInfoDetailView?
+    var storeBtnClosure: (() -> Void)?
     
-    class WineInfoDetailView: UIView {
-        let superView = UIView()
-        var info: (title: String, content: String)? {
-            didSet { configure() }
-        }
-        
-        private func configure() {
-            let title = UILabel()
-            let content = UILabel()
-            superView.addSubview(title)
-            superView.addSubview(content)
-            superView.translatesAutoresizingMaskIntoConstraints = false
-            title.translatesAutoresizingMaskIntoConstraints = false
-            content.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-                title.topAnchor.constraint(equalTo: superView.topAnchor),
-                title.leftAnchor.constraint(equalTo: superView.leftAnchor),
-                title.widthAnchor.constraint(equalToConstant: 36),
-                title.bottomAnchor.constraint(equalTo: superView.bottomAnchor),
-                
-                content.topAnchor.constraint(equalTo: superView.topAnchor),
-                content.leftAnchor.constraint(equalTo: title.rightAnchor, constant: 8),
-                content.rightAnchor.constraint(equalTo: superView.rightAnchor, constant: -20),
-                content.bottomAnchor.constraint(equalTo: superView.bottomAnchor),
-            ])
-            title.text = info?.title
-            title.textColor = UIColor(rgb: 0x9e9e9e)
-            title.font = UIFont.systemFont(ofSize: 11)
-            
-            content.text = info?.content
-            content.textColor = UIColor(rgb: 0x424242)
-            content.font = UIFont.systemFont(ofSize: 11)
-        }
+    private weak var wineImg: UIImageView?
+    private weak var tagLabel: UILabel?
+    private weak var deleteBtn: UIButton?
+    private weak var wineKorName: UILabel?
+    private weak var wineEngName: UILabel?
+    private var wineInfoDetailsView: WineInfoDetailsView?
+    private weak var wineStoreName: UILabel?
+    private weak var boughtDate: UILabel?
+    
+    override func prepareForReuse() {
+        wineInfoDetailsView = nil
     }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setConstraint()
     }
-        
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setConstraint()
+    }
+    
+    private func updateUI() {
+        guard let wineInfo = wineInfo else { return }
+        wineImg?.image = wineInfo.img
+        tagLabel?.backgroundColor = wineInfo.wineType.color
+        tagLabel?.text = wineInfo.wineType.str
+        wineKorName?.text = wineInfo.korName
+        wineEngName?.text = wineInfo.engName
+        
+        wineInfoDetailsView?.cepage.info = ("품종", wineInfo.cepage)
+        wineInfoDetailsView?.from.info = ("생산지", wineInfo.from)
+        wineInfoDetailsView?.vintage.info = ("빈티지", wineInfo.vintage)
+        wineInfoDetailsView?.alchol.info = ("도수", wineInfo.alchol)
+        wineStoreName?.text = wineStoreInfo?.storeName
+        boughtDate?.text = wineInfo.boughtDate.yyyyMMdd()
     }
     
     private func setConstraint() {
         setWineImageView()
         setConstraintAtWineInfoDetailsView(setWineInfoView())
+        setWineShopButton()
     }
     
     private func setWineImageView() {
@@ -86,8 +78,8 @@ class WineInfoTableViewCell: UITableViewCell {
         ])
         
         wineImgView.image = UIImage(named: "icon")
-        wineImgView.contentMode = .scaleAspectFit
-        wineImgView.backgroundColor = .systemPink
+        wineImgView.contentMode = .scaleAspectFill
+        self.wineImg = wineImgView
     }
     
     private func setWineInfoView() -> UIView {
@@ -95,33 +87,22 @@ class WineInfoTableViewCell: UITableViewCell {
         contentView.addSubview(wineInfoView)
         wineInfoView.translatesAutoresizingMaskIntoConstraints = false
         
-        let tag = TagLabel()
+        let tagLabel = TagLabel()
         let deleteBtn = UIButton()
         let wineKorName = UILabel()
         let wineEngName = UILabel()
         let wineInfoDetailsView = UIView()
         
-        tag.translatesAutoresizingMaskIntoConstraints = false
-        deleteBtn.translatesAutoresizingMaskIntoConstraints = false
-        wineKorName.translatesAutoresizingMaskIntoConstraints = false
-        wineEngName.translatesAutoresizingMaskIntoConstraints = false
-        wineInfoDetailsView.translatesAutoresizingMaskIntoConstraints = false
-        
-        wineInfoView.addSubview(wineKorName)
-        wineInfoView.addSubview(wineEngName)
-        wineInfoView.addSubview(tag)
-        wineInfoView.addSubview(deleteBtn)
-        wineInfoView.addSubview(wineInfoDetailsView)
-        
+        wineInfoView.addSubViews(subViews: tagLabel, deleteBtn, wineKorName, wineEngName, wineInfoDetailsView)
         NSLayoutConstraint.activate([
             wineInfoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             wineInfoView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 113),
             wineInfoView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
             wineInfoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -67),
             
-            tag.topAnchor.constraint(equalTo: wineInfoView.topAnchor),
-            tag.leftAnchor.constraint(equalTo: wineInfoView.leftAnchor),
-            tag.heightAnchor.constraint(equalToConstant: 18),
+            tagLabel.topAnchor.constraint(equalTo: wineInfoView.topAnchor),
+            tagLabel.leftAnchor.constraint(equalTo: wineInfoView.leftAnchor),
+            tagLabel.heightAnchor.constraint(equalToConstant: 18),
             
             deleteBtn.topAnchor.constraint(equalTo: wineInfoView.topAnchor),
             deleteBtn.rightAnchor.constraint(equalTo: wineInfoView.rightAnchor),
@@ -142,28 +123,28 @@ class WineInfoTableViewCell: UITableViewCell {
             wineInfoDetailsView.bottomAnchor.constraint(equalTo: wineInfoView.bottomAnchor),
         ])
         
-        tag.font = UIFont.systemFont(ofSize: 11)
-        tag.textColor = .white
-        tag.backgroundColor = wineInfo?.wineType.color ?? WineType.red.color
-        tag.text = wineInfo?.wineType.str
-        
-        tag.textAlignment = .center
-        tag.clipsToBounds = true
-        tag.layer.cornerRadius = 7
+        tagLabel.font = UIFont.systemFont(ofSize: 11)
+        tagLabel.textColor = .white
+        tagLabel.textAlignment = .center
+        tagLabel.clipsToBounds = true
+        tagLabel.layer.cornerRadius = 7
         
         deleteBtn.setTitle("삭제", for: .normal)
         deleteBtn.setTitleColor(UIColor(rgb: 0x9e9e9e), for: .normal)
         deleteBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-        
+    
         wineKorName.textColor = UIColor(rgb: 0x1e1e1e)
         wineKorName.font = UIFont.systemFont(ofSize: 13)
         wineKorName.numberOfLines = 0
-        wineKorName.text = wineInfo?.korName
         
         wineEngName.textColor = UIColor(rgb: 0x757575)
         wineEngName.font = UIFont.systemFont(ofSize: 11)
         wineEngName.numberOfLines = 0
-        wineEngName.text = wineInfo?.engName
+        
+        self.tagLabel = tagLabel
+        self.deleteBtn = deleteBtn
+        self.wineKorName = wineKorName
+        self.wineEngName = wineEngName
         
         return wineInfoDetailsView
     }
@@ -204,54 +185,68 @@ class WineInfoTableViewCell: UITableViewCell {
             alchol.superView.rightAnchor.constraint(equalTo: wineInfoDetailsView.rightAnchor),
             alchol.superView.heightAnchor.constraint(equalToConstant: 13),
         ])
+        self.wineInfoDetailsView = WineInfoDetailsView(cepage: cepage, from: from, vintage: vintage, alchol: alchol)
     }
     
-    private func setWineInfoDetailValue() {
-        guard let wineInfo = wineInfo else { return }
-        self.cepage?.info = ("품종", wineInfo.cepage)
-        self.from?.info = ("생산지", wineInfo.from)
-        self.vintage?.info = ("빈티지", wineInfo.vintage)
-        self.alchol?.info = ("도수", "Alc. \(wineInfo.alchol)%")
+    private func setWineShopButton() {
+        let buttonView = UIButton()
+        self.contentView.addSubview(buttonView)
+        buttonView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let img = UIImageView()
+        let name = UILabel()
+        let date = UILabel()
+        let btn = UIButton()
+        buttonView.addSubViews(subViews: img, name, date, btn)
+        
+        NSLayoutConstraint.activate([
+            buttonView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 20),
+            buttonView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -20),
+            buttonView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -17),
+            buttonView.heightAnchor.constraint(equalToConstant: 36),
+            
+            btn.topAnchor.constraint(equalTo: buttonView.topAnchor),
+            btn.leftAnchor.constraint(equalTo: buttonView.leftAnchor),
+            btn.rightAnchor.constraint(equalTo: buttonView.rightAnchor),
+            btn.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor),
+            
+            img.leftAnchor.constraint(equalTo: buttonView.leftAnchor, constant: 12),
+            img.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+            img.widthAnchor.constraint(equalToConstant: 20),
+            img.heightAnchor.constraint(equalToConstant: 20),
+            
+            name.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 8),
+            name.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
+            name.widthAnchor.constraint(equalToConstant: 200),
+            
+            date.rightAnchor.constraint(equalTo: buttonView.rightAnchor, constant: -12),
+            date.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor)
+        ])
+        
+        buttonView.layer.borderWidth = 2
+        buttonView.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
+        buttonView.layer.cornerRadius = 8
+        
+        img.image = UIImage(named: "StoreIcon")
+        
+        name.setTitle(title: "", colorHex: 0x7B61FF, font: .systemFont(ofSize: 11))
+        date.setTitle(title: "", colorHex: 0x9e9e9e, font: .systemFont(ofSize: 11))
+        wineStoreName = name
+        boughtDate = date
+        
+        btn.addAction(UIAction(handler: { _ in self.storeBtnClosure?() }), for: .touchUpInside)
     }
 }
-
-/*private func setWineShopButton() {
- let buttonView = UIButton()
- self.contentView.addSubview(buttonView)
- buttonView.translatesAutoresizingMaskIntoConstraints = false
- 
- let img = UIImageView()
- let name = UILabel()
- let date = UILabel()
- buttonView.addSubViews(subViews: img, name, date)
- 
- NSLayoutConstraint.activate([
-     buttonView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 20),
-     buttonView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -20),
-     buttonView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -17),
-     buttonView.heightAnchor.constraint(equalToConstant: 36),
-     
-     img.leftAnchor.constraint(equalTo: buttonView.leftAnchor, constant: 12),
-     img.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
-     img.widthAnchor.constraint(equalToConstant: 20),
-     img.heightAnchor.constraint(equalToConstant: 20),
-     
-     name.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 8),
-     name.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
-     name.widthAnchor.constraint(equalToConstant: 200),
-     
-     date.rightAnchor.constraint(equalTo: buttonView.rightAnchor, constant: -12),
-     date.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor)
- ])
- 
- buttonView.layer.borderWidth = 2
- buttonView.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
- buttonView.layer.cornerRadius = 8
- 
- img.image = UIImage(named: "StoreIcon")
- 
- name.setTitle(title: "", colorHex: 0x7B61FF, font: .systemFont(ofSize: 11))
- date.setTitle(title: "", colorHex: 0x9e9e9e, font: .systemFont(ofSize: 11))
- wineStoreName = name
- boughtDate = date
-}*/
+extension WineInfoTableViewCell {
+    @objc
+    private func goToStore() {
+        
+    }
+}
+extension Date {
+    func yyyyMMdd() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd(E)"
+        return dateFormatter.string(from: self)
+    }
+}
