@@ -13,7 +13,7 @@ protocol SelectedWineCellProtocol {
 }
 class AllOfWineInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
-    internal var wines : [WineInfo] = []
+    internal var wineInfos : [WineInfo] = []
     var delegate: SelectedWineCellProtocol?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,14 +30,14 @@ extension AllOfWineInfoTableViewCell: UICollectionViewDelegate, UICollectionView
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wines.count
+        return wineInfos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.wineInfo = wines[indexPath.row]
+        cell.wineInfo = wineInfos[indexPath.row]
         cell.setBackgroundColor()
         return cell
     }

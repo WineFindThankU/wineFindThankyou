@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class ContainStoreButtonViewController: UIViewController{
-    internal var wineStoreInfo: WineStoreInfo?
+    var wineStoreInfo: WineStoreInfo?
+    var wineInfos: [WineInfo] = []
     internal unowned var storeButtonsView: StoreButtonsView! {
         didSet { addTargetOnButton() }
     }
@@ -19,6 +20,7 @@ class ContainStoreButtonViewController: UIViewController{
         storeButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
         storeButtonsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
     }
+    
     @objc
     private func addFavorites() {
         
@@ -39,6 +41,7 @@ class ContainStoreButtonViewController: UIViewController{
     @objc
     func goToStore() {
         guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoViewController.identifier) as? StoreInfoViewController else { return }
+        vc.wineInfos = wineInfos
         vc.wineStoreInfo = wineStoreInfo
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)

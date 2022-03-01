@@ -20,7 +20,7 @@ class StoreWinesViewController: UIViewController {
     private var previousIndex = 0
     
     internal var crntIndex: Int = 0
-    internal var wines = [WineInfo]()
+    internal var wineInfos = [WineInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class StoreWinesViewController: UIViewController {
     }
     
     private func setUpWineTypeLabel(){
-        let wine = wines[crntIndex]
+        let wine = wineInfos[crntIndex]
         wineTypeLabel.textColor = Theme.white.color
         wineTypeLabel.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         wineTypeLabel.text = wine.wineType.str
@@ -105,21 +105,21 @@ class StoreWinesViewController: UIViewController {
 
 extension StoreWinesViewController {
     private func updateUI(){
-        self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wines.count)"
-        self.wineInfoView.wineInfo = wines[self.crntIndex]
-        wineTypeLabel.text = wines[self.crntIndex].wineType.str
-        wineTypeLabel.backgroundColor = wines[self.crntIndex].wineType.color
+        self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wineInfos.count)"
+        self.wineInfoView.wineInfo = wineInfos[self.crntIndex]
+        wineTypeLabel.text = wineInfos[self.crntIndex].wineType.str
+        wineTypeLabel.backgroundColor = wineInfos[self.crntIndex].wineType.color
     }
 }
 
 extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wines.count
+        return wineInfos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineImageCell", for: indexPath) as? WineImageCell else { return UICollectionViewCell() }
-        cell.wineImage.image = wines[indexPath.row].img
+        cell.wineImage.image = wineInfos[indexPath.row].img
         return cell
     }
     

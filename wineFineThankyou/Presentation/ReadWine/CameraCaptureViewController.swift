@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol CapturedImageProtocol: AnyObject {
-    func captured(_ uiImage: UIImage?)
+    func captured(_ uiImage: UIImage?, done: (() -> Void)?)
 }
 
 class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
@@ -135,10 +135,11 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
         guard let imageData = photo.fileDataRepresentation() else { return }
         guard let uiImage = UIImage(data: imageData) else { return }
         
-        delegate?.captured(uiImage)
-        self.captureSession.stopRunning()
-        DispatchQueue.main.async {
-            self.dismiss(animated: true)
+        delegate?.captured(uiImage) {
+            self.captureSession.stopRunning()
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
         }
     }
 }

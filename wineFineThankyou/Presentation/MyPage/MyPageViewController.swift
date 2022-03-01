@@ -24,10 +24,6 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
         super.viewDidLoad()
         configure()
         setTouchGesture()
-        //MARK: Test
-        wineInfos = getWines()
-        visitedWineStoreInfos = getWineStoreInfo()
-        favoritesWineStoreInfos = getWineStoreInfo()
     }
     
     private func configure() {
@@ -103,8 +99,24 @@ extension MyPageViewController {
         let rightGraphView = StatisticsOfWineView(frame: CGRect(x: 0, y: 0, width: rightStatisticsView.frame.width, height: rightStatisticsView.frame.height))
         leftStatisticsView.addSubview(leftGraphView)
         rightStatisticsView.addSubview(rightGraphView)
-        leftGraphView.graphResource = GraphResource(type: .shop, cntArr: [10, 9, 5, 4, 3, 3])
-        rightGraphView.graphResource = GraphResource(type: .bought, cntArr: [10, 9, 5, 4, 3])
+        leftGraphView.graphResource = GraphResource(type: .shop, cntArr: getShopsByType())
+        rightGraphView.graphResource = GraphResource(type: .bought, cntArr: getBoughtWine())
+        
+        func getShopsByType() -> [Int] {
+            var wineShopCount = [Int]()
+            StoreType.allCases.forEach { type in
+                wineShopCount.append(visitedWineStoreInfos.filter { $0.classification == type}.count)
+            }
+            return wineShopCount
+        }
+        
+        func getBoughtWine() -> [Int] {
+            var wines = [Int]()
+            WineType.allCases.forEach { type in
+                wines.append(wineInfos.compactMap { $0.wineType }.filter { $0 == type }.count)
+            }
+            return wines
+        }
     }
     
     private func goToNextStep(_ type: MypageTableViewSection) {
@@ -114,10 +126,12 @@ extension MyPageViewController {
             guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
             vc.wineInfos = self.wineInfos
+            vc.wineStoreInfos = self.visitedWineStoreInfos
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
+            vc.wineInfos = wineInfos
             vc.wineStoreInfos = type == .recentlyVisitedShop ? self.visitedWineStoreInfos : self.favoritesWineStoreInfos
             presentVc(vc)
         }
@@ -139,7 +153,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "MyPageTableViewCell", bundle: nil), forCellReuseIdentifier: "MyPageTableViewCell")
-        tableView.estimatedRowHeight = 227
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -184,77 +198,5 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         if Int(scrollView.contentOffset.y) <= 0 {
             showMyProfileView()
         }
-    }
-}
-
-extension MyPageViewController {
-    //MARK: TEST
-    private func getWines() -> [WineInfo] {
-        guard let img = UIImage(named: "TestWineImg") else { return [] }
-    
-        var wineInfos = [WineInfo]()
-        wineInfos.append(
-            WineInfo(img: img,
-                     korName: "비카스 초이스 소비뇽 블랑 스파클링",
-                     engName: "Vicar's Choice Sauvignon Blanc Bubbles",
-                     wineType: WineType.sparkling,
-                     cepage: "소비뇽 블랑 (Sauvignon Blanc)",
-                     from: "뉴질랜드",
-                     vintage: "2010",
-                     alchol: "Alc. 15%")
-        )
-        
-        wineInfos.append(
-            WineInfo(img: img,
-                     korName: "카피텔 산 로코 발폴리첼라 리파쏘 수페리오레",
-                     engName: "Capitel San Rocco Valpolicella Ripasso Superiore",
-                     wineType: WineType.red,
-                     cepage: "코르비나(Corvina), 코르비노네(Corvinone), 론디넬라(Rondinella), 기타(Others)",
-                     from: "아르헨티나",
-                     vintage: "2010",
-                     alchol: "Alc. 15%")
-        )
-        
-        wineInfos.append(
-            WineInfo(img: img,
-                     korName: "젠틀 타이거 화이트",
-                     engName: "Gentle Tiger White",
-                     wineType: WineType.white,
-                     cepage: "샤르도네 (Chardonnay), 비우라 (Viura)",
-                     from: "뉴질랜드",
-                     vintage: "2010",
-                     alchol: "Alc. 15%")
-        )
-        
-        return wineInfos
-    }
-    
-    func getWineStoreInfo() -> [WineStoreInfo] {
-        
-        return [  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                classification: .privateShop,
-                                callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                wines: []),
-                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                                     classification: .privateShop,
-                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                                     wines: []),
-                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                                     classification: .privateShop,
-                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                                     wines: []),
-                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                                     classification: .privateShop,
-                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                                     wines: []),
-                  WineStoreInfo(storeName: "벵가드와인머천트 분당지점",
-                                                     classification: .privateShop,
-                                                     callNumber: "010-1111-2222", location: "경기도 성남시 분당구 서현이매분당동 241-5",
-                                                     openingHours: "AM07:00 - PM11:00", homepage: "https://wineFindThankYou.kr",
-                                                     wines: [])]
     }
 }

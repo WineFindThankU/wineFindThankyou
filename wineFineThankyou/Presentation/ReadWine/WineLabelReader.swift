@@ -42,4 +42,8 @@ class WineLabelReader {
             return .leftMirrored
         }
     }
+    
+    class func parsingReadText(_ txt: String?) -> String? {
+        return ""
+    }
 }

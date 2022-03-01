@@ -85,7 +85,7 @@ extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineShopCell", for: indexPath) as? WineShopCell
             else { return UICollectionViewCell() }
             
-            cell.wineStoreInfo =  self.cellInfos[indexPath.row] as? WineStoreInfo
+            cell.wineStoreInfo = self.cellInfos[indexPath.row] as? WineStoreInfo
             return cell
         }
     }

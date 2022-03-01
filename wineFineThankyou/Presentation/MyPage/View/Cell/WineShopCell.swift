@@ -8,17 +8,10 @@
 import Foundation
 import UIKit
 
-struct WineShopInfo {
-    let image: UIImage
-    let title: String
-    let type: String
-}
-
 class WineShopCell: UICollectionViewCell {
     @IBOutlet private weak var shopImageView: UIImageView!
     @IBOutlet private weak var shopTitle: UILabel!
     @IBOutlet private weak var shopType: UILabel!
-    
     internal var wineStoreInfo: WineStoreInfo? {
         didSet { configure() }
     }
