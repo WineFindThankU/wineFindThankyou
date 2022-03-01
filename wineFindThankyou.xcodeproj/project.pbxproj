@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28B6A9371AE00C6E8C87D5BF /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B9A3140C26E9FDD88BB102 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
+		00785FDA164D0001573592F1 /* Pods_wineFindThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DD02FEB19584B1B6F73DBC /* Pods_wineFindThankyou.framework */; };
+		044DD309B914F559A2BE2E65 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
 		4408364D27CCEC0F00CCD6E1 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408364C27CCEC0F00CCD6E1 /* APIEventLogger.swift */; };
 		441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441951A8279B123D00D0D381 /* OnboardingSlide.swift */; };
 		44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44234AF52796878C00848E44 /* MainQAViewController.swift */; };
@@ -29,7 +30,6 @@
 		4459BC0527C50621000F79CF /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0427C50621000F79CF /* LocationError.swift */; };
 		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
 		44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A98627B921F8004C8E6C /* LoginModel.swift */; };
-		44A9DA8F27CD03F500F320EC /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A9DA8E27CD03F500F320EC /* MapService.swift */; };
 		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
 		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
 		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
@@ -47,7 +47,7 @@
 		44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 44FF1CF92786C03000FD8567 /* FirebaseAuth */; };
 		44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FC27A55F420063924D /* SearchViewController.swift */; };
 		44FF470027A5623A0063924D /* RequestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FF27A5623A0063924D /* RequestNetworking.swift */; };
-		84A1DA12F70C7B51ABF11635 /* Pods_wineFindThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F255753E0A6373EB1FF0CF /* Pods_wineFindThankyou.framework */; };
+		86F7F42D4E7CA01839B146FF /* Pods_wineFindThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DAEE5A0950C8FEC697854 /* Pods_wineFindThankyouTests.framework */; };
 		BA1E472327AF9D23005C3319 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1E472227AF9D23005C3319 /* MyPage.storyboard */; };
 		BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E472427AF9F03005C3319 /* SettingsViewController.swift */; };
 		BA1E472927AFEC20005C3319 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E472827AFEC20005C3319 /* SettingCell.swift */; };
@@ -100,7 +100,6 @@
 		BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7965127C1E5AD00D2AC1F /* WineShopCell.swift */; };
 		BAE7965427C1E5B800D2AC1F /* WineShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7965327C1E5B800D2AC1F /* WineShopCell.xib */; };
 		C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A494C27AD220A0080CBE2 /* StartViewController.swift */; };
-		C754A5C3E7AF447C3165CF53 /* Pods_wineFindThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCCED294443E772B65620E6 /* Pods_wineFindThankyouTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,10 +120,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A163CC29B7B81A623D63884 /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		0A5BDFF24D52FC4EF507ECE5 /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
-		20F6612FA6BF8594BB1D507E /* Pods-wineFindThankyouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3E332AF805CC63FE2B483503 /* Pods-wineFindThankyouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.release.xcconfig"; sourceTree = "<group>"; };
+		0CAD72638637C4A02F4625AE /* Pods-wineFindThankyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou.release.xcconfig"; sourceTree = "<group>"; };
+		32DD02FEB19584B1B6F73DBC /* Pods_wineFindThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4408364C27CCEC0F00CCD6E1 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
 		441951A8279B123D00D0D381 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		44234AF52796878C00848E44 /* MainQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQAViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +143,6 @@
 		4459BC0427C50621000F79CF /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
 		44A8A98627B921F8004C8E6C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		44A9DA8E27CD03F500F320EC /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
 		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
@@ -167,8 +163,12 @@
 		44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44FF46FC27A55F420063924D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		44FF46FF27A5623A0063924D /* RequestNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNetworking.swift; sourceTree = "<group>"; };
-		81AEBDF1AE0EFBE3BC435F3D /* Pods-wineFindThankyou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou.debug.xcconfig"; sourceTree = "<group>"; };
-		96B9A3140C26E9FDD88BB102 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou_wineFindThankyouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C65F5EF6EBF3386B9FE05B /* Pods-wineFindThankyouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.release.xcconfig"; sourceTree = "<group>"; };
+		6DFE4679322D5F81014BE214 /* Pods-wineFindThankyouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyouTests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyouTests/Pods-wineFindThankyouTests.debug.xcconfig"; sourceTree = "<group>"; };
+		764CA9294A7B972874D214D0 /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9A38EB4424732C71C5A87785 /* Pods-wineFindThankyou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou.debug.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou.debug.xcconfig"; sourceTree = "<group>"; };
+		AF8DAEE5A0950C8FEC697854 /* Pods_wineFindThankyouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B161F5A18BCC9E2FC1BD844B /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BA1E472227AF9D23005C3319 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		BA1E472427AF9F03005C3319 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BA1E472827AFEC20005C3319 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -221,9 +221,7 @@
 		BAE7965127C1E5AD00D2AC1F /* WineShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineShopCell.swift; sourceTree = "<group>"; };
 		BAE7965327C1E5B800D2AC1F /* WineShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineShopCell.xib; sourceTree = "<group>"; };
 		C56A494C27AD220A0080CBE2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		CFCCED294443E772B65620E6 /* Pods_wineFindThankyouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5F255753E0A6373EB1FF0CF /* Pods_wineFindThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD588A1D227C9863B32AAD13 /* Pods-wineFindThankyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou.release.xcconfig"; sourceTree = "<group>"; };
+		E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou_wineFindThankyouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +231,7 @@
 			files = (
 				44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */,
 				BAB4079327A7900000B6E352 /* SwiftSMTP in Frameworks */,
-				84A1DA12F70C7B51ABF11635 /* Pods_wineFindThankyou.framework in Frameworks */,
+				00785FDA164D0001573592F1 /* Pods_wineFindThankyou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C754A5C3E7AF447C3165CF53 /* Pods_wineFindThankyouTests.framework in Frameworks */,
+				86F7F42D4E7CA01839B146FF /* Pods_wineFindThankyouTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B6A9371AE00C6E8C87D5BF /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */,
+				044DD309B914F559A2BE2E65 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +330,6 @@
 		44A9DA8D27CD03EB00F320EC /* services */ = {
 			isa = PBXGroup;
 			children = (
-				44A9DA8E27CD03F500F320EC /* MapService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -370,7 +367,7 @@
 				44FF1CDE278471AA00FD8567 /* wineFineThankyouUITests */,
 				44FF1CBC278471A700FD8567 /* Products */,
 				D55090A1FA48D46D11A58126 /* Pods */,
-				973D3BFF78DDF3F71D23C656 /* Frameworks */,
+				FA2B89EB795452C12B655D27 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -473,16 +470,6 @@
 				44FF1CC7278471A900FD8567 /* Assets.xcassets */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		973D3BFF78DDF3F71D23C656 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D5F255753E0A6373EB1FF0CF /* Pods_wineFindThankyou.framework */,
-				96B9A3140C26E9FDD88BB102 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */,
-				CFCCED294443E772B65620E6 /* Pods_wineFindThankyouTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BA1E472627AFA002005C3319 /* View */ = {
@@ -603,14 +590,24 @@
 		D55090A1FA48D46D11A58126 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				81AEBDF1AE0EFBE3BC435F3D /* Pods-wineFindThankyou.debug.xcconfig */,
-				DD588A1D227C9863B32AAD13 /* Pods-wineFindThankyou.release.xcconfig */,
-				0A163CC29B7B81A623D63884 /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */,
-				0A5BDFF24D52FC4EF507ECE5 /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */,
-				20F6612FA6BF8594BB1D507E /* Pods-wineFindThankyouTests.debug.xcconfig */,
-				3E332AF805CC63FE2B483503 /* Pods-wineFindThankyouTests.release.xcconfig */,
+				9A38EB4424732C71C5A87785 /* Pods-wineFindThankyou.debug.xcconfig */,
+				0CAD72638637C4A02F4625AE /* Pods-wineFindThankyou.release.xcconfig */,
+				764CA9294A7B972874D214D0 /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */,
+				B161F5A18BCC9E2FC1BD844B /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */,
+				6DFE4679322D5F81014BE214 /* Pods-wineFindThankyouTests.debug.xcconfig */,
+				64C65F5EF6EBF3386B9FE05B /* Pods-wineFindThankyouTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA2B89EB795452C12B655D27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32DD02FEB19584B1B6F73DBC /* Pods_wineFindThankyou.framework */,
+				E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */,
+				AF8DAEE5A0950C8FEC697854 /* Pods_wineFindThankyouTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -620,12 +617,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44FF1CE5278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyou" */;
 			buildPhases = (
-				31E462D0F1641AA3873A840D /* [CP] Check Pods Manifest.lock */,
+				255C50A28219A8CC84F673C5 /* [CP] Check Pods Manifest.lock */,
 				44FF1CB7278471A700FD8567 /* Sources */,
 				44FF1CB8278471A700FD8567 /* Frameworks */,
 				44FF1CB9278471A700FD8567 /* Resources */,
-				D0A710D2FA875B2DE6631600 /* [CP] Embed Pods Frameworks */,
-				0DCFEC565472A90441524F7F /* [CP] Copy Pods Resources */,
+				7517DC94D8829966226A38DE /* [CP] Embed Pods Frameworks */,
+				5725B4385AAE2867569A39A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -644,7 +641,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44FF1CE8278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyouTests" */;
 			buildPhases = (
-				BC3116C1FFBCB4703287D679 /* [CP] Check Pods Manifest.lock */,
+				DABD0C00609DE984FE955ACB /* [CP] Check Pods Manifest.lock */,
 				44FF1CCD278471AA00FD8567 /* Sources */,
 				44FF1CCE278471AA00FD8567 /* Frameworks */,
 				44FF1CCF278471AA00FD8567 /* Resources */,
@@ -663,12 +660,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44FF1CEB278471AA00FD8567 /* Build configuration list for PBXNativeTarget "wineFindThankyouUITests" */;
 			buildPhases = (
-				5AE4ADE981B794389858275C /* [CP] Check Pods Manifest.lock */,
+				87EBC4C9D3C34F90B2BB5CE4 /* [CP] Check Pods Manifest.lock */,
 				44FF1CD7278471AA00FD8567 /* Sources */,
 				44FF1CD8278471AA00FD8567 /* Frameworks */,
 				44FF1CD9278471AA00FD8567 /* Resources */,
-				63B1AD19824F445C8DC3B6D5 /* [CP] Embed Pods Frameworks */,
-				E7728ADB9A49494EBFE5D349 /* [CP] Copy Pods Resources */,
+				A539E89FEC584C3173702921 /* [CP] Embed Pods Frameworks */,
+				5532C938FFC279C3ADD4541A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -769,24 +766,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0DCFEC565472A90441524F7F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		31E462D0F1641AA3873A840D /* [CP] Check Pods Manifest.lock */ = {
+		255C50A28219A8CC84F673C5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -808,7 +788,58 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5AE4ADE981B794389858275C /* [CP] Check Pods Manifest.lock */ = {
+		5532C938FFC279C3ADD4541A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5725B4385AAE2867569A39A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7517DC94D8829966226A38DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87EBC4C9D3C34F90B2BB5CE4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -830,7 +861,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		63B1AD19824F445C8DC3B6D5 /* [CP] Embed Pods Frameworks */ = {
+		A539E89FEC584C3173702921 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -847,7 +878,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BC3116C1FFBCB4703287D679 /* [CP] Check Pods Manifest.lock */ = {
+		DABD0C00609DE984FE955ACB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -867,40 +898,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D0A710D2FA875B2DE6631600 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E7728ADB9A49494EBFE5D349 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -975,7 +972,6 @@
 				44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */,
 				BAAAAE5327C8E53600DFEB59 /* UsersWineShopListViewController.swift in Sources */,
 				BA8BB7BC27A44E430010F05A /* StoreInfoSummaryViewController.swift in Sources */,
-				44A9DA8F27CD03F500F320EC /* MapService.swift in Sources */,
 				BAAAAE5527C8E58B00DFEB59 /* UserWineShopListTableViewCell.swift in Sources */,
 				BAE7965027C1C21200D2AC1F /* MyPageTableViewCell.swift in Sources */,
 				BA77CFE5279EF94A00832389 /* ExtUIView.swift in Sources */,
@@ -1071,6 +1067,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1132,6 +1129,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1152,16 +1150,16 @@
 		};
 		44FF1CE6278471AA00FD8567 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81AEBDF1AE0EFBE3BC435F3D /* Pods-wineFindThankyou.debug.xcconfig */;
+			baseConfigurationReference = 9A38EB4424732C71C5A87785 /* Pods-wineFindThankyou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 x86_64";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
@@ -1188,14 +1186,14 @@
 		};
 		44FF1CE7278471AA00FD8567 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD588A1D227C9863B32AAD13 /* Pods-wineFindThankyou.release.xcconfig */;
+			baseConfigurationReference = 0CAD72638637C4A02F4625AE /* Pods-wineFindThankyou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
@@ -1223,7 +1221,7 @@
 		};
 		44FF1CE9278471AA00FD8567 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20F6612FA6BF8594BB1D507E /* Pods-wineFindThankyouTests.debug.xcconfig */;
+			baseConfigurationReference = 6DFE4679322D5F81014BE214 /* Pods-wineFindThankyouTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1249,7 +1247,7 @@
 		};
 		44FF1CEA278471AA00FD8567 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E332AF805CC63FE2B483503 /* Pods-wineFindThankyouTests.release.xcconfig */;
+			baseConfigurationReference = 64C65F5EF6EBF3386B9FE05B /* Pods-wineFindThankyouTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1275,7 +1273,7 @@
 		};
 		44FF1CEC278471AA00FD8567 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A163CC29B7B81A623D63884 /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */;
+			baseConfigurationReference = 764CA9294A7B972874D214D0 /* Pods-wineFindThankyou-wineFindThankyouUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1299,7 +1297,7 @@
 		};
 		44FF1CED278471AA00FD8567 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A5BDFF24D52FC4EF507ECE5 /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */;
+			baseConfigurationReference = B161F5A18BCC9E2FC1BD844B /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
