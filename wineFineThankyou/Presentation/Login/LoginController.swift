@@ -14,6 +14,7 @@ import GoogleSignIn
 import AuthenticationServices
 
 class LoginController: NSObject {
+    let loginResponse: LoginResponse
     private lazy var naverConnection : NaverThirdPartyLoginConnection? = {
         let nConn = NaverThirdPartyLoginConnection.getSharedInstance()
         return nConn
@@ -75,6 +76,32 @@ class LoginController: NSObject {
     }
 }
 
+extension LoginController {
+  
+    func post() {
+            // 1. 전송할 값 준비
+        let apiURL = "ahttp://125.6.36.157:3001/v1/auth/sign"
+        let param: Parameters = [:]
+        AF.request(apiURL, method: .post,
+                   parameters: param,
+                   encoding: URLEncoding.httpBody).responseJSON() { response in
+        switch response.result {
+        case .success:
+            if let jsonObject = try! response.result.get() as? [String: Any] {
+                let statusCode = jsonObject["statusCode"] as? String
+                let message = jsonObject["message"] as? String
+                let DataClass = jsonObject["data"] as? String
+                self.loginResponse = response.response?.statusCode
+                self.
+                    
+                case .failure(let error):
+                    print(error)
+                    return
+                }
+            }
+        }
+}
+
 //MARK: Naver login
 extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
@@ -101,7 +128,7 @@ extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     }
 }
 
-//MARK: Google login
+// MARK: Google login
 extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {

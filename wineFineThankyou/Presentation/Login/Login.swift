@@ -34,7 +34,7 @@ class Login {
             print("\(result)")
             //TODO: result dictionary. 추후 localDB저장 혹은 서버 전송할 데이터
             //example
-            /*
+            /* 
              [
                 "resultcode": 00,
                 "response": {

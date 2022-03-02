@@ -105,7 +105,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
           marker.height = 24
         }
         marker.mapView = self.mapView
-
         self.markers.append(marker)
       }
     }
