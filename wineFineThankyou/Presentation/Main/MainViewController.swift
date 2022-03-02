@@ -24,6 +24,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     let storeLocationList = [
         StoreLocation(id: 0, lat: 37.5670135 , lng: 126.9783740),
         StoreLocation(id: 1, lat: 37.567624752635496, lng: 126.98651057682375)
+        
     ]
 
     @IBOutlet weak var leftBtn: UIButton!

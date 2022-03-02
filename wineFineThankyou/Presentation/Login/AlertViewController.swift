@@ -9,11 +9,7 @@ import UIKit
 
 
 final class AlertViewController: UIViewController {
-    let action = UIAction { _ in
-    
-    }
-    
-    
+   
     private let alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -33,11 +29,14 @@ final class AlertViewController: UIViewController {
 
     private lazy var acceptButton: UIButton = {
         let button = UIButton()
-        button.setTitle("취소", for: .normal)
-        button.setTitleColor(UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1), for: .normal)
+        button.setTitle("확인", for: .normal)
+        button.titleLabel?.textColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = UIColor(red: 123 / 255, green: 103 / 255, blue: 251 / 255, alpha: 1)
+        button.backgroundColor = .standardColor
         button.layer.cornerRadius = 15
+        let action = UIAction { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
         button.addAction(action, for: .touchUpInside)
         return button
     }()

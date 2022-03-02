@@ -65,7 +65,7 @@ final class WalkthroughFourthViewController: UIViewController {
         button.backgroundColor = .clear
         button.setImage(image, for: .normal)
         let action = UIAction(handler: { _ in
-            let nextVC = LoginViewController()
+            let nextVC = LoginViewController2()
             nextVC.modalPresentationStyle = .overFullScreen
             self.present(nextVC, animated: false)
         })

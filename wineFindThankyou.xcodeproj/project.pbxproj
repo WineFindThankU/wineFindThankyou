@@ -11,12 +11,12 @@
 		044DD309B914F559A2BE2E65 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
 		4408364D27CCEC0F00CCD6E1 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408364C27CCEC0F00CCD6E1 /* APIEventLogger.swift */; };
 		441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441951A8279B123D00D0D381 /* OnboardingSlide.swift */; };
-		44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44234AF52796878C00848E44 /* MainQAViewController.swift */; };
 		4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */; };
 		4429F37F27CFC4AF00402D0C /* WalkthroughFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */; };
 		4429F38127CFC4C400402D0C /* WalkthroughSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */; };
 		4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */; };
 		4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */; };
+		4429F38727CFCCA100402D0C /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38627CFCCA100402D0C /* LoginViewController2.swift */; };
 		442BE5B327CE521900448478 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BE5B227CE521900448478 /* LoginResponse.swift */; };
 		4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01527CB8ADB00119931 /* LogoutViewController.swift */; };
 		4433C01827CB8CEC00119931 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */; };
@@ -29,17 +29,12 @@
 		4433C05727CBC18800119931 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05627CBC18800119931 /* HTTPHeaderField.swift */; };
 		4433C05927CBC19C00119931 /* MyRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */; };
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
-		44442491279D4C9000903DC7 /* FinalQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44442490279D4C9000903DC7 /* FinalQAViewController.swift */; };
 		4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */; };
 		4459BC0127C504BD000F79CF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0027C504BC000F79CF /* Store.swift */; };
 		4459BC0327C505CF000F79CF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0227C505CF000F79CF /* LocationManager.swift */; };
 		4459BC0527C50621000F79CF /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0427C50621000F79CF /* LocationError.swift */; };
 		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
 		44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A98627B921F8004C8E6C /* LoginModel.swift */; };
-		44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5D2795AF5A00923F24 /* PageViewController.swift */; };
-		44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */; };
-		44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */; };
-		44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */; };
 		44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CBE278471A700FD8567 /* AppDelegate.swift */; };
 		44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CC0278471A700FD8567 /* SceneDelegate.swift */; };
 		44FF1CC6278471A700FD8567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CC4278471A700FD8567 /* Main.storyboard */; };
@@ -82,7 +77,6 @@
 		BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BD27A45CDC0010F05A /* DataModel.swift */; };
 		BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */; };
 		BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */; };
-		BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C627A50FAD0010F05A /* QAViewController.swift */; };
 		BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C827A5280B0010F05A /* LoginController.swift */; };
 		BA8BB7CB27A529D40010F05A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7CA27A529D40010F05A /* Login.swift */; };
 		BA913C0927C0B6050055B2A4 /* DonutGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA913C0827C0B6050055B2A4 /* DonutGraphView.swift */; };
@@ -131,12 +125,12 @@
 		32DD02FEB19584B1B6F73DBC /* Pods_wineFindThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4408364C27CCEC0F00CCD6E1 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
 		441951A8279B123D00D0D381 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
-		44234AF52796878C00848E44 /* MainQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQAViewController.swift; sourceTree = "<group>"; };
 		4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughMainViewController.swift; sourceTree = "<group>"; };
 		4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFirstViewController.swift; sourceTree = "<group>"; };
 		4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughSecondViewController.swift; sourceTree = "<group>"; };
 		4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughThirdViewController.swift; sourceTree = "<group>"; };
 		4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFourthViewController.swift; sourceTree = "<group>"; };
+		4429F38627CFCCA100402D0C /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
 		442BE5B227CE521900448478 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4433C01527CB8ADB00119931 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -149,17 +143,12 @@
 		4433C05627CBC18800119931 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
 		4433C05827CBC19C00119931 /* MyRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequestInterceptor.swift; sourceTree = "<group>"; };
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		44442490279D4C9000903DC7 /* FinalQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalQAViewController.swift; sourceTree = "<group>"; };
 		4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		4459BC0027C504BC000F79CF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4459BC0227C505CF000F79CF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4459BC0427C50621000F79CF /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
 		44A8A98627B921F8004C8E6C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		44AE4C5D2795AF5A00923F24 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQAViewController.swift; sourceTree = "<group>"; };
-		44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQAViewController.swift; sourceTree = "<group>"; };
-		44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdQAViewController.swift; sourceTree = "<group>"; };
 		44FF1CBB278471A700FD8567 /* wineFindThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFindThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FF1CBE278471A700FD8567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FF1CC0278471A700FD8567 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,7 +199,6 @@
 		BA8BB7BD27A45CDC0010F05A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreWinesViewController.swift; sourceTree = "<group>"; };
 		BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		BA8BB7C627A50FAD0010F05A /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		BA8BB7C827A5280B0010F05A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BA8BB7CA27A529D40010F05A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BA8BB7CC27A52CAE0010F05A /* wineFindThankyou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wineFindThankyou.entitlements; sourceTree = "<group>"; };
@@ -272,9 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				4429F37B27CFC45600402D0C /* Walkthrough */,
-				44AE4C5D2795AF5A00923F24 /* PageViewController.swift */,
-				4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */,
-				44AE4C5C2795AEEA00923F24 /* Question */,
+				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
 				44FF1CF027869ED000FD8567 /* Login */,
 				44FF46FB27A55F1A0063924D /* Search */,
 				44442489279D373C00903DC7 /* Main */,
@@ -362,20 +348,6 @@
 			path = services;
 			sourceTree = "<group>";
 		};
-		44AE4C5C2795AEEA00923F24 /* Question */ = {
-			isa = PBXGroup;
-			children = (
-				44234AF52796878C00848E44 /* MainQAViewController.swift */,
-				BA8BB7C627A50FAD0010F05A /* QAViewController.swift */,
-				44AE4C5F2795AF6C00923F24 /* FirstQAViewController.swift */,
-				44AE4C612795AF7B00923F24 /* SecondQAViewController.swift */,
-				44AE4C632795AF9000923F24 /* ThirdQAViewController.swift */,
-				44442490279D4C9000903DC7 /* FinalQAViewController.swift */,
-				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
-			);
-			path = Question;
-			sourceTree = "<group>";
-		};
 		44B2D54427CCAA61005A7EA2 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,11 +418,13 @@
 		44FF1CF027869ED000FD8567 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */,
 				44FF1CEE27869EA700FD8567 /* LoginViewController.swift */,
 				BA8BB7C827A5280B0010F05A /* LoginController.swift */,
 				BA8BB7CA27A529D40010F05A /* Login.swift */,
 				C56A494C27AD220A0080CBE2 /* StartViewController.swift */,
 				44A8A98627B921F8004C8E6C /* LoginModel.swift */,
+				4429F38627CFCCA100402D0C /* LoginViewController2.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -952,18 +926,15 @@
 				BAA4031827BA945700C50221 /* WineListTitle.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
 				4433C05727CBC18800119931 /* HTTPHeaderField.swift in Sources */,
-				BA8BB7C727A50FAD0010F05A /* QAViewController.swift in Sources */,
 				BA86ADF127B7E02700580511 /* WineLabelReader.swift in Sources */,
 				4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */,
 				4459BC0527C50621000F79CF /* LocationError.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
-				44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */,
 				4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */,
 				BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */,
 				BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
-				44AE4C602795AF6C00923F24 /* FirstQAViewController.swift in Sources */,
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
 				4408364D27CCEC0F00CCD6E1 /* APIEventLogger.swift in Sources */,
 				4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */,
@@ -975,12 +946,10 @@
 				4459BC0127C504BD000F79CF /* Store.swift in Sources */,
 				442BE5B327CE521900448478 /* LoginResponse.swift in Sources */,
 				44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */,
-				44AE4C642795AF9000923F24 /* ThirdQAViewController.swift in Sources */,
 				4433C01827CB8CEC00119931 /* UIColor+Extensions.swift in Sources */,
 				BA70C86127CAFF9C0013BC23 /* ContainStoreButtonViewController.swift in Sources */,
 				BA1E472927AFEC20005C3319 /* SettingCell.swift in Sources */,
 				4433C04727CBB9A700119931 /* ShopList.swift in Sources */,
-				44AE4C5E2795AF5A00923F24 /* PageViewController.swift in Sources */,
 				4433C01A27CB947400119931 /* LeaveViewController.swift in Sources */,
 				BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */,
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
@@ -989,14 +958,13 @@
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,
 				4433C01C27CB94E700119931 /* InquiryViewController.swift in Sources */,
+				4429F38727CFCCA100402D0C /* LoginViewController2.swift in Sources */,
 				BA77CFEF27A16FBF00832389 /* StoreInfoCell.swift in Sources */,
 				BA70C85C27C9DCF80013BC23 /* MyPageListViewController.swift in Sources */,
-				44AE4C622795AF7B00923F24 /* SecondQAViewController.swift in Sources */,
 				BA77CFE0279EF80800832389 /* StoreInfoViewController.swift in Sources */,
 				BA1EE24F27A4178700FDE9BD /* WineInfoView.swift in Sources */,
 				4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */,
 				BAE7964A27C1160D00D2AC1F /* TypeDetailStackView.swift in Sources */,
-				44442491279D4C9000903DC7 /* FinalQAViewController.swift in Sources */,
 				BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */,
 				BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */,
 				BA913C0D27C0BDA90055B2A4 /* WelcomeView.swift in Sources */,
@@ -1199,6 +1167,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need To Access Your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1234,6 +1203,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Access Camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need To Access Your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

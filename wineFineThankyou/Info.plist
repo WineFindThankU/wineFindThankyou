@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Need To Access Your Location</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -13,7 +11,7 @@
 			<string>KakaoLogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakaof3ddb8ca9f07d6b7a52acd8faab10df1</string>
+				<string>kakao229dde6eaa35c651b0bc5ccfa474c5e9</string>
 			</array>
 		</dict>
 		<dict>

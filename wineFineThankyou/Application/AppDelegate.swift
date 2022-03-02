@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         // MARK: Kakao 로그인
-        KakaoSDK.initSDK(appKey: "f3ddb8ca9f07d6b7a52acd8faab10df1")
+        KakaoSDK.initSDK(appKey: "229dde6eaa35c651b0bc5ccfa474c5e9")
         
         
         // MARK: Google 로그인

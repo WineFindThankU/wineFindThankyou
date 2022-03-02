@@ -42,7 +42,7 @@ enum AfterLogin {
         case .fail:
             return "인증 문제로 로그인 할 수 없습니다. 개발자에게 화를 내주세요."
         case .cannotAccess:
-            let alert = AlertViewController()
+            AlertViewController()
             return "애들은 가라, 애들은 가.🤬"
         }
     }
@@ -50,6 +50,7 @@ enum AfterLogin {
 protocol EndLoginProtocol: AnyObject {
     func endLogin(_ type: AfterLogin)
 }
+
 class LoginViewController: UIViewController {
     @IBOutlet weak var buttonKakao: UIButton!
     @IBOutlet weak var buttonGoogle: UIButton!
@@ -73,9 +74,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+      //  configure()
         GIDSignIn.sharedInstance().presentingViewController = self
     }
+    
     
     private func configure() {
         let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
@@ -91,7 +93,7 @@ class LoginViewController: UIViewController {
         ])
     }
 }
-extension LoginViewController: EndLoginProtocol{
+extension LoginViewController: EndLoginProtocol {
     func endLogin(_ type: AfterLogin) {
         switch type {
         case .success:
@@ -104,7 +106,8 @@ extension LoginViewController: EndLoginProtocol{
     }
     
     func goToMain() {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else { return }
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController")
+                as? MainViewController else { return }
         
         DispatchQueue.main.async { [weak self] in
             vc.modalTransitionStyle = .flipHorizontal
