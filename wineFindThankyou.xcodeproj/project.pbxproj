@@ -17,6 +17,7 @@
 		4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */; };
 		4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */; };
 		4429F38727CFCCA100402D0C /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38627CFCCA100402D0C /* LoginViewController2.swift */; };
+		4429F38A27CFE67300402D0C /* WinefindThankU_motion_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4429F38927CFE67300402D0C /* WinefindThankU_motion_2.json */; };
 		442BE5B327CE521900448478 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BE5B227CE521900448478 /* LoginResponse.swift */; };
 		4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01527CB8ADB00119931 /* LogoutViewController.swift */; };
 		4433C01827CB8CEC00119931 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */; };
@@ -131,6 +132,7 @@
 		4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughThirdViewController.swift; sourceTree = "<group>"; };
 		4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFourthViewController.swift; sourceTree = "<group>"; };
 		4429F38627CFCCA100402D0C /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
+		4429F38927CFE67300402D0C /* WinefindThankU_motion_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WinefindThankU_motion_2.json; path = ../../../Downloads/WinefindThankU_motion_2.json; sourceTree = "<group>"; };
 		442BE5B227CE521900448478 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4433C01527CB8ADB00119931 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -283,6 +285,14 @@
 			path = Walkthrough;
 			sourceTree = "<group>";
 		};
+		4429F38827CFE65F00402D0C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4429F38927CFE67300402D0C /* WinefindThankU_motion_2.json */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		4433C01427CB8AD000119931 /* PopupView */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +393,7 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
+				4429F38827CFE65F00402D0C /* Utils */,
 				44A9DA8D27CD03EB00F320EC /* services */,
 				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				44FF470427A5713A0063924D /* Views */,
@@ -743,6 +754,7 @@
 				44FF1CF72786BCFF00FD8567 /* GoogleService-Info.plist in Resources */,
 				BA1E472B27AFEC2D005C3319 /* SettingCell.xib in Resources */,
 				BA913C0F27C0C2450055B2A4 /* StatisticsOfWineView.xib in Resources */,
+				4429F38A27CFE67300402D0C /* WinefindThankU_motion_2.json in Resources */,
 				BA8BB7B327A4256F0010F05A /* WineInfoCollectionViewCell.xib in Resources */,
 				44FF1CC8278471A900FD8567 /* Assets.xcassets in Resources */,
 				BA47879027B7B15700AAB5EA /* Store.storyboard in Resources */,

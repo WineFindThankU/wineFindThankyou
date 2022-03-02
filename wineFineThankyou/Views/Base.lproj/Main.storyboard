@@ -1167,12 +1167,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="GqF-RD-CPL">
                                 <rect key="frame" x="100" y="169" width="175" height="70"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="char" translatesAutoresizingMaskIntoConstraints="NO" id="HOB-g2-H8i">
-                                <rect key="frame" x="108" y="269" width="176" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="RFm-oB-vpv"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nn-CQ-1ii">
                                 <rect key="frame" x="80" y="515" width="215" height="44"/>
                                 <constraints>
@@ -1194,11 +1188,8 @@
                         <constraints>
                             <constraint firstItem="GqF-RD-CPL" firstAttribute="leading" secondItem="zvi-hA-jKr" secondAttribute="leading" constant="100" id="0lJ-X0-DUg"/>
                             <constraint firstItem="0Nn-CQ-1ii" firstAttribute="centerX" secondItem="zvi-hA-jKr" secondAttribute="centerX" id="Gt1-if-sIM"/>
+                            <constraint firstItem="zvi-hA-jKr" firstAttribute="bottom" secondItem="0Nn-CQ-1ii" secondAttribute="bottom" constant="108" id="ITO-pP-hM1"/>
                             <constraint firstItem="GqF-RD-CPL" firstAttribute="top" secondItem="zvi-hA-jKr" secondAttribute="top" constant="169" id="SSH-aa-TBQ"/>
-                            <constraint firstItem="HOB-g2-H8i" firstAttribute="top" secondItem="GqF-RD-CPL" secondAttribute="bottom" constant="30" id="WSl-bi-YSN"/>
-                            <constraint firstItem="HOB-g2-H8i" firstAttribute="leading" secondItem="zvi-hA-jKr" secondAttribute="leading" constant="108" id="c05-ow-yXo"/>
-                            <constraint firstItem="zvi-hA-jKr" firstAttribute="trailing" secondItem="HOB-g2-H8i" secondAttribute="trailing" constant="91" id="qxf-Fg-Beb"/>
-                            <constraint firstItem="0Nn-CQ-1ii" firstAttribute="top" secondItem="HOB-g2-H8i" secondAttribute="bottom" constant="30" id="sZb-PE-bDT"/>
                             <constraint firstItem="zvi-hA-jKr" firstAttribute="trailing" secondItem="GqF-RD-CPL" secondAttribute="trailing" constant="100" id="zOg-7i-5m5"/>
                         </constraints>
                     </view>

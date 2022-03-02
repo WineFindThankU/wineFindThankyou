@@ -74,6 +74,7 @@ PODS:
     - KakaoSDKCommon/Common (= 2.8.6)
   - KakaoSDKUser (2.8.6):
     - KakaoSDKAuth (= 2.8.6)
+  - lottie-ios (3.3.0)
   - MLImage (1.0.0-beta2)
   - MLKitCommon (5.0.0):
     - GoogleDataTransport (~> 9.0)
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - GoogleMLKit/TextRecognitionKorean
   - GoogleSignIn (~> 5.0)
   - KakaoSDK
+  - lottie-ios
   - naveridlogin-sdk-ios
   - NMapsMap (= 3.10.0)
   - RxCocoa (= 6.5.0)
@@ -147,6 +149,7 @@ SPEC REPOS:
     - KakaoSDKTalk
     - KakaoSDKTemplate
     - KakaoSDKUser
+    - lottie-ios
     - MLImage
     - MLKitCommon
     - MLKitTextRecognitionCommon
@@ -182,6 +185,7 @@ SPEC CHECKSUMS:
   KakaoSDKTalk: d5b5a21281fa370f7d273a9140e82ba54aa9531a
   KakaoSDKTemplate: 23bdcba233dce91fc948353c3b03d94f928d87d1
   KakaoSDKUser: e79480355fa789f42e628dfba359fc21e9914f4c
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   MLImage: a454f9f8ecfd537783a12f9488f5be1a68820829
   MLKitCommon: 3bc17c6f7d25ce3660f030350b46ae7ec9ebca6e
   MLKitTextRecognitionCommon: 3e84602c928fe2b775fae81376f2136324cbd763
@@ -197,6 +201,6 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 7e26ec25eb9c61ba49d6176521086d8132429bbb
+PODFILE CHECKSUM: f53a3cfb91b7a6a4d9c0186c7ae7a871247ba1d5
 
 COCOAPODS: 1.11.2
