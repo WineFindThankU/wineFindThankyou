@@ -14,11 +14,10 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func onClickStart(_ sender: Any) {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainQAViewController") as? MainQAViewController
-        else { return }
-        vc.modalPresentationStyle = .fullScreen
+        let view = WalkthroughMainViewController()
+        view.modalPresentationStyle = .overFullScreen
         DispatchQueue.main.async {
-            self.present(vc, animated: true)
+            self.present(view, animated: true)
         }
     }
     
