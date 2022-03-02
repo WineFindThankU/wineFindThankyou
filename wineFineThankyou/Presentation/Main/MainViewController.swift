@@ -20,12 +20,17 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
             "창고형매장",
             "백화점"
     ]
+    //MARK: 마커 표시를 위한 테스트 함수 및 코드입니다.
+    let storeLocationList = [
+        StoreLocation(id: 0, lat: 37.5670135 , lng: 126.9783740),
+        StoreLocation(id: 1, lat: 37.567624752635496, lng: 126.98651057682375)
+    ]
 
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var mapView: NMFMapView!
+    @IBOutlet weak var mapView: NMFNaverMapView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchButtonOutlet: UIButton!
 
@@ -49,8 +54,14 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        
+        //MARK: 테스트 데이터
         loadTestDatas()
+        //MARK: 마커 표시를 위한 테스트 함수 및 코드입니다.
+        testFuncForShowingMarker()
     }
+    //MARK: 마커 표시를 위한 테스트 변수
+    var locationManager : CLLocationManager?
     
     private func setupUI() {
         self.collectionView.delegate = self
@@ -79,7 +90,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
             ))
             camera.animation = .easeIn
 
-            self.mapView.moveCamera(camera)
+//            self.mapView.moveCamera(camera)
           })
         .disposed(by: self.disposeBag)
     }
@@ -99,7 +110,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
             lng: store.longitude
           ))
           cameraUpdate.animation = .easeIn
-          self.mapView.moveCamera(cameraUpdate)
+//          self.mapView.moveCamera(cameraUpdate)
           marker.iconImage = NMFOverlayImage(name: "Group 34")
           marker.width = 48
           marker.height = 59
@@ -108,7 +119,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
           marker.width = 24
           marker.height = 24
         }
-        marker.mapView = self.mapView
+//        marker.mapView = self.mapView
 
         self.markers.append(marker)
       }
@@ -337,5 +348,100 @@ extension Array where Element == WineStoreInfo {
             deduplicated.append(wineStoreInfo)
         }
         return deduplicated
+    }
+}
+
+//MARK: !!!!! 마커 표시를 위한 테스트 함수 및 코드입니다.
+// 적절히 수정하여 사용하시면 될 듯 합니다.
+extension MainViewController: CLLocationManagerDelegate {
+    struct StoreLocation {
+        let id : Int
+        let lat, lng: Double
+    }
+    
+    func testFuncForShowingMarker() {
+        setLocation()
+    }
+    
+    private func setLocation() {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        //배터리 상태에 따른 최적의 정확도 표시를 위해 설정.
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager = locationManager
+    }
+    
+    //현재 위치 화면 이동
+    func findCurrentPosition() {
+        guard let locationManager = locationManager else { return }
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        let status : CLAuthorizationStatus
+        if #available(iOS 14.0, *) {
+            status = locationManager.authorizationStatus
+        } else {
+            status = CLLocationManager.authorizationStatus()
+        }
+        processLocation(status)
+    }
+    
+    //사용자 권한 허용후 처리
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("didChangeAuthorization")
+        processLocation(status)
+    }
+    
+    private func updateFocus(lat : CLLocationDegrees, lng : CLLocationDegrees) {
+        let camPosition =  NMGLatLng(lat: lat, lng: lng)
+        let position = NMFCameraPosition(camPosition, zoom: 14, tilt: 0, heading: 0)
+        mapView.mapView.moveCamera(NMFCameraUpdate(position: position))
+    }
+    
+    private func showStoreInfo(_ index : Int) {
+        print("\(storeLocationList[index])")
+    }
+    
+    //MARK: 표시하기 위한 마커 업데이트 함수.
+    private func updateMaker(_ stationList : [StoreLocation]) {
+        for item in stationList {
+            let marker = NMFMarker()
+            marker.position = NMGLatLng(lat: item.lat, lng: item.lng)
+            marker.mapView = self.mapView.mapView
+            marker.iconImage = NMFOverlayImage(name: "Group 32")
+            marker.userInfo = ["tag" : item.id, "lat" : Double(item.lat), "long" : Double(item.lng)]
+            marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+                guard let index = overlay.userInfo["tag"] as? Int,
+                      let lat = overlay.userInfo["lat"] as? Double,
+                      let long = overlay.userInfo["long"] as? Double
+                else { return false}
+                
+                print("\(index): 마커 터치됨")
+                self?.updateFocus(lat: lat, lng: long)
+                self?.showStoreInfo(index)
+                return true
+            }
+        }
+    }
+    
+    func processLocation(_ status : CLAuthorizationStatus) {
+        guard let locationManager = self.locationManager else { return }
+        switch status {
+        case .restricted, .denied:
+            print("유저가 설정에서 기기 위치 설정을 OFF.")
+            print("유저가 이 앱이 기기 위치정보에 접근하는 것을 거부")
+        case .notDetermined :
+            print("물어봐야 함")
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways, .authorizedWhenInUse :
+            guard let lat = locationManager.location?.coordinate.latitude,
+                let lng = locationManager.location?.coordinate.longitude else {
+                return
+            }
+            updateFocus(lat: lat, lng: lng)
+            mapView.mapView.positionMode = .direction
+            self.updateMaker(self.storeLocationList)
+        default:
+            return
+        }
     }
 }
