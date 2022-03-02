@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-protocol SelectQuestionProtocol {
-    func renewButtons(_ sender: UIButton, btns: [UIButton])
-}
-
 class FirstQAViewController: QAViewController {
     @IBOutlet weak var buttonCost: UIButton!
     @IBOutlet weak var buttonkind: UIButton!
@@ -44,11 +40,6 @@ class FirstQAViewController: QAViewController {
         present(popupVC, animated: true, completion: nil)
        
     }
-    
-    
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         buttons = [buttonCost, buttonkind, buttonBrand, buttonArea, buttonKindOfWine, buttonOther]

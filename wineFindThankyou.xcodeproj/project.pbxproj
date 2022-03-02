@@ -12,6 +12,11 @@
 		4408364D27CCEC0F00CCD6E1 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408364C27CCEC0F00CCD6E1 /* APIEventLogger.swift */; };
 		441951A9279B123D00D0D381 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441951A8279B123D00D0D381 /* OnboardingSlide.swift */; };
 		44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44234AF52796878C00848E44 /* MainQAViewController.swift */; };
+		4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */; };
+		4429F37F27CFC4AF00402D0C /* WalkthroughFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */; };
+		4429F38127CFC4C400402D0C /* WalkthroughSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */; };
+		4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */; };
+		4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */; };
 		442BE5B327CE521900448478 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BE5B227CE521900448478 /* LoginResponse.swift */; };
 		4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01527CB8ADB00119931 /* LogoutViewController.swift */; };
 		4433C01827CB8CEC00119931 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */; };
@@ -127,6 +132,11 @@
 		4408364C27CCEC0F00CCD6E1 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
 		441951A8279B123D00D0D381 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		44234AF52796878C00848E44 /* MainQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQAViewController.swift; sourceTree = "<group>"; };
+		4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughMainViewController.swift; sourceTree = "<group>"; };
+		4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFirstViewController.swift; sourceTree = "<group>"; };
+		4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughSecondViewController.swift; sourceTree = "<group>"; };
+		4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughThirdViewController.swift; sourceTree = "<group>"; };
+		4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFourthViewController.swift; sourceTree = "<group>"; };
 		442BE5B227CE521900448478 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4433C01527CB8ADB00119931 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -261,6 +271,7 @@
 		4401478427B2A1F400C8E85A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4429F37B27CFC45600402D0C /* Walkthrough */,
 				44AE4C5D2795AF5A00923F24 /* PageViewController.swift */,
 				4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */,
 				44AE4C5C2795AEEA00923F24 /* Question */,
@@ -272,6 +283,18 @@
 				BABB595527C503F6000E24C5 /* ReadWine */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4429F37B27CFC45600402D0C /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */,
+				4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */,
+				4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */,
+				4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */,
+				4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */,
+			);
+			path = Walkthrough;
 			sourceTree = "<group>";
 		};
 		4433C01427CB8AD000119931 /* PopupView */ = {
@@ -935,6 +958,7 @@
 				4459BC0527C50621000F79CF /* LocationError.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
 				44234AF62796878C00848E44 /* MainQAViewController.swift in Sources */,
+				4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */,
 				BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */,
 				BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
@@ -943,7 +967,9 @@
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
 				4408364D27CCEC0F00CCD6E1 /* APIEventLogger.swift in Sources */,
 				4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */,
+				4429F37F27CFC4AF00402D0C /* WalkthroughFirstViewController.swift in Sources */,
 				BA913C0B27C0BD410055B2A4 /* StatisticsOfWineView.swift in Sources */,
+				4429F38127CFC4C400402D0C /* WalkthroughSecondViewController.swift in Sources */,
 				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
 				4433C05527CBBF4800119931 /* TagetType.swift in Sources */,
 				4459BC0127C504BD000F79CF /* Store.swift in Sources */,
@@ -974,7 +1000,9 @@
 				BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */,
 				BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */,
 				BA913C0D27C0BDA90055B2A4 /* WelcomeView.swift in Sources */,
+				4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */,
 				4433C05927CBC19C00119931 /* MyRequestInterceptor.swift in Sources */,
+				4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */,
 				BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */,
 				44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */,
 				44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */,
@@ -1165,7 +1193,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1201,7 +1229,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;

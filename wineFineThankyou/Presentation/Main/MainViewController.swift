@@ -192,7 +192,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     
     func getShopLists() {
         let requestNetworking = RequestNetworking()
-        requestNetworking.getShopsList(longitude: 126.8837913, latitude: 37.5848659)
+       // requestNetworking.dowhat(longitude: 126.8837913, latitude: 37.5848659)
     }
    
     @IBAction func onClickSearchBar(_ sender: UIButton) {
