@@ -19,6 +19,7 @@
 		4429F38727CFCCA100402D0C /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38627CFCCA100402D0C /* LoginViewController2.swift */; };
 		4429F38A27CFE67300402D0C /* WinefindThankU_motion_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4429F38927CFE67300402D0C /* WinefindThankU_motion_2.json */; };
 		442BE5B327CE521900448478 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BE5B227CE521900448478 /* LoginResponse.swift */; };
+		4430734A27D0A14B00A5CD82 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430734927D0A14B00A5CD82 /* TestViewController.swift */; };
 		4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01527CB8ADB00119931 /* LogoutViewController.swift */; };
 		4433C01827CB8CEC00119931 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */; };
 		4433C01A27CB947400119931 /* LeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01927CB947400119931 /* LeaveViewController.swift */; };
@@ -134,6 +135,7 @@
 		4429F38627CFCCA100402D0C /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
 		4429F38927CFE67300402D0C /* WinefindThankU_motion_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WinefindThankU_motion_2.json; path = ../../../Downloads/WinefindThankU_motion_2.json; sourceTree = "<group>"; };
 		442BE5B227CE521900448478 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		4430734927D0A14B00A5CD82 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		4433C01527CB8ADB00119931 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4433C01927CB947400119931 /* LeaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				BA77CFDE279EF7EF00832389 /* Store */,
 				BAB4079427A7B1F200B6E352 /* MyPage */,
 				BABB595527C503F6000E24C5 /* ReadWine */,
+				4430734927D0A14B00A5CD82 /* TestViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4430734A27D0A14B00A5CD82 /* TestViewController.swift in Sources */,
 				BA70C85F27CA0CDC0013BC23 /* CaptureRectView.swift in Sources */,
 				BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */,
 				44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */,

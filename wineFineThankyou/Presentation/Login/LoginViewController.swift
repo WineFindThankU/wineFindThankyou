@@ -57,9 +57,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var appleSignInButton: UIButton!
     
     lazy var loginController : LoginController = {
-        let con = LoginController(self)
-        con.delegate = self
-        return con
+        let controller = LoginController(self)
+        controller.delegate = self
+        return controller
     }()
 
     @IBAction func onClickKakao(_ sender: Any) {
@@ -74,7 +74,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  configure()
         GIDSignIn.sharedInstance().presentingViewController = self
     }
     
@@ -93,6 +92,7 @@ class LoginViewController: UIViewController {
         ])
     }
 }
+
 extension LoginViewController: EndLoginProtocol {
     func endLogin(_ type: AfterLogin) {
         switch type {
@@ -100,7 +100,6 @@ extension LoginViewController: EndLoginProtocol {
             UserData.isUserLogin = true
             goToMain()
         default:
-            //TEST
             makeAlert(type: type)
         }
     }
@@ -127,6 +126,7 @@ extension LoginViewController: EndLoginProtocol {
         }
     }
 }
+
 extension LoginViewController {
     @objc
     private func appleSignInButtonPress() {

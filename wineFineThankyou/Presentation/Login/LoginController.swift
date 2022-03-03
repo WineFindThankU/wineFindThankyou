@@ -12,10 +12,14 @@ import KakaoSDKUser
 import KakaoSDKAuth
 import GoogleSignIn
 import AuthenticationServices
-import RxSwift
+
 
 class LoginController: NSObject {
-    let disposeBag = DisposeBag()
+    
+    lazy var loginController : LoginViewController2 = {
+        let controller = LoginViewController2()
+        return controller
+    }()
     
     private lazy var naverConnection : NaverThirdPartyLoginConnection? = {
         let nConn = NaverThirdPartyLoginConnection.getSharedInstance()
@@ -26,7 +30,7 @@ class LoginController: NSObject {
     weak var delegate: EndLoginProtocol?
     
     init(_ viewController: UIViewController) {
-         super.init()
+        super.init()
         self.viewController = viewController
         GIDSignIn.sharedInstance()?.delegate = self
     }
@@ -40,26 +44,31 @@ class LoginController: NSObject {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
-            
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
     
+
+    
     internal func loginByKakao() {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-               if let error = error {
-                 print(error)
-               } else {
-                   self.setUserInfo()
-                   _ = oauthToken?.accessToken
-               }
+        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+            if let error = error {
+                    print(error)
+            } else {
+                UserApi.shared.me {(user, error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        _ = oauthToken
+                        let accessToken = oauthToken?.accessToken
+                        self.setUserInfo()
+                    }
+                }
             }
         }
     }
-
     
     func setUserInfo() {
         UserApi.shared.me() {(user, error) in
@@ -69,10 +78,14 @@ class LoginController: NSObject {
                 _ = user
                 let email = user?.kakaoAccount?.email ?? ""
                 let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
+                print(email)
+                print(nickname)
                 self.postTest(loginId: email, snsID: nickname, authType: "kakao")
+                self.loginController.presentToMain()
             }
         }
     }
+    
     
     func postTest(loginId: String, snsID: String, authType: String) {
         let url = "http://125.6.36.157:3001/v1/auth/sign"
@@ -93,6 +106,7 @@ class LoginController: NSObject {
             switch response.result {
             case .success:
                 print(response)
+                UserDefaults.standard.set(response, forKey: "accessToken")
             case .failure(let error):
                 print(error)
             }
@@ -127,7 +141,6 @@ extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     private func naverSDKDidLoginSuccess() {
         Login.shared.loginByNaver(naverConnection)
         delegate?.endLogin(.success)
-        
         RequestNetworking.getLoginCheckAPI()
     }
 }
@@ -164,22 +177,20 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
-            print("\(appleIDCredential.fullName)")
-            print("\(appleIDCredential.fullName)")
+            print("\(String(describing: appleIDCredential.fullName))")
+            print("\(String(describing: appleIDCredential.fullName))")
             print("User ID : \(userIdentifier)")
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-     
+            postTest(loginId: email ?? "wft@gmail.com", snsID: fullName?.givenName ?? "1234", authType: "apple")
         default:
             break
         }
         delegate?.endLogin(.success)
+        loginController.presentToMain()
     }
         
-    // Apple ID 연동 실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
         delegate?.endLogin(.fail)
     }
 }
-

@@ -31,27 +31,30 @@ extension RequestNetworking {
     }
     
     // MARK: 로그인 API
-    func getLoginCheckAPI() {
+    
+    func doLoginAPI(loginId: String, snsID: String, authType: String) {
         let url = "http://125.6.36.157:3001/v1/auth/sign"
-        AF.request(url, method: .post,
-                       parameters: nil,
-                       encoding: URLEncoding.default,
-                       headers: ["Content-Type":"application/json",
-                                 "Accept":"application/json"])
-                .validate(statusCode: 200..<300)
-                .responseJSON { (json) in
-                    print(json)
-        }        
-//        AF.request(url, method: .get, parameters: [:],
-//                   encoding: URLEncoding.default,
-//                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
-//                    .validate(statusCode: 200..<300)
-//                    .responseJSON { (response) in
-//                        if let JSON = response.response
-//                    {
-//                        print(JSON)
-//                    }
-//                }
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        let params = ["id":"\(loginId)",
+                      "sns_id":"\(snsID)",
+                      "type":"\(authType)"] as Dictionary
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
+                
+        AF.request(request).responseString { (response) in
+            switch response.result {
+            case .success:
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

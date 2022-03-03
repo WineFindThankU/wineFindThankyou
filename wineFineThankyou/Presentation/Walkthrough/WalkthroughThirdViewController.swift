@@ -57,6 +57,7 @@ class WalkthroughThirdViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("내가 마시기위해서", forKey: "third")
         }
         button.addAction(action, for: .touchUpInside)
@@ -76,6 +77,7 @@ class WalkthroughThirdViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("모임과 파티를 위해서", forKey: "third")
         }
         button.addAction(action, for: .touchUpInside)
@@ -95,6 +97,7 @@ class WalkthroughThirdViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("선물하기 위해서", forKey: "third")
         }
         button.addAction(action, for: .touchUpInside)

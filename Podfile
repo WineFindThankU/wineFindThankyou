@@ -16,8 +16,8 @@ target 'wineFindThankyou' do
   pod 'NMapsMap','3.10.0'
 #  pod 'NMapsMap', '3.10.1'
   pod 'KakaoSDK'
- #pod 'KakaoSDKCommon' # 필수 요소를 담은 공통 모듈 
- #pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
+  pod 'KakaoSDKCommon' # 필수 요소를 담은 공통 모듈 
+  pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
   pod 'GoogleSignIn', '~>5.0'  # 구글 로그인
   pod 'naveridlogin-sdk-ios' #naver login
   pod 'GoogleMLKit/TextRecognitionKorean'

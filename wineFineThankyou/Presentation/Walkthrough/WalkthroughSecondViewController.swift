@@ -57,6 +57,7 @@ class WalkthroughSecondViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("2만원 이하", forKey: "second")
         }
         button.addAction(action, for: .touchUpInside)
@@ -76,6 +77,7 @@ class WalkthroughSecondViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("3 ~ 4만원대", forKey: "second")
         }
         button.addAction(action, for: .touchUpInside)
@@ -95,6 +97,7 @@ class WalkthroughSecondViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("5 ~ 7만원대", forKey: "second")
         }
         button.addAction(action, for: .touchUpInside)
@@ -115,6 +118,7 @@ class WalkthroughSecondViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("8 ~ 10만원대", forKey: "second")
         }
         button.addAction(action, for: .touchUpInside)
@@ -134,6 +138,7 @@ class WalkthroughSecondViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("퀄리티가 된다면 가격은 상관없는", forKey: "second")
         }
         button.addAction(action, for: .touchUpInside)

@@ -63,6 +63,7 @@ class WalkthroughFirstViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("가성비", forKey: "first")
         }
         button.addAction(action, for: .touchUpInside)
@@ -82,6 +83,7 @@ class WalkthroughFirstViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("포도 품종", forKey: "first")
         }
         button.addAction(action, for: .touchUpInside)
@@ -101,6 +103,7 @@ class WalkthroughFirstViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("와인 브랜드", forKey: "first")
         }
         button.addAction(action, for: .touchUpInside)
@@ -121,6 +124,7 @@ class WalkthroughFirstViewController: UIViewController {
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
+            button.layer.borderWidth = 1.5
             UserDefaults.standard.set("생산 지역", forKey: "first")
         }
         button.addAction(action, for: .touchUpInside)
@@ -139,6 +143,7 @@ class WalkthroughFirstViewController: UIViewController {
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
+            button.layer.borderWidth = 1.5
             button.setTitleColor(.standardColor, for: .normal)
             UserDefaults.standard.set("와인 종류", forKey: "first")
         }
@@ -158,6 +163,7 @@ class WalkthroughFirstViewController: UIViewController {
         button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         let action = UIAction { _ in
             button.layer.borderColor = UIColor.standardColor.cgColor
+            button.layer.borderWidth = 1.5
             button.setTitleColor(.standardColor, for: .normal)
             UserDefaults.standard.set("기타", forKey: "first")
         }

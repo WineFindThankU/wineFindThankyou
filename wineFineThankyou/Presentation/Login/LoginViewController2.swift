@@ -13,6 +13,9 @@
 
 import UIKit
 import SnapKit
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 
 final class LoginViewController2: UIViewController {
 
@@ -35,9 +38,15 @@ final class LoginViewController2: UIViewController {
     
     lazy var kakaoButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(named: "kakaoLogin")
-        button.setImage(buttonImage, for: .normal)
-        button.contentMode = .scaleAspectFill
+        button.backgroundColor = UIColor.kakao
+        button.layer.cornerRadius = 18
+        button.setTitle("카카오로 로그인", for: .normal)
+        button.setTitleColor(.kakaoText, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setImage(#imageLiteral(resourceName: "_login_kakao"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.semanticContentAttribute = .forceLeftToRight
+        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 55)
         let action = UIAction(handler: { _ in
             self.loginController.loginByKakao()
         })
@@ -47,22 +56,58 @@ final class LoginViewController2: UIViewController {
     
     lazy var naverButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(named: "naverLogin")
-        button.setImage(buttonImage, for: .normal)
+        button.backgroundColor = UIColor.naver
+        button.layer.cornerRadius = 18
+        button.setTitle("네이버로 로그인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setImage(#imageLiteral(resourceName: "_login_naver"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.semanticContentAttribute = .forceLeftToRight
+        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 55)
+        let action = UIAction(handler: { _ in
+            self.loginController.loginByNaver()
+        })
         return button
     }()
     
     lazy var googleButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(named: "googleLogin")
-        button.setImage(buttonImage, for: .normal)
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 18
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth  = 0.7
+        button.setTitle("Google로 로그인", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setImage(#imageLiteral(resourceName: "_login_google"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.semanticContentAttribute = .forceLeftToRight
+        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 45)
+        let action = UIAction(handler: { _ in
+            self.loginController.loginByGoogle()
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     lazy var appleButton: UIButton = {
         let button = UIButton()
-        let buttonImage = UIImage(named: "appleLogin")
-        button.setImage(buttonImage, for: .normal)
+        button.backgroundColor = UIColor.black
+        button.layer.cornerRadius = 18
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth  = 0.7
+        button.setTitle("Apple로 로그인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setImage(#imageLiteral(resourceName: "_login_apple"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.semanticContentAttribute = .forceLeftToRight
+        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 45)
+        let action = UIAction(handler: { _ in
+            self.loginController.loginByApple()
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
@@ -81,6 +126,12 @@ final class LoginViewController2: UIViewController {
         subView.addSubview(appleButton)
     }
     
+    func presentToMain() {
+        let viewController = TestViewController()
+        viewController.modalPresentationStyle = .overFullScreen
+        self.present(viewController, animated: true)
+    }
+    
     private func setupUI() {
         self.view.backgroundColor = .white
         
@@ -91,7 +142,7 @@ final class LoginViewController2: UIViewController {
         }
         
         subView.snp.makeConstraints { make in
-            make.top.equalTo(titleImageView.snp.bottom).offset(180)
+            make.height.equalTo(212)
             make.leading.trailing.equalToSuperview().inset(25)
             make.bottom.equalToSuperview().inset(52)
             

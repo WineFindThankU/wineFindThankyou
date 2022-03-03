@@ -24,6 +24,10 @@ extension UIColor {
     static let folder05 = UIColor(named: "folder05") ?? #colorLiteral(red: 0.8941176471, green: 0.6, blue: 0.9647058824, alpha: 1)
     static let folder06 = UIColor(named: "folder06") ?? #colorLiteral(red: 0.9607843137, green: 0.6470588235, blue: 0.7607843137, alpha: 1)
     static let gray30 = UIColor(named: "gray30") ?? #colorLiteral(red: 0.8784312606, green: 0.878431499, blue: 0.8827369809, alpha: 1)
+    static let kakao = UIColor(named: "kakao") ?? #colorLiteral(red: 1, green: 0.8935883045, blue: 0, alpha: 1)
+    static let kakaoText = UIColor(named: "kakao_text") ?? #colorLiteral(red: 0.09803909808, green: 0.0980392769, blue: 0.102338694, alpha: 1)
+    static let naver = UIColor(named: "naver") ?? #colorLiteral(red: 0, green: 0.7948389053, blue: 0.2878605127, alpha: 1)
+    
     
     var name: String? {
         switch self {

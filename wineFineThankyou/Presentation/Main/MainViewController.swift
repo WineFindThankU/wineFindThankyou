@@ -55,7 +55,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
-        
+        self.setupCollectionView()
         //MARK: 테스트 데이터
         loadTestDatas()
         //MARK: 마커 표시를 위한 테스트 함수 및 코드입니다.
@@ -65,8 +65,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     var locationManager : CLLocationManager?
     
     private func setupUI() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        
         rightBtn.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
         
         self.view.addSubview(currentLocationButton)
@@ -205,6 +204,10 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    private func setupCollectionView() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrCategoryName.count
     }
