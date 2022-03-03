@@ -107,7 +107,6 @@ extension LoginViewController: EndLoginProtocol {
     func goToMain() {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController")
                 as? MainViewController else { return }
-        
         DispatchQueue.main.async { [weak self] in
             vc.modalTransitionStyle = .flipHorizontal
             vc.modalPresentationStyle = .fullScreen

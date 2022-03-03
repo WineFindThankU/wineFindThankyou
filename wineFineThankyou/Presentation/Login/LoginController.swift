@@ -102,11 +102,13 @@ class LoginController: NSObject {
             print("http Body Error")
         }
                 
+       // let loginResponse: LoginResponse?
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                print(response)
-                // UserDefaults.standard.set(response, forKey: "accessToken")
+             //   print(response)
+                self.loginController.goToMain()
+             //   UserDefaults.standard.set(rssponse, forKey: "accessToken")
             case .failure(let error):
                 print(error)
             }

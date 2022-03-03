@@ -132,6 +132,17 @@ final class LoginViewController2: UIViewController {
         self.present(viewController, animated: true)
     }
     
+    
+    func goToMain() {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestViewController")
+                as? TestViewController else { return }
+        DispatchQueue.main.async { [weak self] in
+            vc.modalTransitionStyle = .flipHorizontal
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     private func setupUI() {
         self.view.backgroundColor = .white
         
