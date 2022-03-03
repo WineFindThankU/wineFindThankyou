@@ -106,7 +106,7 @@ class LoginController: NSObject {
             switch response.result {
             case .success:
                 print(response)
-                UserDefaults.standard.set(response, forKey: "accessToken")
+                // UserDefaults.standard.set(response, forKey: "accessToken")
             case .failure(let error):
                 print(error)
             }
