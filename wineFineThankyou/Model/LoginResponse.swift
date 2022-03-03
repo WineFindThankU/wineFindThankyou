@@ -11,7 +11,7 @@ import Foundation
 struct LoginResponse: Codable {
     let statusCode: Int
     let message: String
-    let data: DataClass
+    var data: DataClass
 }
 
 // MARK: - DataClass

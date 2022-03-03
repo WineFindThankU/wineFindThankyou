@@ -12,6 +12,13 @@ import KakaoSDKUser
 import KakaoSDKAuth
 import GoogleSignIn
 import AuthenticationServices
+import SwiftyJSON
+
+enum NetworkError: Error {
+    case badUrl
+    case noData
+    case decodingError
+}
 
 
 class LoginController: NSObject {
@@ -80,14 +87,13 @@ class LoginController: NSObject {
                 let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
                 print(email)
                 print(nickname)
-                self.postTest(loginId: email, snsID: nickname, authType: "kakao")
+                self.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao")
                 self.loginController.presentToMain()
             }
         }
     }
     
-    
-    func postTest(loginId: String, snsID: String, authType: String) {
+    func getLoginSNS(loginId: String, snsID: String, authType: String) {
         let url = "http://125.6.36.157:3001/v1/auth/sign"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -101,18 +107,24 @@ class LoginController: NSObject {
         } catch {
             print("http Body Error")
         }
-                
-       // let loginResponse: LoginResponse?
-        AF.request(request).responseString { (response) in
-            switch response.result {
-            case .success:
-             //   print(response)
-                self.loginController.goToMain()
-             //   UserDefaults.standard.set(rssponse, forKey: "accessToken")
-            case .failure(let error):
-                print(error)
-            }
-        }
+        AF.request(request).responseJSON {(response) in
+             switch response.result {
+             case .success(let item):
+                 if let nsDictionary = item as? NSDictionary {
+                     do {
+                         let dataJSON = try JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
+                         let getData = try JSONDecoder().decode(LoginResponse.self, from: dataJSON)
+                         UserDefaults.standard.set(getData.data.accessToken, forKey: "accessToken")
+                     } catch {
+                         print("error")
+                     }
+                 }
+             case .failure(let error):
+                 print(error)
+             }
+         }
+
+        
     }
     
     internal func loginByGoogle() {
@@ -167,15 +179,14 @@ extension LoginController: GIDSignInDelegate {
 
 //MARK: Apple login
 extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.viewController.view.window!
     }
     // Apple ID 연동 성공 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
-        // Apple ID
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-            // 계정 정보 가져오기
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
@@ -184,12 +195,13 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             print("User ID : \(userIdentifier)")
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-            postTest(loginId: email ?? "wft@gmail.com", snsID: fullName?.givenName ?? "1234", authType: "apple")
+            getLoginSNS(loginId: email ?? "wft@gmail.com", snsID: fullName?.givenName ?? "1234", authType: "apple")
+            
         default:
             break
         }
         delegate?.endLogin(.success)
-        loginController.presentToMain()
+        // loginController.presentToMain()
     }
         
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {

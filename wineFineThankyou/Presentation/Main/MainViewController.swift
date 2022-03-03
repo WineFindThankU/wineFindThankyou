@@ -61,7 +61,9 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         //MARK: 마커 표시를 위한 테스트 함수 및 코드입니다.
         testFuncForShowingMarker()
     }
-    //MARK: 마커 표시를 위한 테스트 변수
+    
+    
+    // MARK: 마커 표시를 위한 테스트 변수
     var locationManager : CLLocationManager?
     
     private func setupUI() {
@@ -189,12 +191,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         done?(true)
     }
     
-    
-    func getShopLists() {
-        let requestNetworking = RequestNetworking()
-       // requestNetworking.dowhat(longitude: 126.8837913, latitude: 37.5848659)
-    }
-   
     @IBAction func onClickSearchBar(_ sender: UIButton) {
         print(sender)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
