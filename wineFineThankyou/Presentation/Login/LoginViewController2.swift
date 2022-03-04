@@ -109,7 +109,6 @@ final class LoginViewController2: UIViewController {
         button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 45)
         let action = UIAction(handler: { _ in
             self.loginController.loginByApple()
-            self.presentToMain()
         })
         button.addAction(action, for: .touchUpInside)
         return button

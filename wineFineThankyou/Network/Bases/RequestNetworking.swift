@@ -61,7 +61,7 @@ extension RequestNetworking {
 var defaultSession: Session {
     let interceptor = RequestInterceptor()
     #if DEBUG
-    return Alamofire.Session(interceptor: interceptor, eventMonitors: [APIEventLogger()])
+    return Alamofire.Session(interceptor: interceptor)
     #else
     return Alamofire.Session(interceptor: interceptor)
     #endif

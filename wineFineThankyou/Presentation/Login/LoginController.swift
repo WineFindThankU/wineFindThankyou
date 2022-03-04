@@ -64,13 +64,17 @@ class LoginController: NSObject {
             if let error = error {
                     print(error)
             } else {
-                UserApi.shared.me {(user, error) in
+                UserApi.shared.me() {(user, error) in
                     if let error = error {
                         print(error)
                     } else {
-                        _ = oauthToken
-                        let accessToken = oauthToken?.accessToken
-                        self.setUserInfo()
+                        _ = user
+                        let email = user?.kakaoAccount?.email ?? ""
+                        let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
+                        print(email)
+                        print(nickname)
+                        self.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao")
+                        self.loginController.presentToMain()
                     }
                 }
             }
@@ -123,8 +127,6 @@ class LoginController: NSObject {
                  print(error)
              }
          }
-
-        
     }
     
     internal func loginByGoogle() {
@@ -182,6 +184,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.viewController.view.window!
+        loginController.goToMain()
     }
     // Apple ID 연동 성공 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -196,12 +199,13 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
             getLoginSNS(loginId: email ?? "wft@gmail.com", snsID: fullName?.givenName ?? "1234", authType: "apple")
+            // loginController.goToMain()
             
         default:
             break
         }
         delegate?.endLogin(.success)
-        // loginController.presentToMain()
+        
     }
         
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
