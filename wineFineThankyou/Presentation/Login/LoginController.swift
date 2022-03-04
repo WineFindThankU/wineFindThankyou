@@ -184,7 +184,6 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.viewController.view.window!
-        loginController.goToMain()
     }
     // Apple ID 연동 성공 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -199,13 +198,12 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
             getLoginSNS(loginId: email ?? "wft@gmail.com", snsID: fullName?.givenName ?? "1234", authType: "apple")
-            // loginController.goToMain()
             
         default:
             break
         }
         delegate?.endLogin(.success)
-        
+       // loginController.goToMain()
     }
         
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
