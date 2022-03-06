@@ -20,8 +20,28 @@ public class Storage {
     }
 }
 
-
-final class WalkthroughMainViewController: UIViewController {
+protocol SelectWalkThroughOption: AnyObject {
+    func selected(_ idx: Int, _ item: Any)
+}
+final class WalkthroughMainViewController: UIViewController, SelectWalkThroughOption {
+    func selected(_ idx: Int, _ item: Any) {
+        DispatchQueue.main.async {
+            self.setNextButton(idx)
+        }
+        
+        guard idx < 3 else { return }
+        switch idx {
+        case 0:
+            self.selectedOption[0] = item
+        case 1:
+            self.selectedOption[1] = item
+        case 2:
+            self.selectedOption[2] = item
+        default:
+            break
+        }
+    }
+    
     private var currentIndex = 0
     
     lazy var navigationView: UIView = {
@@ -39,16 +59,19 @@ final class WalkthroughMainViewController: UIViewController {
     
     lazy var vc1: UIViewController = {
         let viewController = WalkthroughFirstViewController()
+        viewController.delegate = self
         return viewController
     }()
 
     lazy var vc2: UIViewController = {
         let viewController = WalkthroughSecondViewController()
+        viewController.delegate = self
         return viewController
     }()
 
     lazy var vc3: UIViewController = {
         let viewController = WalkthroughThirdViewController()
+        viewController.delegate = self
         return viewController
     }()
     
@@ -56,7 +79,7 @@ final class WalkthroughMainViewController: UIViewController {
         return [vc1, vc2, vc3]
     }()
     
-    lazy var nextButton: UIButton = {
+    lazy var nextButton: UIButton! = {
         let button = UIButton()
         button.backgroundColor = .clear
         let image = UIImage(named: "_question_n")
@@ -86,6 +109,7 @@ final class WalkthroughMainViewController: UIViewController {
         return pageControl
     }()
 
+    internal var selectedOption: [Any] = ["", "", ""]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
@@ -123,13 +147,14 @@ final class WalkthroughMainViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(78)
         }
-        pageViewController.didMove(toParent: self)
         
         nextButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(50)
             make.height.width.equalTo(69)
         }
+
+        pageViewController.didMove(toParent: self)
     }
     
     private func setupConfigure() {
@@ -138,6 +163,31 @@ final class WalkthroughMainViewController: UIViewController {
         view.addSubview(pageViewController.view)
         view.addSubview(pageControl)
         view.addSubview(nextButton)
+
+    }
+    
+    private func setNextButton(_ idx: Int) {
+        self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        
+        guard idx < 2 else {
+            nextButton.addAction(UIAction { _ in
+                let nextVC = WalkthroughFourthViewController()
+                nextVC.modalPresentationStyle = .overFullScreen
+                nextVC.selectedOption = self.selectedOption
+                self.present(nextVC, animated: true)
+            }, for: .touchUpInside)
+
+            return
+        }
+        nextButton.addAction(UIAction { _ in
+            self.pageViewController.setViewControllers([self.dataViewControllers[idx + 1]], direction: .forward, animated: true, completion: {_ in
+                DispatchQueue.main.async {
+                    self.currentIndex += 1
+                    self.pageControl.currentPage = self.currentIndex
+                    self.nextButton.setImage(UIImage(named: "_question_n"), for: .normal)
+                }
+            })
+        }, for: .touchUpInside)
     }
 }
 
@@ -148,8 +198,17 @@ extension WalkthroughMainViewController: UIPageViewControllerDelegate {
         guard let index = dataViewControllers.firstIndex(of: viewController) else { return nil }
         let previousIndex = index - 1
         currentIndex = previousIndex
-        if previousIndex < 0 {
-            return nil
+        guard previousIndex >= 0 else { return nil }
+        
+        if let _ = selectedOption[currentIndex] as? WhenDoSelect {
+            self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        } else if let _ = selectedOption[currentIndex] as? PriceOfWine {
+            self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        } else if let _ = selectedOption[currentIndex] as? ReasonOfBought {
+            self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        }
+        else {
+            self.nextButton.setImage(UIImage(named: "_question_n"), for: .normal)
         }
         return dataViewControllers[previousIndex]
     }
@@ -162,8 +221,17 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
         guard let index = dataViewControllers.firstIndex(of: viewController) else { return nil }
         let nextIndex = index + 1
         currentIndex = nextIndex
-        if nextIndex == dataViewControllers.count {
-            return nil
+        guard nextIndex < dataViewControllers.count
+        else { return nil }
+        
+        if let _ = selectedOption[currentIndex] as? WhenDoSelect {
+            self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        } else if let _ = selectedOption[currentIndex] as? PriceOfWine {
+            self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        } else if let _ = selectedOption[currentIndex] as? ReasonOfBought {
+            self.nextButton.setImage(UIImage(named: "_question_s"), for: .normal)
+        } else {
+            self.nextButton.setImage(UIImage(named: "_question_n"), for: .normal)
         }
         return dataViewControllers[nextIndex]
     }
@@ -176,19 +244,6 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
          let currentVC = pageViewController.viewControllers?.first,
          let index = dataViewControllers.firstIndex(of: currentVC) else { return }
          pageControl.currentPage = index
-        
-        if index == 2 {
-            let image = UIImage(named: "_question_s")
-            nextButton.setImage(image, for: .normal)
-            nextButton.imageView?.contentMode = .scaleAspectFit
-            nextButton.contentHorizontalAlignment = .center
-            nextButton.semanticContentAttribute = .forceLeftToRight
-            let action = UIAction(handler: { _ in
-                let nextVC = WalkthroughFourthViewController()
-                nextVC.modalPresentationStyle = .overFullScreen
-                self.present(nextVC, animated: false)
-            })
-            nextButton.addAction(action, for: .touchUpInside)
-        }
      }
 }
+

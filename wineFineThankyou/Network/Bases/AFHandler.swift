@@ -17,7 +17,16 @@ class AFHandler {
     static let session = defaultSession
     class func signBySNS(_ params: [String:Any], done: ((AfterSign) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/user"
-        session.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { res in
+        let userOptions = UserData.userOptions
+        
+        var dict = params
+        dict["taste_data"] = [
+            "1": [ "value":  userOptions[0]],
+            "2": [ "value": userOptions[1] ],
+            "3": [ "value": userOptions[2] ]
+        ]
+                
+        session.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default).responseJSON { res in
             switch res.result {
             case .success(let item):
                 do {
@@ -73,15 +82,12 @@ class AFHandler {
         }
     }
     
-    class func getShopList(_ lat: Double = 0, _ lng: Double = 0, done:(([ShopInfo]) -> Void)?) {
+    class func getShopList(_ lat: Double, _ lng: Double, done:(([ShopInfo]) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop"
-        var params = [String:Any]()
-        if lat != 0, lng != 0 {
-            params = ["type":"location",
+        let params = ["type":"location",
                       "latitude": lat,
                       "longitude":lng,
-                      "radius": 10]
-        }
+                      "radius": 2] as? [String : Any]
         session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
             case .success(let nsDict):

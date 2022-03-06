@@ -77,7 +77,6 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance().presentingViewController = self
     }
     
-    
     private func configure() {
         let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
         authorizationButton.cornerRadius = .maximum(20, 20)

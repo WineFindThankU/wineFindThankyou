@@ -9,11 +9,9 @@ import UIKit
 import SnapKit
 
 final class WalkthroughFourthViewController: UIViewController {
-    
-    private let firstData = UserDefaults.standard.object(forKey: "first")!
-    private let secondData = UserDefaults.standard.object(forKey: "second")!
-    private let thirdData = UserDefaults.standard.object(forKey: "third")!
-    
+    var selectedOption: [Any] = [] {
+        didSet{ saveUserDefaults() }
+    }
     lazy var finalImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Group 187")
@@ -30,7 +28,9 @@ final class WalkthroughFourthViewController: UIViewController {
     
     lazy var firstLabel: UILabel = {
         let label = UILabel()
-        label.text = " # \(firstData)"
+        if let option = selectedOption[0] as? WhenDoSelect {
+            label.text = " # \(option.str)"
+        }
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor(red: 66 / 255,
                                   green: 66 / 255,
@@ -40,7 +40,9 @@ final class WalkthroughFourthViewController: UIViewController {
     
     lazy var secondLabel: UILabel = {
         let label = UILabel()
-        label.text = " # \(secondData)"
+        if let option = selectedOption[1] as? PriceOfWine {
+            label.text = " # \(option.str)"
+        }
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor(red: 66 / 255,
                                   green: 66 / 255,
@@ -50,7 +52,9 @@ final class WalkthroughFourthViewController: UIViewController {
     
     lazy var thirdLabel: UILabel = {
         let label = UILabel()
-        label.text = " # \(thirdData)"
+        if let option = selectedOption[2] as? ReasonOfBought {
+            label.text = " # \(option.str)"
+        }
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor(red: 66 / 255,
                                   green: 66 / 255,
@@ -67,7 +71,10 @@ final class WalkthroughFourthViewController: UIViewController {
         let action = UIAction(handler: { _ in
             let nextVC = LoginViewController2()
             nextVC.modalPresentationStyle = .overFullScreen
-            self.present(nextVC, animated: false)
+            self.dismiss(animated: true, completion: {
+                guard let top = topViewController() else { return }
+                top.present(nextVC, animated: false)
+            })
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -77,7 +84,6 @@ final class WalkthroughFourthViewController: UIViewController {
         super.viewDidLoad()
         setupConfigure()
         setupUI()
-        
     }
     
     private func setupConfigure() {
@@ -89,7 +95,14 @@ final class WalkthroughFourthViewController: UIViewController {
         view.addSubview(nextButton)
     }
 
-    
+    private func saveUserDefaults() {
+        guard let option0 = selectedOption[0] as? WhenDoSelect,
+              let option1 = selectedOption[1] as? PriceOfWine,
+              let option2 = selectedOption[2] as? ReasonOfBought
+        else { return }
+        print("munyong > \(option0.str), \(option1.str), \(option2.str)")
+        UserData.userOptions = [option0.str, option1.str, option2.str]
+    }
     private func setupUI() {
         view.backgroundColor = .white
         finalImageView.snp.makeConstraints { make in
@@ -127,6 +140,4 @@ final class WalkthroughFourthViewController: UIViewController {
             make.height.width.equalTo(69)
         }
     }
-    
-
 }

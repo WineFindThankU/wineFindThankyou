@@ -7,6 +7,15 @@
 
 import UIKit
 
+enum PriceOfWine: String, CaseIterable {
+    case one2Two = "2만원 이하"
+    case thr2Four = "3 ~ 4만원대"
+    case five2Seven = "5 ~ 7만원 대"
+    case eig2Ten = "8 ~ 10만원 대"
+    case quality = "퀄리티가 된다면 가격은 상관없음!"
+    var str: String { return self.rawValue }
+}
+
 class WalkthroughSecondViewController: UIViewController {
     
     lazy var numberLabel: UILabel = {
@@ -44,108 +53,39 @@ class WalkthroughSecondViewController: UIViewController {
         return stack
     } ()
     
-    let twoButton: UIButton = {
+    let one2Two: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("2만원 이하", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        let action = UIAction { _ in
-            button.layer.borderColor = UIColor.standardColor.cgColor
-            button.setTitleColor(.standardColor, for: .normal)
-            button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("2만원 이하", forKey: "second")
-        }
-        button.addAction(action, for: .touchUpInside)
+        button.setTitle(PriceOfWine.one2Two.str, for: .normal)
         return button
     }()
     
-    let threefourButton: UIButton = {
+    let thr2Four: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("3 ~ 4만원대", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        let action = UIAction { _ in
-            button.layer.borderColor = UIColor.standardColor.cgColor
-            button.setTitleColor(.standardColor, for: .normal)
-            button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("3 ~ 4만원대", forKey: "second")
-        }
-        button.addAction(action, for: .touchUpInside)
+        button.setTitle(PriceOfWine.thr2Four.str, for: .normal)
         return button
     }()
     
-    let fivesevenButton: UIButton = {
+    let five2Seven: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("5 ~ 7만원 대", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        let action = UIAction { _ in
-            button.layer.borderColor = UIColor.standardColor.cgColor
-            button.setTitleColor(.standardColor, for: .normal)
-            button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("5 ~ 7만원대", forKey: "second")
-        }
-        button.addAction(action, for: .touchUpInside)
+        button.setTitle(PriceOfWine.five2Seven.str, for: .normal)
         return button
     }()
     
     
-    let eighttenButton: UIButton = {
+    let eig2Ten: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("8 ~ 10만원 대", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        let action = UIAction { _ in
-            button.layer.borderColor = UIColor.standardColor.cgColor
-            button.setTitleColor(.standardColor, for: .normal)
-            button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("8 ~ 10만원대", forKey: "second")
-        }
-        button.addAction(action, for: .touchUpInside)
+        button.setTitle(PriceOfWine.eig2Ten.str, for: .normal)
         return button
     }()
     
-    let qualityButton: UIButton = {
+    let quality: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("퀄리티가 된다면 가격은 상관없음!", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        let action = UIAction { _ in
-            button.layer.borderColor = UIColor.standardColor.cgColor
-            button.setTitleColor(.standardColor, for: .normal)
-            button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("퀄리티가 된다면 가격은 상관없는", forKey: "second")
-        }
-        button.addAction(action, for: .touchUpInside)
+        button.setTitle(PriceOfWine.quality.str, for: .normal)
         return button
     }()
     
-    
+    internal weak var delegate: SelectWalkThroughOption?
+    private var buttons = [UIButton]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -176,14 +116,38 @@ class WalkthroughSecondViewController: UIViewController {
         view.addSubview(numberLabel)
         view.addSubview(QuestionLabel)
         view.addSubview(stackView)
-        stackView.addArrangedSubview(twoButton)
-        stackView.addArrangedSubview(threefourButton)
-        stackView.addArrangedSubview(fivesevenButton)
-        stackView.addArrangedSubview(eighttenButton)
-        stackView.addArrangedSubview(qualityButton)
+        buttons = [one2Two, thr2Four, five2Seven, eig2Ten, quality]
+        buttons.forEach { btn in
+            stackView.addArrangedSubview(btn)
+            btn.backgroundColor = .white
+            btn.titleLabel?.font = .systemFont(ofSize: 15)
+            btn.setTitleColor(.black, for: .normal)
+            btn.layer.borderWidth = 1
+            btn.layer.borderColor = UIColor.black.cgColor
+            btn.layer.cornerRadius = 20
+            btn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+            btn.addAction(UIAction { _ in
+                btn.backgroundColor = .white
+                btn.layer.borderColor = UIColor.standardColor.cgColor
+                btn.layer.borderWidth = 1.5
+                btn.setTitleColor(.standardColor, for: .normal)
+                self.selectedBtn(btn)
+            }, for: .touchUpInside)
+        }
     }
     
-    private func setupButton() {
+    private func selectedBtn(_ btn: UIButton) {
+        self.buttons.filter {
+            $0 != btn
+        }.forEach {
+            $0.layer.borderColor = UIColor(rgb: 0xE0E0E0).cgColor
+            $0.setTitleColor(UIColor(rgb: 0xbdbdbd), for: .normal)
+        }
         
+        guard let btnTxt = btn.titleLabel?.text,
+              let select = PriceOfWine.allCases.first(where: { $0.str == btnTxt})
+        else { return }
+        
+        delegate?.selected(1, select)
     }
 }

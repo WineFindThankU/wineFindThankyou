@@ -445,7 +445,7 @@ extension MainViewController: CLLocationManagerDelegate {
             }
             
             DispatchQueue.global().async {
-                AFHandler.getShopList() {
+                AFHandler.getShopList(lat, lng) {
                     self.nearWineShops = $0
                 }
             }

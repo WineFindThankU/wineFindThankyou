@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum ReasonOfBought: String, CaseIterable {
+    case forMe = "내가 마시기위해서"
+    case forParty = "모임과 파티를 위해서"
+    case forPresent = "선물하기 위해서"
+    var str: String { return self.rawValue }
+}
+
 class WalkthroughThirdViewController: UIViewController {
     
     lazy var numberLabel: UILabel = {
@@ -44,30 +51,17 @@ class WalkthroughThirdViewController: UIViewController {
         return stack
     } ()
     
-    let meButton: UIButton = {
+    let forMe: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("내가 마시기위해서", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        let action = UIAction { _ in
-            button.layer.borderColor = UIColor.standardColor.cgColor
-            button.setTitleColor(.standardColor, for: .normal)
-            button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("내가 마시기위해서", forKey: "third")
-        }
-        button.addAction(action, for: .touchUpInside)
+        button.setTitle(ReasonOfBought.forMe.str, for: .normal)
+        
         return button
     }()
     
-    let partyButton: UIButton = {
+    let forParty: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
-        button.setTitle("모임과 파티를 위해서", for: .normal)
+        button.setTitle(ReasonOfBought.forParty.str, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderWidth = 1
@@ -78,7 +72,6 @@ class WalkthroughThirdViewController: UIViewController {
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
             button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("모임과 파티를 위해서", forKey: "third")
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -87,7 +80,7 @@ class WalkthroughThirdViewController: UIViewController {
     let presentButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
-        button.setTitle("선물하기 위해서", for: .normal)
+        button.setTitle(ReasonOfBought.forPresent.str, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderWidth = 1
@@ -98,12 +91,13 @@ class WalkthroughThirdViewController: UIViewController {
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
             button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("선물하기 위해서", forKey: "third")
         }
         button.addAction(action, for: .touchUpInside)
         return button
     }()
     
+    internal weak var delegate: SelectWalkThroughOption?
+    private var buttons = [UIButton]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -133,12 +127,39 @@ class WalkthroughThirdViewController: UIViewController {
         view.addSubview(numberLabel)
         view.addSubview(QuestionLabel)
         view.addSubview(stackView)
-        stackView.addArrangedSubview(meButton)
-        stackView.addArrangedSubview(partyButton)
+        stackView.addArrangedSubview(forMe)
+        stackView.addArrangedSubview(forParty)
         stackView.addArrangedSubview(presentButton)
+        buttons = [forMe, forParty, presentButton]
+        buttons.forEach { btn in
+            btn.backgroundColor = .white
+            btn.titleLabel?.font = .systemFont(ofSize: 15)
+            btn.setTitleColor(.black, for: .normal)
+            btn.layer.borderWidth = 1
+            btn.layer.borderColor = UIColor.black.cgColor
+            btn.layer.cornerRadius = 20
+            btn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+             let action = UIAction { _ in
+                 btn.layer.borderColor = UIColor.standardColor.cgColor
+                 btn.setTitleColor(.standardColor, for: .normal)
+                 btn.layer.borderWidth = 1.5
+                 self.selectedBtn(btn)
+             }
+            btn.addAction(action, for: .touchUpInside)
+        }
     }
     
-    private func setupButton() {
+    private func selectedBtn(_ btn: UIButton) {
+        self.buttons.filter {
+            $0 != btn
+        }.forEach {
+            $0.layer.borderColor = UIColor(rgb: 0xE0E0E0).cgColor
+            $0.setTitleColor(UIColor(rgb: 0xbdbdbd), for: .normal)
+        }
         
+        guard let btnTxt = btn.titleLabel?.text,
+              let select = ReasonOfBought.allCases.first(where: { $0.str == btnTxt})
+        else { return }
+        delegate?.selected(2, select)
     }
 }

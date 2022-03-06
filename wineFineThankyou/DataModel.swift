@@ -136,6 +136,19 @@ class UserData {
             UserDefaults.standard.setValue(val, forKey: "IsUserLoginBefore")
         }
     }
+    
+    static var userOptions: [String] {
+        get {
+            let rtnVal = UserDefaults.standard.string(forKey: "UserSelectOption") ?? ""
+            return rtnVal.components(separatedBy: ",")
+        }
+        set(val) {
+            var saveVal: String = ""
+            val.forEach { saveVal += ($0 + ",") }
+            UserDefaults.standard.setValue(saveVal, forKey: "UserSelectOption")
+        }
+    }
+    
     static var accessToken: String {
         get {
             return UserDefaults.standard.string(forKey: "AccessToken") ?? ""
