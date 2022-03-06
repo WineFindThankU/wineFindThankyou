@@ -15,11 +15,20 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private weak var textFieldName: UITextField?
     private weak var textFieldFrom: UITextField?
     private weak var textFieldVintage: UITextField?
-    private weak var textFieldBoughtDate: UIButton?
+    private weak var textFieldBoughtDate: UITextField?
     private weak var boughtDateBtn: UIButton!
+    private weak var registerOkButton: UIButton!
     private var captrueStatus: CaptureStatus = .initial
-    
-    internal var readWineInfo: ReadWineInfo! = ReadWineInfo(name: "까시엘로 델 ", from: "칠레", vintage: "2019")
+    private var capturedImg: UIImage?
+    private var dataPicker: UIDatePicker?
+    internal var shopInfo: ShopInfo!
+    internal var readWineInfo: ReadWineInfo? {
+        didSet {
+            textFieldName?.text = readWineInfo?.name
+            textFieldFrom?.text = readWineInfo?.from
+            textFieldVintage?.text = readWineInfo?.vintage
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +70,20 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
         textFieldVintage?.delegate = self
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.textFieldName?.resignFirstResponder()
+        self.textFieldFrom?.resignFirstResponder()
+        self.textFieldVintage?.resignFirstResponder()
+        
+        if let name = self.textFieldName?.text, !name.isEmpty,
+           let from = self.textFieldFrom?.text, !from.isEmpty,
+           let vintage = self.textFieldVintage?.text, !vintage.isEmpty,
+           let date = self.textFieldBoughtDate?.text, !date.isEmpty {
+            self.registerOkButton.backgroundColor = Theme.purple.color
+            self.registerOkButton.titleLabel?.textColor = .white
+        }
+    }
+    
     private func configure() {
         self.view.backgroundColor = UIColor(rgb: 0xf4f4f4)
         
@@ -100,7 +123,8 @@ extension AddWineInfomationViewController: CapturedImageProtocol {
         captrueStatus = .ok
         WineLabelReader.doStartToOCR(uiImage) {
         //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
-            print($0)
+            self.capturedImg = uiImage
+            self.readWineInfo = $0
             done?()
         }
     }
@@ -129,7 +153,7 @@ extension AddWineInfomationViewController {
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
     
-    private func setMidContentsView(image: UIImage? = nil) {
+    private func setMidContentsView() {
         let midView = UIView()
         let imageView = UIImageView()
         self.view.addSubview(midView)
@@ -137,9 +161,9 @@ extension AddWineInfomationViewController {
         midView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let wineName = DescAndTxtField("와인 명", readWineInfo.name, superView: midView)
-        let wineFrom = DescAndTxtField("원산지", readWineInfo.from, superView: midView)
-        let wineVintage = DescAndTxtField("빈티지", readWineInfo.vintage, superView: midView)
+        let wineName = DescAndTxtField("와인 명", readWineInfo?.name ?? "", superView: midView)
+        let wineFrom = DescAndTxtField("원산지", readWineInfo?.from ?? "", superView: midView)
+        let wineVintage = DescAndTxtField("빈티지", readWineInfo?.vintage ?? "", superView: midView)
         
         NSLayoutConstraint.activate([
             midView.topAnchor.constraint(equalTo: topView.bottomAnchor),
@@ -184,9 +208,9 @@ extension AddWineInfomationViewController {
         ])
         
         midView.backgroundColor = .white
-        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = self.capturedImg
         self.midView = midView
-        
         textFieldName = wineName.txtField
         textFieldFrom = wineFrom.txtField
         textFieldVintage = wineVintage.txtField
@@ -194,16 +218,16 @@ extension AddWineInfomationViewController {
     
     private func setBottomView() {
         let bottomView = UIView()
-        let okButton = UIButton()
+        let registerOkButton = UIButton()
         let boughtDateBtn = UIButton()
         self.view.addSubview(bottomView)
-        bottomView.addSubview(okButton)
+        bottomView.addSubview(registerOkButton)
         bottomView.addSubview(boughtDateBtn)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         boughtDateBtn.translatesAutoresizingMaskIntoConstraints = false
-        okButton.translatesAutoresizingMaskIntoConstraints = false
+        registerOkButton.translatesAutoresizingMaskIntoConstraints = false
         
-        let boughtDate = DescAndTxtField("구매한 날짜", "구매한 날짜를 선택해주세요.", superView: bottomView)
+        let boughtDate = DescAndTxtField("구매한 날짜", "구매한 날짜를 선택해주세요.", superView: bottomView, isPlaceHolder: true)
         
         NSLayoutConstraint.activate([
             bottomView.topAnchor.constraint(equalTo: self.midView.bottomAnchor, constant: 8),
@@ -226,28 +250,29 @@ extension AddWineInfomationViewController {
             boughtDateBtn.rightAnchor.constraint(equalTo: boughtDate.txtField.rightAnchor),
             boughtDateBtn.bottomAnchor.constraint(equalTo: boughtDate.txtField.bottomAnchor),
             
-            okButton.bottomAnchor.constraint(equalTo: bottomView.safeAreaLayoutGuide.bottomAnchor, constant: -24),
-            okButton.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
-            okButton.widthAnchor.constraint(equalToConstant: 335),
-            okButton.heightAnchor.constraint(equalToConstant: 44)
+            registerOkButton.bottomAnchor.constraint(equalTo: bottomView.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            registerOkButton.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
+            registerOkButton.widthAnchor.constraint(equalToConstant: 335),
+            registerOkButton.heightAnchor.constraint(equalToConstant: 44)
         ])
         
         bottomView.backgroundColor = .white
         
         boughtDate.txtField.isEnabled = false
-        
+        self.textFieldBoughtDate = boughtDate.txtField
         boughtDateBtn.addTarget(self, action: #selector(pickBoughtDate), for: .touchUpInside)
         boughtDateBtn.backgroundColor = .clear
         self.boughtDateBtn = boughtDateBtn
-        okButton.backgroundColor = UIColor(rgb: 0xf5f5f5)
-        okButton.layer.cornerRadius = 22
-        okButton.setTitle("등록하기", for: .normal)
-        okButton.setTitleColor(UIColor(rgb: 0xbdbdbd), for: .normal)
-        okButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        registerOkButton.backgroundColor = UIColor(rgb: 0xf5f5f5)
+        registerOkButton.layer.cornerRadius = 22
+        registerOkButton.setTitle("등록하기", for: .normal)
+        registerOkButton.setTitleColor(UIColor(rgb: 0xbdbdbd), for: .normal)
+        registerOkButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        registerOkButton.addTarget(self, action: #selector(completeRegister), for: .touchUpInside)
+        self.registerOkButton = registerOkButton
     }
     
     private func setDatePickerView(){
-        
         let datePickerView = UIView()
         let datePicker = UIDatePicker()
         let okButton = UIButton()
@@ -288,14 +313,30 @@ extension AddWineInfomationViewController {
         okButton.setTitle("확인", for: .normal)
         okButton.setTitleColor(.white, for: .normal)
         okButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        
+        okButton.addTarget(self, action: #selector(completeDateSet), for: .touchDown)
         self.datePickerView = datePickerView
+        self.dataPicker = datePicker
     }
     
     @objc
     func close() {
         self.dismiss(animated: true)
     }
+    @objc
+    func completeDateSet() {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut) {
+            self.datePickerView.transform = CGAffineTransform(translationX: 0, y: 269)
+            self.view.layoutIfNeeded()
+        }
+        
+        guard let date = self.dataPicker?.date else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.readWineInfo?.date = date
+        self.textFieldBoughtDate?.text = dateFormatter.string(from: date)
+        self.backgroundView.isHidden = true
+    }
+    
     @objc
     func pickBoughtDate() {
         self.view.bringSubviewToFront(backgroundView)
@@ -307,6 +348,18 @@ extension AddWineInfomationViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    @objc
+    func completeRegister() {
+        guard let readWineInfo = self.readWineInfo,
+              !readWineInfo.isEmpty()
+        else {
+            print("정보가 비어있습니다.")
+            return
+        }
+        
+        print(readWineInfo)
+    }
 }
 
 extension AddWineInfomationViewController: UITextFieldDelegate {
@@ -317,11 +370,11 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.backgroundView.isHidden = true
         if textField.isEqual(textFieldName) {
-            readWineInfo.changeName(textFieldName?.text ?? "")
+            readWineInfo?.name = textFieldName?.text ?? ""
         } else if textField.isEqual(textFieldFrom) {
-            readWineInfo.changeFrom(textFieldFrom?.text ?? "")
+            readWineInfo?.vintage = textFieldFrom?.text ?? ""
         } else if textField.isEqual(textFieldVintage) {
-            readWineInfo.changeVintage(textFieldVintage?.text ?? "")
+            readWineInfo?.vintage = textFieldVintage?.text ?? ""
         }
     }
 }
@@ -329,12 +382,17 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
 struct DescAndTxtField {
     let label = UILabel()
     let txtField = UITextField()
-    init(_ desc: String, _ placeholder: String, superView: UIView) {
+    init(_ desc: String, _ contents: String, superView: UIView, isPlaceHolder: Bool = false) {
         label.text = desc
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor(rgb: 0x1e1e1e)
         
-        txtField.placeholder = placeholder
+        if isPlaceHolder {
+            txtField.placeholder = contents
+        } else {
+            txtField.text = contents
+        }
+        
         txtField.font = UIFont.systemFont(ofSize: 13)
         txtField.layer.cornerRadius = 10
         txtField.setPadding(left: 12, right: 12)
@@ -348,24 +406,6 @@ struct DescAndTxtField {
     }
 }
 
-struct ReadWineInfo {
-    var name: String
-    var from: String
-    var vintage: String
-    var boughtDate: Date = Date()
-    mutating func changeName(_ name: String) {
-        self.name = name
-    }
-    mutating func changeFrom(_ from: String) {
-        self.from = from
-    }
-    mutating func changeVintage(_ vintage: String) {
-        self.vintage = vintage
-    }
-    mutating func changeBoughtDate(_ date: Date) {
-        self.boughtDate = date
-    }
-}
 enum CaptureStatus {
     case initial
     case cancel

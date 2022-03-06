@@ -32,6 +32,7 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
     }()
     
     internal var delegate: CapturedImageProtocol?
+    private var capturedRect = CGRect.init(x: 107, y: 93, width: 180, height: 488)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,7 +96,7 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
         }
         
         func setCaputureView() {
-            let captureRectView = CaptureRectView.init(frame: self.view.bounds, bgColor: UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5), transRect: CGRect.init(x: 107, y: 93, width: 180, height: 488))
+            let captureRectView = CaptureRectView.init(frame: self.view.bounds, bgColor: UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5), transRect: capturedRect)
             let captureBtn = UIButton()
             let label = UILabel()
             self.view.addSubview(captureRectView)
@@ -134,12 +135,28 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let imageData = photo.fileDataRepresentation() else { return }
         guard let uiImage = UIImage(data: imageData) else { return }
+        let cropped = cropImage(imageToCrop: uiImage, toRect: CGRectMake(
+            uiImage.size.width/4,
+            uiImage.size.width/4,
+            uiImage.size.height,
+            uiImage.size.height/4)
+        )
         
-        delegate?.captured(uiImage) {
+        delegate?.captured(cropped){
             self.captureSession.stopRunning()
             DispatchQueue.main.async {
                 self.dismiss(animated: true)
             }
         }
     }
+    
+    private func cropImage(imageToCrop:UIImage, toRect rect:CGRect) -> UIImage {
+        let imageRef:CGImage = imageToCrop.cgImage!.cropping(to: rect)!
+        let cropped:UIImage = UIImage(cgImage:imageRef)
+        return cropped
+    }
+    
+    private func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+       return CGRect(x: x, y: y, width: width, height: height)
+   }
 }

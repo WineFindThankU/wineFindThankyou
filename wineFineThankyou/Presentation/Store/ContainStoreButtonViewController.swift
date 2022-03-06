@@ -35,6 +35,7 @@ class ContainStoreButtonViewController: UIViewController{
     private func takePicture() {
         guard let vc = UIStoryboard(name: StoryBoard.readWine.name, bundle: nil).instantiateViewController(withIdentifier: AddWineInfomationViewController.identifier) as? AddWineInfomationViewController else { return }
         vc.modalPresentationStyle = .overFullScreen
+        vc.shopInfo = shopInfo
         self.present(vc, animated: false)
     }
     
