@@ -42,7 +42,13 @@ class WineLabelReader {
                 return
             }
             
-            ocrDone?(parsingReadText(result.text))
+            guard let name = parsingReadText(result.text)?.name else {
+                ocrDone?(nil)
+                return
+            }
+            AFHandler.getWineInfo(name.trimmingCharacters(in: .whitespaces), done: {
+                ocrDone?($0)
+            })
         }
     }
     

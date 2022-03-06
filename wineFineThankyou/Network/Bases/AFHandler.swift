@@ -150,6 +150,25 @@ class AFHandler {
             }
         }
     }
+    
+    class func getWineInfo(_ key: String, done:((ReadWineInfo?) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/wine"
+        let param = ["keyword":key]
+        session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                
+                let dict = JSON(nsDict)["data"]
+                print(dict)
+                done?(nil)
+                return
+            default:
+                done?(nil); return
+            }
+        }
+    }
 }
 
 class ShopInfo {
