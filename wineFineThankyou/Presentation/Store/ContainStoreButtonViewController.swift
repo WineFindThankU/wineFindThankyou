@@ -10,7 +10,6 @@ import UIKit
 
 class ContainStoreButtonViewController: UIViewController{
     var shopInfo: ShopInfo!
-//    var wineStoreInfo: WineStoreInfo?
     var wineInfos: [WineInfo] = []
     internal unowned var storeButtonsView: StoreButtonsView! {
         didSet { addTargetOnButton() }

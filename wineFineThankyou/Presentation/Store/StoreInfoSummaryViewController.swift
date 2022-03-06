@@ -87,10 +87,10 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
             imageView.centerYAnchor.constraint(equalTo: storeName.centerYAnchor),
         ])
         
-        storeName.text = wineStoreInfo?.storeName ?? ""
+        storeName.text = shopInfo.name
         storeName.font = .boldSystemFont(ofSize: 20)
         storeName.textColor = Theme.blacktext.color
-        storeClassification.text = wineStoreInfo?.classification.str ?? ""
+        storeClassification.text = shopInfo.categoryType.str
         storeClassification.font = .systemFont(ofSize: 13)
         storeClassification.textColor = Theme.blacktext.color
         imageView.image = UIImage(named: "rightArrow")

@@ -72,7 +72,6 @@ class MyPageListViewController: UIViewController {
     func goToStore(_ storeKey: Int) {
         guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoViewController.identifier) as? StoreInfoViewController else { return }
         vc.wineInfos = wineInfos.filter { $0.storeFk == storeKey }
-        vc.wineStoreInfo = wineStoreInfos.first(where: { $0.key == storeKey})
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }

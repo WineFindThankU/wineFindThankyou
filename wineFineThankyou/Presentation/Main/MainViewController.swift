@@ -36,7 +36,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     @IBOutlet weak var searchButtonOutlet: UIButton!
 
     var wineInfos: [WineInfo] = []
-    var wineStoreInfos: [WineStoreInfo] = []
     var nearWineShops: [ShopInfo] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -150,8 +149,6 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         else { return }
         vc.modalPresentationStyle = .fullScreen
         vc.wineInfos = wineInfos
-        vc.visitedWineStoreInfos = wineStoreInfos.deduplicate()
-        vc.favoritesWineStoreInfos = wineStoreInfos.deduplicate()
         
         self.present(vc, animated: true)
     }
@@ -341,7 +338,6 @@ extension MainViewController {
                 self.wineInfos.append(wineInfo3)
                 self.wineInfos.append(wineInfo4)
             }
-            self.wineStoreInfos.append(wineStoreInfo)
         }
     }
 }
