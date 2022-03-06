@@ -17,7 +17,11 @@ import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
 
-final class LoginViewController2: UIViewController {
+final class LoginViewController2: UIViewController, EndLoginProtocol {
+    func endLogin(_ type: AfterLogin) {
+        self.goToMain()
+    }
+    
 
     var statusCode = 0
     var data: DataClass?
@@ -129,16 +133,9 @@ final class LoginViewController2: UIViewController {
         subView.addSubview(appleButton)
     }
     
-    func presentToMain() {
-        let viewController = TestViewController()
-        viewController.modalPresentationStyle = .overFullScreen
-        self.present(viewController, animated: true)
-    }
-    
-    
     func goToMain() {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestViewController")
-                as? TestViewController else { return }
+        guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier)
+                as? MainViewController else { return }
         DispatchQueue.main.async { [weak self] in
             vc.modalTransitionStyle = .flipHorizontal
             vc.modalPresentationStyle = .fullScreen

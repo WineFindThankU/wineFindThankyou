@@ -28,8 +28,8 @@ class StartViewController: UIViewController {
         self.view.addSubview(animationView)
         
         animationView.snp.makeConstraints { make in
-            make.height.equalTo(300)
-            make.width.equalTo(250)
+            make.height.equalTo(100)
+            make.width.equalTo(100)
             animationView.contentMode = .scaleAspectFill
             make.top.equalToSuperview().inset(270)
             make.centerX.equalToSuperview()

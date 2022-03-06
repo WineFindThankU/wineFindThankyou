@@ -37,6 +37,13 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
 
     var wineInfos: [WineInfo] = []
     var wineStoreInfos: [WineStoreInfo] = []
+    var nearWineShops: [ShopInfo] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.updateMaker()
+            }
+        }
+    }
     var mapAnimatedFlag = false
     var previousOffset: CGFloat = 0
     var markers: [NMFMarker] = []
@@ -62,6 +69,9 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
         testFuncForShowingMarker()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     // MARK: 마커 표시를 위한 테스트 변수
     var locationManager : CLLocationManager?
@@ -165,21 +175,18 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
     }
   
     @objc
-    private func openStore() {
-        loadStoreInfoFromServer {
-            guard $0 else { return }
-            showStoreInfoSummary()
+    private func openStore(_ key: String) {
+        AFHandler.getShopDetail(key) { shopInfo in
+            showStoreInfoSummary(shopInfo)
         }
         
-        func showStoreInfoSummary() {
+        func showStoreInfoSummary(_ shopInfo: ShopInfo?) {
             guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoSummaryViewController.identifier) as? StoreInfoSummaryViewController  else { return }
             
             vc.modalPresentationStyle = .overFullScreen
-            
+            vc.shopInfo = shopInfo
             //MARK: 문용. 테스트.
-            let randomKey = (0 ... 9).randomElement()
-            vc.wineStoreInfo = wineStoreInfos.filter { $0.key == randomKey }.first
-            vc.wineInfos = wineInfos.filter { $0.storeFk == randomKey ?? 0 }
+            vc.wineInfos = wineInfos.filter { $0.storeFk == 0 }
             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
@@ -397,27 +404,30 @@ extension MainViewController: CLLocationManagerDelegate {
         mapView.mapView.moveCamera(NMFCameraUpdate(position: position))
     }
     
-    private func showStoreInfo(_ index : Int) {
-        print("\(storeLocationList[index])")
+    private func showStoreInfo(_ key : String) {
+        guard let shop = nearWineShops.first(where: {$0.key == key})
+        else { return }
+        print(shop.key)
     }
     
     //MARK: 표시하기 위한 마커 업데이트 함수.
-    private func updateMaker(_ stationList : [StoreLocation]) {
-        for item in stationList {
+    private func updateMaker() {
+        let storeLocation = nearWineShops.compactMap { (key: $0.key, lat: $0.latitude, lng: $0.longtitude)}
+        storeLocation.forEach {
             let marker = NMFMarker()
-            marker.position = NMGLatLng(lat: item.lat, lng: item.lng)
+            marker.position = NMGLatLng(lat: $0.lat, lng: $0.lng)
             marker.mapView = self.mapView.mapView
             marker.iconImage = NMFOverlayImage(name: "Group 32")
-            marker.userInfo = ["tag" : item.id, "lat" : Double(item.lat), "long" : Double(item.lng)]
+            marker.userInfo = ["key" : $0.key, "lat" : Double($0.lat), "long" : Double($0.lng)]
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                guard let index = overlay.userInfo["tag"] as? Int,
+                guard let key = overlay.userInfo["key"] as? String,
                       let lat = overlay.userInfo["lat"] as? Double,
                       let long = overlay.userInfo["long"] as? Double
-                else { return false}
+                else { return false }
                 
-                print("\(index): 마커 터치됨")
+                print("\(key): 마커 터치됨")
                 self?.updateFocus(lat: lat, lng: long)
-                self?.showStoreInfo(index)
+                self?.openStore(key)
                 return true
             }
         }
@@ -437,9 +447,15 @@ extension MainViewController: CLLocationManagerDelegate {
                 let lng = locationManager.location?.coordinate.longitude else {
                 return
             }
+            
+            DispatchQueue.global().async {
+                AFHandler.getShopList() {
+                    self.nearWineShops = $0
+                }
+            }
+            
             updateFocus(lat: lat, lng: lng)
             mapView.mapView.positionMode = .direction
-            self.updateMaker(self.storeLocationList)
         default:
             return
         }

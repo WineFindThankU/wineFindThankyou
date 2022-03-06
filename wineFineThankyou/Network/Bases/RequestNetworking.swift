@@ -15,21 +15,9 @@ final class RequestNetworking {
             print(res)
         }
     }
-    
 }
 
 extension RequestNetworking {
-    static let accessToken = "AccessToken"
-    
-    // MARK: 와인샵 API
-    class func doWhat() {
-        let url = "http://125.6.36.157:3001/v1/shop"
-        let params = ["longitude":37.10, "latitude":12.7]
-        defaultSession.request(url, method: .get, parameters: params).responseJSON { (res) in
-            print(res)
-        }
-    }
-    
     // MARK: 로그인 API
     
     func doLoginAPI(loginId: String, snsID: String, authType: String) {
@@ -57,21 +45,3 @@ extension RequestNetworking {
         }
     }
 }
-
-var defaultSession: Session {
-    let interceptor = RequestInterceptor()
-    #if DEBUG
-    return Alamofire.Session(interceptor: interceptor)
-    #else
-    return Alamofire.Session(interceptor: interceptor)
-    #endif
-}
-
-final class RequestInterceptor: Alamofire.RequestInterceptor {
-    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        var req = urlRequest
-        req.setValue(UserDefaults.standard.string(forKey: RequestNetworking.accessToken), forHTTPHeaderField: "x-auth-token")
-        completion(.success(req))
-    }
-}
-

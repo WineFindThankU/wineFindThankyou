@@ -18,3 +18,9 @@ struct LoginResponse: Codable {
 struct DataClass: Codable {
     let accessToken, refreshToken: String
 }
+
+struct SignResponse: Codable {
+    let statusCode: Int
+    let error: [String]
+    var message: String
+}

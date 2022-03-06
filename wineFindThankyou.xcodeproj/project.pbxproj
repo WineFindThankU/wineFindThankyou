@@ -42,7 +42,6 @@
 		44FF1CE2278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CE1278471AA00FD8567 /* wineFineThankyouUITestsLaunchTests.swift */; };
 		44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CEE27869EA700FD8567 /* LoginViewController.swift */; };
 		44FF1CF72786BCFF00FD8567 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */; };
-		44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 44FF1CF92786C03000FD8567 /* FirebaseAuth */; };
 		44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FC27A55F420063924D /* SearchViewController.swift */; };
 		44FF470027A5623A0063924D /* RequestNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FF27A5623A0063924D /* RequestNetworking.swift */; };
 		86F7F42D4E7CA01839B146FF /* Pods_wineFindThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DAEE5A0950C8FEC697854 /* Pods_wineFindThankyouTests.framework */; };
@@ -91,6 +90,8 @@
 		BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */; };
 		BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */; };
 		BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */; };
+		BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01327D42FFA00296234 /* AFHandler.swift */; };
+		BAE0C01627D4301D00296234 /* ExtNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01527D4301D00296234 /* ExtNetworking.swift */; };
 		BAE7964A27C1160D00D2AC1F /* TypeDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7964927C1160D00D2AC1F /* TypeDetailStackView.swift */; };
 		BAE7964C27C1161600D2AC1F /* TypeDetailStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7964B27C1161600D2AC1F /* TypeDetailStackView.xib */; };
 		BAE7964E27C1C20A00D2AC1F /* MyPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7964D27C1C20A00D2AC1F /* MyPageTableViewCell.xib */; };
@@ -210,6 +211,8 @@
 		BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWineInfomationViewController.swift; sourceTree = "<group>"; };
 		BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtWineListViewController.swift; sourceTree = "<group>"; };
 		BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoTableViewCell.swift; sourceTree = "<group>"; };
+		BAE0C01327D42FFA00296234 /* AFHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHandler.swift; sourceTree = "<group>"; };
+		BAE0C01527D4301D00296234 /* ExtNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNetworking.swift; sourceTree = "<group>"; };
 		BAE7964927C1160D00D2AC1F /* TypeDetailStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDetailStackView.swift; sourceTree = "<group>"; };
 		BAE7964B27C1161600D2AC1F /* TypeDetailStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeDetailStackView.xib; sourceTree = "<group>"; };
 		BAE7964D27C1C20A00D2AC1F /* MyPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageTableViewCell.xib; sourceTree = "<group>"; };
@@ -225,7 +228,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44FF1CFA2786C03000FD8567 /* FirebaseAuth in Frameworks */,
 				BAB4079327A7900000B6E352 /* SwiftSMTP in Frameworks */,
 				00785FDA164D0001573592F1 /* Pods_wineFindThankyou.framework in Frameworks */,
 			);
@@ -301,6 +303,8 @@
 			isa = PBXGroup;
 			children = (
 				44FF46FF27A5623A0063924D /* RequestNetworking.swift */,
+				BAE0C01327D42FFA00296234 /* AFHandler.swift */,
+				BAE0C01527D4301D00296234 /* ExtNetworking.swift */,
 			);
 			path = Bases;
 			sourceTree = "<group>";
@@ -616,7 +620,6 @@
 			);
 			name = wineFindThankyou;
 			packageProductDependencies = (
-				44FF1CF92786C03000FD8567 /* FirebaseAuth */,
 				BAB4079227A7900000B6E352 /* SwiftSMTP */,
 			);
 			productName = wineFineThankyou;
@@ -920,6 +923,7 @@
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
+				BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */,
 				4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */,
 				4429F37F27CFC4AF00402D0C /* WalkthroughFirstViewController.swift in Sources */,
 				BA913C0B27C0BD410055B2A4 /* StatisticsOfWineView.swift in Sources */,
@@ -937,6 +941,7 @@
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
+				BAE0C01627D4301D00296234 /* ExtNetworking.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,
 				4433C01C27CB94E700119931 /* InquiryViewController.swift in Sources */,
 				4429F38727CFCCA100402D0C /* LoginViewController2.swift in Sources */,
@@ -1141,7 +1146,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 385Y9B45N8;
+				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1178,7 +1183,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 385Y9B45N8;
+				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
@@ -1365,13 +1370,7 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		44FF1CF92786C03000FD8567 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
 		BAB4079227A7900000B6E352 /* SwiftSMTP */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BAB4079127A7900000B6E352 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;

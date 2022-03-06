@@ -39,6 +39,8 @@ class LoginController: NSObject {
     init(_ viewController: UIViewController) {
         super.init()
         self.viewController = viewController
+        self.delegate = viewController as? EndLoginProtocol
+        
         GIDSignIn.sharedInstance()?.delegate = self
     }
     
@@ -73,8 +75,9 @@ class LoginController: NSObject {
                         let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
                         print(email)
                         print(nickname)
-                        self.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao")
-                        self.loginController.presentToMain()
+                        AFHandler.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao") {
+                            self.delegate?.endLogin($0)
+                        }
                     }
                 }
             }
@@ -91,42 +94,11 @@ class LoginController: NSObject {
                 let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
                 print(email)
                 print(nickname)
-                self.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao")
-                self.loginController.presentToMain()
+                AFHandler.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao") {
+                    self.delegate?.endLogin($0)
+                }
             }
         }
-    }
-    
-    func getLoginSNS(loginId: String, snsID: String, authType: String) {
-        let url = "http://125.6.36.157:3001/v1/auth/sign"
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 10
-        let params = ["id":"\(loginId)",
-                      "sns_id":"\(snsID)",
-                      "type":"\(authType)"] as Dictionary
-        do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        } catch {
-            print("http Body Error")
-        }
-        AF.request(request).responseJSON {(response) in
-             switch response.result {
-             case .success(let item):
-                 if let nsDictionary = item as? NSDictionary {
-                     do {
-                         let dataJSON = try JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
-                         let getData = try JSONDecoder().decode(LoginResponse.self, from: dataJSON)
-                         UserDefaults.standard.set(getData.data.accessToken, forKey: "accessToken")
-                     } catch {
-                         print("error")
-                     }
-                 }
-             case .failure(let error):
-                 print(error)
-             }
-         }
     }
     
     internal func loginByGoogle() {
@@ -190,20 +162,44 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
-            print("\(String(describing: appleIDCredential.fullName))")
-            print("\(String(describing: appleIDCredential.fullName))")
-            print("User ID : \(userIdentifier)")
-            print("User Email : \(email ?? "")")
-            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-            getLoginSNS(loginId: email ?? "wft@gmail.com", snsID: fullName?.givenName ?? "1234", authType: "apple")
+            let fullName = String(describing: appleIDCredential.fullName)
+            let nick = fullName.isEmpty ? "User" : fullName
+            let email = appleIDCredential.email ?? "WTFUser@wineThankU.com"
+            let type = "apple"
+            
+            let params = [
+                "id": email,
+                "type": type,
+                "sns_id": userIdentifier,
+                "nick": nick,
+                "taste_type": 1,
+                "taste_data": [
+                    "1": [
+                        "value": "1"
+                    ],
+                    "2": [
+                        "value": "2"
+                    ],
+                    "3": [
+                        "value": "-1",
+                        "etc": "only 소주"
+                    ]
+                ],
+            ] as [String : Any]
+            AFHandler.signBySNS(params) {
+                guard $0 == AfterSign.success else {
+                    return
+                }
+                
+                AFHandler.getLoginSNS(loginId: email, snsID: userIdentifier, authType: type) {
+                    self.delegate?.endLogin($0)
+                }
+            }
             
         default:
+            delegate?.endLogin(.fail)
             break
         }
-        delegate?.endLogin(.success)
-       // loginController.goToMain()
     }
         
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {

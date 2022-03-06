@@ -60,7 +60,6 @@ enum StoreType: Int, CaseIterable {
             return UIColor(rgb: 0x34B6E7)
         }
     }
-
 }
 
 struct WineInfo {
@@ -126,7 +125,6 @@ enum WineType: Int, CaseIterable {
     }
 }
 
-
 class UserData {
     static var isUserLogin : Bool {
         get {
@@ -136,6 +134,14 @@ class UserData {
         }
         set(val) {
             UserDefaults.standard.setValue(val, forKey: "IsUserLoginBefore")
+        }
+    }
+    static var accessToken: String {
+        get {
+            return UserDefaults.standard.string(forKey: "AccessToken") ?? ""
+        }
+        set(val) {
+            UserDefaults.standard.setValue(val, forKey: "AccessToken")
         }
     }
 }
