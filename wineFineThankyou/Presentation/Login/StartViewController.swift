@@ -22,7 +22,7 @@ class StartViewController: UIViewController {
     
     lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "title")
+        imageView.image = UIImage(named: "LaunchTitle")
         return imageView
     }()
     
@@ -69,6 +69,7 @@ class StartViewController: UIViewController {
             make.leading.equalToSuperview().inset(80)
             make.height.equalTo(44)
             make.width.equalTo(44 * 4.9)
+            make.bottom.equalToSuperview().inset(108)
         }
     }
 }

@@ -29,6 +29,7 @@
 		4459BC0327C505CF000F79CF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0227C505CF000F79CF /* LocationManager.swift */; };
 		4459BC0527C50621000F79CF /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0427C50621000F79CF /* LocationError.swift */; };
 		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
+		448FB0D227D6394000375267 /* grapeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448FB0D127D6394000375267 /* grapeIcon.swift */; };
 		449107D827D1F143006A4FA7 /* WinefindThankU_motion.json in Resources */ = {isa = PBXBuildFile; fileRef = 449107D627D1F142006A4FA7 /* WinefindThankU_motion.json */; };
 		449107D927D1F143006A4FA7 /* WinefindThankU_motion_2_eyes.json in Resources */ = {isa = PBXBuildFile; fileRef = 449107D727D1F143006A4FA7 /* WinefindThankU_motion_2_eyes.json */; };
 		44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A98627B921F8004C8E6C /* LoginModel.swift */; };
@@ -141,6 +142,7 @@
 		4459BC0227C505CF000F79CF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4459BC0427C50621000F79CF /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
+		448FB0D127D6394000375267 /* grapeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = grapeIcon.swift; sourceTree = "<group>"; };
 		449107D627D1F142006A4FA7 /* WinefindThankU_motion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WinefindThankU_motion.json; sourceTree = "<group>"; };
 		449107D727D1F143006A4FA7 /* WinefindThankU_motion_2_eyes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WinefindThankU_motion_2_eyes.json; sourceTree = "<group>"; };
 		44A8A98627B921F8004C8E6C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		4429F37B27CFC45600402D0C /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
+				448FB0D027D6333C00375267 /* grapeIcon */,
 				4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */,
 				4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */,
 				4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */,
@@ -326,6 +329,14 @@
 				4459BC0427C50621000F79CF /* LocationError.swift */,
 			);
 			path = location;
+			sourceTree = "<group>";
+		};
+		448FB0D027D6333C00375267 /* grapeIcon */ = {
+			isa = PBXGroup;
+			children = (
+				448FB0D127D6394000375267 /* grapeIcon.swift */,
+			);
+			path = grapeIcon;
 			sourceTree = "<group>";
 		};
 		44A9DA8D27CD03EB00F320EC /* services */ = {
@@ -929,6 +940,7 @@
 				BA913C0B27C0BD410055B2A4 /* StatisticsOfWineView.swift in Sources */,
 				4429F38127CFC4C400402D0C /* WalkthroughSecondViewController.swift in Sources */,
 				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
+				448FB0D227D6394000375267 /* grapeIcon.swift in Sources */,
 				4459BC0127C504BD000F79CF /* Store.swift in Sources */,
 				442BE5B327CE521900448478 /* LoginResponse.swift in Sources */,
 				44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */,

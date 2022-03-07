@@ -94,6 +94,8 @@ final class WalkthroughFourthViewController: UIViewController {
         view.addSubview(thirdLabel)
         view.addSubview(nextButton)
     }
+    
+// s
 
     private func saveUserDefaults() {
         guard let option0 = selectedOption[0] as? WhenDoSelect,
@@ -103,6 +105,7 @@ final class WalkthroughFourthViewController: UIViewController {
         print("munyong > \(option0.str), \(option1.str), \(option2.str)")
         UserData.userOptions = [option0.str, option1.str, option2.str]
     }
+    
     private func setupUI() {
         view.backgroundColor = .white
         finalImageView.snp.makeConstraints { make in
