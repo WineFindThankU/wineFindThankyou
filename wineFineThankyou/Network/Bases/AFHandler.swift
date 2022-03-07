@@ -175,6 +175,34 @@ class AFHandler {
             }
         }
     }
+    
+    class func getLogout(_ key: String, done:((Logout?) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/auth/sign"
+        session.request(url, method: .delete, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                return
+            default:
+                done?(nil); return
+            }
+        }
+    }
+    
+    class func getLeave(_ key: String, done:((Leave?) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/user"
+        session.request(url, method: .delete, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                return
+            default:
+                done?(nil); return
+            }
+        }
+    }
 }
 
 class ShopInfo {

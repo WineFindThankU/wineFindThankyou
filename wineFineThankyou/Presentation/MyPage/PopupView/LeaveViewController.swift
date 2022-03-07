@@ -55,10 +55,18 @@ final class LeaveViewController: UIViewController {
         button.backgroundColor = .standardColor
         button.layer.cornerRadius = 10
         let action = UIAction { _ in
-            let nextViewController = MyPageViewController()
-            nextViewController.modalPresentationStyle = .overFullScreen
-            self.present(nextViewController, animated: true)
-            self.dismiss(animated: true)
+            AFHandler.getLeave(UserData.accessToken) { _ in
+                goToStartViewController()
+            }
+            
+            func goToStartViewController() {
+                guard let vc = UIStoryboard(name: StoryBoard.store.name,
+                                            bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController  else { return }
+                vc.modalPresentationStyle = .overFullScreen
+                DispatchQueue.main.async { [weak self] in
+                    self?.present(vc, animated: true)
+                }
+            }
         }
         button.addAction(action, for: .touchUpInside)
         return button
