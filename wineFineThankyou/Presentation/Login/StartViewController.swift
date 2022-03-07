@@ -11,12 +11,36 @@ import SnapKit
 
 class StartViewController: UIViewController {
     
-    let animationView = Lottie.AnimationView(name: "WinefindThankU_motion_2")
+    lazy var lottieAnimationView: AnimationView = {
+        let animationView = AnimationView()
+        animationView.animation = Animation.named("WinefindThankU_motion")
+        animationView.contentMode = .scaleAspectFit
+        animationView.play()
+        animationView.loopMode = .loop
+        return animationView
+    }()
     
-    lazy var mainImageView: UIImageView = {
+    lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "LaunchTitle")
+        imageView.image = UIImage(named: "title")
         return imageView
+    }()
+    
+    lazy var startButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 17
+        button.backgroundColor = .standardColor
+        button.setTitle("시작하기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        let action = UIAction(handler: { _ in
+            let view = WalkthroughMainViewController()
+            view.modalPresentationStyle = .overFullScreen
+            DispatchQueue.main.async {
+                self.present(view, animated: true)
+            }
+        })
+        button.addAction(action, for: .touchUpInside)
+        return button
     }()
     
     override func viewDidLoad() {
@@ -25,24 +49,26 @@ class StartViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.view.addSubview(animationView)
+        self.view.addSubview(titleImageView)
+        self.view.addSubview(lottieAnimationView)
+        self.view.addSubview(startButton)
         
-        animationView.snp.makeConstraints { make in
-            make.height.equalTo(100)
-            make.width.equalTo(100)
-            animationView.contentMode = .scaleAspectFill
-            make.top.equalToSuperview().inset(270)
+        titleImageView.snp.makeConstraints { make in
+            titleImageView.contentMode = .scaleAspectFill
+            make.top.equalToSuperview().inset(130)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(70)
+        }
+        
+        lottieAnimationView.snp.makeConstraints { make in
+            make.top.equalTo(titleImageView.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
-        animationView.play()
-        animationView.loopMode = .loop
-    }
-
-    @IBAction func onClickStart(_ sender: Any) {
-        let view = WalkthroughMainViewController()
-        view.modalPresentationStyle = .overFullScreen
-        DispatchQueue.main.async {
-            self.present(view, animated: true)
+        
+        startButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(80)
+            make.height.equalTo(44)
+            make.width.equalTo(44 * 4.9)
         }
     }
 }

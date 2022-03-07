@@ -1163,35 +1163,8 @@
                     <view key="view" contentMode="scaleToFill" id="gGE-Fs-tR2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="GqF-RD-CPL">
-                                <rect key="frame" x="100" y="169" width="175" height="70"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nn-CQ-1ii">
-                                <rect key="frame" x="80" y="515" width="215" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="215" id="4PX-ed-HMg"/>
-                                    <constraint firstAttribute="height" constant="44" id="6LJ-uc-QRk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="시작하기" backgroundImage="Standard">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onClickStart:" destination="Ik4-fZ-hmg" eventType="touchUpInside" id="DPU-bY-oet"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zvi-hA-jKr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="GqF-RD-CPL" firstAttribute="leading" secondItem="zvi-hA-jKr" secondAttribute="leading" constant="100" id="0lJ-X0-DUg"/>
-                            <constraint firstItem="0Nn-CQ-1ii" firstAttribute="centerX" secondItem="zvi-hA-jKr" secondAttribute="centerX" id="Gt1-if-sIM"/>
-                            <constraint firstItem="zvi-hA-jKr" firstAttribute="bottom" secondItem="0Nn-CQ-1ii" secondAttribute="bottom" constant="108" id="ITO-pP-hM1"/>
-                            <constraint firstItem="GqF-RD-CPL" firstAttribute="top" secondItem="zvi-hA-jKr" secondAttribute="top" constant="169" id="SSH-aa-TBQ"/>
-                            <constraint firstItem="zvi-hA-jKr" firstAttribute="trailing" secondItem="GqF-RD-CPL" secondAttribute="trailing" constant="100" id="zOg-7i-5m5"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNl-h8-D9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
