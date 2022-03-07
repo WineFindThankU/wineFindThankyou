@@ -28,7 +28,7 @@ class StartViewController: UIViewController {
     
     lazy var startButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 17
+        button.layer.cornerRadius = 22
         button.backgroundColor = .standardColor
         button.setTitle("시작하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -55,7 +55,7 @@ class StartViewController: UIViewController {
         
         titleImageView.snp.makeConstraints { make in
             titleImageView.contentMode = .scaleAspectFill
-            make.top.equalToSuperview().inset(130)
+            make.top.equalToSuperview().inset(134)
             make.centerX.equalToSuperview()
             make.height.equalTo(70)
         }
@@ -66,10 +66,10 @@ class StartViewController: UIViewController {
         }
         
         startButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(80)
+            make.centerX.equalToSuperview()
             make.height.equalTo(44)
             make.width.equalTo(44 * 4.9)
-            make.bottom.equalToSuperview().inset(108)
+            make.top.equalTo(lottieAnimationView.snp.bottom).offset(29)
         }
     }
 }
