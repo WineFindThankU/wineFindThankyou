@@ -157,4 +157,5 @@ class UserData {
             UserDefaults.standard.setValue(val, forKey: "AccessToken")
         }
     }
+
 }

@@ -9,9 +9,14 @@ import UIKit
 import SnapKit
 
 final class WalkthroughFourthViewController: UIViewController {
+    
+    var finalImage = ""
+    var finalTitle = ""
+    
     var selectedOption: [Any] = [] {
         didSet{ saveUserDefaults() }
     }
+    
     lazy var finalImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Group 187")
@@ -24,6 +29,13 @@ final class WalkthroughFourthViewController: UIViewController {
         imageView.image = UIImage(named: "finalTitle")
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    lazy var grapeTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 32)
+        label.textColor = .standardColor
+        return label
     }()
     
     lazy var firstLabel: UILabel = {
@@ -88,14 +100,20 @@ final class WalkthroughFourthViewController: UIViewController {
     
     private func setupConfigure() {
         view.addSubview(finalImageView)
-        view.addSubview(finalTitleImageView)
+        view.addSubview(grapeTitle)
         view.addSubview(firstLabel)
         view.addSubview(secondLabel)
         view.addSubview(thirdLabel)
         view.addSubview(nextButton)
     }
-    
-// s
+
+    // TODO: 폰트 받게 된다면, 적용하겠습니다. 
+    private func setupImage() {
+        finalImage = GrapeIcon().setupImage(UserData.userOptions)
+        finalTitle = GrapeIcon().setupTitle(UserData.userOptions)
+        finalImageView.image = UIImage(named: finalImage)
+        grapeTitle.text = "나는야" + finalTitle
+    }
 
     private func saveUserDefaults() {
         guard let option0 = selectedOption[0] as? WhenDoSelect,
@@ -103,7 +121,9 @@ final class WalkthroughFourthViewController: UIViewController {
               let option2 = selectedOption[2] as? ReasonOfBought
         else { return }
         print("munyong > \(option0.str), \(option1.str), \(option2.str)")
+        
         UserData.userOptions = [option0.str, option1.str, option2.str]
+        setupImage()
     }
     
     private func setupUI() {
@@ -114,15 +134,14 @@ final class WalkthroughFourthViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(67)
         }
         
-        finalTitleImageView.snp.makeConstraints { make in
+        grapeTitle.snp.makeConstraints { make in
             make.top.equalTo(finalImageView.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
-            make.width.equalTo(174)
             make.height.equalTo(56)
         }
         
         firstLabel.snp.makeConstraints { make in
-            make.top.equalTo(finalTitleImageView.snp.bottom).offset(36)
+            make.top.equalTo(grapeTitle.snp.bottom).offset(36)
             make.centerX.equalToSuperview()
             make.height.equalTo(13)
         }
