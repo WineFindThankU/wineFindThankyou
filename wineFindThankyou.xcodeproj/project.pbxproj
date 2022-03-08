@@ -73,7 +73,6 @@
 		BA8BB7BC27A44E430010F05A /* StoreInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */; };
 		BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BD27A45CDC0010F05A /* DataModel.swift */; };
 		BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */; };
-		BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */; };
 		BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7C827A5280B0010F05A /* LoginController.swift */; };
 		BA8BB7CB27A529D40010F05A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8BB7CA27A529D40010F05A /* Login.swift */; };
 		BA913C0927C0B6050055B2A4 /* DonutGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA913C0827C0B6050055B2A4 /* DonutGraphView.swift */; };
@@ -91,7 +90,6 @@
 		BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */; };
 		BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */; };
 		BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */; };
-		BAD8866127D6F8D800E7AD5C /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAD8866027D6F8D800E7AD5C /* Launch.storyboard */; };
 		BAD8866627D6FCE600E7AD5C /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD8866527D6FCE600E7AD5C /* NetworkChecker.swift */; };
 		BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01327D42FFA00296234 /* AFHandler.swift */; };
 		BAE0C01627D4301D00296234 /* ExtNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01527D4301D00296234 /* ExtNetworking.swift */; };
@@ -197,7 +195,6 @@
 		BA8BB7BB27A44E430010F05A /* StoreInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		BA8BB7BD27A45CDC0010F05A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		BA8BB7BF27A46FB70010F05A /* StoreWinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreWinesViewController.swift; sourceTree = "<group>"; };
-		BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		BA8BB7C827A5280B0010F05A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BA8BB7CA27A529D40010F05A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BA8BB7CC27A52CAE0010F05A /* wineFindThankyou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wineFindThankyou.entitlements; sourceTree = "<group>"; };
@@ -215,7 +212,6 @@
 		BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWineInfomationViewController.swift; sourceTree = "<group>"; };
 		BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtWineListViewController.swift; sourceTree = "<group>"; };
 		BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoTableViewCell.swift; sourceTree = "<group>"; };
-		BAD8866027D6F8D800E7AD5C /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		BAD8866527D6FCE600E7AD5C /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
 		BAE0C01327D42FFA00296234 /* AFHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHandler.swift; sourceTree = "<group>"; };
 		BAE0C01527D4301D00296234 /* ExtNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNetworking.swift; sourceTree = "<group>"; };
@@ -261,7 +257,7 @@
 		4401478427B2A1F400C8E85A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				BAD8865D27D6F88400E7AD5C /* Launch */,
+				BA8BB7C127A4E2550010F05A /* Launch */,
 				BAD8866427D6FC0C00E7AD5C /* Start */,
 				44FF1CF027869ED000FD8567 /* Login */,
 				44FF46FB27A55F1A0063924D /* Search */,
@@ -392,7 +388,6 @@
 				4401478427B2A1F400C8E85A /* Presentation */,
 				44FF46FE27A5620B0063924D /* Network */,
 				44FF46FA27A55C470063924D /* Application */,
-				BA8BB7C127A4E2550010F05A /* Launch */,
 				BA77CFE3279EF91A00832389 /* Extensions */,
 				BA8BB7BD27A45CDC0010F05A /* DataModel.swift */,
 				44FF1CCC278471A900FD8567 /* Info.plist */,
@@ -563,7 +558,8 @@
 			children = (
 				44FF1CC9278471A900FD8567 /* LaunchScreen.storyboard */,
 			);
-			path = Launch;
+			name = Launch;
+			path = ../Launch;
 			sourceTree = "<group>";
 		};
 		BAB4079427A7B1F200B6E352 /* MyPage */ = {
@@ -590,15 +586,6 @@
 				BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */,
 			);
 			path = ReadWine;
-			sourceTree = "<group>";
-		};
-		BAD8865D27D6F88400E7AD5C /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				BAD8866027D6F8D800E7AD5C /* Launch.storyboard */,
-				BA8BB7C227A4E2830010F05A /* LaunchViewController.swift */,
-			);
-			path = Launch;
 			sourceTree = "<group>";
 		};
 		BAD8866427D6FC0C00E7AD5C /* Start */ = {
@@ -762,7 +749,6 @@
 				44FF1CF72786BCFF00FD8567 /* GoogleService-Info.plist in Resources */,
 				BA1E472B27AFEC2D005C3319 /* SettingCell.xib in Resources */,
 				BA913C0F27C0C2450055B2A4 /* StatisticsOfWineView.xib in Resources */,
-				BAD8866127D6F8D800E7AD5C /* Launch.storyboard in Resources */,
 				449107D927D1F143006A4FA7 /* WinefindThankU_motion_2_eyes.json in Resources */,
 				449107D827D1F143006A4FA7 /* WinefindThankU_motion.json in Resources */,
 				BA8BB7B327A4256F0010F05A /* WineInfoCollectionViewCell.xib in Resources */,
@@ -952,7 +938,6 @@
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
 				4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */,
 				BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */,
-				BA8BB7C327A4E2830010F05A /* LaunchViewController.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
 				BAD8866627D6FCE600E7AD5C /* NetworkChecker.swift in Sources */,
 				44FF1CEF27869EA700FD8567 /* LoginViewController.swift in Sources */,
@@ -1191,7 +1176,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need To Access Your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Launch;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1227,7 +1212,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need To Access Your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Launch;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

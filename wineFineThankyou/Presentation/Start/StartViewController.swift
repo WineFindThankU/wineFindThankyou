@@ -126,14 +126,6 @@ class StartViewController: UIViewController {
         }
     }
     
-    private func animateAndGoTo(done: ((Bool) -> Void)?) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.77, delay: 0, animations: {
-            self.view.backgroundColor = Theme.white.color
-        }, completion: { _ in
-            done?(UserData.isUserLogin)
-        })
-    }
-    
     private func loadUserDataFromServer(downDone: ((Bool) -> Void)?) {
         // MARK: 서버로부터 유저 데이터 받아오는 곳.
         downDone?(true)
