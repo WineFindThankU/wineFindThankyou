@@ -75,7 +75,7 @@ class LoginController: NSObject {
                         let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
                         print(email)
                         print(nickname)
-                        AFHandler.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao") {
+                        AFHandler.loginBySNS(loginId: email, snsID: nickname, authType: "kakao") {
                             self.delegate?.endLogin($0)
                         }
                     }
@@ -94,7 +94,7 @@ class LoginController: NSObject {
                 let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
                 print(email)
                 print(nickname)
-                AFHandler.getLoginSNS(loginId: email, snsID: nickname, authType: "kakao") {
+                AFHandler.loginBySNS(loginId: email, snsID: nickname, authType: "kakao") {
                     self.delegate?.endLogin($0)
                 }
             }
@@ -191,7 +191,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
                     return
                 }
                 
-                AFHandler.getLoginSNS(loginId: email, snsID: userIdentifier, authType: type) {
+                AFHandler.loginBySNS(loginId: email, snsID: userIdentifier, authType: type) {
                     self.delegate?.endLogin($0)
                 }
             }

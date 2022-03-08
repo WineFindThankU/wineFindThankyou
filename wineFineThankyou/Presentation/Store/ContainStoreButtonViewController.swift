@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class ContainStoreButtonViewController: UIViewController{
+    enum MapType {
+        case naver
+        case kakao
+    }
     var shopInfo: ShopInfo!
     var wineInfos: [WineInfo] = []
     internal unowned var storeButtonsView: StoreButtonsView! {
@@ -28,7 +32,45 @@ class ContainStoreButtonViewController: UIViewController{
     
     @objc
     private func findRoad() {
+        let alert = UIAlertController(title: "길 찾기", message: "원하시는 지도를 선택해주세요.", preferredStyle: .actionSheet)
+        let naverMap = UIAlertAction(title: "네이버 지도", style: .default) { _ in
+            goToMapsApp(byType: .naver)
+        }
+        let kakaoMap = UIAlertAction(title: "카카오 지도", style: .default) { _ in
+            goToMapsApp(byType: .kakao)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in }
+        alert.addAction(naverMap)
+        alert.addAction(kakaoMap)
+        alert.addAction(cancel)
         
+        self.present(alert, animated: true)
+
+        func goToMapsApp(byType: MapType) {
+            let mapUrlString: String?
+            let safariUrlString: String?
+            switch byType {
+            case .naver:
+                mapUrlString = "navermaps://?menu=route&routeType=4&elat=\(shopInfo.latitude)&elng=\(shopInfo.longtitude)&etitle=\(shopInfo.nnName)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                safariUrlString = "http://itunes.apple.com/app/id311867728?mt=8"
+                
+            case .kakao:
+                mapUrlString = "kakaomap://search?q=\(shopInfo.nnName)&p=\(shopInfo.latitude),\(shopInfo.longtitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                safariUrlString = "https://map.kakao.com/link/to/\(shopInfo.nnName),\(shopInfo.latitude),\(shopInfo.longtitude)"
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            }
+            
+            guard let encode = mapUrlString,
+                  let url = URL(string: encode) as URL? else { return }
+            guard UIApplication.shared.canOpenURL(url) else {
+                if let nnSafariUrlStr = safariUrlString, let url = URL(string: nnSafariUrlStr) {
+                    UIApplication.shared.open(url, options: [:])
+                }
+                return
+            }
+            
+            UIApplication.shared.open(url)
+        }
     }
     
     @objc

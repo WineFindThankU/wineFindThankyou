@@ -19,6 +19,11 @@ import KakaoSDKUser
 
 final class LoginViewController2: UIViewController, EndLoginProtocol {
     func endLogin(_ type: AfterLogin) {
+        guard type == .success else {
+            return
+        }
+        
+        UserData.isUserLogin = true
         self.goToMain()
     }
     
@@ -180,8 +185,15 @@ final class LoginViewController2: UIViewController, EndLoginProtocol {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(44)
         }
-        
     }
-
+    
+    private func showCannotLogin() {
+        let alert = UIAlertController(title: "로그인 실패", message: "현재 로그인 할 수 없습니다. 잠시 후 다시 시도해주세요.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            alert.dismiss(animated: false)
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

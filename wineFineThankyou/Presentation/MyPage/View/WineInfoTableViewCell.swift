@@ -21,6 +21,7 @@ class WineInfoTableViewCell: UITableViewCell {
         didSet { updateUI() }
     }
     var storeBtnClosure: (() -> Void)?
+    var storeDeleteBtnClosure: (() -> Void)?
     
     private weak var wineImg: UIImageView?
     private weak var tagLabel: UILabel?
@@ -132,7 +133,10 @@ class WineInfoTableViewCell: UITableViewCell {
         deleteBtn.setTitle("삭제", for: .normal)
         deleteBtn.setTitleColor(UIColor(rgb: 0x9e9e9e), for: .normal)
         deleteBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-    
+        deleteBtn.addAction(UIAction { _ in
+            self.storeDeleteBtnClosure?()
+        }, for: .touchUpInside)
+        
         wineKorName.textColor = UIColor(rgb: 0x1e1e1e)
         wineKorName.font = UIFont.systemFont(ofSize: 13)
         wineKorName.numberOfLines = 0
@@ -140,6 +144,7 @@ class WineInfoTableViewCell: UITableViewCell {
         wineEngName.textColor = UIColor(rgb: 0x757575)
         wineEngName.font = UIFont.systemFont(ofSize: 11)
         wineEngName.numberOfLines = 0
+        
         
         self.tagLabel = tagLabel
         self.deleteBtn = deleteBtn
@@ -234,7 +239,9 @@ class WineInfoTableViewCell: UITableViewCell {
         wineStoreName = name
         boughtDate = date
         
-        btn.addAction(UIAction(handler: { _ in self.storeBtnClosure?() }), for: .touchUpInside)
+        btn.addAction(UIAction { _ in
+            self.storeBtnClosure?()
+        }, for: .touchUpInside)
     }
 }
 extension WineInfoTableViewCell {

@@ -37,6 +37,8 @@
 	<string>229dde6eaa35c651b0bc5ccfa474c5e9</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>kakaomap</string>
+		<string>navermaps</string>
 		<string>naversearchapp</string>
 		<string>naversearchthirdlogin</string>
 		<string>kakaokompassauth</string>

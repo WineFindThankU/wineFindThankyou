@@ -358,7 +358,17 @@ extension AddWineInfomationViewController {
             return
         }
         
+        let param = ["sh_no": shopInfo.key,
+                     "name": readWineInfo.name!,
+                     "country": readWineInfo.from!,
+                     "vintage": readWineInfo.vintage!,
+                     "purchased_at": readWineInfo.date!] as [String : Any]
+        AFHandler.addWine(param) {
+            //와인추가 완료. 실패/성공 판단 후 dismiss.
+        }
+        
         print(readWineInfo)
+        
     }
 }
 

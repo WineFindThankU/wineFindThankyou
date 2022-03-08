@@ -7,8 +7,10 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 enum StoryBoard: String {
+    case launch = "Launch"
     case main = "Main"
     case store = "Store"
     case myPage = "MyPage"
@@ -125,12 +127,80 @@ enum WineType: Int, CaseIterable {
     }
 }
 
+class ShopInfo {
+    let key: String
+    private let homepage: String?
+    private let category: String?
+    private let address: String?
+    private let name: String?
+    private let tellNumber: String?
+    let latitude: Double
+    let longtitude: Double
+    init(_ param: JSON) {
+        self.key = param["sh_no"].string ?? ""
+        self.homepage = param["sh_url"].string
+        self.category = param["sh_category"].string
+        self.address = param["sh_address"].string
+        self.name = param["sh_name"].string
+        self.tellNumber = param["sh_tell"].string
+        self.latitude = param["sh_latitude"].double ?? 0.0
+        self.longtitude = param["sh_longitude"].double ?? 0.0
+    }
+    
+    var categoryType: StoreType {
+        guard let category = category else {
+            return .privateShop
+        }
+
+        switch category.uppercased() {
+        case "CONVENIENCE":
+            return .convenience
+        case "PRIVATE":
+            return .privateShop
+        case "CHAIN":
+            return .chain
+        case "CONVENIENCE":
+            return .convenience
+        case "SUPERMARKET":
+            return .mart
+        case "WAREHOUSE":
+            return .warehouse
+        case "DEPARTMENT":
+            return .department
+        default:
+            return .privateShop
+        }
+    }
+    
+    var nnName: String {
+        guard let name = name, !name.isEmpty
+        else { return "이름 없음" }
+        return name
+    }
+    
+    var nnTellNumber: String {
+        guard let tellNumber = tellNumber, !tellNumber.isEmpty
+        else { return "저장된 번호 없음" }
+        return tellNumber
+    }
+    
+    var nnAddress: String {
+        guard let address = address, !address.isEmpty
+        else { return "저장된 주소 없음" }
+        return address
+    }
+    var nnHomepage: String {
+        guard let homepage = homepage, !homepage.isEmpty
+        else { return "저장된 홈페이지 없음" }
+        return homepage
+    }
+}
+
 class UserData {
     static var isUserLogin : Bool {
         get {
             //MARK: TEST
-            return false
-//            return UserDefaults.standard.bool(forKey: "IsUserLoginBefore")
+            return UserDefaults.standard.bool(forKey: "IsUserLoginBefore")
         }
         set(val) {
             UserDefaults.standard.setValue(val, forKey: "IsUserLoginBefore")

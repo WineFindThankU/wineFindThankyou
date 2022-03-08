@@ -47,7 +47,7 @@ class AFHandler {
         }
     }
     
-    class func getLoginSNS(loginId: String, snsID: String, authType: String, done: ((AfterLogin) -> Void)?) {
+    class func loginBySNS(loginId: String, snsID: String, authType: String, done: ((AfterLogin) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/auth/sign"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -82,7 +82,7 @@ class AFHandler {
         }
     }
     
-    class func getShopList(_ lat: Double, _ lng: Double, done:(([ShopInfo]) -> Void)?) {
+    class func shopList(_ lat: Double, _ lng: Double, done:(([ShopInfo]) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop"
         let params = ["type":"location",
                       "latitude": lat,
@@ -112,7 +112,7 @@ class AFHandler {
         }
     }
     
-    class func getShopDetail(_ key: String, done:((ShopInfo?) -> Void)?) {
+    class func shopDetail(_ key: String, done:((ShopInfo?) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop/\(key)"
         session.request(url, method: .get, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
@@ -129,10 +129,10 @@ class AFHandler {
         }
     }
     
-    class func getShopByKeyword(_ keyword: String, done:(([ShopInfo]) -> Void)?) {
+    class func searchShop(byKeyword: String, done:(([ShopInfo]) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop"
         let params = ["type":"keyword",
-                      "keyword":keyword]
+                      "keyword":byKeyword]
         session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
             case .success(let nsDict):
@@ -157,9 +157,9 @@ class AFHandler {
         }
     }
     
-    class func getWineInfo(_ key: String, done:((ReadWineInfo?) -> Void)?) {
+    class func searchWineInfo(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/wine"
-        let param = ["keyword":key]
+        let param = ["keyword":byKeyword]
         session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
             case .success(let nsDict):
@@ -203,54 +203,32 @@ class AFHandler {
             }
         }
     }
-}
-
-class ShopInfo {
-    let key: String
-    let homepage: String?
-    let category: String?
-    let address: String?
-    let name: String?
-    let tellNumber: String?
-    let latitude: Double
-    let longtitude: Double
-    init(_ param: JSON) {
-        self.key = param["sh_no"].string ?? ""
-        self.homepage = param["sh_url"].string
-        self.category = param["sh_category"].string
-        self.address = param["sh_address"].string
-        self.name = param["sh_name"].string
-        self.tellNumber = param["sh_tell"].string
-        self.latitude = param["sh_latitude"].double ?? 0.0
-        self.longtitude = param["sh_longitude"].double ?? 0.0
+    
+    class func addWine(_ param: [String: Any], done: (() -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/wine"
+        session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
+//            switch res.result {
+//            case .success(let nsDict):
+//                guard let nsDict = nsDict as? NSDictionary
+//                else { done?(nil); return }
+//
+//                let dict = JSON(nsDict)["data"]
+//                print(dict)
+//                done?()
+//                return
+//            default:
+//                done?(nil); return
+//            }
+        }
     }
     
-    var categoryType: StoreType {
-        guard let category = category else {
-            return .privateShop
-        }
-
-        switch category.uppercased() {
-        case "CONVENIENCE":
-            return .convenience
-        case "PRIVATE":
-            return .privateShop
-        case "CHAIN":
-            return .chain
-        case "CONVENIENCE":
-            return .convenience
-        case "SUPERMARKET":
-            return .mart
-        case "WAREHOUSE":
-            return .warehouse
-        case "DEPARTMENT":
-            return .department
-        default:
-            return .privateShop
+    class func deleteWine(_ key: String, done: (() -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/wine"
+        let param = ["uw_no": key]
+        session.request(url, method: .delete, parameters: param, encoding: URLEncoding.default).responseJSON { res in
         }
     }
 }
-
 
 var defaultSession: Session {
     let interceptor = RequestInterceptor()
