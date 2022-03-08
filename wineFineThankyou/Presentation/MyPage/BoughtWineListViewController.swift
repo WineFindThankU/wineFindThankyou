@@ -14,6 +14,16 @@ class BoughtWineListViewController: MyPageListViewController {
         super.viewDidLoad()
         setTableView()
     }
+    
+    private func deleteWine(_ key: String) {
+        AFHandler.deleteWine(key) {
+            //MARK: 삭제 성공/실패에 따라 다르게 적용
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -35,11 +45,16 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
         let wineInfo = wineInfos[indexPath.row]
         cell.wineStoreInfo = wineStoreInfos.first{ $0.key == wineInfo.storeFk }
         cell.wineInfo = wineInfo
+        cell.storeDeleteBtnClosure = { [weak self] in
+            //MARK: wineKEY 전달
+            self?.deleteWine("WINEINFO KEY STRING")
+        }
         cell.storeBtnClosure = { [weak self] in
             self?.goToStore(wineInfo.storeFk)
         }
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }

@@ -173,7 +173,7 @@ class MainViewController: UIViewController, NMFMapViewCameraDelegate {
   
     @objc
     private func openStore(_ key: String) {
-        AFHandler.getShopDetail(key) { shopInfo in
+        AFHandler.shopDetail(key) { shopInfo in
             showStoreInfoSummary(shopInfo)
         }
         
@@ -445,7 +445,7 @@ extension MainViewController: CLLocationManagerDelegate {
             }
             
             DispatchQueue.global().async {
-                AFHandler.getShopList(lat, lng) {
+                AFHandler.shopList(lat, lng) {
                     self.nearWineShops = $0
                 }
             }
