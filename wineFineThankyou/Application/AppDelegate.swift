@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: Naver 로그인
         setLogin2Naver()
         
+        NWMonitor.shared.start()
+        
         return true
     }
     

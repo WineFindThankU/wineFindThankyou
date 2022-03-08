@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum StoryBoard: String {
+    case launch = "Launch"
     case main = "Main"
     case store = "Store"
     case myPage = "MyPage"
