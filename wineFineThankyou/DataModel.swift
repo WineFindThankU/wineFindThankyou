@@ -129,8 +129,7 @@ class UserData {
     static var isUserLogin : Bool {
         get {
             //MARK: TEST
-            return false
-//            return UserDefaults.standard.bool(forKey: "IsUserLoginBefore")
+            return UserDefaults.standard.bool(forKey: "IsUserLoginBefore")
         }
         set(val) {
             UserDefaults.standard.setValue(val, forKey: "IsUserLoginBefore")

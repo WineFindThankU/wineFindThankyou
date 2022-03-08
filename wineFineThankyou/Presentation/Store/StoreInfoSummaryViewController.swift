@@ -87,7 +87,7 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
             imageView.centerYAnchor.constraint(equalTo: storeName.centerYAnchor),
         ])
         
-        storeName.text = shopInfo.name
+        storeName.text = shopInfo.nnName
         storeName.font = .boldSystemFont(ofSize: 20)
         storeName.textColor = Theme.blacktext.color
         storeClassification.text = shopInfo.categoryType.str

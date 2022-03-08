@@ -207,11 +207,11 @@ class AFHandler {
 
 class ShopInfo {
     let key: String
-    let homepage: String?
-    let category: String?
-    let address: String?
-    let name: String?
-    let tellNumber: String?
+    private let homepage: String?
+    private let category: String?
+    private let address: String?
+    private let name: String?
+    private let tellNumber: String?
     let latitude: Double
     let longtitude: Double
     init(_ param: JSON) {
@@ -248,6 +248,29 @@ class ShopInfo {
         default:
             return .privateShop
         }
+    }
+    
+    var nnName: String {
+        guard let name = name, !name.isEmpty
+        else { return "이름 없음" }
+        return name
+    }
+    
+    var nnTellNumber: String {
+        guard let tellNumber = tellNumber, !tellNumber.isEmpty
+        else { return "저장된 번호 없음" }
+        return tellNumber
+    }
+    
+    var nnAddress: String {
+        guard let address = address, !address.isEmpty
+        else { return "저장된 주소 없음" }
+        return address
+    }
+    var nnHomepage: String {
+        guard let homepage = homepage, !homepage.isEmpty
+        else { return "저장된 홈페이지 없음" }
+        return homepage
     }
 }
 

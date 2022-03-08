@@ -71,9 +71,10 @@ final class WalkthroughFourthViewController: UIViewController {
         let action = UIAction(handler: { _ in
             let nextVC = LoginViewController2()
             nextVC.modalPresentationStyle = .overFullScreen
-            self.dismiss(animated: true, completion: {
+            
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: {
                 guard let top = topViewController() else { return }
-                top.present(nextVC, animated: false)
+                top.present(nextVC, animated: true) // 루트뷰를 제외한 모든뷰 제거
             })
         })
         button.addAction(action, for: .touchUpInside)

@@ -11,22 +11,17 @@ class LaunchViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         initConfigure()
-        goToMain()
-        /*
-         animateAndGoTo { [weak self] isLogIn in
-         guard isLogIn else { self?.goToQuestionVC(); return }
-         
-         self?.loadUserDataFromServer { isSuccess in
-             isSuccess ? self?.goToMain() : self?.showAlert()
+        animateAndGoTo { [weak self] isLogIn in
+            guard isLogIn else { self?.goToQuestionVC(); return }
+            
+            self?.loadUserDataFromServer { isSuccess in
+                isSuccess ? self?.goToMain() : self?.showAlert()
             }
-         }
-         
-         */
-    
+        }
     }
     
     private func goToMain()  {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StartViewController") as? StartViewController
+        guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier) as? MainViewController
         else { return }
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
@@ -80,6 +75,4 @@ class LaunchViewController: UIViewController{
     @IBAction func onClickStartButton(_ sender: Any) {
         goToQuestionVC()
     }
-    
-    
 }

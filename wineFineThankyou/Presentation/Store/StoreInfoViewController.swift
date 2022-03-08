@@ -23,7 +23,7 @@ class StoreInfoViewController: ContainStoreButtonViewController, SelectedWineCel
     
     func setTopView() {
         let topView = getGlobalTopView(self.view, height: 44)
-        topView.titleLabel?.text = shopInfo.name
+        topView.titleLabel?.text = shopInfo.nnName
         topView.leftButton?.setBackgroundImage(UIImage(named: "backArrow"), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
         self.topView = topView
@@ -122,13 +122,13 @@ extension StoreInfoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imgView?.image = UIImage(named: storeInfo.imgName)
         switch row {
         case 0:
-            cell.info?.text = shopInfo.tellNumber
+            cell.info?.text = shopInfo.nnTellNumber
         case 1:
-            cell.info?.text = shopInfo.address
+            cell.info?.text = shopInfo.nnAddress
         case 2:
             cell.info?.text = ""
         case 3:
-            cell.info?.text = shopInfo.homepage
+            cell.info?.text = shopInfo.nnHomepage
         default:
             break
         }
