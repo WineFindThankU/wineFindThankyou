@@ -13,6 +13,16 @@ enum AfterSign {
     case success
     case fail
 }
+
+var defaultSession: Session {
+    let interceptor = RequestInterceptor()
+#if DEBUG
+    return Alamofire.Session(interceptor: interceptor, eventMonitors: [EventMonitor()])
+#else
+    return Alamofire.Session(interceptor: interceptor)
+#endif
+}
+
 class AFHandler {
     static let session = defaultSession
     class func signBySNS(_ params: [String:Any], done: ((AfterSign) -> Void)?) {
@@ -79,100 +89,6 @@ class AFHandler {
         }
     }
     
-    class func shopList(_ lat: Double, _ lng: Double, done:(([ShopInfo]) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/shop"
-        let params = ["type":"location",
-                      "latitude": lat,
-                      "longitude":lng,
-                      "radius": 2] as? [String : Any]
-        session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
-            switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?([]); return }
-                
-                let responseJson = JSON(nsDict)
-                print("responseJson: \(responseJson.count)")
-                var shopInfos = [ShopInfo]()
-                responseJson["data"].array?.forEach {
-                    guard let key = $0["sh_no"].string,
-                          let lat = $0["sh_latitude"].double,
-                          let lng = $0["sh_longitude"].double
-                    else { return }
-                    
-                    shopInfos.append(ShopInfo($0))
-                }
-                done?(shopInfos)
-            default:
-                break
-            }
-        }
-    }
-    
-    class func shopDetail(_ key: String, done:((ShopInfo?) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/shop/\(key)"
-        session.request(url, method: .get, encoding: URLEncoding.default).responseJSON { res in
-            switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?(nil); return }
-                
-                let dict = JSON(nsDict)["data"]
-                done?(ShopInfo(dict))
-                return
-            default:
-                done?(nil); return
-            }
-        }
-    }
-    
-    class func searchShop(byKeyword: String, done:(([ShopInfo]) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/shop"
-        let params = ["type":"keyword",
-                      "keyword":byKeyword]
-        session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
-            switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?([]); return }
-
-                let responseJson = JSON(nsDict)
-                print("responseJson: \(responseJson.count)")
-                var shopInfos = [ShopInfo]()
-                responseJson["data"].array?.forEach {
-                    guard $0["sh_no"].string != nil,
-                          $0["sh_latitude"].double != nil,
-                          $0["sh_longitude"].double != nil
-                    else { return }
-
-                    shopInfos.append(ShopInfo($0))
-                }
-                done?(shopInfos)
-            default:
-                break
-            }
-        }
-    }
-    
-    class func searchWineInfo(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/wine"
-        let param = ["keyword":byKeyword]
-        session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
-            switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?(nil); return }
-                
-                let dict = JSON(nsDict)["data"]
-                print(dict)
-                done?(nil)
-                return
-            default:
-                done?(nil); return
-            }
-        }
-    }
-    
     class func getLogout(_ key: String, done:((Logout?) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/auth/sign"
         session.request(url, method: .delete, encoding: URLEncoding.default).responseJSON { res in
@@ -227,14 +143,124 @@ class AFHandler {
     }
 }
 
-var defaultSession: Session {
-    let interceptor = RequestInterceptor()
-#if DEBUG
-    return Alamofire.Session(interceptor: interceptor, eventMonitors: [EventMonitor()])
-#else
-    return Alamofire.Session(interceptor: interceptor)
-#endif
+//MARK: SHOP
+extension AFHandler {
+    class func shopList(_ lat: Double, _ lng: Double, done:(([ShopInfo]) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/shop"
+        let params = ["type":"location",
+                      "latitude": lat,
+                      "longitude":lng,
+                      "radius": 2] as? [String : Any]
+        session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?([]); return }
+                
+                let responseJson = JSON(nsDict)
+                print("responseJson: \(responseJson.count)")
+                var shopInfos = [ShopInfo]()
+                responseJson["data"].array?.forEach {
+                    guard let key = $0["sh_no"].string,
+                          let lat = $0["sh_latitude"].double,
+                          let lng = $0["sh_longitude"].double
+                    else { return }
+                    
+                    shopInfos.append(ShopInfo($0))
+                }
+                done?(shopInfos)
+            default:
+                break
+            }
+        }
+    }
     
+    //MARK: 왜 와인샵 등록이 안되는가?
+    class func addFavoriteShop(_ key: String, done: ((Bool) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/shop/\(key)/bookmark"
+        session.request(url, method: .post, encoding: URLEncoding.default).responseJSON { res in
+            
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(false); return }
+                print("munyong > nsDict: \(nsDict)")
+            default:
+                break
+            }
+            done?(true)
+        }
+    }
+    
+    class func getFavoritesShop(done: ((Bool) -> Void)?) {
+//        let url = "http://125.6.36.157:3001/v1/shop/\(key)/bookmark"
+    }
+    class func shopDetail(_ key: String, done:((ShopInfo?) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/shop/\(key)"
+        session.request(url, method: .get, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                
+                let dict = JSON(nsDict)["data"]
+                done?(ShopInfo(dict))
+                return
+            default:
+                done?(nil); return
+            }
+        }
+    }
+    
+    class func searchShop(byKeyword: String, done:(([ShopInfo]) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/shop"
+        let params = ["type":"keyword",
+                      "keyword":byKeyword]
+        session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?([]); return }
+
+                let responseJson = JSON(nsDict)
+                print("responseJson: \(responseJson.count)")
+                var shopInfos = [ShopInfo]()
+                responseJson["data"].array?.forEach {
+                    guard $0["sh_no"].string != nil,
+                          $0["sh_latitude"].double != nil,
+                          $0["sh_longitude"].double != nil
+                    else { return }
+
+                    shopInfos.append(ShopInfo($0))
+                }
+                done?(shopInfos)
+            default:
+                break
+            }
+        }
+    }
+}
+
+//MARK: Wine
+extension AFHandler {
+    class func searchWineInfo(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/wine"
+        let param = ["keyword":byKeyword]
+        session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                
+                let dict = JSON(nsDict)["data"]
+                print(dict)
+                done?(nil)
+                return
+            default:
+                done?(nil); return
+            }
+        }
+    }
 }
 
 final class RequestInterceptor: Alamofire.RequestInterceptor {

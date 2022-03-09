@@ -233,4 +233,16 @@ extension UILabel {
         self.backgroundColor = backColor
         self.font = font
     }
+    
+    func setTitle(title: String, txtColor: UIColor, backColor: UIColor = .clear, font: UIFont) {
+        self.text = title
+        self.textColor = txtColor
+        self.backgroundColor = backColor
+        self.font = font
+    }
+    
+    func setTitleColor(txt: UIColor, back: UIColor = .clear) {
+        self.textColor = txt
+        self.backgroundColor = back
+    }
 }

@@ -11,16 +11,6 @@ import NMapsMap
 import RxSwift
 
 class MainViewController: UIViewController {
-    private let arrCategoryName: [String] = [
-            "전체 ",
-            "개인샵",
-            "체인샵",
-            "편의점",
-            "대형마트",
-            "창고형매장",
-            "백화점"
-    ]
-
     @IBOutlet weak var leftBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
     @IBOutlet weak var filterView: UIView!
@@ -30,23 +20,29 @@ class MainViewController: UIViewController {
     private unowned var searchBtn: UIButton!
     private var locationManager : CLLocationManager?
     private var wineInfos: [WineInfo] = []
-    private var nearWineShops: [ShopInfo] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.updateMaker()
-            }
-        }
+    
+    //근처의 모든 와인샵
+    private var allOfWineShopsNearBy: [ShopInfo] = [] {
+        didSet { self.shownWineShops = allOfWineShopsNearBy }
     }
+    
+    private var shownWineShops: [ShopInfo] = [] {
+        didSet { updateMaker() }
+    }
+    
+    private let nameArr = StoreType.allCases.compactMap { $0.str }
+    private var cellDic = [Int: MainCollectionViewCell]()
+    private var allOfMarkers = [NMFMarker]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCollectionView()
+        self.setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUserLocation()
-        self.setupUI()
         
         //MARK: 테스트 데이터
         self.wineInfos = loadTestDatas()
@@ -57,16 +53,6 @@ class MainViewController: UIViewController {
         makeSeachBtnUsingCrntLoc()
         self.nmfNaverMapView.bringSubviewToFront(searchView)
         self.nmfNaverMapView.bringSubviewToFront(filterView)
-    }
-    
-    @objc
-    private func openMyPage() {
-        guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: MyPageViewController.identifier) as? MyPageViewController
-        else { return }
-        vc.modalPresentationStyle = .fullScreen
-        vc.wineInfos = wineInfos
-        
-        self.present(vc, animated: true)
     }
     
     private func makeSeachBtnUsingCrntLoc() {
@@ -93,12 +79,35 @@ class MainViewController: UIViewController {
         searchBtn.isHidden = true
     }
     
-    @objc func showShopsAtCrntLoc() {
+    @IBAction func onClickSearchBar(_ sender: UIButton) {
+        print(sender)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+         vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
+    }
+}
+
+extension MainViewController {
+    @objc
+    private func openMyPage() {
+        guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: MyPageViewController.identifier) as? MyPageViewController
+        else { return }
+        vc.modalPresentationStyle = .fullScreen
+        vc.wineInfos = wineInfos
+        
+        self.present(vc, animated: true)
+    }
+    
+    @objc
+    func showShopsAtCrntLoc() {
         let crntLoc = self.nmfNaverMapView.mapView.cameraPosition.target
         DispatchQueue.global().async {
             AFHandler.shopList(crntLoc.lat, crntLoc.lng) {
-                self.nearWineShops.removeAll()
-                self.nearWineShops = $0
+                self.allOfWineShopsNearBy.removeAll()
+                self.allOfWineShopsNearBy = $0
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
@@ -121,35 +130,41 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func onClickSearchBar(_ sender: UIButton) {
-        print(sender)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
-    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.showsHorizontalScrollIndicator = false
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrCategoryName.count
+        return nameArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
-        cell.configure(name: arrCategoryName[indexPath.item])
+
+        let type = StoreType.allCases[indexPath.row]
+        cell.configure(type: type)
+        cellDic[indexPath.row] = cell
+        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        guard let type = StoreType.allCases.first(where: { $0.rawValue == indexPath.row})
+        else { return true }
+        shownWineShops.removeAll()
+        shownWineShops = allOfWineShopsNearBy.filter{ $0.categoryType == type }
+        return true
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width: CGFloat = collectionView.frame.width / 3 - 1.0
-        
         return CGSize(width: width, height: width)
     }
     
@@ -168,36 +183,33 @@ extension MainViewController: CLLocationManagerDelegate {
         findCurrentPosition()
     }
     
-    func setLocationManager(_ status : CLAuthorizationStatus) {
+    private func setLocationManager(_ status : CLAuthorizationStatus) {
         guard let locationManager = self.locationManager else { return }
         switch status {
-        case .restricted, .denied:
-            requestUserLocation()
         case .notDetermined :
             locationManager.requestWhenInUseAuthorization()
         case .authorizedAlways, .authorizedWhenInUse :
             guard let lat = locationManager.location?.coordinate.latitude,
-                let lng = locationManager.location?.coordinate.longitude else {
-                break
-            }
+                let lng = locationManager.location?.coordinate.longitude
+            else { break }
             
             DispatchQueue.global().async {
                 AFHandler.shopList(lat, lng) {
-                    self.nearWineShops.removeAll()
-                    self.nearWineShops = $0
+                    self.allOfWineShopsNearBy.removeAll()
+                    self.allOfWineShopsNearBy = $0
                 }
             }
             
             updateFocus(lat: lat, lng: lng)
         default:
-            break
+            notiUserLocationAuthorized()
         }
         
         setMapView()
     }
     
     //현재 위치 화면 이동
-    func findCurrentPosition() {
+    private func findCurrentPosition() {
         guard let locationManager = locationManager else { return }
         guard CLLocationManager.locationServicesEnabled() else { return }
         let status : CLAuthorizationStatus
@@ -214,7 +226,7 @@ extension MainViewController: CLLocationManagerDelegate {
         setLocationManager(status)
     }
     
-    func requestUserLocation() {
+    private func notiUserLocationAuthorized() {
         let alert = UIAlertController(title: "위치 권한",
                                       message: "앱 설정화면에서 위치 권한을 허용으로 바꾸어 주세요",
                                       preferredStyle: .alert)
@@ -246,9 +258,13 @@ extension MainViewController: NMFMapViewCameraDelegate {
         nmfNaverMapView.mapView.moveCamera(NMFCameraUpdate(position: position))
     }
     
-    //MARK: 표시하기 위한 마커 업데이트 함수.
     private func updateMaker() {
-        let shopsLocation = nearWineShops.compactMap { (key: $0.key, lat: $0.latitude, lng: $0.longtitude)}
+        allOfMarkers.forEach {
+            $0.mapView = nil
+        }
+        allOfMarkers.removeAll()
+        
+        let shopsLocation = shownWineShops.compactMap { (key: $0.key, lat: $0.latitude, lng: $0.longtitude)}
         shopsLocation.forEach {
             let marker = NMFMarker()
             marker.position = NMGLatLng(lat: $0.lat, lng: $0.lng)
@@ -265,6 +281,7 @@ extension MainViewController: NMFMapViewCameraDelegate {
                 self?.openStore(key)
                 return true
             }
+            allOfMarkers.append(marker)
         }
     }
     

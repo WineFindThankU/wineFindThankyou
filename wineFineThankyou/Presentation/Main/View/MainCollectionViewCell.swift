@@ -20,6 +20,16 @@ final class MainCollectionViewCell: UICollectionViewCell {
     private let titleLabel: UILabel = UILabel()
     private var titleImage: UIImage = UIImage()
     
+    override var isSelected: Bool {
+        didSet{
+            if isSelected {
+                selected()
+            }
+            else {
+                deselected()
+            }
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -40,18 +50,35 @@ final class MainCollectionViewCell: UICollectionViewCell {
     private func setupView() {
         backgroundColor = .white
         titleLabel.textAlignment = .center
-        titleLabel.font = titleLabel.font.withSize(15)
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.edges.equalTo(UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12))
         }
     }
     
-    func configureColor(with color: UIColor) {
-        self.backgroundColor = color
-    }
-    
     func configure(name: String?) {
         titleLabel.text = name
+    }
+    
+    func configure(type: StoreType) {
+        titleLabel.setTitle(title: type.str, txtColor: type.color, font: .systemFont(ofSize: 15))
+        self.backgroundColor = .white
+    }
+    
+    func selected() {
+        guard let backColor = self.backgroundColor,
+              let titleColor =  titleLabel.textColor else { return }
+        
+        titleLabel.setTitleColor(txt: backColor)
+        self.backgroundColor = titleColor
+    }
+    
+    func deselected() {
+        guard let str = titleLabel.text,
+                let type = StoreType.allCases.first(where: {$0.str == str})
+        else { return }
+        
+        titleLabel.setTitle(title: type.str, txtColor: type.color, font: .systemFont(ofSize: 15))
+        self.backgroundColor = .white
     }
 }

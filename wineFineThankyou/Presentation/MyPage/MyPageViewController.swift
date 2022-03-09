@@ -104,7 +104,7 @@ extension MyPageViewController {
         
         func getShopsByType() -> [Int] {
             var wineShopCount = [Int]()
-            StoreType.allCases.forEach { type in
+            StoreType.allOfCases.forEach { type in
                 wineShopCount.append(visitedWineStoreInfos.filter { $0.classification == type}.count)
             }
             return wineShopCount

@@ -27,7 +27,10 @@ class ContainStoreButtonViewController: UIViewController{
     
     @objc
     private func addFavorites() {
-        
+        print("munyong > self.shopInfo.key: \(self.shopInfo.key)")
+        AFHandler.addFavoriteShop(self.shopInfo.key) {
+            print("munyong > \($0)")
+        }
     }
     
     @objc

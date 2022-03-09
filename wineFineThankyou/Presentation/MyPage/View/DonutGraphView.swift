@@ -43,7 +43,7 @@ class DonutGraphView: UIView {
         let values: [CGFloat]
         
         if graphResource.type == .shop{
-            colors = StoreType.allCases.compactMap { $0.color }
+            colors = StoreType.allOfCases.compactMap { $0.color }
             values = fromIntToPercent(graphResource.cntArr).compactMap { CGFloat($0)}
         } else {
             colors = WineType.allCases.compactMap { $0.color }

@@ -14,7 +14,7 @@ func loadTestDatas() -> [WineInfo] {
     
     var wineInfos = [WineInfo]()
     (0 ... 9).forEach {
-        let type = StoreType.allCases.randomElement() ?? .privateShop
+        let type = StoreType.allOfCases.randomElement() ?? .privateShop
         let wineStoreInfo = WineStoreInfo(key: $0,
                                           storeName: "\($0)+벵가드와인머천트 분당지점",
                                           classification: type,

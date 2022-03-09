@@ -22,15 +22,18 @@ enum StoryBoard: String {
 }
 
 enum StoreType: Int, CaseIterable {
-    case privateShop = 0
-    case warehouse = 1
-    case mart = 2
-    case convenience = 3
-    case chain = 4
-    case department = 5
-
+    case all = 0
+    case privateShop = 1
+    case warehouse = 2
+    case mart = 3
+    case convenience = 4
+    case chain = 5
+    case department = 6
+    
     var str: String {
         switch self {
+        case .all:
+            return "전체"
         case .privateShop:
             return "개인샵"
         case .chain:
@@ -48,6 +51,8 @@ enum StoreType: Int, CaseIterable {
     
     var color: UIColor {
         switch self {
+        case .all:
+            return .black
         case .privateShop:
             return UIColor(rgb: 0x7B61FF)
         case .warehouse:
@@ -61,6 +66,10 @@ enum StoreType: Int, CaseIterable {
         case .department:
             return UIColor(rgb: 0x34B6E7)
         }
+    }
+    
+    static var allOfCases: [StoreType]{
+        return [.privateShop, .warehouse, .mart, .convenience, .chain, .department]
     }
 }
 
