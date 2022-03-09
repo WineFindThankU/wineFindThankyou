@@ -111,11 +111,11 @@ class LoginController: NSObject {
 extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         naverSDKDidLoginSuccess()
-        delegate?.endLogin(.success)
+//        delegate?.endLogin(.success)
     }
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
         naverSDKDidLoginSuccess()
-        delegate?.endLogin(.success)
+//        delegate?.endLogin(.success)
     }
     
     func oauth20ConnectionDidFinishDeleteToken() {
@@ -123,13 +123,13 @@ extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     }
     
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        delegate?.endLogin(.fail)
+//        delegate?.endLogin(.fail)
     }
     
     private func naverSDKDidLoginSuccess() {
         Login.shared.loginByNaver(naverConnection)
-        delegate?.endLogin(.success)
-        RequestNetworking.getLoginCheckAPI()
+//        delegate?.endLogin(.success)
+//        RequestNetworking.getLoginCheckAPI()
     }
 }
 
@@ -143,9 +143,9 @@ extension LoginController: GIDSignInDelegate {
                 print(error.localizedDescription)
             }
             
-            delegate?.endLogin(.fail)
+//            delegate?.endLogin(.fail)
         } else {
-            delegate?.endLogin(.success)
+//            delegate?.endLogin(.success)
         }
         AppDelegate.user = user
     }
@@ -162,8 +162,8 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             let userIdentifier = appleIDCredential.user
-            let fullName = String(describing: appleIDCredential.fullName)
-            let nick = fullName.isEmpty ? "User" : fullName
+            let givenName = String(describing: appleIDCredential.fullName?.givenName)
+            let nick = givenName.isEmpty ? "User" : givenName
             let email = appleIDCredential.email ?? "WTFUser@wineThankU.com"
             let type = "apple"
             
@@ -188,6 +188,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             ] as [String : Any]
             AFHandler.signBySNS(params) {
                 guard $0 == AfterSign.success else {
+                    self.delegate?.endLogin(.fail)
                     return
                 }
                 

@@ -26,8 +26,6 @@
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
 		4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */; };
 		4459BC0127C504BD000F79CF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0027C504BC000F79CF /* Store.swift */; };
-		4459BC0327C505CF000F79CF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0227C505CF000F79CF /* LocationManager.swift */; };
-		4459BC0527C50621000F79CF /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459BC0427C50621000F79CF /* LocationError.swift */; };
 		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
 		448FB0D227D6394000375267 /* grapeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448FB0D127D6394000375267 /* grapeIcon.swift */; };
 		449107D827D1F143006A4FA7 /* WinefindThankU_motion.json in Resources */ = {isa = PBXBuildFile; fileRef = 449107D627D1F142006A4FA7 /* WinefindThankU_motion.json */; };
@@ -53,6 +51,8 @@
 		BA1EE24D27A4177D00FDE9BD /* WineInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */; };
 		BA1EE24F27A4178700FDE9BD /* WineInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */; };
 		BA2A337727D85E02005706EA /* WinefindThankU_motion_eyes.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2A337627D85E02005706EA /* WinefindThankU_motion_eyes.json */; };
+		BA2A337927D87553005706EA /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2A337827D87553005706EA /* TestData.swift */; };
+		BA2A337C27D883C0005706EA /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2A337B27D883C0005706EA /* MainCollectionViewCell.swift */; };
 		BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47878B27B7880400AAB5EA /* ExtFunc.swift */; };
 		BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47878D27B78E3600AAB5EA /* CameraCaptureViewController.swift */; };
 		BA47879027B7B15700AAB5EA /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA47878F27B7B15700AAB5EA /* Store.storyboard */; };
@@ -139,8 +139,6 @@
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		4459BC0027C504BC000F79CF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		4459BC0227C505CF000F79CF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		4459BC0427C50621000F79CF /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
 		448FB0D127D6394000375267 /* grapeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = grapeIcon.swift; sourceTree = "<group>"; };
 		449107D627D1F142006A4FA7 /* WinefindThankU_motion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WinefindThankU_motion.json; sourceTree = "<group>"; };
@@ -175,6 +173,8 @@
 		BA1EE24C27A4177D00FDE9BD /* WineInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineInfoView.xib; sourceTree = "<group>"; };
 		BA1EE24E27A4178700FDE9BD /* WineInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoView.swift; sourceTree = "<group>"; };
 		BA2A337627D85E02005706EA /* WinefindThankU_motion_eyes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WinefindThankU_motion_eyes.json; sourceTree = "<group>"; };
+		BA2A337827D87553005706EA /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		BA2A337B27D883C0005706EA /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		BA47878B27B7880400AAB5EA /* ExtFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtFunc.swift; sourceTree = "<group>"; };
 		BA47878D27B78E3600AAB5EA /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		BA47878F27B7B15700AAB5EA /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
@@ -316,20 +316,11 @@
 		44442489279D373C00903DC7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4459BBF727C4FB09000F79CF /* location */,
+				BA2A337A27D883B1005706EA /* View */,
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
 				4459BC0027C504BC000F79CF /* Store.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		4459BBF727C4FB09000F79CF /* location */ = {
-			isa = PBXGroup;
-			children = (
-				4459BC0227C505CF000F79CF /* LocationManager.swift */,
-				4459BC0427C50621000F79CF /* LocationError.swift */,
-			);
-			path = location;
 			sourceTree = "<group>";
 		};
 		448FB0D027D6333C00375267 /* grapeIcon */ = {
@@ -494,6 +485,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		BA2A337A27D883B1005706EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA2A337B27D883C0005706EA /* MainCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BA70C85D27CA0CC10013BC23 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +522,7 @@
 				BA77CFE6279EFA5600832389 /* ExtUIColor.swift */,
 				BA47878B27B7880400AAB5EA /* ExtFunc.swift */,
 				4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */,
+				BA2A337827D87553005706EA /* TestData.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -914,7 +914,6 @@
 				BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */,
 				44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */,
 				BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */,
-				4459BC0327C505CF000F79CF /* LocationManager.swift in Sources */,
 				44FF470027A5623A0063924D /* RequestNetworking.swift in Sources */,
 				BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
@@ -926,7 +925,6 @@
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
 				BA86ADF127B7E02700580511 /* WineLabelReader.swift in Sources */,
 				4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */,
-				4459BC0527C50621000F79CF /* LocationError.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* StoreWinesViewController.swift in Sources */,
 				4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */,
 				BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */,
@@ -953,6 +951,7 @@
 				BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */,
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
+				BA2A337927D87553005706EA /* TestData.swift in Sources */,
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
 				BAE0C01627D4301D00296234 /* ExtNetworking.swift in Sources */,
 				BA8BB7B527A4256F0010F05A /* AllOfWineInfoTableViewCell.swift in Sources */,
@@ -965,6 +964,7 @@
 				4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */,
 				BAE7964A27C1160D00D2AC1F /* TypeDetailStackView.swift in Sources */,
 				BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */,
+				BA2A337C27D883C0005706EA /* MainCollectionViewCell.swift in Sources */,
 				BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */,
 				BA913C0D27C0BDA90055B2A4 /* WelcomeView.swift in Sources */,
 				4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */,

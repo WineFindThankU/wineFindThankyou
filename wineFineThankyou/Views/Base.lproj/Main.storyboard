@@ -906,9 +906,8 @@
                         <outlet property="collectionView" destination="iKh-W4-byU" id="YtT-Jr-4U9"/>
                         <outlet property="filterView" destination="bAd-Ov-ndi" id="5mE-Nd-NdT"/>
                         <outlet property="leftBtn" destination="Fni-rR-FmI" id="sjO-6d-cLK"/>
-                        <outlet property="mapView" destination="UMR-Ac-D3M" id="4CJ-Xb-zld"/>
+                        <outlet property="nmfNaverMapView" destination="UMR-Ac-D3M" id="4CJ-Xb-zld"/>
                         <outlet property="rightBtn" destination="4Ou-By-vHd" id="b0z-nG-9qF"/>
-                        <outlet property="searchButtonOutlet" destination="3kd-CN-OYM" id="Qkw-vg-qjJ"/>
                         <outlet property="searchView" destination="z8Y-Od-eo4" id="BQi-Ho-q5g"/>
                     </connections>
                 </viewController>
