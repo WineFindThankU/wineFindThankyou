@@ -121,7 +121,6 @@ final class WalkthroughFourthViewController: UIViewController {
               let option1 = selectedOption[1] as? PriceOfWine,
               let option2 = selectedOption[2] as? ReasonOfBought
         else { return }
-        print("munyong > \(option0.str), \(option1.str), \(option2.str)")
         
         UserData.userOptions = [option0.str, option1.str, option2.str]
         setupImage()

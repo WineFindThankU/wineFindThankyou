@@ -32,9 +32,6 @@ class AFHandler {
                 do {
                     let dataJSON = try JSONSerialization.data(withJSONObject: item, options: .prettyPrinted)
                     let dic = try? JSONSerialization.jsonObject(with: dataJSON, options: []) as? [String : Any]
-                    print("munyong > \(dic?["message"])")
-                    print("munyong > \(dic?["statusCode"])")
-
                     done?(.success)
                 } catch {
                     print("error")

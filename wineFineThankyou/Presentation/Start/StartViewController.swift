@@ -12,7 +12,7 @@ import SnapKit
 class StartViewController: UIViewController {
     lazy var lottieAnimationView: AnimationView = {
         let animationView = AnimationView()
-        animationView.animation = Animation.named("WinefindThankU_motion")
+        animationView.animation = Animation.named("WinefindThankU_motion_eyes")
         animationView.contentMode = .scaleAspectFit
         animationView.play()
         animationView.loopMode = .loop
