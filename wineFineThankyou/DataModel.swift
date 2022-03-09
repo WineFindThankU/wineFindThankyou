@@ -236,5 +236,20 @@ class UserData {
             UserDefaults.standard.setValue(val, forKey: "AccessToken")
         }
     }
-
+    
+    static var loginInfo: [String: String]? {
+        get {
+            guard let savedData = UserDefaults.standard.data(forKey: "LoginInfo")
+            else { return nil }
+            let dic = try? JSONSerialization.jsonObject(with: savedData, options: []) as? [String: String]
+            
+            return dic
+        }
+        set(val) {
+            guard let jsonData = try? JSONEncoder().encode(val) else {
+                return
+            }
+            UserDefaults.standard.setValue(jsonData, forKey: "LoginInfo")
+        }
+    }
 }

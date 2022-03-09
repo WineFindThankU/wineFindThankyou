@@ -76,6 +76,7 @@ class AFHandler {
                         let dataJSON = try JSONSerialization.data(withJSONObject: nsDict, options: .prettyPrinted)
                         let getData = try JSONDecoder().decode(LoginResponse.self, from: dataJSON)
                         UserData.accessToken = getData.data.accessToken
+                        UserData.loginInfo = params
                         done?(.success)
                     } catch {
                         print("error")
@@ -84,6 +85,39 @@ class AFHandler {
                 }
             case .failure(let error):
                 print(error)
+                done?(.fail)
+            }
+        }
+    }
+    
+    class func loginBySNS(done: ((AfterLogin) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/auth/sign"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        guard let params = UserData.loginInfo
+        else { done?(.fail); return }
+        
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
+        session.request(request).responseJSON {(response) in
+            switch response.result {
+            case .success(let nsDict):
+                if let nsDict = nsDict as? NSDictionary {
+                    do {
+                        let dataJSON = try JSONSerialization.data(withJSONObject: nsDict, options: .prettyPrinted)
+                        let getData = try JSONDecoder().decode(LoginResponse.self, from: dataJSON)
+                        UserData.accessToken = getData.data.accessToken
+                        done?(.success)
+                    } catch {
+                        done?(.fail)
+                    }
+                }
+            case .failure(let error):
                 done?(.fail)
             }
         }

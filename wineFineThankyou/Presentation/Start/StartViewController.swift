@@ -76,10 +76,14 @@ class StartViewController: UIViewController {
             return
         }
         
-        loadUserDataFromServer {
-            guard $0 else { self.showAlert(); return }
-            
+        AFHandler.loginBySNS { status in
             DispatchQueue.main.async {
+                guard status == .success else {
+                    self.showAlert()
+                    return
+                }
+                
+                
                 self.goToMain()
             }
         }
