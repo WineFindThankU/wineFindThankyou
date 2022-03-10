@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var viewLine: UIView!
     
+    @IBOutlet weak var textField: UITextField!
+    
     private let items: [String] = [
             "서현동",
             "행정동",
@@ -37,9 +39,15 @@ class SearchViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        //viewLine.backgroundColor = UIColor(red: 245.0, green: 245.0, blue: 245.0, alpha: 1.0)
         emptySearchHistory.isHidden = false
         setupCollectionView()
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        AFHandler.searchWineShop(byKeyword: textField.text ?? "", done: { _ in
+            
+        })
     }
     
     private func setupCollectionView() {
@@ -47,7 +55,6 @@ class SearchViewController: UIViewController {
         flowLayout.minimumLineSpacing = .zero
         flowLayout.minimumInteritemSpacing = 12
         flowLayout.scrollDirection = .horizontal
-       // flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 12)
         searchCollectionView.setCollectionViewLayout(flowLayout, animated: false)
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self

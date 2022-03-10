@@ -286,7 +286,7 @@ extension AFHandler {
     }
 }
 
-//MARK: Wine
+// MARK: Wine
 extension AFHandler {
     class func searchWineInfo(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/wine"
@@ -313,5 +313,30 @@ final class RequestInterceptor: Alamofire.RequestInterceptor {
         var req = urlRequest
         req.setValue("Bearer " + UserData.accessToken, forHTTPHeaderField: "Authorization")
         completion(.success(req))
+    }
+}
+
+
+// MARK: Search View Controller
+extension AFHandler {
+    class func searchWineShop(byKeyword: String, done:((SearchShop?) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/shop"
+        let param = ["keyword":byKeyword]
+        session.request(url, method: .get,
+                        parameters: param,
+                        encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                
+                let dict = JSON(nsDict)["data"]
+                print(dict)
+                done?(nil)
+                return
+            default:
+                done?(nil); return
+            }
+        }
     }
 }
