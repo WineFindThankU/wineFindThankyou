@@ -1,5 +1,5 @@
 //
-//  ContainStoreButtonViewController.swift
+//  ShopContainedButtonViewController.swift
 //  wineFindThankyou
 //
 //  Created by mun on 2022/02/27.
@@ -8,27 +8,27 @@
 import Foundation
 import UIKit
 
-class ContainStoreButtonViewController: UIViewController{
+class ShopContainedButtonViewController: UIViewController{
     enum MapType {
         case naver
         case kakao
     }
-    var shopInfo: ShopInfo!
+    var shop: Shop!
     var wineInfos: [WineInfo] = []
-    internal unowned var storeButtonsView: StoreButtonsView! {
+    internal unowned var shopButtonsView: ShopButtonsView! {
         didSet { addTargetOnButton() }
     }
     
     func addTargetOnButton(){
-        storeButtonsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
-        storeButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
-        storeButtonsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
+        shopButtonsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
+        shopButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
+        shopButtonsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
     }
     
     @objc
     private func addFavorites() {
-        print("munyong > self.shopInfo.key: \(self.shopInfo.key)")
-        AFHandler.addFavoriteShop(self.shopInfo.key) {
+        print("munyong > self.shopInfo.key: \(self.shop.key)")
+        AFHandler.addFavoriteShop(self.shop.key) {
             print("munyong > \($0)")
         }
     }
@@ -54,12 +54,12 @@ class ContainStoreButtonViewController: UIViewController{
             let safariUrlString: String?
             switch byType {
             case .naver:
-                mapUrlString = "navermaps://?menu=route&routeType=4&elat=\(shopInfo.latitude)&elng=\(shopInfo.longtitude)&etitle=\(shopInfo.nnName)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                mapUrlString = "navermaps://?menu=route&routeType=4&elat=\(shop.latitude)&elng=\(shop.longtitude)&etitle=\(shop.nnName)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                 safariUrlString = "http://itunes.apple.com/app/id311867728?mt=8"
                 
             case .kakao:
-                mapUrlString = "kakaomap://search?q=\(shopInfo.nnName)&p=\(shopInfo.latitude),\(shopInfo.longtitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                safariUrlString = "https://map.kakao.com/link/to/\(shopInfo.nnName),\(shopInfo.latitude),\(shopInfo.longtitude)"
+                mapUrlString = "kakaomap://search?q=\(shop.nnName)&p=\(shop.latitude),\(shop.longtitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                safariUrlString = "https://map.kakao.com/link/to/\(shop.nnName),\(shop.latitude),\(shop.longtitude)"
                 .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             }
             
@@ -80,15 +80,17 @@ class ContainStoreButtonViewController: UIViewController{
     private func takePicture() {
         guard let vc = UIStoryboard(name: StoryBoard.readWine.name, bundle: nil).instantiateViewController(withIdentifier: AddWineInfomationViewController.identifier) as? AddWineInfomationViewController else { return }
         vc.modalPresentationStyle = .overFullScreen
-        vc.shopInfo = shopInfo
+        vc.shop = shop
         self.present(vc, animated: false)
     }
     
     @objc
-    func goToStore() {
-        guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoViewController.identifier) as? StoreInfoViewController else { return }
+    func goToShop() {
+        guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoViewController.identifier) as? ShopInfoViewController
+        else { return }
+        
         vc.wineInfos = wineInfos
-        vc.shopInfo = self.shopInfo
+        vc.shop = self.shop
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }

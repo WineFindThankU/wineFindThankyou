@@ -43,14 +43,14 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineInfoTableViewCell", for: indexPath) as? WineInfoTableViewCell else { return UITableViewCell() }
         
         let wineInfo = wineInfos[indexPath.row]
-        cell.wineStoreInfo = wineStoreInfos.first{ $0.key == wineInfo.storeFk }
+        cell.shop = shops.first{ $0.key == wineInfo.shopFk }
         cell.wineInfo = wineInfo
-        cell.storeDeleteBtnClosure = { [weak self] in
+        cell.shopDeleteBtnClosure = { [weak self] in
             //MARK: wineKEY 전달
             self?.deleteWine("WINEINFO KEY STRING")
         }
-        cell.storeBtnClosure = { [weak self] in
-            self?.goToStore(wineInfo.storeFk)
+        cell.shopBtnClosure = { [weak self] in
+            self?.goToShop(wineInfo.shopFk)
         }
         return cell
     }

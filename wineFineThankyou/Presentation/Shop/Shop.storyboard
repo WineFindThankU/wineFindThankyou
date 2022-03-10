@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Store Info View Controller-->
+        <!--Shop Info View Controller-->
         <scene sceneID="t9X-9e-Ffo">
             <objects>
-                <viewController storyboardIdentifier="StoreInfoViewController" id="zxt-UW-3Ou" customClass="StoreInfoViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopInfoViewController" id="zxt-UW-3Ou" customClass="ShopInfoViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mJz-vt-0ro">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="7996" y="15"/>
         </scene>
-        <!--Store Wines View Controller-->
+        <!--Shop Wines View Controller-->
         <scene sceneID="Mw4-D4-xkl">
             <objects>
-                <viewController storyboardIdentifier="StoreWinesViewController" id="kTa-O6-Mj5" customClass="StoreWinesViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopWinesViewController" id="kTa-O6-Mj5" customClass="ShopWinesViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uXJ-ie-gyQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="8925.6000000000004" y="6.6502463054187197"/>
         </scene>
-        <!--Store Info Summary View Controller-->
+        <!--Shop Info Summary View Controller-->
         <scene sceneID="TVn-uo-wz1">
             <objects>
-                <viewController storyboardIdentifier="StoreInfoSummaryViewController" id="ThI-R6-Jr4" customClass="StoreInfoSummaryViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopInfoSummaryViewController" id="ThI-R6-Jr4" customClass="ShopInfoSummaryViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hXy-go-HaY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -60,7 +60,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         titleLabel.text = name
     }
     
-    func configure(type: StoreType) {
+    func configure(type: ShopType) {
         titleLabel.setTitle(title: type.str, txtColor: type.color, font: .systemFont(ofSize: 15))
         self.backgroundColor = .white
     }
@@ -75,7 +75,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     func deselected() {
         guard let str = titleLabel.text,
-                let type = StoreType.allCases.first(where: {$0.str == str})
+                let type = ShopType.allCases.first(where: {$0.str == str})
         else { return }
         
         titleLabel.setTitle(title: type.str, txtColor: type.color, font: .systemFont(ofSize: 15))

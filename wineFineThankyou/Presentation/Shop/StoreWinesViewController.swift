@@ -1,5 +1,5 @@
 //
-//  StoreWinesViewController.swift
+//  ShopWinesViewController.swift
 //  wineFindThankyou
 //
 //  Created by mun on 2022/01/29.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class StoreWinesViewController: UIViewController {
+class ShopWinesViewController: UIViewController {
     @IBOutlet private weak var topView: TopView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var wineTypeLabel: TagLabel!
@@ -103,7 +103,7 @@ class StoreWinesViewController: UIViewController {
     }
 }
 
-extension StoreWinesViewController {
+extension ShopWinesViewController {
     private func updateUI(){
         self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wineInfos.count)"
         self.wineInfoView.wineInfo = wineInfos[self.crntIndex]
@@ -112,7 +112,7 @@ extension StoreWinesViewController {
     }
 }
 
-extension StoreWinesViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+extension ShopWinesViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wineInfos.count
     }

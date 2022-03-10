@@ -179,7 +179,7 @@ class AFHandler {
 
 //MARK: SHOP
 extension AFHandler {
-    class func shopList(_ lat: Double, _ lng: Double, done:(([ShopInfo]) -> Void)?) {
+    class func shopList(_ lat: Double, _ lng: Double, done:(([Shop]) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop"
         let params = ["type":"location",
                       "latitude": lat,
@@ -193,27 +193,37 @@ extension AFHandler {
                 
                 let responseJson = JSON(nsDict)
                 print("responseJson: \(responseJson.count)")
-                var shopInfos = [ShopInfo]()
+                var shops = [Shop]()
                 responseJson["data"].array?.forEach {
                     guard let key = $0["sh_no"].string,
                           let lat = $0["sh_latitude"].double,
                           let lng = $0["sh_longitude"].double
                     else { return }
                     
-                    shopInfos.append(ShopInfo($0))
+                    shops.append(Shop($0))
                 }
-                done?(shopInfos)
+                done?(shops)
             default:
                 break
             }
         }
     }
     
-    //MARK: 왜 와인샵 등록이 안되는가?
     class func addFavoriteShop(_ key: String, done: ((Bool) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop/\(key)/bookmark"
-        session.request(url, method: .post, encoding: URLEncoding.default).responseJSON { res in
-            
+        let param = ["bookmark": true]
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
+        } catch {
+            print("http Body Error")
+        }
+        
+        session.request(request).responseJSON { res in
             switch res.result {
             case .success(let nsDict):
                 guard let nsDict = nsDict as? NSDictionary
@@ -229,7 +239,8 @@ extension AFHandler {
     class func getFavoritesShop(done: ((Bool) -> Void)?) {
 //        let url = "http://125.6.36.157:3001/v1/shop/\(key)/bookmark"
     }
-    class func shopDetail(_ key: String, done:((ShopInfo?) -> Void)?) {
+    
+    class func shopDetail(_ key: String, done:((Shop?) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop/\(key)"
         session.request(url, method: .get, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
@@ -238,7 +249,7 @@ extension AFHandler {
                 else { done?(nil); return }
                 
                 let dict = JSON(nsDict)["data"]
-                done?(ShopInfo(dict))
+                done?(Shop(dict))
                 return
             default:
                 done?(nil); return
@@ -246,7 +257,7 @@ extension AFHandler {
         }
     }
     
-    class func searchShop(byKeyword: String, done:(([ShopInfo]) -> Void)?) {
+    class func searchShop(byKeyword: String, done:(([Shop]) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop"
         let params = ["type":"keyword",
                       "keyword":byKeyword]
@@ -258,16 +269,16 @@ extension AFHandler {
 
                 let responseJson = JSON(nsDict)
                 print("responseJson: \(responseJson.count)")
-                var shopInfos = [ShopInfo]()
+                var shops = [Shop]()
                 responseJson["data"].array?.forEach {
                     guard $0["sh_no"].string != nil,
                           $0["sh_latitude"].double != nil,
                           $0["sh_longitude"].double != nil
                     else { return }
 
-                    shopInfos.append(ShopInfo($0))
+                    shops.append(Shop($0))
                 }
-                done?(shopInfos)
+                done?(shops)
             default:
                 break
             }

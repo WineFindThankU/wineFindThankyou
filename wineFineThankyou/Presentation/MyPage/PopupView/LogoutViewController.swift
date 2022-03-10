@@ -55,7 +55,7 @@ final class PopupViewController: UIViewController {
             }
             
             func goToStartViewController() {
-                guard let vc = UIStoryboard(name: StoryBoard.store.name,
+                guard let vc = UIStoryboard(name: StoryBoard.shop.name,
                                             bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController  else { return }
                 vc.modalPresentationStyle = .overFullScreen
                 DispatchQueue.main.async { [weak self] in

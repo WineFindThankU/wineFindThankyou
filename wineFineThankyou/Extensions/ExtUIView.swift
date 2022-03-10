@@ -14,16 +14,16 @@ class TopView: UIView {
     var rightButton: UIButton?
 }
 
-struct StoreContent {
+struct ShopContent {
     let img = UIImageView()
     let label = UILabel()
     let btn = UIButton()
 }
 
-class StoreButtonsView: UIView {
-    var left: StoreContent?
-    var middle: StoreContent?
-    var right: StoreContent?
+class ShopButtonsView: UIView {
+    var left: ShopContent?
+    var middle: ShopContent?
+    var right: ShopContent?
 }
 
 func getGlobalTopView(_ superView: UIView, height: CGFloat) -> TopView {
@@ -86,17 +86,17 @@ func setBackground(superView: UIView) -> UIView {
     return backgroundView
 }
 
-func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView {
-    let storeContentsView = StoreButtonsView()
-    superView.addSubview(storeContentsView)
-    storeContentsView.backgroundColor = Theme.gray.color
-    let favorites = StoreContent()
-    let maps = StoreContent()
-    let adds = StoreContent()
+func setShopButtonView(superView: UIView, _ above: UIView) -> ShopButtonsView {
+    let shopContentsView = ShopButtonsView()
+    superView.addSubview(shopContentsView)
+    shopContentsView.backgroundColor = Theme.gray.color
+    let favorites = ShopContent()
+    let maps = ShopContent()
+    let adds = ShopContent()
     
-    storeContentsView.translatesAutoresizingMaskIntoConstraints = false
+    shopContentsView.translatesAutoresizingMaskIntoConstraints = false
     [favorites, maps, adds].forEach {
-        storeContentsView.addSubview($0.btn)
+        shopContentsView.addSubview($0.btn)
         $0.btn.addSubview($0.img)
         $0.btn.addSubview($0.label)
         $0.img.translatesAutoresizingMaskIntoConstraints = false
@@ -105,15 +105,15 @@ func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView 
     }
     
     var layoutArray = [NSLayoutConstraint]()
-    layoutArray.append(contentsOf: [storeContentsView.topAnchor.constraint(equalTo: above.bottomAnchor),
-                                    storeContentsView.leftAnchor.constraint(equalTo: superView.leftAnchor),
-                                    storeContentsView.rightAnchor.constraint(equalTo: superView.rightAnchor),
-                                    storeContentsView.heightAnchor.constraint(equalToConstant: 61)])
+    layoutArray.append(contentsOf: [shopContentsView.topAnchor.constraint(equalTo: above.bottomAnchor),
+                                    shopContentsView.leftAnchor.constraint(equalTo: superView.leftAnchor),
+                                    shopContentsView.rightAnchor.constraint(equalTo: superView.rightAnchor),
+                                    shopContentsView.heightAnchor.constraint(equalToConstant: 61)])
     [favorites, maps, adds].forEach{
         layoutArray.append(contentsOf: [
-            $0.btn.topAnchor.constraint(equalTo: storeContentsView.topAnchor, constant: 1),
+            $0.btn.topAnchor.constraint(equalTo: shopContentsView.topAnchor, constant: 1),
             $0.btn.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3 - 1),
-            $0.btn.bottomAnchor.constraint(equalTo: storeContentsView.bottomAnchor, constant: -4),
+            $0.btn.bottomAnchor.constraint(equalTo: shopContentsView.bottomAnchor, constant: -4),
             
             $0.img.topAnchor.constraint(equalTo: $0.btn.topAnchor, constant: 7),
             $0.img.centerXAnchor.constraint(equalTo: $0.btn.centerXAnchor),
@@ -127,7 +127,7 @@ func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView 
         $0.img.isUserInteractionEnabled = false
         $0.label.isUserInteractionEnabled = false
     }
-    layoutArray.append(favorites.btn.leftAnchor.constraint(equalTo: storeContentsView.leftAnchor))
+    layoutArray.append(favorites.btn.leftAnchor.constraint(equalTo: shopContentsView.leftAnchor))
     layoutArray.append(maps.btn.leftAnchor.constraint(equalTo: favorites.btn.rightAnchor, constant: 1))
     layoutArray.append(adds.btn.leftAnchor.constraint(equalTo: maps.btn.rightAnchor, constant: 1))
     NSLayoutConstraint.activate(layoutArray)
@@ -142,15 +142,15 @@ func setStoreButtonView(superView: UIView, _ above: UIView) -> StoreButtonsView 
     maps.label.text = "길찾기"
     adds.label.text = "와인추가"
     
-    favorites.img.image = UIImage(named: "favorites")
+    favorites.img.image = UIImage(named: "favorites_off")
     maps.img.image = UIImage(named: "findRoad")
     adds.img.image = UIImage(named: "addPhoto")
     
-    storeContentsView.left = favorites
-    storeContentsView.middle = maps
-    storeContentsView.right = adds
+    shopContentsView.left = favorites
+    shopContentsView.middle = maps
+    shopContentsView.right = adds
     
-    return storeContentsView
+    return shopContentsView
 }
 
 extension CALayer {

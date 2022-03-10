@@ -12,7 +12,7 @@ import SwiftyJSON
 enum StoryBoard: String {
     case launch = "Launch"
     case main = "Main"
-    case store = "Store"
+    case shop = "Shop"
     case myPage = "MyPage"
     case readWine = "ReadWine"
     
@@ -21,7 +21,7 @@ enum StoryBoard: String {
     }
 }
 
-enum StoreType: Int, CaseIterable {
+enum ShopType: Int, CaseIterable {
     case all = 0
     case privateShop = 1
     case warehouse = 2
@@ -68,7 +68,7 @@ enum StoreType: Int, CaseIterable {
         }
     }
     
-    static var allOfCases: [StoreType]{
+    static var allOfCases: [ShopType]{
         return [.privateShop, .warehouse, .mart, .convenience, .chain, .department]
     }
 }
@@ -82,18 +82,8 @@ struct WineInfo {
     let from: String
     let vintage: String
     let alchol: String
-    let storeFk: Int
+    let shopFk: String
     let boughtDate: Date
-}
-
-struct WineStoreInfo {
-    let key: Int
-    let storeName: String
-    let classification: StoreType
-    let callNumber: String
-    let location: String
-    let openingHours: String
-    let homepage: String
 }
 
 enum WineType: Int, CaseIterable {
@@ -136,18 +126,21 @@ enum WineType: Int, CaseIterable {
     }
 }
 
-class ShopInfo {
+class Shop {
     let key: String
     private let homepage: String?
     private let category: String?
     private let address: String?
     private let name: String?
     private let tellNumber: String?
+    private let bookmark: Bool
     let latitude: Double
     let longtitude: Double
+    var userWines = [WineInfo]()
     init(_ param: JSON) {
         self.key = param["sh_no"].string ?? ""
         self.homepage = param["sh_url"].string
+        self.bookmark = param["sh_bookmark"].bool ?? false
         self.category = param["sh_category"].string
         self.address = param["sh_address"].string
         self.name = param["sh_name"].string
@@ -156,7 +149,10 @@ class ShopInfo {
         self.longtitude = param["sh_longitude"].double ?? 0.0
     }
     
-    var categoryType: StoreType {
+    var isBookmarked: Bool {
+        return self.bookmark
+    }
+    var categoryType: ShopType {
         guard let category = category else {
             return .privateShop
         }

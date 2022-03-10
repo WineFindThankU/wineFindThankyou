@@ -22,15 +22,15 @@ class MainViewController: UIViewController {
     private var wineInfos: [WineInfo] = []
     
     //근처의 모든 와인샵
-    private var allOfWineShopsNearBy: [ShopInfo] = [] {
+    private var allOfWineShopsNearBy: [Shop] = [] {
         didSet { self.shownWineShops = allOfWineShopsNearBy }
     }
     
-    private var shownWineShops: [ShopInfo] = [] {
+    private var shownWineShops: [Shop] = [] {
         didSet { updateMaker() }
     }
     
-    private let nameArr = StoreType.allCases.compactMap { $0.str }
+    private let nameArr = ShopType.allCases.compactMap { $0.str }
     private var cellDic = [Int: MainCollectionViewCell]()
     private var allOfMarkers = [NMFMarker]()
     
@@ -43,9 +43,6 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUserLocation()
-        
-        //MARK: 테스트 데이터
-        self.wineInfos = loadTestDatas()
     }
     
     private func setupUI() {
@@ -113,18 +110,18 @@ extension MainViewController {
     }
     
     @objc
-    private func openStore(_ key: String) {
-        AFHandler.shopDetail(key) { shopInfo in
-            showStoreInfoSummary(shopInfo)
+    private func openShop(_ key: String) {
+        AFHandler.shopDetail(key) { shop in
+            showShopInfoSummary(shop)
         }
 
-        func showStoreInfoSummary(_ shopInfo: ShopInfo?) {
-            guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreInfoSummaryViewController.identifier) as? StoreInfoSummaryViewController  else { return }
+        func showShopInfoSummary(_ shopInfo: Shop?) {
+            guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
 
             vc.modalPresentationStyle = .overFullScreen
-            vc.shopInfo = shopInfo
+            vc.shop = shopInfo
             //MARK: 문용. 테스트.
-            vc.wineInfos = wineInfos.filter { $0.storeFk == 0 }
+            vc.wineInfos = wineInfos.filter { $0.shopFk == shopInfo?.key }
             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
@@ -147,7 +144,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
 
-        let type = StoreType.allCases[indexPath.row]
+        let type = ShopType.allCases[indexPath.row]
         cell.configure(type: type)
         cellDic[indexPath.row] = cell
         
@@ -156,7 +153,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         
-        guard let type = StoreType.allCases.first(where: { $0.rawValue == indexPath.row})
+        guard let type = ShopType.allCases.first(where: { $0.rawValue == indexPath.row})
         else { return true }
         shownWineShops.removeAll()
         shownWineShops = allOfWineShopsNearBy.filter{ $0.categoryType == type }
@@ -278,7 +275,7 @@ extension MainViewController: NMFMapViewCameraDelegate {
                 else { return false }
 
                 self?.updateFocus(lat: lat, lng: long)
-                self?.openStore(key)
+                self?.openShop(key)
                 return true
             }
             allOfMarkers.append(marker)

@@ -1,5 +1,5 @@
 //
-//  StoreInfoSummaryViewController.swift
+//  ShopInfoSummaryViewController.swift
 //  wineFindThankyou
 //
 //  Created by mun on 2022/01/29.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestureRecognizerDelegate {
+class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestureRecognizerDelegate {
     @IBOutlet private weak var backgroundView: UIView!
     @IBOutlet private weak var contentsView: UIView!
     @IBOutlet private weak var contentsTopView: UIView!
@@ -48,35 +48,30 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
         self.view.backgroundColor = .clear
         backgroundView.backgroundColor = .clear
         contentsView.layer.cornerRadius = 12
-        storeButtonsView = setStoreButtonView(superView: contentsButtonView, contentsTopView)
+        shopButtonsView = setShopButtonView(superView: contentsButtonView, contentsTopView)
+        if shop.isBookmarked {
+            shopButtonsView.left?.img.image = UIImage(named: "favorites_on")
+        }
         winesCollectionView.delegate = self
         winesCollectionView.dataSource = self
         winesCollectionView.register(UINib(nibName: "WineInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WineInfoCollectionViewCell")
     }
     
     func setTopView() {
-        let storeName = UILabel()
-        let storeClassification = UILabel()
+        let shopName = UILabel()
+        let shopClassification = UILabel()
         let rightButton = UIButton()
         let imageView = UIImageView()
-        
-        contentsTopView.addSubview(storeName)
-        contentsTopView.addSubview(storeClassification)
-        contentsTopView.addSubview(rightButton)
-        contentsTopView.addSubview(imageView)
-        
-        storeName.translatesAutoresizingMaskIntoConstraints = false
-        storeClassification.translatesAutoresizingMaskIntoConstraints = false
-        rightButton.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        contentsTopView.addSubViews(subViews: shopName, shopClassification,
+                                    rightButton, imageView)
         
         NSLayoutConstraint.activate([
-            storeName.topAnchor.constraint(equalTo: contentsTopView.topAnchor),
-            storeName.leftAnchor.constraint(equalTo: contentsTopView.leftAnchor, constant: 17),
-            storeName.widthAnchor.constraint(equalToConstant: 217),
+            shopName.topAnchor.constraint(equalTo: contentsTopView.topAnchor),
+            shopName.leftAnchor.constraint(equalTo: contentsTopView.leftAnchor, constant: 17),
+            shopName.widthAnchor.constraint(equalToConstant: 217),
             
-            storeClassification.leftAnchor.constraint(equalTo: storeName.rightAnchor, constant: 8),
-            storeClassification.bottomAnchor.constraint(equalTo: storeName.bottomAnchor),
+            shopClassification.leftAnchor.constraint(equalTo: shopName.rightAnchor, constant: 8),
+            shopClassification.bottomAnchor.constraint(equalTo: shopName.bottomAnchor),
             
             rightButton.topAnchor.constraint(equalTo: contentsTopView.topAnchor),
             rightButton.leftAnchor.constraint(equalTo: contentsTopView.leftAnchor),
@@ -84,17 +79,17 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
             rightButton.bottomAnchor.constraint(equalTo: contentsTopView.bottomAnchor),
             
             imageView.rightAnchor.constraint(equalTo: contentsTopView.rightAnchor, constant: -16),
-            imageView.centerYAnchor.constraint(equalTo: storeName.centerYAnchor),
+            imageView.centerYAnchor.constraint(equalTo: shopName.centerYAnchor),
         ])
         
-        storeName.text = shopInfo.nnName
-        storeName.font = .boldSystemFont(ofSize: 20)
-        storeName.textColor = Theme.blacktext.color
-        storeClassification.text = shopInfo.categoryType.str
-        storeClassification.font = .systemFont(ofSize: 13)
-        storeClassification.textColor = Theme.blacktext.color
+        shopName.text = shop.nnName
+        shopName.font = .boldSystemFont(ofSize: 20)
+        shopName.textColor = Theme.blacktext.color
+        shopClassification.text = shop.categoryType.str
+        shopClassification.font = .systemFont(ofSize: 13)
+        shopClassification.textColor = Theme.blacktext.color
         imageView.image = UIImage(named: "rightArrow")
-        rightButton.addTarget(self, action: #selector(goToStore), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(goToShop), for: .touchUpInside)
     }
     
     private func registerAction() {
@@ -104,7 +99,7 @@ class StoreInfoSummaryViewController: ContainStoreButtonViewController, UIGestur
     }
 }
 
-extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wineInfos.count > 3 ? 3 : wineInfos.count
     }
@@ -121,15 +116,15 @@ extension StoreInfoSummaryViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: StoryBoard.store.name, bundle: nil)
+        let storyBoard = UIStoryboard(name: StoryBoard.shop.name, bundle: nil)
         guard indexPath.row == 2, isMoreThree else {
-            goToStoreInfoVC()
+            goToShopInfoVC()
             return
         }
-        goToStore()
+        goToShop()
         
-        func goToStoreInfoVC() {
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: "StoreWinesViewController") as? StoreWinesViewController else {
+        func goToShopInfoVC() {
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: "ShopWinesViewController") as? ShopWinesViewController else {
                  return
             }
             vc.crntIndex = indexPath.row

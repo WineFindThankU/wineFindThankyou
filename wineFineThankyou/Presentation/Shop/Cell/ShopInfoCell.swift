@@ -1,5 +1,5 @@
 //
-//  StoreInfoCell.swift
+//  ShopInfoCell.swift
 //  wineFindThankyou
 //
 //  Created by mun on 2022/01/26.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum StoreInfo: Int, CaseIterable{
+enum ShopInfo: Int, CaseIterable{
     case call = 0
     case location = 1
     case time = 2
@@ -27,7 +27,7 @@ enum StoreInfo: Int, CaseIterable{
     }
 }
 
-class StoreInfoCell: UITableViewCell{
+class ShopInfoCell: UITableViewCell{
     var imgView: UIImageView?
     var info: UITextView?
     

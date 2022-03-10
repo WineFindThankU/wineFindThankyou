@@ -16,12 +16,12 @@ class WineInfoTableViewCell: UITableViewCell {
         let alchol : WineInfoDetailView
     }
     
-    var wineStoreInfo: WineStoreInfo?
+    var shop: Shop?
     var wineInfo: WineInfo? {
         didSet { updateUI() }
     }
-    var storeBtnClosure: (() -> Void)?
-    var storeDeleteBtnClosure: (() -> Void)?
+    var shopBtnClosure: (() -> Void)?
+    var shopDeleteBtnClosure: (() -> Void)?
     
     private weak var wineImg: UIImageView?
     private weak var tagLabel: UILabel?
@@ -29,7 +29,7 @@ class WineInfoTableViewCell: UITableViewCell {
     private weak var wineKorName: UILabel?
     private weak var wineEngName: UILabel?
     private var wineInfoDetailsView: WineInfoDetailsView?
-    private weak var wineStoreName: UILabel?
+    private weak var wineShopName: UILabel?
     private weak var boughtDate: UILabel?
     
     override func prepareForReuse() {
@@ -57,7 +57,7 @@ class WineInfoTableViewCell: UITableViewCell {
         wineInfoDetailsView?.from.info = ("생산지", wineInfo.from)
         wineInfoDetailsView?.vintage.info = ("빈티지", wineInfo.vintage)
         wineInfoDetailsView?.alchol.info = ("도수", wineInfo.alchol)
-        wineStoreName?.text = wineStoreInfo?.storeName
+        wineShopName?.text = shop?.nnName
         boughtDate?.text = wineInfo.boughtDate.yyyyMMdd()
     }
     
@@ -134,7 +134,7 @@ class WineInfoTableViewCell: UITableViewCell {
         deleteBtn.setTitleColor(UIColor(rgb: 0x9e9e9e), for: .normal)
         deleteBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         deleteBtn.addAction(UIAction { _ in
-            self.storeDeleteBtnClosure?()
+            self.shopDeleteBtnClosure?()
         }, for: .touchUpInside)
         
         wineKorName.textColor = UIColor(rgb: 0x1e1e1e)
@@ -232,21 +232,21 @@ class WineInfoTableViewCell: UITableViewCell {
         buttonView.layer.borderColor = UIColor(rgb: 0xe0e0e0).cgColor
         buttonView.layer.cornerRadius = 8
         
-        img.image = UIImage(named: "StoreIcon")
+        img.image = UIImage(named: "ShopIcon")
         
         name.setTitle(title: "", colorHex: 0x7B61FF, font: .systemFont(ofSize: 11))
         date.setTitle(title: "", colorHex: 0x9e9e9e, font: .systemFont(ofSize: 11))
-        wineStoreName = name
+        wineShopName = name
         boughtDate = date
         
         btn.addAction(UIAction { _ in
-            self.storeBtnClosure?()
+            self.shopBtnClosure?()
         }, for: .touchUpInside)
     }
 }
 extension WineInfoTableViewCell {
     @objc
-    private func goToStore() {
+    private func goToShop() {
         
     }
 }

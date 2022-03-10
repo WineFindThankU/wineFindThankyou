@@ -15,7 +15,7 @@ class UserWineShopListTableViewCell: UITableViewCell {
     private unowned var registeredWineCount: UILabel!
     
     internal var wineCount = 0
-    internal var wineStoreInfo: WineStoreInfo? {
+    internal var shop: Shop? {
         didSet { updateUI() }
     }
     
@@ -30,12 +30,12 @@ class UserWineShopListTableViewCell: UITableViewCell {
     }
     
     private func updateUI() {
-        guard let wineStoreInfo = wineStoreInfo else { return }
+        guard let shop = shop else { return }
         
-        tagLabel.setTitle(title: wineStoreInfo.classification.str, colorHex: 0xffffff,
-                          backColor: wineStoreInfo.classification.color,
+        tagLabel.setTitle(title: shop.categoryType.str, colorHex: 0xffffff,
+                          backColor: shop.categoryType.color,
                           font: .systemFont(ofSize: 11))
-        shopName.setTitle(title: wineStoreInfo.storeName, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 13))
+        shopName.setTitle(title: shop.nnName, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 13))
         registeredWineCount.setTitle(title: "등록한 와인 \(wineCount)", colorHex: 0x757575, font: .systemFont(ofSize: 11))
     }
     

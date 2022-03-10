@@ -21,7 +21,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private var captrueStatus: CaptureStatus = .initial
     private var capturedImg: UIImage?
     private var dataPicker: UIDatePicker?
-    internal var shopInfo: ShopInfo!
+    internal var shop: Shop!
     internal var readWineInfo: ReadWineInfo? {
         didSet {
             textFieldName?.text = readWineInfo?.name
@@ -358,7 +358,7 @@ extension AddWineInfomationViewController {
             return
         }
         
-        let param = ["sh_no": shopInfo.key,
+        let param = ["sh_no": shop.key,
                      "name": readWineInfo.name!,
                      "country": readWineInfo.from!,
                      "vintage": readWineInfo.vintage!,

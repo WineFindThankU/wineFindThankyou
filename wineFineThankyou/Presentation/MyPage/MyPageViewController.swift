@@ -18,8 +18,8 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     var originHeight: CGFloat! = 0
     
     var wineInfos = [WineInfo]()
-    var visitedWineStoreInfos = [WineStoreInfo]()
-    var favoritesWineStoreInfos = [WineStoreInfo]()
+    var visitedWineShops = [Shop]()
+    var favoritesWineShops = [Shop]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -104,8 +104,8 @@ extension MyPageViewController {
         
         func getShopsByType() -> [Int] {
             var wineShopCount = [Int]()
-            StoreType.allOfCases.forEach { type in
-                wineShopCount.append(visitedWineStoreInfos.filter { $0.classification == type}.count)
+            ShopType.allOfCases.forEach { type in
+                wineShopCount.append(visitedWineShops.filter { $0.categoryType == type}.count)
             }
             return wineShopCount
         }
@@ -126,13 +126,13 @@ extension MyPageViewController {
             guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
             vc.wineInfos = self.wineInfos
-            vc.wineStoreInfos = self.visitedWineStoreInfos
+            vc.shops = self.visitedWineShops
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
             vc.wineInfos = wineInfos
-            vc.wineStoreInfos = type == .recentlyVisitedShop ? self.visitedWineStoreInfos : self.favoritesWineStoreInfos
+            vc.shops = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
             presentVc(vc)
         }
         
@@ -179,7 +179,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         if type == .recentlyBoughtWine {
             cell.cellInfos = self.wineInfos
         } else {
-            cell.cellInfos = type == .recentlyVisitedShop ? self.visitedWineStoreInfos : self.favoritesWineStoreInfos
+            cell.cellInfos = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
         }
         cell.touchRightBtn = { [weak self] in
             self?.goToNextStep(type)

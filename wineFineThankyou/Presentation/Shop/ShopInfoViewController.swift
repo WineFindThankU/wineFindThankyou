@@ -1,5 +1,5 @@
 //
-//  StoreInfoViewController.swift
+//  ShopInfoViewController.swift
 //  wineFindThankyou
 //
 //  Created by mun on 2022/01/25.
@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-class StoreInfoViewController: ContainStoreButtonViewController, SelectedWineCellProtocol {
+class ShopInfoViewController: ShopContainedButtonViewController, SelectedWineCellProtocol {
     enum TableSection: Int, CaseIterable {
-        case StoreInfo = 0
+        case ShopInfo = 0
         case WineList = 1
     }
     private unowned var topView: TopView?
-    private unowned var storeInfoTableView: UITableView!
+    private unowned var shopInfoTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setTopView()
@@ -23,7 +23,7 @@ class StoreInfoViewController: ContainStoreButtonViewController, SelectedWineCel
     
     func setTopView() {
         let topView = getGlobalTopView(self.view, height: 44)
-        topView.titleLabel?.text = shopInfo.nnName
+        topView.titleLabel?.text = shop.nnName
         topView.leftButton?.setBackgroundImage(UIImage(named: "backArrow"), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
         self.topView = topView
@@ -33,24 +33,24 @@ class StoreInfoViewController: ContainStoreButtonViewController, SelectedWineCel
         guard let topView = topView else { return }
         
         self.view.backgroundColor = Theme.white.color
-        let storeBtnsView = setStoreButtonView(superView: self.view, topView)
-        let storeInfoTableView = UITableView()
-        self.view.addSubview(storeInfoTableView)
-        storeInfoTableView.translatesAutoresizingMaskIntoConstraints = false
+        let shopBtnsView = setShopButtonView(superView: self.view, topView)
+        let shopInfoTableView = UITableView()
+        self.view.addSubview(shopInfoTableView)
+        shopInfoTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            storeInfoTableView.topAnchor.constraint(equalTo: storeBtnsView.bottomAnchor),
-            storeInfoTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            storeInfoTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            storeInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            shopInfoTableView.topAnchor.constraint(equalTo: shopBtnsView.bottomAnchor),
+            shopInfoTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            shopInfoTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            shopInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        storeButtonsView = storeBtnsView
-        self.storeInfoTableView = storeInfoTableView
+        shopButtonsView = shopBtnsView
+        self.shopInfoTableView = shopInfoTableView
         makeTableView()
     }
     
     func selectedCell(_ row: Int) {
-        guard let vc = UIStoryboard(name: StoryBoard.store.name, bundle: nil).instantiateViewController(withIdentifier: StoreWinesViewController.identifier) as? StoreWinesViewController else {
+        guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopWinesViewController.identifier) as? ShopWinesViewController else {
              return
         }
         vc.crntIndex = row
@@ -60,17 +60,17 @@ class StoreInfoViewController: ContainStoreButtonViewController, SelectedWineCel
     }
 }
 
-extension StoreInfoViewController: UITableViewDelegate, UITableViewDataSource {
+extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
     private func makeTableView(){
-        guard let storeInfoTableView = self.storeInfoTableView else { return }
+        guard let shopInfoTableView = self.shopInfoTableView else { return }
         
-        storeInfoTableView.delegate = self
-        storeInfoTableView.dataSource = self
-        storeInfoTableView.register(StoreInfoCell.self, forCellReuseIdentifier: "StoreInfoCell")
-        storeInfoTableView.register(UINib(nibName: "AllOfWineInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AllOfWineInfoTableViewCell")
-        storeInfoTableView.register(UINib(nibName: "WineListTitle", bundle: nil), forHeaderFooterViewReuseIdentifier: "WineListTitle")
-        storeInfoTableView.rowHeight = UITableView.automaticDimension
-        storeInfoTableView.estimatedRowHeight = UITableView.automaticDimension
+        shopInfoTableView.delegate = self
+        shopInfoTableView.dataSource = self
+        shopInfoTableView.register(ShopInfoCell.self, forCellReuseIdentifier: "ShopInfoCell")
+        shopInfoTableView.register(UINib(nibName: "AllOfWineInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AllOfWineInfoTableViewCell")
+        shopInfoTableView.register(UINib(nibName: "WineListTitle", bundle: nil), forHeaderFooterViewReuseIdentifier: "WineListTitle")
+        shopInfoTableView.rowHeight = UITableView.automaticDimension
+        shopInfoTableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,7 +78,7 @@ extension StoreInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if TableSection(rawValue: section) == .StoreInfo { return 4 }
+        if TableSection(rawValue: section) == .ShopInfo { return 4 }
         else { return 1 }
     }
     
@@ -96,8 +96,8 @@ extension StoreInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if TableSection(rawValue: indexPath.section) == .StoreInfo {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreInfoCell", for: indexPath) as? StoreInfoCell else { return UITableViewCell() }
+        if TableSection(rawValue: indexPath.section) == .ShopInfo {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ShopInfoCell", for: indexPath) as? ShopInfoCell else { return UITableViewCell() }
             return setSection0OfCell(cell, indexPath.row)
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllOfWineInfoTableViewCell", for: indexPath) as? AllOfWineInfoTableViewCell else { return UITableViewCell() }
@@ -108,8 +108,8 @@ extension StoreInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if TableSection(rawValue: indexPath.section) == .StoreInfo {
-            switch StoreInfo(rawValue: indexPath.row) {
+        if TableSection(rawValue: indexPath.section) == .ShopInfo {
+            switch ShopInfo(rawValue: indexPath.row) {
             default: return 45
             }
         } else {
@@ -117,18 +117,20 @@ extension StoreInfoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    private func setSection0OfCell(_ cell: StoreInfoCell, _ row: Int) -> StoreInfoCell{
-        guard let storeInfo = StoreInfo(rawValue: row) else { return cell }
-        cell.imgView?.image = UIImage(named: storeInfo.imgName)
+    private func setSection0OfCell(_ cell: ShopInfoCell, _ row: Int) -> ShopInfoCell{
+        guard let shopInfo = ShopInfo(rawValue: row)
+        else { return cell }
+        
+        cell.imgView?.image = UIImage(named: shopInfo.imgName)
         switch row {
         case 0:
-            cell.info?.text = shopInfo.nnTellNumber
+            cell.info?.text = shop.nnTellNumber
         case 1:
-            cell.info?.text = shopInfo.nnAddress
+            cell.info?.text = shop.nnAddress
         case 2:
             cell.info?.text = ""
         case 3:
-            cell.info?.text = shopInfo.nnHomepage
+            cell.info?.text = shop.nnHomepage
         default:
             break
         }

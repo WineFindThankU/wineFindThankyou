@@ -36,8 +36,8 @@ class TypeDetailStackView: UIView{
         let titles: [String]
         let colors: [UIColor]
         if resource.type == .shop {
-            titles = StoreType.allOfCases.compactMap { $0.str }
-            colors = StoreType.allOfCases.compactMap { $0.color }
+            titles = ShopType.allOfCases.compactMap { $0.str }
+            colors = ShopType.allOfCases.compactMap { $0.color }
         } else {
             titles = WineType.allCases.compactMap { $0.str }
             colors = WineType.allCases.compactMap { $0.color } + [UIColor(rgb: 0x000000)]
