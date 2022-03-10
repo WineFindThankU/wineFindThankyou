@@ -59,7 +59,6 @@ class GrapeIcon {
     func setupTitle(_ data:[String]) -> String {
         if data[0] == "가성비" || data[1] == "2만원 이하" || data[1] == "3 ~ 4만원대" {
             let cost = GrapeCase.costGrape
-            title = cost.getGrapeName()
             return cost.getGrapeName()
         } else if (data[0] == "와인 브랜드" || data[1] == "생산 지역" || data[1] == "포도 품종" || data[1] == "퀄리티가 된다면 가격은 상관없음!") {
             let artist = GrapeCase.artistGrape

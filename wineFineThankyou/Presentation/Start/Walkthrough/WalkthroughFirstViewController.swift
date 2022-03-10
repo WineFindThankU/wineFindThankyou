@@ -23,6 +23,8 @@ enum WhenDoSelect: String, CaseIterable {
 }
 
 class WalkthroughFirstViewController: UIViewController {
+    
+    var bottomSheetData = ""
     lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.text = "Q. 1"
@@ -101,6 +103,15 @@ class WalkthroughFirstViewController: UIViewController {
         setupUI()
     }
     
+    @objc func buttonTapped() {
+        print("떠있음")
+        let bottomSheetVC = QABottomSheet()
+        bottomSheetVC.modalPresentationStyle = .overFullScreen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.present(bottomSheetVC, animated: false, completion: nil)
+        }
+    }
+ 
     private func setupUI() {
         numberLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -137,13 +148,14 @@ class WalkthroughFirstViewController: UIViewController {
             btn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
             
             guard btn != etc else {
-                //MARK: 수진. etc는 따로
                 etc.addAction(UIAction(handler: { _ in
-                    let view = QABottomSheet()
+                    self.etc.setTitleColor(.standardColor, for: .normal)
+                    self.etc.layer.borderColor = UIColor.standardColor.cgColor
+                    self.etc.layer.borderWidth = 1.5
+                    print("떠있음")
+                    let view = BottomSheetViewController()
                     view.modalPresentationStyle = .overFullScreen
-                    DispatchQueue.main.async {
-                        self.present(view, animated: true)
-                    }
+                    self.present(view, animated: true)
                 }), for: .touchUpInside)
                 return
             }

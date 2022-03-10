@@ -23,12 +23,13 @@ final class WalkthroughFourthViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
-    lazy var finalTitleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "finalTitle")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+
+    lazy var iamTitle: UILabel = {
+        let label = UILabel()
+        label.font = .gaeguRegular(size: 32)
+        label.text = "나는야"
+        label.textColor = .standardColor
+        return label
     }()
     
     lazy var grapeTitle: UILabel = {
@@ -101,6 +102,7 @@ final class WalkthroughFourthViewController: UIViewController {
     
     private func setupConfigure() {
         view.addSubview(finalImageView)
+        view.addSubview(iamTitle)
         view.addSubview(grapeTitle)
         view.addSubview(firstLabel)
         view.addSubview(secondLabel)
@@ -108,16 +110,11 @@ final class WalkthroughFourthViewController: UIViewController {
         view.addSubview(nextButton)
     }
 
-    // TODO: 폰트 받게 된다면, 적용하겠습니다. 
     private func setupImage() {
         finalImage = GrapeIcon().setupImage(UserData.userOptions)
         finalTitle = GrapeIcon().setupTitle(UserData.userOptions)
         finalImageView.image = UIImage(named: finalImage)
-        grapeTitle.text =
-        """
-        나는야
-        \(finalTitle)
-        """
+        grapeTitle.text = "\(finalTitle)"
     }
 
     private func saveUserDefaults() {
@@ -138,8 +135,13 @@ final class WalkthroughFourthViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(67)
         }
         
+        iamTitle.snp.makeConstraints { make in
+            make.top.equalTo(finalImageView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(56)
+        }
         grapeTitle.snp.makeConstraints { make in
-            make.top.equalTo(finalImageView.snp.bottom).offset(8)
+            make.top.equalTo(iamTitle.snp.bottom).offset(1)
             make.centerX.equalToSuperview()
             make.height.equalTo(56)
         }
