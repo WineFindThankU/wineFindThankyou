@@ -112,10 +112,7 @@ class StartViewController: UIViewController {
         let alert = UIAlertController(title: "인터넷 연결 오류",
                                       message: "유저 데이터를 받아오는데, 실패하였습니다.\n인터넷 연결을 확인하고 다시 시도해주세요.",
                                       preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .cancel){ _ in
-            alert.dismiss(animated: true) {
-            }
-        }
+        let ok = UIAlertAction(title: "OK", style: .cancel)
         alert.addAction(ok)
         DispatchQueue.main.async {
             self.present(alert, animated: true)

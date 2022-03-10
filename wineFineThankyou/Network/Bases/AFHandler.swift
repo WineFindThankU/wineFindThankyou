@@ -209,9 +209,9 @@ extension AFHandler {
         }
     }
     
-    class func addFavoriteShop(_ key: String, done: ((Bool) -> Void)?) {
+    class func addFavoriteShop(_ key: String, _ isBookmarked: Bool, done: ((Bool) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop/\(key)/bookmark"
-        let param = ["bookmark": true]
+        let param = ["bookmark": isBookmarked]
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -228,11 +228,11 @@ extension AFHandler {
             case .success(let nsDict):
                 guard let nsDict = nsDict as? NSDictionary
                 else { done?(false); return }
-                print("munyong > nsDict: \(nsDict)")
+
+                done?(true); return
             default:
-                break
+                done?(false); return
             }
-            done?(true)
         }
     }
     

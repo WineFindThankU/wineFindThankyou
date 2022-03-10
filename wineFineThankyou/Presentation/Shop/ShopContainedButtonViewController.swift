@@ -15,21 +15,41 @@ class ShopContainedButtonViewController: UIViewController{
     }
     var shop: Shop!
     var wineInfos: [WineInfo] = []
-    internal unowned var shopButtonsView: ShopButtonsView! {
+    internal unowned var shopBtnsView: ShopButtonsView! {
         didSet { addTargetOnButton() }
     }
     
     func addTargetOnButton(){
-        shopButtonsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
-        shopButtonsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
-        shopButtonsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
+        shopBtnsView?.left?.btn.addTarget(self, action: #selector(addFavorites), for: .touchUpInside)
+        shopBtnsView?.middle?.btn.addTarget(self, action: #selector(findRoad), for: .touchUpInside)
+        shopBtnsView?.right?.btn.addTarget(self, action: #selector(takePicture), for: .touchUpInside)
+        setBookmarkedBtn()
+    }
+    
+    func setBookmarkedBtn() {
+        let imgName = self.shop.isBookmarked ? "favorites_on" : "favorites_off"
+        DispatchQueue.main.async {
+            self.shopBtnsView.left?.img.image = UIImage(named: imgName)
+        }
     }
     
     @objc
     private func addFavorites() {
-        print("munyong > self.shopInfo.key: \(self.shop.key)")
-        AFHandler.addFavoriteShop(self.shop.key) {
-            print("munyong > \($0)")
+        AFHandler.addFavoriteShop(self.shop.key, !self.shop.isBookmarked) { isSuccess in
+            guard isSuccess else { noticeResponseFail(); return }
+            self.shop.isBookmarked = !self.shop.isBookmarked
+            self.setBookmarkedBtn()
+        }
+        
+        func noticeResponseFail() {
+            let alert = UIAlertController(title: "오류",
+                                          message: "알 수 없는 이유로 즐겨찾기 등록에 실패하였습니다. 다시 시도해주세요.",
+                                          preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .cancel)
+            alert.addAction(ok)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true)
+            }
         }
     }
     
@@ -97,6 +117,10 @@ class ShopContainedButtonViewController: UIViewController{
     
     @objc
     func close() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true, completion: {
+            guard let top = topViewController() as? ShopInfoSummaryViewController else { return }
+            top.shop = self.shop
+            top.setBookmarkedBtn()
+        })
     }
 }

@@ -133,7 +133,7 @@ class Shop {
     private let address: String?
     private let name: String?
     private let tellNumber: String?
-    private let bookmark: Bool
+    private var bookmark: Bool
     let latitude: Double
     let longtitude: Double
     var userWines = [WineInfo]()
@@ -150,7 +150,11 @@ class Shop {
     }
     
     var isBookmarked: Bool {
-        return self.bookmark
+        get {
+            return self.bookmark
+        } set(val) {
+            self.bookmark = val
+        }
     }
     var categoryType: ShopType {
         guard let category = category else {

@@ -48,10 +48,7 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         self.view.backgroundColor = .clear
         backgroundView.backgroundColor = .clear
         contentsView.layer.cornerRadius = 12
-        shopButtonsView = setShopButtonView(superView: contentsButtonView, contentsTopView)
-        if shop.isBookmarked {
-            shopButtonsView.left?.img.image = UIImage(named: "favorites_on")
-        }
+        shopBtnsView = setShopButtonView(superView: contentsButtonView, contentsTopView)
         winesCollectionView.delegate = self
         winesCollectionView.dataSource = self
         winesCollectionView.register(UINib(nibName: "WineInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WineInfoCollectionViewCell")

@@ -33,7 +33,7 @@ class ShopInfoViewController: ShopContainedButtonViewController, SelectedWineCel
         guard let topView = topView else { return }
         
         self.view.backgroundColor = Theme.white.color
-        let shopBtnsView = setShopButtonView(superView: self.view, topView)
+        shopBtnsView = setShopButtonView(superView: self.view, topView)
         let shopInfoTableView = UITableView()
         self.view.addSubview(shopInfoTableView)
         shopInfoTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,6 @@ class ShopInfoViewController: ShopContainedButtonViewController, SelectedWineCel
             shopInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        shopButtonsView = shopBtnsView
         self.shopInfoTableView = shopInfoTableView
         makeTableView()
     }
