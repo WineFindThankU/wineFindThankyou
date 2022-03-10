@@ -33,7 +33,7 @@ final class WalkthroughFourthViewController: UIViewController {
     
     lazy var grapeTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.font = .gaeguRegular(size: 32)
         label.textColor = .standardColor
         return label
     }()
@@ -113,7 +113,11 @@ final class WalkthroughFourthViewController: UIViewController {
         finalImage = GrapeIcon().setupImage(UserData.userOptions)
         finalTitle = GrapeIcon().setupTitle(UserData.userOptions)
         finalImageView.image = UIImage(named: finalImage)
-        grapeTitle.text = "나는야" + finalTitle
+        grapeTitle.text =
+        """
+        나는야
+        \(finalTitle)
+        """
     }
 
     private func saveUserDefaults() {

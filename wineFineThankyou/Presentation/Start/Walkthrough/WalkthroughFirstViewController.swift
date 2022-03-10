@@ -89,6 +89,14 @@ class WalkthroughFirstViewController: UIViewController {
     let etc: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.etc.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            let view = QABottomSheet()
+            view.modalPresentationStyle = .overFullScreen
+            DispatchQueue.main.async {
+                self.present(view, animated: true)
+            }
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
