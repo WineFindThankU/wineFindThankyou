@@ -98,6 +98,8 @@
 		BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7965127C1E5AD00D2AC1F /* WineShopCell.swift */; };
 		BAE7965427C1E5B800D2AC1F /* WineShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7965327C1E5B800D2AC1F /* WineShopCell.xib */; };
 		C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A494C27AD220A0080CBE2 /* StartViewController.swift */; };
+		C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */; };
+		C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +220,8 @@
 		BAE7965127C1E5AD00D2AC1F /* WineShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineShopCell.swift; sourceTree = "<group>"; };
 		BAE7965327C1E5B800D2AC1F /* WineShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineShopCell.xib; sourceTree = "<group>"; };
 		C56A494C27AD220A0080CBE2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
+		C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou_wineFindThankyouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -268,8 +272,8 @@
 		4429F37B27CFC45600402D0C /* Walkthrough */ = {
 			isa = PBXGroup;
 			children = (
-				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
 				448FB0D027D6333C00375267 /* grapeIcon */,
+				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
 				4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */,
 				4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */,
 				4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */,
@@ -359,7 +363,7 @@
 		44FF1CBD278471A700FD8567 /* wineFineThankyou */ = {
 			isa = PBXGroup;
 			children = (
-				4429F38827CFE65F00402D0C /* Utils */,
+				C57EF2A327D980A700BA0C31 /* Resources */,
 				44FF1CF62786BCFF00FD8567 /* GoogleService-Info.plist */,
 				44FF470427A5713A0063924D /* Views */,
 				44FF470127A563230063924D /* Model */,
@@ -517,6 +521,7 @@
 				BA77CFE6279EFA5600832389 /* ExtUIColor.swift */,
 				BA47878B27B7880400AAB5EA /* ExtFunc.swift */,
 				4433C01727CB8CEC00119931 /* UIColor+Extensions.swift */,
+				C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -581,6 +586,23 @@
 				4429F37B27CFC45600402D0C /* Walkthrough */,
 			);
 			path = Start;
+			sourceTree = "<group>";
+		};
+		C57EF2A327D980A700BA0C31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C57EF2A427D980B000BA0C31 /* Fonts */,
+				4429F38827CFE65F00402D0C /* Utils */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C57EF2A427D980B000BA0C31 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D55090A1FA48D46D11A58126 /* Pods */ = {
@@ -729,6 +751,7 @@
 				BABB595727C50415000E24C5 /* ReadWine.storyboard in Resources */,
 				BAA4031627BA944A00C50221 /* WineListTitle.xib in Resources */,
 				BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */,
+				C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */,
 				BA8BB7B427A4256F0010F05A /* AllOfWineInfoTableViewCell.xib in Resources */,
 				BAE7964C27C1161600D2AC1F /* TypeDetailStackView.xib in Resources */,
 				BA1E472327AF9D23005C3319 /* MyPage.storyboard in Resources */,
@@ -914,6 +937,7 @@
 				BA1CAAA627CDE606002375A5 /* WineInfoDetailView.swift in Sources */,
 				BA913C0927C0B6050055B2A4 /* DonutGraphView.swift in Sources */,
 				BA8BB7CB27A529D40010F05A /* Login.swift in Sources */,
+				C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */,
 				C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */,
 				BAA4031827BA945700C50221 /* WineListTitle.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
@@ -1188,7 +1212,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RQ36Z9KT5U;
+				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;

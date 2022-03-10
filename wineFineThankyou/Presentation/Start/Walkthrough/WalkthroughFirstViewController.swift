@@ -135,6 +135,19 @@ class WalkthroughFirstViewController: UIViewController {
             btn.layer.borderColor = UIColor.black.cgColor
             btn.layer.cornerRadius = 20
             btn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+            
+            guard btn != etc else {
+                //MARK: 수진. etc는 따로
+                etc.addAction(UIAction(handler: { _ in
+                    let view = QABottomSheet()
+                    view.modalPresentationStyle = .overFullScreen
+                    DispatchQueue.main.async {
+                        self.present(view, animated: true)
+                    }
+                }), for: .touchUpInside)
+                return
+            }
+            
             btn.addAction(UIAction { _ in
                 btn.backgroundColor = .white
                 btn.layer.borderColor = UIColor.standardColor.cgColor
