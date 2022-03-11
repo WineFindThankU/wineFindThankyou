@@ -86,6 +86,12 @@ struct WineInfo {
     let boughtDate: Date
 }
 
+struct Wine {
+    let key: String
+    let name: String
+    let img: String?
+}
+
 enum WineType: Int, CaseIterable {
     case white = 0
     case red = 1
@@ -136,7 +142,7 @@ class Shop {
     private var bookmark: Bool
     let latitude: Double
     let longtitude: Double
-    var userWines = [WineInfo]()
+    var userWines = [Wine]()
     init(_ param: JSON) {
         self.key = param["sh_no"].string ?? ""
         self.homepage = param["sh_url"].string
@@ -147,6 +153,15 @@ class Shop {
         self.tellNumber = param["sh_tell"].string
         self.latitude = param["sh_latitude"].double ?? 0.0
         self.longtitude = param["sh_longitude"].double ?? 0.0
+        
+        param["userWines"].array?.forEach {
+            guard let key = $0["uw_no"].string,
+                  let name = $0["uw_name"].string
+            else { return }
+            let img = $0["uw_img"].string
+            
+            self.userWines.append(Wine(key: key, name: name, img: img))
+        }
     }
     
     var isBookmarked: Bool {

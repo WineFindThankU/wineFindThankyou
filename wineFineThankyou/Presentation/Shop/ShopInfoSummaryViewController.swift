@@ -18,7 +18,7 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
     @IBOutlet weak var viewTopAnchor: NSLayoutConstraint!
     
     private var isMoreThree: Bool {
-        return wineInfos.count >= 3
+        return shop.userWines.count > 3
     }
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         super.viewWillAppear(animated)
     
         viewTopAnchor.constant = UIScreen.main.bounds.height - 267
-        guard wineInfos.count > 0 else {
+        guard shop.userWines.count > 0 else {
             emptyView.isHidden = false
             winesCollectionView.isHidden = true
             
@@ -98,16 +98,16 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
 
 extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wineInfos.count > 3 ? 3 : wineInfos.count
+        return shop.userWines.count > 3 ? 3 : shop.userWines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell
         else { return UICollectionViewCell() }
-        cell.wineInfo = wineInfos[indexPath.row]
+        cell.userWine = shop.userWines[indexPath.row]
         
         if indexPath.row == 2, isMoreThree {
-            cell.setMoreView(wineInfos.count - 3)
+            cell.setMoreView(shop.userWines.count - 3)
         }
         return cell
     }
@@ -125,7 +125,7 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
                  return
             }
             vc.crntIndex = indexPath.row
-            vc.wineInfos = wineInfos
+//            vc.wineInfos = wineInfos
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
         }

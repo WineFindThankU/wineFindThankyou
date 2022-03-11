@@ -11,7 +11,6 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private weak var topView: TopView!
     private weak var midView: UIView!
     private weak var datePickerView: UIView!
-    private weak var backgroundView: UIView!
     private weak var textFieldName: UITextField?
     private weak var textFieldFrom: UITextField?
     private weak var textFieldVintage: UITextField?
@@ -22,18 +21,20 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private var capturedImg: UIImage?
     private var dataPicker: UIDatePicker?
     internal var shop: Shop!
-    internal var readWineInfo: ReadWineInfo? {
+    internal var readWineInfo: ReadWineInfo! {
         didSet {
-            textFieldName?.text = readWineInfo?.name
-            textFieldFrom?.text = readWineInfo?.from
-            textFieldVintage?.text = readWineInfo?.vintage
+            DispatchQueue.main.async { [weak self] in
+                self?.textFieldName?.text = self?.readWineInfo.name
+                self?.textFieldFrom?.text = self?.readWineInfo.from
+                self?.textFieldVintage?.text = self?.readWineInfo.vintage
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
-        delegateSet()
+        readWineInfo = ReadWineInfo(name: "", from: "", vintage: "", dateStr: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +61,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
         case .ok:
             DispatchQueue.main.async {
                 self.configure()
+                self.delegateSet()
             }
         }
     }
@@ -74,7 +76,10 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
         self.textFieldName?.resignFirstResponder()
         self.textFieldFrom?.resignFirstResponder()
         self.textFieldVintage?.resignFirstResponder()
-        
+        chkRegisterBtnUI()
+    }
+    
+    private func chkRegisterBtnUI() {
         if let name = self.textFieldName?.text, !name.isEmpty,
            let from = self.textFieldFrom?.text, !from.isEmpty,
            let vintage = self.textFieldVintage?.text, !vintage.isEmpty,
@@ -91,27 +96,6 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
         setMidContentsView()
         setBottomView()
         setDatePickerView()
-        setBackgroundView()
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissCurrentTop))
-        recognizer.delegate = self
-        self.backgroundView.addGestureRecognizer(recognizer)
-    }
-    
-    @objc
-    func dismissCurrentTop(){
-        if textFieldName?.isEditing == true {
-            textFieldName?.resignFirstResponder()
-        } else if textFieldFrom?.isEditing == true {
-            textFieldFrom?.resignFirstResponder()
-        } else if textFieldVintage?.isEditing == true {
-            textFieldVintage?.resignFirstResponder()
-        } else {
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut) {
-                self.datePickerView.transform = CGAffineTransform(translationX: 0, y: 269)
-                self.view.layoutIfNeeded()
-            }
-        }
-        self.backgroundView.isHidden = true
     }
 }
 
@@ -124,28 +108,19 @@ extension AddWineInfomationViewController: CapturedImageProtocol {
         WineLabelReader.doStartToOCR(uiImage) {
         //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
             self.capturedImg = uiImage
-            self.readWineInfo = $0
+            let readData: ReadWineInfo?
+            if $0 == nil {
+                readData = ReadWineInfo(name: "", from: "", vintage: "", dateStr: "")
+            } else {
+                readData = $0
+            }
+            self.readWineInfo = readData
             done?()
         }
     }
 }
 
 extension AddWineInfomationViewController {
-    private func setBackgroundView(){
-        let backgroundView = UIView()
-        self.view.addSubview(backgroundView)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ])
-        backgroundView.backgroundColor = .black.withAlphaComponent(0.1)
-        self.backgroundView = backgroundView
-        self.backgroundView.isHidden = true
-    }
-    
     private func setTopView() {
         self.topView = getGlobalTopView(self.view, height: 44)
         topView.backgroundColor = .white
@@ -161,9 +136,9 @@ extension AddWineInfomationViewController {
         midView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let wineName = DescAndTxtField("와인 명", readWineInfo?.name ?? "", superView: midView)
-        let wineFrom = DescAndTxtField("원산지", readWineInfo?.from ?? "", superView: midView)
-        let wineVintage = DescAndTxtField("빈티지", readWineInfo?.vintage ?? "", superView: midView)
+        let wineName = DescAndTxtField("와인 명", readWineInfo.name, superView: midView)
+        let wineFrom = DescAndTxtField("원산지", readWineInfo.from, superView: midView)
+        let wineVintage = DescAndTxtField("빈티지", readWineInfo.vintage, superView: midView)
         
         NSLayoutConstraint.activate([
             midView.topAnchor.constraint(equalTo: topView.bottomAnchor),
@@ -322,6 +297,7 @@ extension AddWineInfomationViewController {
     func close() {
         self.dismiss(animated: true)
     }
+    
     @objc
     func completeDateSet() {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut) {
@@ -332,16 +308,15 @@ extension AddWineInfomationViewController {
         guard let date = self.dataPicker?.date else { return }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.readWineInfo?.date = date
+        self.readWineInfo.dateStr = dateFormatter.string(from: date)
         self.textFieldBoughtDate?.text = dateFormatter.string(from: date)
-        self.backgroundView.isHidden = true
+        
+        chkRegisterBtnUI()
     }
     
     @objc
     func pickBoughtDate() {
-        self.view.bringSubviewToFront(backgroundView)
         self.view.bringSubviewToFront(datePickerView)
-        self.backgroundView.isHidden = false
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut) {
             self.datePickerView.transform = CGAffineTransform(translationX: 0, y: -269)
@@ -351,40 +326,37 @@ extension AddWineInfomationViewController {
     
     @objc
     func completeRegister() {
-        guard let readWineInfo = self.readWineInfo,
-              !readWineInfo.isEmpty()
-        else {
-            print("정보가 비어있습니다.")
+        guard readWineInfo.setComplete() else {
             return
         }
         
         let param = ["sh_no": shop.key,
-                     "name": readWineInfo.name!,
-                     "country": readWineInfo.from!,
-                     "vintage": readWineInfo.vintage!,
-                     "purchased_at": readWineInfo.date!] as [String : Any]
-        AFHandler.addWine(param) {
+                     "name": readWineInfo.name,
+                     "country": readWineInfo.from,
+                     "vintage": readWineInfo.vintage,
+                     "purchased_at": readWineInfo.dateStr] as [String : Any]
+        AFHandler.addWine(param) { isSuccess in
             //와인추가 완료. 실패/성공 판단 후 dismiss.
+            guard isSuccess else {
+                print("와인 등록 실패")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
         }
-        
-        print(readWineInfo)
-        
     }
 }
 
 extension AddWineInfomationViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.backgroundView.isHidden = false
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.backgroundView.isHidden = true
         if textField.isEqual(textFieldName) {
-            readWineInfo?.name = textFieldName?.text ?? ""
+            readWineInfo.name = textFieldName?.text ?? ""
         } else if textField.isEqual(textFieldFrom) {
-            readWineInfo?.vintage = textFieldFrom?.text ?? ""
+            readWineInfo.from = textFieldFrom?.text ?? ""
         } else if textField.isEqual(textFieldVintage) {
-            readWineInfo?.vintage = textFieldVintage?.text ?? ""
+            readWineInfo.vintage = textFieldVintage?.text ?? ""
         }
     }
 }

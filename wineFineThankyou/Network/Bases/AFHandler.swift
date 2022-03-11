@@ -151,21 +151,29 @@ class AFHandler {
         }
     }
     
-    class func addWine(_ param: [String: Any], done: (() -> Void)?) {
+    class func addWine(_ param: [String: Any], done: ((Bool) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/wine"
-        session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
-//            switch res.result {
-//            case .success(let nsDict):
-//                guard let nsDict = nsDict as? NSDictionary
-//                else { done?(nil); return }
-//
-//                let dict = JSON(nsDict)["data"]
-//                print(dict)
-//                done?()
-//                return
-//            default:
-//                done?(nil); return
-//            }
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: param, options: [])
+        } catch {
+            done?(false); return
+        }
+        
+        session.request(request).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(false); return }
+                
+                done?(true)
+                return
+            default:
+                done?(false); return
+            }
         }
     }
     
@@ -289,6 +297,7 @@ extension AFHandler {
 // MARK: Wine
 extension AFHandler {
     class func searchWineInfo(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
+        guard !byKeyword.isEmpty else { done?(nil); return }
         let url = "http://125.6.36.157:3001/v1/wine"
         let param = ["keyword":byKeyword]
         session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
