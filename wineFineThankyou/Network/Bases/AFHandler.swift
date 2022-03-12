@@ -25,6 +25,7 @@ var defaultSession: Session {
 
 class AFHandler {
     static let session = defaultSession
+    static let queue = DispatchQueue(label: "AFHandlerQueue")
     class func signBySNS(_ params: [String:Any], done: ((AfterSign) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/user"
         let userOptions = UserData.userOptions
@@ -244,8 +245,35 @@ extension AFHandler {
         }
     }
     
-    class func getFavoritesShop(done: ((Bool) -> Void)?) {
-//        let url = "http://125.6.36.157:3001/v1/shop/\(key)/bookmark"
+    class func getFavoritesShop(done: (([FavoriteShop]) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/user/bookmark"
+        let params = ["page":"1"]
+        session.request(url, method: .get, parameters: params,
+                        encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary,
+                      let shopList = JSON(nsDict)["data"]["list"].array
+                else { done?([]); return }
+                
+                var favorites: [FavoriteShop] = []
+                shopList.forEach { data in
+                    guard let wineCnt = data["uh_wine_cnt"].int,
+                          let key = data["shop"]["sh_no"].string,
+                          let name = data["shop"]["sh_name"].string,
+                          let type = data["shop"]["sh_category"].string,
+                          let bookmark = data["uh_bookmark"].bool
+                    else { return }
+                    
+                    favorites.append(FavoriteShop(wineCnt: wineCnt, shopSummary: ShopSummary(key: key, name: name, categoryType: type), isBookmark: bookmark))
+                }
+                
+                done?(favorites)
+                return
+            default:
+                done?([]); return
+            }
+        }
     }
     
     class func shopDetail(_ key: String, done:((Shop?) -> Void)?) {
@@ -290,6 +318,15 @@ extension AFHandler {
             default:
                 break
             }
+        }
+    }
+}
+
+extension AFHandler {
+    class func getMyPageData() {
+        let url = "http://125.6.36.157:3001/v1/user/info"
+        session.request(url, method: .get, encoding: URLEncoding.default).responseJSON { res in
+            print(res)
         }
     }
 }

@@ -91,8 +91,42 @@ extension MainViewController {
         else { return }
         vc.modalPresentationStyle = .fullScreen
         vc.wineInfos = wineInfos
+
+        var favoriteKeys = [String]()
+        let group = DispatchGroup()
         
-        self.present(vc, animated: true)
+        group.enter()
+        DispatchQueue.global().async {
+            AFHandler.getFavoritesShop{ favorites in
+                favoriteKeys.append(contentsOf: favorites.compactMap {
+                    $0.shopSummary.key
+                })
+                group.leave()
+            }
+        }
+
+        
+        
+        var count = 0
+        group.notify(queue: AFHandler.queue) {
+            favoriteKeys.forEach { key in
+                AFHandler.shopDetail(key) { shop in
+                    defer {
+                        if count == favoriteKeys.count{
+                            DispatchQueue.main.async {
+                                self.present(vc, animated: true)
+                            }
+                        }
+                    }
+
+                    count += 1
+                    guard let shop = shop else {
+                        return
+                    }
+                    vc.favoritesWineShops.append(shop)
+                }
+            }
+        }
     }
     
     @objc

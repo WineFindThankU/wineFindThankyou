@@ -220,6 +220,18 @@ class Shop {
     }
 }
 
+struct FavoriteShop {
+    let wineCnt: Int
+    let shopSummary: ShopSummary
+    let isBookmark: Bool
+}
+
+struct ShopSummary {
+    let key: String
+    let name: String
+    let categoryType: String
+}
+
 class UserData {
     static var isUserLogin : Bool {
         get {
