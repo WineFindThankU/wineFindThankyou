@@ -9,6 +9,41 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
+struct UsersWineType : Codable {
+    let question1 : String
+    let question2: String
+    let question3: String
+}
+
+enum AfterLogin {
+    case success
+    case fail
+    case cannotAccess
+    
+    //TEST
+    var str: String{
+        switch self {
+        case .success:
+            return "로그인 성공"
+        case .fail:
+            return "로그인 실패"
+        case .cannotAccess:
+            return "나이가 어려요"
+        }
+    }
+    
+    var detail: String {
+        switch self {
+        case .success:
+            return ""
+        case .fail:
+            return "인증 문제로 로그인 할 수 없습니다. 개발자에게 화를 내주세요."
+        case .cannotAccess:
+            return "애들은 가라, 애들은 가.🤬"
+        }
+    }
+}
+
 enum StoryBoard: String {
     case launch = "Launch"
     case main = "Main"

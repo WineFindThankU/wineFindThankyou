@@ -19,80 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7VU-kc-zEy">
-                                <rect key="frame" x="100" y="169" width="175" height="181"/>
+                                <rect key="frame" x="100" y="169" width="175" height="70"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k67-fk-USu">
-                                <rect key="frame" x="26" y="390" width="323" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="ThL-Ki-y6k"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="kakaoLogin"/>
-                                <connections>
-                                    <action selector="onClickKakao:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pJ3-So-ARH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggj-zd-6aI">
-                                <rect key="frame" x="26" y="448" width="323" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Y6x-N9-njo"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="naverLogin">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onClickNaver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7md-9e-85I"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-A7-zYb">
-                                <rect key="frame" x="26" y="506" width="323" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="1Ut-Y2-ukc"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="googleLogin"/>
-                                <connections>
-                                    <action selector="onClickGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGr-qv-g7t"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd7-eb-R6R">
-                                <rect key="frame" x="26" y="564" width="323" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Av9-4U-rQf"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="appleLogin">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7VU-kc-zEy" secondAttribute="trailing" constant="100" id="04j-fX-H8O"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nd7-eb-R6R" secondAttribute="trailing" constant="26" id="6rk-2n-gdr"/>
-                            <constraint firstItem="dT0-A7-zYb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="DGa-iI-lQk"/>
                             <constraint firstItem="7VU-kc-zEy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="EBU-t5-dXy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd7-eb-R6R" secondAttribute="bottom" constant="55" id="EYS-rK-QSp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k67-fk-USu" secondAttribute="trailing" constant="26" id="GwA-Io-KtP"/>
-                            <constraint firstItem="k67-fk-USu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="PgV-rY-owo"/>
-                            <constraint firstItem="ggj-zd-6aI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="el6-pe-5te"/>
-                            <constraint firstItem="nd7-eb-R6R" firstAttribute="top" secondItem="dT0-A7-zYb" secondAttribute="bottom" constant="10" id="fJk-Jg-sa3"/>
                             <constraint firstItem="7VU-kc-zEy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="169" id="mjN-sQ-HqU"/>
-                            <constraint firstItem="k67-fk-USu" firstAttribute="top" secondItem="7VU-kc-zEy" secondAttribute="bottom" constant="40" id="nzK-0w-RRQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ggj-zd-6aI" secondAttribute="trailing" constant="26" id="oer-Rj-BQd"/>
-                            <constraint firstItem="ggj-zd-6aI" firstAttribute="top" secondItem="k67-fk-USu" secondAttribute="bottom" constant="10" id="pGG-3L-Z6t"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dT0-A7-zYb" secondAttribute="trailing" constant="26" id="rJg-5F-F3n"/>
-                            <constraint firstItem="dT0-A7-zYb" firstAttribute="top" secondItem="ggj-zd-6aI" secondAttribute="bottom" constant="10" id="s1U-mc-TtN"/>
-                            <constraint firstItem="nd7-eb-R6R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="yaz-09-rkD"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="appleSignInButton" destination="nd7-eb-R6R" id="tWA-Vh-URq"/>
-                        <outlet property="buttonGoogle" destination="dT0-A7-zYb" id="A7w-Id-lvV"/>
-                        <outlet property="buttonKakao" destination="k67-fk-USu" id="8j1-lS-FCu"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -801,15 +738,11 @@
         <image name="Search Box2" width="37" height="36"/>
         <image name="Search bar" width="351" height="43"/>
         <image name="Tag" width="20.5" height="20"/>
-        <image name="appleLogin" width="324" height="44"/>
         <image name="arrow-left" width="24" height="24"/>
         <image name="arrow.up.left" catalog="system" width="128" height="112"/>
         <image name="confirmBtn" width="55" height="36"/>
-        <image name="googleLogin" width="324" height="44"/>
         <image name="houseIcon" width="24" height="24"/>
-        <image name="kakaoLogin" width="324" height="44"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="naverLogin" width="324" height="44"/>
         <image name="personIcon" width="24" height="24"/>
         <image name="search" width="24" height="24"/>
         <image name="start" width="69" height="69"/>
