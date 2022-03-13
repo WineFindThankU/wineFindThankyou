@@ -32,8 +32,8 @@ class UserWineShopListTableViewCell: UITableViewCell {
     private func updateUI() {
         guard let shop = shop else { return }
         
-        tagLabel.setTitle(title: shop.categoryType.str, colorHex: 0xffffff,
-                          backColor: shop.categoryType.color,
+        tagLabel.setTitle(title: shop.type.str, colorHex: 0xffffff,
+                          backColor: shop.type.color,
                           font: .systemFont(ofSize: 11))
         shopName.setTitle(title: shop.nnName, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 13))
         registeredWineCount.setTitle(title: "등록한 와인 \(wineCount)", colorHex: 0x757575, font: .systemFont(ofSize: 11))

@@ -82,7 +82,7 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         shopName.text = shop.nnName
         shopName.font = .boldSystemFont(ofSize: 20)
         shopName.textColor = Theme.blacktext.color
-        shopClassification.text = shop.categoryType.str
+        shopClassification.text = shop.type.str
         shopClassification.font = .systemFont(ofSize: 13)
         shopClassification.textColor = Theme.blacktext.color
         imageView.image = UIImage(named: "rightArrow")

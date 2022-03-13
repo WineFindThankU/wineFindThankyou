@@ -84,6 +84,27 @@ enum ShopType: Int, CaseIterable {
         }
     }
     
+    var typeStr: String {
+        switch self {
+        case .convenience:
+            return "CONVENIENCE"
+        case .privateShop:
+            return "PRIVATE"
+        case .chain:
+            return "CHAIN"
+        case .convenience:
+            return "CONVENIENCE"
+        case .mart:
+            return "SUPERMARKET"
+        case .warehouse:
+            return "WAREHOUSE"
+        case .department:
+            return "DEPARTMENT"
+        case .all:
+            return "ALL"
+        }
+    }
+
     var color: UIColor {
         switch self {
         case .all:
@@ -170,11 +191,11 @@ enum WineType: Int, CaseIterable {
 class Shop {
     let key: String
     private let homepage: String?
-    private let category: String?
     private let address: String?
     private let name: String?
     private let tellNumber: String?
     private var bookmark: Bool
+    let type: ShopType
     let latitude: Double
     let longtitude: Double
     var userWines = [Wine]()
@@ -182,12 +203,14 @@ class Shop {
         self.key = param["sh_no"].string ?? ""
         self.homepage = param["sh_url"].string
         self.bookmark = param["sh_bookmark"].bool ?? false
-        self.category = param["sh_category"].string
         self.address = param["sh_address"].string
         self.name = param["sh_name"].string
         self.tellNumber = param["sh_tell"].string
         self.latitude = param["sh_latitude"].double ?? 0.0
         self.longtitude = param["sh_longitude"].double ?? 0.0
+        
+        let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
+        self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr}) ?? .privateShop
         
         param["userWines"].array?.forEach {
             guard let key = $0["uw_no"].string,
@@ -206,30 +229,26 @@ class Shop {
             self.bookmark = val
         }
     }
-    var categoryType: ShopType {
-        guard let category = category else {
-            return .privateShop
-        }
-
-        switch category.uppercased() {
-        case "CONVENIENCE":
-            return .convenience
-        case "PRIVATE":
-            return .privateShop
-        case "CHAIN":
-            return .chain
-        case "CONVENIENCE":
-            return .convenience
-        case "SUPERMARKET":
-            return .mart
-        case "WAREHOUSE":
-            return .warehouse
-        case "DEPARTMENT":
-            return .department
-        default:
-            return .privateShop
+    
+    var imgName: String {
+        switch type {
+        case .all:
+            return ""
+        case .privateShop:
+            return "privateShop"
+        case .warehouse:
+            return "warehouse"
+        case .mart:
+            return "mart"
+        case .convenience:
+            return "convenience"
+        case .chain:
+            return "chain"
+        case .department:
+            return "department"
         }
     }
+    
     
     var nnName: String {
         guard let name = name, !name.isEmpty

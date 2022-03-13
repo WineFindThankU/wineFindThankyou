@@ -190,7 +190,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let type = ShopType.allCases.first(where: { $0.rawValue == indexPath.row})
         else { return true }
         shownWineShops.removeAll()
-        shownWineShops = allOfWineShopsNearBy.filter{ $0.categoryType == type }
+        shownWineShops = allOfWineShopsNearBy.filter{ $0.type == type }
         return true
     }
     
@@ -295,12 +295,12 @@ extension MainViewController: NMFMapViewCameraDelegate {
         }
         allOfMarkers.removeAll()
         
-        let shopsLocation = shownWineShops.compactMap { (key: $0.key, lat: $0.latitude, lng: $0.longtitude)}
+        let shopsLocation = shownWineShops.compactMap { (key: $0.key, typeStr: $0.imgName, lat: $0.latitude, lng: $0.longtitude)}
         shopsLocation.forEach {
             let marker = NMFMarker()
             marker.position = NMGLatLng(lat: $0.lat, lng: $0.lng)
             marker.mapView = self.nmfNaverMapView.mapView
-            marker.iconImage = NMFOverlayImage(name: "Group 32")
+            marker.iconImage = NMFOverlayImage(name: $0.typeStr)
             marker.userInfo = ["key" : $0.key, "lat" : Double($0.lat), "long" : Double($0.lng)]
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
                 guard let key = overlay.userInfo["key"] as? String,
