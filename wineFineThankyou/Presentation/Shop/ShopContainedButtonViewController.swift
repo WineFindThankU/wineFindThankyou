@@ -118,9 +118,14 @@ class ShopContainedButtonViewController: UIViewController{
     @objc
     func close() {
         self.dismiss(animated: true, completion: {
-            guard let top = topViewController() as? ShopInfoSummaryViewController else { return }
-            top.shop = self.shop
-            top.setBookmarkedBtn()
+            guard let top = topViewController() else { return }
+            if let summaryVC = top as? ShopInfoSummaryViewController {
+                summaryVC.shop = self.shop
+                summaryVC.setBookmarkedBtn()
+            } else if let mainVC = top as? MainViewController {
+                mainVC.showShopsAtCrntLoc()
+//                mainVC.updateFocus()
+            }
         })
     }
 }

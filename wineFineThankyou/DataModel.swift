@@ -92,8 +92,6 @@ enum ShopType: Int, CaseIterable {
             return "PRIVATE"
         case .chain:
             return "CHAIN"
-        case .convenience:
-            return "CONVENIENCE"
         case .mart:
             return "SUPERMARKET"
         case .warehouse:
@@ -248,7 +246,6 @@ class Shop {
             return "department"
         }
     }
-    
     
     var nnName: String {
         guard let name = name, !name.isEmpty
