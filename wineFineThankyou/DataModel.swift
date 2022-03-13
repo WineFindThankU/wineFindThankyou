@@ -127,24 +127,75 @@ enum ShopType: Int, CaseIterable {
     }
 }
 
-struct WineInfo {
-    let img: UIImage
-    let korName: String
-    let engName: String
-    let wineType: WineType
-    let cepage: String
-    let from: String
-    let vintage: String
-    let alchol: String
-    let shopFk: String
-    let boughtDate: Date
-}
-
-struct Wine {
+class WineInfo {
     let key: String
     let name: String
-    let img: String?
+    let wine: Wine?
+    let img: UIImage?
+    init(_ params: JSON) {
+        self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
+        self.name = params["uw_name"].string ?? ""   //"",
+        self.wine = Wine(params)
+        guard let data = try? params["wn_img"].rawData(),
+              let img = UIImage(data: data)
+        else { self.img = nil; return }
+        
+        self.img = img
+    }
 }
+
+class Wine {
+    let key: String
+    let korName: String
+    let engName: String
+    let brand: String
+    let cepage: String
+    let nation: String
+    let from: String
+    let alcohol: String
+    let vintage: String
+    let boughtDate: Date?
+    let type: WineType
+    init(_ params: JSON) {
+        self.key = params["wn_no"].string ?? ""  //"cl096cov5105131m0lg1rerzp"
+        self.korName = params["wn_name"].string ?? ""       //"콘트라토, 블랑 드 블랑",
+        self.engName = params["wn_name_en"].string ?? ""  //"Contratto, Blanc de Blanc",
+        self.brand = params["wn_brand"].string ?? ""      //"콘트라또 Contratto",
+        self.cepage = params["wn_kind"].string ?? ""   //"샤르도네 (Chardonnay) 100%",
+        self.nation = params["wn_nation"].string ?? ""    //"피에몬테(Piemonte)",
+        self.from = params["wn_country"].string ?? ""     //"이탈리아(Italy)",
+        self.alcohol = params["wn_alcohol"].string ?? ""  //"12~13 %",
+        self.vintage = params["wn_vintage"].string ?? ""
+        if let dateStr = params["purchased_at"].string {
+            self.boughtDate = DateFormatter().date(from: dateStr)
+        } else {
+            self.boughtDate = nil
+        }
+        
+        let typeStr = params["wn_category"].string ?? WineType.red.str
+        self.type = WineType.allCases.first(where: {$0.str == typeStr}) ?? WineType.red
+    }
+}
+//    let summary: WineSummary
+//    let engName: String
+//    let wineType: WineType
+//    let kind: String
+//    let from: String
+//    let vintage: String
+//    let alchol: String
+//    let boughtDate: Date
+//    init(_ params: [JSON]) {
+//        let key = params["wn_no"].string ?? ""
+//        let korName = params["wn_name"].string ?? ""
+//        let engName = params["wn_name_en"].string ?? ""
+//        let kind = params["wn_kind"].string ?? ""
+//        let country = params["wn_country"].string ?? ""
+//        let alchol = params["wn_alcohol"].string ?? ""
+//        let imgData = params["wn_img"].rawData()
+//        let category = params["wn_category"].string ?? ""
+//
+//    }
+//}
 
 enum WineType: Int, CaseIterable {
     case white = 0
@@ -196,7 +247,7 @@ class Shop {
     let type: ShopType
     let latitude: Double
     let longtitude: Double
-    var userWines = [Wine]()
+    var userWines = [WineInfo]()
     init(_ param: JSON) {
         self.key = param["sh_no"].string ?? ""
         self.homepage = param["sh_url"].string
@@ -210,14 +261,7 @@ class Shop {
         let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
         self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr}) ?? .privateShop
         
-        param["userWines"].array?.forEach {
-            guard let key = $0["uw_no"].string,
-                  let name = $0["uw_name"].string
-            else { return }
-            let img = $0["uw_img"].string
-            
-            self.userWines.append(Wine(key: key, name: name, img: img))
-        }
+        self.userWines = param["userWines"].array?.compactMap { WineInfo($0) } ?? []
     }
     
     var isBookmarked: Bool {

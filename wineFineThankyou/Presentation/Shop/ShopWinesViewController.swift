@@ -41,11 +41,17 @@ class ShopWinesViewController: UIViewController {
     }
     
     private func setUpWineTypeLabel(){
-        let wine = wineInfos[crntIndex]
+        let info = wineInfos[crntIndex]
+        guard let wineType = info.wine?.type else {
+            wineTypeLabel.isHidden = true
+            return
+        }
+        wineTypeLabel.isHidden = false
+        wineTypeLabel.text = wineType.str
         wineTypeLabel.textColor = Theme.white.color
         wineTypeLabel.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
-        wineTypeLabel.text = wine.wineType.str
-        wineTypeLabel.backgroundColor = wine.wineType.color
+        
+        wineTypeLabel.backgroundColor = wineType.color
         wineTypeLabel.clipsToBounds = true
         wineTypeLabel.layer.cornerRadius = 7
         self.view.bringSubviewToFront(wineTypeLabel)
@@ -107,8 +113,13 @@ extension ShopWinesViewController {
     private func updateUI(){
         self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wineInfos.count)"
         self.wineInfoView.wineInfo = wineInfos[self.crntIndex]
-        wineTypeLabel.text = wineInfos[self.crntIndex].wineType.str
-        wineTypeLabel.backgroundColor = wineInfos[self.crntIndex].wineType.color
+        guard let wine = wineInfos[self.crntIndex].wine else {
+            wineTypeLabel.isHidden = true
+            return
+        }
+        wineTypeLabel.isHidden = false
+        wineTypeLabel.text = wine.type.str
+        wineTypeLabel.backgroundColor = wine.type.color
     }
 }
 

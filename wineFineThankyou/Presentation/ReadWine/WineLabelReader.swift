@@ -47,7 +47,7 @@ class WineLabelReader {
                 ocrDone?(nil)
                 return
             }
-            AFHandler.searchWineInfo(byKeyword: name.trimmingCharacters(in: .whitespaces), done: {
+            AFHandler.searchWine(byKeyword: name.trimmingCharacters(in: .whitespaces), done: {
                 ocrDone?($0)
             })
         }

@@ -22,9 +22,7 @@ class WineInfoView: UIView{
     @IBOutlet private weak var tableView: UITableView!
     
     internal var wineInfo: WineInfo? = nil {
-        didSet{
-            updateUI()
-        }
+        didSet{ updateUI() }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,8 +53,8 @@ class WineInfoView: UIView{
     }
     
     private func updateUI() {
-        self.korName.text = wineInfo?.korName
-        self.engName.text = wineInfo?.engName
+        self.korName.text = wineInfo?.wine?.korName
+        self.engName.text = wineInfo?.wine?.engName
         self.tableView.reloadData()
     }
 }
@@ -69,17 +67,17 @@ extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineDetailCell", for: indexPath) as? WineDetailCell
         else { return UITableViewCell() }
-        guard let item = TableItem(rawValue: indexPath.row), let wineInfo = self.wineInfo else { return UITableViewCell() }
+        guard let item = TableItem(rawValue: indexPath.row), let wine = self.wineInfo?.wine else { return UITableViewCell() }
         
         switch item {
         case .cepage:
-            cell.update(("품종", wineInfo.cepage)); return cell
+            cell.update(("품종", wine.cepage)); return cell
         case .from:
-            cell.update(("생산지", wineInfo.from)); return cell
+            cell.update(("생산지", wine.from)); return cell
         case .vintage:
-            cell.update(("빈티지", wineInfo.vintage)); return cell
+            cell.update(("빈티지", wine.vintage)); return cell
         case .alchol:
-            cell.update(("도수", wineInfo.alchol)); return cell
+            cell.update(("도수", wine.alcohol)); return cell
         }
     }
 }

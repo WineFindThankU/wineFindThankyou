@@ -333,7 +333,7 @@ extension AFHandler {
 
 // MARK: Wine
 extension AFHandler {
-    class func searchWineInfo(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
+    class func searchWine(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
         guard !byKeyword.isEmpty else { done?(nil); return }
         let url = "http://125.6.36.157:3001/v1/wine"
         let param = ["keyword":byKeyword]
@@ -351,6 +351,26 @@ extension AFHandler {
                 done?(nil); return
             }
         }
+    }
+    
+    class func getBoughtWine(_ pageNumber: Int, done: (() -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/user/wine"
+        let param = ["page":pageNumber]
+        session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(); return }
+                
+                let dict = JSON(nsDict)["data"]
+                print(dict)
+                done?()
+                return
+            default:
+                done?(); return
+            }
+        }
+        
     }
 }
 

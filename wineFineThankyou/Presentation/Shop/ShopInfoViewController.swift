@@ -53,8 +53,9 @@ class ShopInfoViewController: ShopContainedButtonViewController, SelectedWineCel
              return
         }
         vc.crntIndex = row
-        vc.wineInfos = wineInfos
+        vc.wineInfos = shop.userWines
         vc.modalPresentationStyle = .overFullScreen
+        
         self.present(vc, animated: true)
     }
 }
@@ -89,7 +90,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard TableSection(rawValue: section) == .WineList else { return nil }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "WineListTitle") as? WineListTitle
-        header?.label.text = "와인리스트 \(wineInfos.count)"
+        header?.label.text = "와인리스트 \(shop.userWines.count)"
         header?.backgroundColor = .red
         return header
     }
@@ -101,7 +102,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllOfWineInfoTableViewCell", for: indexPath) as? AllOfWineInfoTableViewCell else { return UITableViewCell() }
             cell.delegate = self
-            cell.wineInfos = wineInfos
+//            cell.wineInfos = wineInfos2
             return cell
         }
     }

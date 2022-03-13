@@ -104,7 +104,7 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell
         else { return UICollectionViewCell() }
-        cell.userWine = shop.userWines[indexPath.row]
+        cell.wineInfo = shop.userWines[indexPath.row]
         
         if indexPath.row == 2, isMoreThree {
             cell.setMoreView(shop.userWines.count - 3)
@@ -125,7 +125,7 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
                  return
             }
             vc.crntIndex = indexPath.row
-//            vc.wineInfos = wineInfos
+            vc.wineInfos = shop.userWines
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
         }

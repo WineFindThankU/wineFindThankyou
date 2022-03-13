@@ -16,7 +16,6 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var myProfileViewHeight: NSLayoutConstraint!
     var originHeight: CGFloat! = 0
-    
     var wineInfos = [WineInfo]()
     var visitedWineShops = [Shop]()
     var favoritesWineShops = [Shop]()
@@ -113,7 +112,7 @@ extension MyPageViewController {
         func getBoughtWine() -> [Int] {
             var wines = [Int]()
             WineType.allCases.forEach { type in
-                wines.append(wineInfos.compactMap { $0.wineType }.filter { $0 == type }.count)
+                wines.append(wineInfos.compactMap { $0.wine?.type }.filter { $0 == type }.count)
             }
             return wines
         }
@@ -125,13 +124,13 @@ extension MyPageViewController {
         case .recentlyBoughtWine:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
-            vc.wineInfos = self.wineInfos
+            vc.wineInfos2 = self.wineInfos
             vc.shops = self.visitedWineShops
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
-            vc.wineInfos = wineInfos
+            vc.wineInfos2 = wineInfos
             vc.shops = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
             presentVc(vc)
         }

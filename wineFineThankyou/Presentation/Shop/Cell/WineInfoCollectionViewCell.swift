@@ -13,11 +13,7 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet weak var labelMore: UILabel!
     
-    //TODO: 삭제 필요코드
     internal var wineInfo: WineInfo? {
-        didSet{ updateUI() }
-    }
-    internal var userWine: Wine? {
         didSet { updateUI() }
     }
     internal func setBackgroundColor() {
@@ -41,17 +37,17 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateUI() {
-        guard let userWine = userWine else {
+        guard let wineInfo = wineInfo else {
             return
         }
         img.isHidden = false
         //MARK: 와인이미지 데이터는 어떻게 처리할 것인가 고민 필요.
         img.contentMode = .scaleAspectFit
-        name.text = userWine.name
-        guard let wineImg = userWine.img else {
+        name.text = wineInfo.name
+        guard let wImg = wineInfo.img else {
             return
         }
-        img.image = UIImage(named: wineImg)
+        img.image = wImg
     }
     
     internal func setMoreView(_ cnt: Int) {

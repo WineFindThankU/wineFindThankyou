@@ -19,8 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     private unowned var searchBtn: UIButton!
     private var locationManager : CLLocationManager?
-    private var wineInfos: [WineInfo] = []
-    
+
     //근처의 모든 와인샵
     private var allOfWineShopsNearBy: [Shop] = [] {
         didSet { self.shownWineShops = allOfWineShopsNearBy }
@@ -90,7 +89,9 @@ extension MainViewController {
         guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: MyPageViewController.identifier) as? MyPageViewController
         else { return }
         vc.modalPresentationStyle = .fullScreen
-        vc.wineInfos = wineInfos
+        
+        //TODO: 마이페이지 AFHandler호출 후 present
+        
         DispatchQueue.main.async {
             self.present(vc, animated: true)
         }
@@ -113,16 +114,10 @@ extension MainViewController {
     @objc
     private func openShop(_ key: String) {
         AFHandler.shopDetail(key) { shop in
-            showShopInfoSummary(shop)
-        }
-
-        func showShopInfoSummary(_ shopInfo: Shop?) {
             guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
 
             vc.modalPresentationStyle = .overFullScreen
-            vc.shop = shopInfo
-            //MARK: 문용. 테스트.
-            vc.wineInfos = wineInfos.filter { $0.shopFk == shopInfo?.key }
+            vc.shop = shop
             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
