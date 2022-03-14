@@ -189,6 +189,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             AFHandler.signBySNS(params) {
                 guard $0 == AfterSign.success else {
                     self.delegate?.endLogin(.fail)
+                    
                     return
                 }
                 

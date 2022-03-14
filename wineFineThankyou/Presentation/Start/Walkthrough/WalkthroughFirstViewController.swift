@@ -152,7 +152,6 @@ class WalkthroughFirstViewController: UIViewController {
                     self.etc.setTitleColor(.standardColor, for: .normal)
                     self.etc.layer.borderColor = UIColor.standardColor.cgColor
                     self.etc.layer.borderWidth = 1.5
-                    print("떠있음")
                     let view = BottomSheetViewController()
                     view.modalPresentationStyle = .overFullScreen
                     self.present(view, animated: true)
@@ -179,6 +178,8 @@ class WalkthroughFirstViewController: UIViewController {
         }
         guard let btnTxt = btn.titleLabel?.text,
               let select = WhenDoSelect.allCases.first(where: { $0.str == btnTxt})
+        
+        
         else { return }
         
         delegate?.selected(0, select)

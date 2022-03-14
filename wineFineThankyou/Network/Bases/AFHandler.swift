@@ -32,8 +32,8 @@ class AFHandler {
         var dict = params
         dict["taste_data"] = [
             "1": [ "value":  userOptions[0]],
-            "2": [ "value": userOptions[1] ],
-            "3": [ "value": userOptions[2] ]
+            "2": [ "value": userOptions[1]],
+            "3": [ "value": userOptions[2]]
         ]
                 
         session.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default).responseJSON { res in
@@ -68,6 +68,7 @@ class AFHandler {
         } catch {
             print("http Body Error")
         }
+        
         session.request(request).responseJSON {(response) in
             switch response.result {
             case .success(let nsDict):
@@ -319,8 +320,9 @@ final class RequestInterceptor: Alamofire.RequestInterceptor {
 
 // MARK: Search View Controller
 extension AFHandler {
+
     class func searchWineShop(byKeyword: String, done:((SearchShop?) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/shop"
+        let url = "http://125.6.36.157:3001/v1/shop?type=keyword"
         let param = ["keyword":byKeyword]
         session.request(url, method: .get,
                         parameters: param,
@@ -329,9 +331,14 @@ extension AFHandler {
             case .success(let nsDict):
                 guard let nsDict = nsDict as? NSDictionary
                 else { done?(nil); return }
-                
-                let dict = JSON(nsDict)["data"]
-                print(dict)
+               let dict = JSON(nsDict)["data"]
+               var searchingViewModel: [SearhingShopViewModel] = []
+
+                dict["data"].array?.forEach { res in
+                    searchingViewModel.append(SearhingShopViewModel(sh_no: res["sh_no"].string ?? "",
+                                                               sh_name: res["sh_name"].string ?? ""))
+                    
+                }
                 done?(nil)
                 return
             default:

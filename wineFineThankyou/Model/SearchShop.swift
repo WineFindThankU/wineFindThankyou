@@ -32,3 +32,9 @@ enum ShCategory: String, Codable {
     case shCategoryPRIVATE = "PRIVATE"
     case supermarket = "SUPERMARKET"
 }
+
+// MARK: ViewModel
+struct ViewModel
+{
+    var viewModel: [SearhingShopViewModel]
+}

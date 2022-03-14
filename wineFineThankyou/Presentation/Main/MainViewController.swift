@@ -110,7 +110,7 @@ extension MainViewController {
     }
     
     @objc
-    private func openShop(_ key: String) {
+    func openShop(_ key: String) {
         AFHandler.shopDetail(key) { shop in
             showShopInfoSummary(shop)
         }

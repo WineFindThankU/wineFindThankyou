@@ -680,7 +680,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="338" height="551"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="E2d-Bs-Hrn">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchingTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="E2d-Bs-Hrn" customClass="SearchingTableViewCell" customModule="wineFindThankyou" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="338" height="52.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E2d-Bs-Hrn" id="Oou-ND-xIe">
@@ -708,7 +708,7 @@
                                                             </constraints>
                                                             <color key="tintColor" red="0.078431375319999996" green="0.1019607931" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="arrow.up.left" catalog="system"/>
+                                                            <state key="normal" image="arrow.up.backward" catalog="system"/>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -723,6 +723,9 @@
                                                         <constraint firstAttribute="bottom" secondItem="40G-Oi-Xay" secondAttribute="bottom" constant="16" id="wOX-cD-odw"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="titleLabel" destination="TPs-R4-OZ6" id="7tz-tv-8oz"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -767,7 +770,9 @@
                     <connections>
                         <outlet property="emptySearchHistory" destination="IqN-xY-TkH" id="01q-Zx-hGQ"/>
                         <outlet property="searchCollectionView" destination="2am-bx-XHn" id="5a8-uC-QYI"/>
-                        <outlet property="textField" destination="SNK-AI-y2B" id="Rbd-jC-KpX"/>
+                        <outlet property="searchingTableView" destination="19E-t2-Jkg" id="X0g-Vt-xsy"/>
+                        <outlet property="searchingView" destination="Cqo-ZL-Kxr" id="grE-gl-JNR"/>
+                        <outlet property="textField" destination="SNK-AI-y2B" id="1Nd-UW-YY6"/>
                         <outlet property="viewLine" destination="IUF-HO-cYH" id="Gb7-E9-su4"/>
                     </connections>
                 </viewController>
@@ -803,7 +808,7 @@
         <image name="Tag" width="20.5" height="20"/>
         <image name="appleLogin" width="324" height="44"/>
         <image name="arrow-left" width="24" height="24"/>
-        <image name="arrow.up.left" catalog="system" width="128" height="112"/>
+        <image name="arrow.up.backward" catalog="system" width="128" height="112"/>
         <image name="confirmBtn" width="55" height="36"/>
         <image name="googleLogin" width="324" height="44"/>
         <image name="houseIcon" width="24" height="24"/>
