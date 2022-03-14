@@ -30,7 +30,7 @@ extension UsersWineShopListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserWineShopListTableViewCell", for: indexPath) as? UserWineShopListTableViewCell else { return UITableViewCell() }
         let shop = shops[indexPath.row]
-        cell.wineCount = shop.userWines.count
+        cell.wineCount = shop.wineCount
         cell.shop = shop
         return cell
     }

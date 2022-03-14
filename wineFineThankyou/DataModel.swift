@@ -261,7 +261,7 @@ class Shop {
         let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
         self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr}) ?? .privateShop
         
-        self.userWines = param["userWines"].array?.compactMap { WineInfo($0) } ?? []
+        self.userWines = param["userWines"].array?.compactMap { WineInfo($0["wine"]) } ?? []
     }
     
     var isBookmarked: Bool {

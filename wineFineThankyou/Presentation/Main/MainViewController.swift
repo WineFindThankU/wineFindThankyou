@@ -91,9 +91,15 @@ extension MainViewController {
         vc.modalPresentationStyle = .fullScreen
         
         //TODO: 마이페이지 AFHandler호출 후 present
-        
-        DispatchQueue.main.async {
-            self.present(vc, animated: true)
+        AFHandler.getMyPageData {
+            guard let myPageData = $0 else { return }
+            vc.user = myPageData.user
+            vc.visitedWineShops = myPageData.visitedShops ?? []
+            vc.favoritesWineShops = myPageData.bookmarkedShops ?? []
+            vc.wineInfos
+            DispatchQueue.main.async {
+                self.present(vc, animated: true)
+            }
         }
     }
     

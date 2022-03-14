@@ -11,7 +11,7 @@ import UIKit
 class MyPageListViewController: UIViewController {
     unowned var tableView: UITableView!
     
-    internal var shops: [Shop] = []
+    internal var shops: [VisitedShop] = []
     internal var wineInfos2: [WineInfo] = []
     override func viewDidLoad() {
         super.viewDidLoad()

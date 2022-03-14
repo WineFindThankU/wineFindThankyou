@@ -321,12 +321,104 @@ extension AFHandler {
         }
     }
 }
+class User {
+    let id: String
+    let nick: String
+    let number: String
+    let tasteType: String
+    init(_ param: JSON) {
+        self.id = param["us_id"].string ?? ""
+        let nickAndNum = param["us_nick"].string?.components(separatedBy: "-")
+        self.nick = nickAndNum?.first ?? ""
+        self.number = nickAndNum?.last ?? ""
+        self.tasteType = param["taste_type"].string ?? ""
+    }
+}
+
+class ShopDetail {
+    let key: String
+    let name: String
+    let shopType: ShopType
+    let url: String
+    let time: String
+    init(_ param: JSON) {
+        self.key = param["sh_no"].string ?? ""
+        self.name = param["sh_name"].string ?? ""
+        self.url = param["sh_url"].string ?? ""
+        self.time = param["sh_time"].string ?? ""
+        let typeStr = param["sh_category"].string ?? ""
+        self.shopType = ShopType.allOfCases.first(where:  { $0.typeStr == typeStr }) ?? .privateShop
+    }
+}
+
+class BoughtWine {
+    let key: String
+    let name: String
+    let from: String
+    let vintage: String
+    let date: String
+    let shopDetail: ShopDetail?
+    init(_ param: JSON) {
+        self.key = param["uw_no"].string ?? ""
+        self.name = param["uw_name"].string ?? ""
+        self.from = param["uw_country"].string ?? ""
+        self.vintage = param["uw_vintage"].string ?? ""
+        self.date = param["purchased_at"].string ?? ""
+        self.shopDetail = ShopDetail(param["shop"])
+    }
+}
+
+class VisitedShop {
+    let bookmark: Bool
+    let wineCount: Int
+    let shopDetail: ShopDetail?
+    init(_ param: JSON) {
+        self.bookmark = param["uh_bookmark"].bool ?? false
+        self.wineCount = param["uh_wine_cnt"].int ?? 0
+        self.shopDetail = ShopDetail(param["shop"])
+    }
+}
+
+struct MyPageData {
+    let user: User
+    let boughtWine: [BoughtWine]
+    let visitedShops: [VisitedShop]
+    let bookmarkedShops: [VisitedShop]
+}
 
 extension AFHandler {
-    class func getMyPageData() {
+    class func getMyPageData(done: ((MyPageData?) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/user/info"
         session.request(url, method: .get, encoding: URLEncoding.default).responseJSON { res in
-            print(res)
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary
+                else { done?(nil); return }
+                
+                let bShops = JSON(nsDict)["data"]["bookmark"]["data"].array?.compactMap {
+                    VisitedShop($0)
+                } ?? []
+                bShops.forEach({
+                    print("\($0.bookmark), \($0.wineCount), \($0.shopDetail?.key), \($0.shopDetail?.name), \($0.shopDetail?.time), \($0.shopDetail?.url), \($0.shopDetail?.shopType)")
+                })
+                
+                let vShops = JSON(nsDict)["data"]["shop"]["data"].array?.compactMap {
+                    VisitedShop($0)
+                } ?? []
+                print(vShops)
+                let bWines = JSON(nsDict)["data"]["wine"]["data"].array?.compactMap {
+                    BoughtWine($0)
+                } ?? []
+                print(bWines)
+                let user = User(JSON(nsDict)["data"]["user"])
+                
+                print(user)
+                done?(MyPageData(user: user, boughtWine: bWines,
+                                 visitedShops: vShops, bookmarkedShops: bShops))
+                return
+            default:
+                done?(nil); return
+            }
         }
     }
 }
