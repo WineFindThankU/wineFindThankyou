@@ -56,18 +56,33 @@ class WalkthroughSecondViewController: UIViewController {
     let one2Two: UIButton = {
         let button = UIButton()
         button.setTitle(PriceOfWine.one2Two.str, for: .normal)
+        
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("secondValue", forKey: "1")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let thr2Four: UIButton = {
         let button = UIButton()
         button.setTitle(PriceOfWine.thr2Four.str, for: .normal)
+        
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("secondValue", forKey: "2")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let five2Seven: UIButton = {
         let button = UIButton()
         button.setTitle(PriceOfWine.five2Seven.str, for: .normal)
+        
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("secondValue", forKey: "3")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
@@ -75,12 +90,22 @@ class WalkthroughSecondViewController: UIViewController {
     let eig2Ten: UIButton = {
         let button = UIButton()
         button.setTitle(PriceOfWine.eig2Ten.str, for: .normal)
+        
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("secondValue", forKey: "4")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let quality: UIButton = {
         let button = UIButton()
         button.setTitle(PriceOfWine.quality.str, for: .normal)
+        
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("secondValue", forKey: "5")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     

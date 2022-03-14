@@ -333,13 +333,6 @@
 			path = grapeIcon;
 			sourceTree = "<group>";
 		};
-		44B2D54427CCAA61005A7EA2 /* APIs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = APIs;
-			sourceTree = "<group>";
-		};
 		44FF1CB2278471A700FD8567 = {
 			isa = PBXGroup;
 			children = (
@@ -429,7 +422,6 @@
 		44FF46FE27A5620B0063924D /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				44B2D54427CCAA61005A7EA2 /* APIs */,
 				4433C05327CBBF3D00119931 /* Bases */,
 			);
 			path = Network;
@@ -1179,7 +1171,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1216,7 +1208,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;

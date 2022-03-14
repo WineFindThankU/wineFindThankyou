@@ -57,21 +57,34 @@ class WalkthroughFirstViewController: UIViewController {
         return stack
     } ()
     
+   
     let cost: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.cost.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("firstValue", forKey: "1")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let grape: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.grape.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("firstValue", forKey: "2")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let brand: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.brand.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("firstValue", forKey: "3")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
@@ -79,18 +92,30 @@ class WalkthroughFirstViewController: UIViewController {
     let loc: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.loc.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("firstValue", forKey: "4")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let type: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.type.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("firstValue", forKey: "5")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     let etc: UIButton = {
         let button = UIButton()
         button.setTitle(WhenDoSelect.etc.str, for: .normal)
+        let action = UIAction(handler: { _ in
+            UserDefaults.standard.set("firstValue", forKey: "-1")
+        })
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     

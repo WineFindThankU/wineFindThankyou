@@ -166,6 +166,9 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             let nick = givenName.isEmpty ? "User" : givenName
             let email = appleIDCredential.email ?? "WTFUser@wineThankU.com"
             let type = "apple"
+            let firstData:[String: String] = ["value": UserDefaults.standard.string(forKey: "firstValue") ?? ""]
+            let secondData:[String: String] = ["value": UserDefaults.standard.string(forKey: "secondValue") ?? ""]
+            let thirdData:[String: String] = ["value": UserDefaults.standard.string(forKey: "thirdValue") ?? ""]
             
             let params = [
                 "id": email,
@@ -174,18 +177,12 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
                 "nick": nick,
                 "taste_type": 1,
                 "taste_data": [
-                    "1": [
-                        "value": "1"
-                    ],
-                    "2": [
-                        "value": "2"
-                    ],
-                    "3": [
-                        "value": "-1",
-                        "etc": "only 소주"
-                    ]
+                    "1": firstData,
+                    "2": secondData,
+                    "3": thirdData
                 ],
             ] as [String : Any]
+            
             AFHandler.signBySNS(params) {
                 guard $0 == AfterSign.success else {
                     self.delegate?.endLogin(.fail)
