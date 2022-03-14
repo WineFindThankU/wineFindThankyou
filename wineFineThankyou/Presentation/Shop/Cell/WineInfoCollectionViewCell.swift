@@ -14,9 +14,8 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelMore: UILabel!
     
     internal var wineInfo: WineInfo? {
-        didSet{ updateUI() }
+        didSet { updateUI() }
     }
-    
     internal func setBackgroundColor() {
         self.layer.cornerRadius = 12
         self.back.layer.cornerRadius = 12
@@ -42,9 +41,13 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
             return
         }
         img.isHidden = false
-        img.image = wineInfo.img
+        //MARK: 와인이미지 데이터는 어떻게 처리할 것인가 고민 필요.
         img.contentMode = .scaleAspectFit
-        name.text = wineInfo.korName
+        name.text = wineInfo.name
+        guard let wImg = wineInfo.img else {
+            return
+        }
+        img.image = wImg
     }
     
     internal func setMoreView(_ cnt: Int) {

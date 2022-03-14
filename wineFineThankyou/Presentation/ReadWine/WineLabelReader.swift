@@ -12,20 +12,21 @@ import MLKitVision
 import AVFoundation
 
 class ReadWineInfo {
-    var name: String?
-    var from: String?
-    var vintage: String?
-    var date: Date?
-    init(name: String?, from: String?, vintage: String?) {
+    var name: String
+    var from: String
+    var vintage: String
+    var dateStr: String
+    init(name: String, from: String, vintage: String, dateStr: String) {
         self.name = name
         self.from = from
         self.vintage = vintage
+        self.dateStr = dateStr
     }
-    func isEmpty() -> Bool {
-        guard let name = self.name, !name.isEmpty,
-              let from = self.from, !from.isEmpty,
-              let vintage = self.vintage, !vintage.isEmpty,
-              nil != self.date else { return false }
+    
+    func setComplete() -> Bool {
+        guard !name.isEmpty, !from.isEmpty,
+                !vintage.isEmpty, !dateStr.isEmpty
+        else { return false }
         return true
     }
 }
@@ -46,7 +47,7 @@ class WineLabelReader {
                 ocrDone?(nil)
                 return
             }
-            AFHandler.searchWineInfo(byKeyword: name.trimmingCharacters(in: .whitespaces), done: {
+            AFHandler.searchWine(byKeyword: name.trimmingCharacters(in: .whitespaces), done: {
                 ocrDone?($0)
             })
         }
@@ -78,12 +79,12 @@ class WineLabelReader {
         let from = parsingArr.first {
             $0.contains("원산지")
         }?.trimmingCharacters(in: .whitespaces)
-            .components(separatedBy: ":").last
+            .components(separatedBy: ":").last ?? ""
         
         let name = parsingArr.first {
             $0.contains("제품명")
         }?.trimmingCharacters(in: .whitespaces)
-            .components(separatedBy: ":").last
+            .components(separatedBy: ":").last ?? ""
         
         let vintage = parsingArr.first {
             $0.contains("병입연월일")
@@ -91,9 +92,9 @@ class WineLabelReader {
             .components(separatedBy: ":").last
 
         if let nnVintage = vintage, nnVintage.contains(where: {$0.isNumber}) {
-            return ReadWineInfo(name: name, from: from, vintage: nnVintage)
+            return ReadWineInfo(name: name, from: from, vintage: nnVintage, dateStr: "")
         } else {
-            return ReadWineInfo(name: name, from: from, vintage: nil)
+            return ReadWineInfo(name: name, from: from, vintage: "", dateStr: "")
         }
     }
 }

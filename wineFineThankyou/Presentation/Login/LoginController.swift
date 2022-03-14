@@ -23,8 +23,8 @@ enum NetworkError: Error {
 
 class LoginController: NSObject {
     
-    lazy var loginController : LoginViewController2 = {
-        let controller = LoginViewController2()
+    lazy var loginController : LoginViewController = {
+        let controller = LoginViewController()
         return controller
     }()
     

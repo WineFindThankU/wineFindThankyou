@@ -141,11 +141,10 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
             uiImage.size.height,
             uiImage.size.height/4)
         )
-        
-        delegate?.captured(cropped){
-            self.captureSession.stopRunning()
-            DispatchQueue.main.async {
-                self.dismiss(animated: true)
+        captureSession.stopRunning()
+        delegate?.captured(cropped) {
+            DispatchQueue.main.async { [weak self] in
+                self?.dismiss(animated: true)
             }
         }
     }

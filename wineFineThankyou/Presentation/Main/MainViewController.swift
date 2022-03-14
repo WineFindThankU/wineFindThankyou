@@ -19,8 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     private unowned var searchBtn: UIButton!
     private var locationManager : CLLocationManager?
-    private var wineInfos: [WineInfo] = []
-    
+
     //근처의 모든 와인샵
     private var allOfWineShopsNearBy: [Shop] = [] {
         didSet { self.shownWineShops = allOfWineShopsNearBy }
@@ -90,9 +89,18 @@ extension MainViewController {
         guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: MyPageViewController.identifier) as? MyPageViewController
         else { return }
         vc.modalPresentationStyle = .fullScreen
-        vc.wineInfos = wineInfos
         
-        self.present(vc, animated: true)
+        //TODO: 마이페이지 AFHandler호출 후 present
+        AFHandler.getMyPageData {
+            guard let myPageData = $0 else { return }
+            vc.user = myPageData.user
+            vc.visitedWineShops = myPageData.visitedShops ?? []
+            vc.favoritesWineShops = myPageData.bookmarkedShops ?? []
+            vc.wineInfos
+            DispatchQueue.main.async {
+                self.present(vc, animated: true)
+            }
+        }
     }
     
     @objc
@@ -112,16 +120,10 @@ extension MainViewController {
     @objc
     func openShop(_ key: String) {
         AFHandler.shopDetail(key) { shop in
-            showShopInfoSummary(shop)
-        }
-
-        func showShopInfoSummary(_ shopInfo: Shop?) {
             guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
 
             vc.modalPresentationStyle = .overFullScreen
-            vc.shop = shopInfo
-            //MARK: 문용. 테스트.
-            vc.wineInfos = wineInfos.filter { $0.shopFk == shopInfo?.key }
+            vc.shop = shop
             DispatchQueue.main.async { [weak self] in
                 self?.present(vc, animated: true)
             }
@@ -156,7 +158,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let type = ShopType.allCases.first(where: { $0.rawValue == indexPath.row})
         else { return true }
         shownWineShops.removeAll()
-        shownWineShops = allOfWineShopsNearBy.filter{ $0.categoryType == type }
+        shownWineShops = allOfWineShopsNearBy.filter{ $0.type == type }
         return true
     }
     
@@ -188,16 +190,14 @@ extension MainViewController: CLLocationManagerDelegate {
         case .authorizedAlways, .authorizedWhenInUse :
             guard let lat = locationManager.location?.coordinate.latitude,
                 let lng = locationManager.location?.coordinate.longitude
-            else { break }
-            
+            else { return }
             DispatchQueue.global().async {
                 AFHandler.shopList(lat, lng) {
                     self.allOfWineShopsNearBy.removeAll()
                     self.allOfWineShopsNearBy = $0
                 }
             }
-            
-            updateFocus(lat: lat, lng: lng)
+            updateFocus(lat, lng)
         default:
             notiUserLocationAuthorized()
         }
@@ -249,7 +249,7 @@ extension MainViewController: NMFMapViewCameraDelegate {
         nmfNaverMapView.showLocationButton = true
     }
     
-    private func updateFocus(lat : CLLocationDegrees, lng : CLLocationDegrees) {
+    internal func updateFocus(_ lat: Double, _ lng: Double) {
         let camPosition =  NMGLatLng(lat: lat, lng: lng)
         let position = NMFCameraPosition(camPosition, zoom: 14, tilt: 0, heading: 0)
         nmfNaverMapView.mapView.moveCamera(NMFCameraUpdate(position: position))
@@ -260,21 +260,24 @@ extension MainViewController: NMFMapViewCameraDelegate {
             $0.mapView = nil
         }
         allOfMarkers.removeAll()
-        
-        let shopsLocation = shownWineShops.compactMap { (key: $0.key, lat: $0.latitude, lng: $0.longtitude)}
-        shopsLocation.forEach {
+        shownWineShops.forEach { shop in
             let marker = NMFMarker()
-            marker.position = NMGLatLng(lat: $0.lat, lng: $0.lng)
+            marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
             marker.mapView = self.nmfNaverMapView.mapView
-            marker.iconImage = NMFOverlayImage(name: "Group 32")
-            marker.userInfo = ["key" : $0.key, "lat" : Double($0.lat), "long" : Double($0.lng)]
+            marker.iconImage = NMFOverlayImage(name: shop.imgName)
+            marker.userInfo = ["key": shop.key,
+                               "lat": Double(shop.latitude),
+                               "long": Double(shop.longtitude)]
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
                 guard let key = overlay.userInfo["key"] as? String,
                       let lat = overlay.userInfo["lat"] as? Double,
-                      let long = overlay.userInfo["long"] as? Double
+                      let long = overlay.userInfo["long"] as? Double,
+                      let img = UIImage(named: "shopDetail")
                 else { return false }
-
-                self?.updateFocus(lat: lat, lng: long)
+                
+                marker.iconImage = NMFOverlayImage(image: img)
+                marker.captionText = shop.nnName
+                self?.updateFocus(lat, long)
                 self?.openShop(key)
                 return true
             }

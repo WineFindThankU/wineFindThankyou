@@ -36,21 +36,21 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wineInfos.count
+        return wineInfos2.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineInfoTableViewCell", for: indexPath) as? WineInfoTableViewCell else { return UITableViewCell() }
         
-        let wineInfo = wineInfos[indexPath.row]
-        cell.shop = shops.first{ $0.key == wineInfo.shopFk }
-        cell.wineInfo = wineInfo
+//        let wineInfo = wineInfos2[indexPath.row]
+//        cell.shop = shops.first{ $0.key == wineInfo.shopFk }
+//        cell.wineInfo = wineInfo
         cell.shopDeleteBtnClosure = { [weak self] in
             //MARK: wineKEY 전달
             self?.deleteWine("WINEINFO KEY STRING")
         }
         cell.shopBtnClosure = { [weak self] in
-            self?.goToShop(wineInfo.shopFk)
+//            self?.goToShop()
         }
         return cell
     }

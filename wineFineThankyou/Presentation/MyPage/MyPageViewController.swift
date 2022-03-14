@@ -16,10 +16,11 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var myProfileViewHeight: NSLayoutConstraint!
     var originHeight: CGFloat! = 0
-    
+    var user: User!
     var wineInfos = [WineInfo]()
-    var visitedWineShops = [Shop]()
-    var favoritesWineShops = [Shop]()
+    var boughtWines = [BoughtWine]()
+    var visitedWineShops = [VisitedShop]()
+    var favoritesWineShops = [VisitedShop]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -91,7 +92,9 @@ extension MyPageViewController {
         let welcomeView = WelcomeView()
         self.myProfileView.addSubview(welcomeView)
         welcomeView.configure(superView: myProfileView)
-        welcomeView.userInfo = UserInfo(userImage: UIImage(named: "TestUserImage")!, userType: "와린이", wineType: "로제", userId: "guest412")
+        let tasteType = Int(user.tasteType) ?? 1
+        //TODO: 마이페이지 이미지 설정 화면
+        welcomeView.userInfo = UserInfo(userImage: UIImage(named: "TestUserImage")!, userType: user.nick, wineType: "로제", userId: "guest\(user.number)")
     }
     
     private func setGraphView() {
@@ -105,7 +108,7 @@ extension MyPageViewController {
         func getShopsByType() -> [Int] {
             var wineShopCount = [Int]()
             ShopType.allOfCases.forEach { type in
-                wineShopCount.append(visitedWineShops.filter { $0.categoryType == type}.count)
+                wineShopCount.append(visitedWineShops.filter { $0.shopDetail?.shopType == type}.count)
             }
             return wineShopCount
         }
@@ -113,7 +116,8 @@ extension MyPageViewController {
         func getBoughtWine() -> [Int] {
             var wines = [Int]()
             WineType.allCases.forEach { type in
-                wines.append(wineInfos.compactMap { $0.wineType }.filter { $0 == type }.count)
+                boughtWines.compactMap({ $0})
+                wines.append(wineInfos.compactMap { $0.wine?.type }.filter { $0 == type }.count)
             }
             return wines
         }
@@ -125,13 +129,13 @@ extension MyPageViewController {
         case .recentlyBoughtWine:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
-            vc.wineInfos = self.wineInfos
+            vc.wineInfos2 = self.wineInfos
             vc.shops = self.visitedWineShops
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
-            vc.wineInfos = wineInfos
+            vc.wineInfos2 = wineInfos
             vc.shops = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
             presentVc(vc)
         }

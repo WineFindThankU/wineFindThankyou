@@ -24,7 +24,7 @@ class WineShopCell: UICollectionViewCell {
         shopTitle.textColor = UIColor(rgb: 0x424242)
         shopTitle.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         
-        shopType.text = shop.categoryType.str
+        shopType.text = shop.type.str
         shopType.textColor = UIColor(rgb: 0x9e9e9e)
         shopType.font = UIFont.systemFont(ofSize: 11, weight: .regular)
     }

@@ -1,110 +1,126 @@
 //
-//  LoginViewController.swift
-//  wineFineThankyou
+//  LoginViewController2.swift
+//  wineFindThankyou
 //
-//  Created by on 2022/01/06.
+//  Created by suding on 2022/03/03.
 //
 
 import UIKit
+import SnapKit
+import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
-import GoogleSignIn
-import NaverThirdPartyLogin
-import AuthenticationServices
 
-struct UsersWineType : Codable {
-    let question1 : String
-    let question2: String
-    let question3: String
-}
-
-enum AfterLogin {
-    case success
-    case fail
-    case cannotAccess
-    
-    //TEST
-    var str: String{
-        switch self {
-        case .success:
-            return "로그인 성공"
-        case .fail:
-            return "로그인 실패"
-        case .cannotAccess:
-            return "나이가 어려요"
-        }
-    }
-    
-    var detail: String {
-        switch self {
-        case .success:
-            return ""
-        case .fail:
-            return "인증 문제로 로그인 할 수 없습니다. 개발자에게 화를 내주세요."
-        case .cannotAccess:
-            AlertViewController()
-            return "애들은 가라, 애들은 가.🤬"
-        }
-    }
-}
 protocol EndLoginProtocol: AnyObject {
     func endLogin(_ type: AfterLogin)
 }
 
-class LoginViewController: UIViewController {
-    @IBOutlet weak var buttonKakao: UIButton!
-    @IBOutlet weak var buttonGoogle: UIButton!
-    @IBOutlet weak var appleSignInButton: UIButton!
+final class LoginViewController: UIViewController, EndLoginProtocol {
+    func endLogin(_ type: AfterLogin) {
+        guard type == .success else {
+            return
+        }
+        
+        UserData.isUserLogin = true
+        self.goToMain()
+    }
+
+    var statusCode = 0
+    var data: DataClass?
+    
+    lazy var titleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "LaunchTitle")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    lazy var subView: UIView = {
+        let view = UIView()
+        return view
+    }()
     
     lazy var loginController : LoginController = {
         let controller = LoginController(self)
-        controller.delegate = self
         return controller
     }()
-
-    @IBAction func onClickKakao(_ sender: Any) {
-        loginController.loginByKakao()
-    }
-    @IBAction func onClickGoogle(_ sender: Any) {
-        loginController.loginByGoogle()
-    }
-    @IBAction func onClickNaver(_ sender: UIButton){
-        loginController.loginByNaver()
-    }
+    
+    lazy var kakaoButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.kakao
+        button.layer.cornerRadius = 18
+        button.setTitle("카카오로 로그인", for: .normal)
+        button.setTitleColor(.kakaoText, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setImage(#imageLiteral(resourceName: "_login_kakao"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.semanticContentAttribute = .forceLeftToRight
+        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 55)
+        let action = UIAction(handler: { _ in
+            self.loginController.loginByKakao()
+        })
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var appleButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.black
+        button.layer.cornerRadius = 18
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth  = 0.7
+        button.setTitle("Apple로 로그인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.setImage(#imageLiteral(resourceName: "_login_apple"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.semanticContentAttribute = .forceLeftToRight
+        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 45)
+        let action = UIAction(handler: { _ in
+            self.loginController.loginByApple()
+        })
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().presentingViewController = self
+        configure()
     }
     
     private func configure() {
-        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-        authorizationButton.cornerRadius = .maximum(20, 20)
-        authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
-        self.appleSignInButton.addSubview(authorizationButton)
-        authorizationButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            authorizationButton.topAnchor.constraint(equalTo: self.appleSignInButton.topAnchor),
-            authorizationButton.bottomAnchor.constraint(equalTo: self.appleSignInButton.bottomAnchor),
-            authorizationButton.leadingAnchor.constraint(equalTo: self.appleSignInButton.leadingAnchor),
-            authorizationButton.trailingAnchor.constraint(equalTo: self.appleSignInButton.trailingAnchor)
-        ])
-    }
-}
-
-extension LoginViewController: EndLoginProtocol {
-    func endLogin(_ type: AfterLogin) {
-        switch type {
-        case .success:
-            UserData.isUserLogin = true
-            goToMain()
-        default:
-            makeAlert(type: type)
+        self.view.backgroundColor = .white
+        view.addSubview(titleImageView)
+        view.addSubview(subView)
+        subView.addSubview(kakaoButton)
+        subView.addSubview(appleButton)
+        
+        titleImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(169)
+            make.leading.trailing.equalToSuperview().inset(100)
+        }
+        
+        subView.snp.makeConstraints { make in
+            make.height.equalTo(100)
+            make.leading.trailing.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(52)
+            
+        }
+        kakaoButton.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
+        appleButton.snp.makeConstraints { make in
+            make.top.equalTo(kakaoButton.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(44)
         }
     }
     
     func goToMain() {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController")
+        guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier)
                 as? MainViewController else { return }
         DispatchQueue.main.async { [weak self] in
             vc.modalTransitionStyle = .flipHorizontal
@@ -113,21 +129,13 @@ extension LoginViewController: EndLoginProtocol {
         }
     }
     
-    func makeAlert(type: AfterLogin) {
-        let alert = UIAlertController(title: type.str, message: type.detail, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .cancel){ _ in
-            alert.dismiss(animated: true)
+    private func showCannotLogin() {
+        let alert = UIAlertController(title: "로그인 실패", message: "현재 로그인 할 수 없습니다. 잠시 후 다시 시도해주세요.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            alert.dismiss(animated: false)
         }
         alert.addAction(ok)
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
-        }
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
-extension LoginViewController {
-    @objc
-    private func appleSignInButtonPress() {
-        loginController.loginByApple()
-    }
-}

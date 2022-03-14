@@ -9,6 +9,41 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
+struct UsersWineType : Codable {
+    let question1 : String
+    let question2: String
+    let question3: String
+}
+
+enum AfterLogin {
+    case success
+    case fail
+    case cannotAccess
+    
+    //TEST
+    var str: String{
+        switch self {
+        case .success:
+            return "로그인 성공"
+        case .fail:
+            return "로그인 실패"
+        case .cannotAccess:
+            return "나이가 어려요"
+        }
+    }
+    
+    var detail: String {
+        switch self {
+        case .success:
+            return ""
+        case .fail:
+            return "인증 문제로 로그인 할 수 없습니다. 개발자에게 화를 내주세요."
+        case .cannotAccess:
+            return "애들은 가라, 애들은 가.🤬"
+        }
+    }
+}
+
 enum StoryBoard: String {
     case launch = "Launch"
     case main = "Main"
@@ -49,6 +84,25 @@ enum ShopType: Int, CaseIterable {
         }
     }
     
+    var typeStr: String {
+        switch self {
+        case .convenience:
+            return "CONVENIENCE"
+        case .privateShop:
+            return "PRIVATE"
+        case .chain:
+            return "CHAIN"
+        case .mart:
+            return "SUPERMARKET"
+        case .warehouse:
+            return "WAREHOUSE"
+        case .department:
+            return "DEPARTMENT"
+        case .all:
+            return "ALL"
+        }
+    }
+
     var color: UIColor {
         switch self {
         case .all:
@@ -73,18 +127,75 @@ enum ShopType: Int, CaseIterable {
     }
 }
 
-struct WineInfo {
-    let img: UIImage
+class WineInfo {
+    let key: String
+    let name: String
+    let wine: Wine?
+    let img: UIImage?
+    init(_ params: JSON) {
+        self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
+        self.name = params["uw_name"].string ?? ""   //"",
+        self.wine = Wine(params)
+        guard let data = try? params["wn_img"].rawData(),
+              let img = UIImage(data: data)
+        else { self.img = nil; return }
+        
+        self.img = img
+    }
+}
+
+class Wine {
+    let key: String
     let korName: String
     let engName: String
-    let wineType: WineType
+    let brand: String
     let cepage: String
+    let nation: String
     let from: String
+    let alcohol: String
     let vintage: String
-    let alchol: String
-    let shopFk: String
-    let boughtDate: Date
+    let boughtDate: Date?
+    let type: WineType
+    init(_ params: JSON) {
+        self.key = params["wn_no"].string ?? ""  //"cl096cov5105131m0lg1rerzp"
+        self.korName = params["wn_name"].string ?? ""       //"콘트라토, 블랑 드 블랑",
+        self.engName = params["wn_name_en"].string ?? ""  //"Contratto, Blanc de Blanc",
+        self.brand = params["wn_brand"].string ?? ""      //"콘트라또 Contratto",
+        self.cepage = params["wn_kind"].string ?? ""   //"샤르도네 (Chardonnay) 100%",
+        self.nation = params["wn_nation"].string ?? ""    //"피에몬테(Piemonte)",
+        self.from = params["wn_country"].string ?? ""     //"이탈리아(Italy)",
+        self.alcohol = params["wn_alcohol"].string ?? ""  //"12~13 %",
+        self.vintage = params["wn_vintage"].string ?? ""
+        if let dateStr = params["purchased_at"].string {
+            self.boughtDate = DateFormatter().date(from: dateStr)
+        } else {
+            self.boughtDate = nil
+        }
+        
+        let typeStr = params["wn_category"].string ?? WineType.red.str
+        self.type = WineType.allCases.first(where: {$0.str == typeStr}) ?? WineType.red
+    }
 }
+//    let summary: WineSummary
+//    let engName: String
+//    let wineType: WineType
+//    let kind: String
+//    let from: String
+//    let vintage: String
+//    let alchol: String
+//    let boughtDate: Date
+//    init(_ params: [JSON]) {
+//        let key = params["wn_no"].string ?? ""
+//        let korName = params["wn_name"].string ?? ""
+//        let engName = params["wn_name_en"].string ?? ""
+//        let kind = params["wn_kind"].string ?? ""
+//        let country = params["wn_country"].string ?? ""
+//        let alchol = params["wn_alcohol"].string ?? ""
+//        let imgData = params["wn_img"].rawData()
+//        let category = params["wn_category"].string ?? ""
+//
+//    }
+//}
 
 enum WineType: Int, CaseIterable {
     case white = 0
@@ -129,11 +240,11 @@ enum WineType: Int, CaseIterable {
 class Shop {
     let key: String
     private let homepage: String?
-    private let category: String?
     private let address: String?
     private let name: String?
     private let tellNumber: String?
     private var bookmark: Bool
+    let type: ShopType
     let latitude: Double
     let longtitude: Double
     var userWines = [WineInfo]()
@@ -141,12 +252,16 @@ class Shop {
         self.key = param["sh_no"].string ?? ""
         self.homepage = param["sh_url"].string
         self.bookmark = param["sh_bookmark"].bool ?? false
-        self.category = param["sh_category"].string
         self.address = param["sh_address"].string
         self.name = param["sh_name"].string
         self.tellNumber = param["sh_tell"].string
         self.latitude = param["sh_latitude"].double ?? 0.0
         self.longtitude = param["sh_longitude"].double ?? 0.0
+        
+        let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
+        self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr}) ?? .privateShop
+        
+        self.userWines = param["userWines"].array?.compactMap { WineInfo($0["wine"]) } ?? []
     }
     
     var isBookmarked: Bool {
@@ -156,28 +271,23 @@ class Shop {
             self.bookmark = val
         }
     }
-    var categoryType: ShopType {
-        guard let category = category else {
-            return .privateShop
-        }
-
-        switch category.uppercased() {
-        case "CONVENIENCE":
-            return .convenience
-        case "PRIVATE":
-            return .privateShop
-        case "CHAIN":
-            return .chain
-        case "CONVENIENCE":
-            return .convenience
-        case "SUPERMARKET":
-            return .mart
-        case "WAREHOUSE":
-            return .warehouse
-        case "DEPARTMENT":
-            return .department
-        default:
-            return .privateShop
+    
+    var imgName: String {
+        switch type {
+        case .all:
+            return ""
+        case .privateShop:
+            return "privateShop"
+        case .warehouse:
+            return "warehouse"
+        case .mart:
+            return "mart"
+        case .convenience:
+            return "convenience"
+        case .chain:
+            return "chain"
+        case .department:
+            return "department"
         }
     }
     
@@ -203,6 +313,18 @@ class Shop {
         else { return "저장된 홈페이지 없음" }
         return homepage
     }
+}
+
+struct FavoriteShop {
+    let wineCnt: Int
+    let shopSummary: ShopSummary
+    let isBookmark: Bool
+}
+
+struct ShopSummary {
+    let key: String
+    let name: String
+    let categoryType: String
 }
 
 class UserData {

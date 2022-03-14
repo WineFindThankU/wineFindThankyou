@@ -16,6 +16,23 @@ enum GrapeCase {
     case childGrape
     case basic
     
+    var tasteType: Int {
+        switch self {
+        case .basic:
+            return 0
+        case .costGrape:
+            return 1
+        case .dionysusGrape:
+            return 2
+        case .analystGrape:
+            return 3
+        case .artistGrape:
+            return 4
+        case .childGrape:
+            return 5
+        }
+    }
+    
     func getGrapeName() -> String {
         switch self {
         case .costGrape:

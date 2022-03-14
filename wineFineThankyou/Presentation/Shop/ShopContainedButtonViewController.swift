@@ -13,8 +13,11 @@ class ShopContainedButtonViewController: UIViewController{
         case naver
         case kakao
     }
-    var shop: Shop!
-    var wineInfos: [WineInfo] = []
+    var shop: Shop! {
+        didSet {
+            print("munyong > ")
+        }
+    }
     internal unowned var shopBtnsView: ShopButtonsView! {
         didSet { addTargetOnButton() }
     }
@@ -109,7 +112,6 @@ class ShopContainedButtonViewController: UIViewController{
         guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoViewController.identifier) as? ShopInfoViewController
         else { return }
         
-        vc.wineInfos = wineInfos
         vc.shop = self.shop
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
@@ -118,9 +120,13 @@ class ShopContainedButtonViewController: UIViewController{
     @objc
     func close() {
         self.dismiss(animated: true, completion: {
-            guard let top = topViewController() as? ShopInfoSummaryViewController else { return }
-            top.shop = self.shop
-            top.setBookmarkedBtn()
+            guard let top = topViewController() else { return }
+            if let summaryVC = top as? ShopInfoSummaryViewController {
+                summaryVC.shop = self.shop
+                summaryVC.setBookmarkedBtn()
+            } else if let mainVC = top as? MainViewController {
+                mainVC.showShopsAtCrntLoc()
+            }
         })
     }
 }
