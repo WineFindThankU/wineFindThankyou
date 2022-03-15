@@ -617,14 +617,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="338" height="551"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchingTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="E2d-Bs-Hrn" customClass="SearchingTableViewCell" customModule="wineFindThankyou" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchingTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchingTableViewCell" id="E2d-Bs-Hrn" customClass="SearchingTableViewCell" customModule="wineFindThankyou" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="338" height="52.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E2d-Bs-Hrn" id="Oou-ND-xIe">
                                                     <rect key="frame" x="0.0" y="0.0" width="338" height="52.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40G-Oi-Xay">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40G-Oi-Xay">
                                                             <rect key="frame" x="16" y="16" width="21.5" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="RUE-KH-y5b"/>
@@ -634,11 +634,12 @@
                                                             <state key="normal" image="magnifyingglass" catalog="system"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뱅가드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPs-R4-OZ6">
-                                                            <rect key="frame" x="45.5" y="16" width="39" height="20.5"/>
+                                                            <rect key="frame" x="45.5" y="16" width="252.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" red="0.082352943720000002" green="0.1019607931" blue="0.1294117719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-w0-v3T">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-w0-v3T">
                                                             <rect key="frame" x="304" y="16" width="18" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="eXs-S0-COd"/>
@@ -656,6 +657,7 @@
                                                         <constraint firstItem="TPs-R4-OZ6" firstAttribute="leading" secondItem="40G-Oi-Xay" secondAttribute="trailing" constant="8" id="bFt-8G-txA"/>
                                                         <constraint firstItem="TPs-R4-OZ6" firstAttribute="top" secondItem="Oou-ND-xIe" secondAttribute="top" constant="16" id="bH7-1q-glO"/>
                                                         <constraint firstAttribute="bottom" secondItem="q8C-w0-v3T" secondAttribute="bottom" constant="16" id="obD-lS-TKh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="TPs-R4-OZ6" secondAttribute="trailing" constant="40" id="tUv-8h-OVp"/>
                                                         <constraint firstItem="40G-Oi-Xay" firstAttribute="leading" secondItem="Oou-ND-xIe" secondAttribute="leading" constant="16" id="ucu-gB-REn"/>
                                                         <constraint firstAttribute="bottom" secondItem="40G-Oi-Xay" secondAttribute="bottom" constant="16" id="wOX-cD-odw"/>
                                                     </constraints>

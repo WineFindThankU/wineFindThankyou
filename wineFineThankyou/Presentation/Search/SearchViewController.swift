@@ -15,8 +15,16 @@ struct SearhingShopViewModel {
     var sh_name:String = ""
 }
 
+protocol SearchingShopDisplayLogic: AnyObject
+{
+    func displaySearchProduct(viewModel: SearhingShopViewModel)
+}
+
+
 class SearchViewController: UIViewController {
     
+    var responseDataCount = 0
+    var shop: Shop?
     
     var searhingShopViewModel: [SearhingShopViewModel] = []
     
@@ -45,6 +53,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupTableView()
     }
     
     @IBAction func onClickDismiss(_ sender: Any) {
@@ -62,20 +71,20 @@ class SearchViewController: UIViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         searchingView.isHidden = false
-      
+        DispatchQueue.main.async {
+            self.searchingTableView.reloadData()
+        }
         getSearchWineShop()
     }
     
     private func getSearchWineShop() {
         if textField.text?.count ?? 0 >= 2 {
-            AFHandler.searchWineShop(byKeyword: textField.text ?? "", done: { response in
-                print(response?.data)
+            AFHandler.searchShop(byKeyword: textField.text ?? "", done: { _ in
                 DispatchQueue.main.async {
                     self.searchingTableView.reloadData()
                 }
             })
         }
-  
     }
     
     private func setupCollectionView() {
@@ -168,24 +177,23 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searhingShop_ViewModel = searhingShopViewModel[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as? SearchingTableViewCell else {
-            fatalError()
-        }
-        cell.initSetting(item: searhingShop_ViewModel)
+      //  let searhingShopViewModel = searhingShopViewModel[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
+        cell.initSetting(name: shop?.name ?? "", number: shop?.key ?? "")
+    //    cell.configureSetting(item: searhingShopViewModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
         cell.selectionStyle = .none
-     //   let keyword = searchShopData.data["sh_no"]
-     //   MainViewController.openShop(keyword)
-        
+        tableView.deselectRow(at: indexPath, animated: false)
+        print("======> \(indexPath.row)")
+    //    MainViewController.openShop(keyword)
     }
 }
 
@@ -194,19 +202,40 @@ final class SearchingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var item: SearhingShopViewModel? = nil
+    var item: Shop? = nil
+    var testItem: SearhingShopViewModel? = nil
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-        
     override func layoutSubviews() {
         super.layoutSubviews()
     }
         
-    func initSetting(item: SearhingShopViewModel) {
-        self.item = item
+    func initSetting(name: String, number: String) {
+        titleLabel.text = name
+    }
+    
+    func configureSetting(item: SearhingShopViewModel) {
+        self.testItem = item
         titleLabel.text = item.sh_name
     }
 
+}
+
+
+
+extension SearchViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        doSearchShop()
+        return true
+    }
+    
+    func doSearchShop() {
+        let text = textField.text ?? ""
+        AFHandler.searchShop(byKeyword: text, done: { _ in
+            DispatchQueue.main.async {
+                self.searchingTableView.reloadData()
+            }
+        })
+    }
+    
 }

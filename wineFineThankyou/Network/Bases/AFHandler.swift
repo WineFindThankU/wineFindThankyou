@@ -256,7 +256,6 @@ extension AFHandler {
                 guard let nsDict = nsDict as? NSDictionary,
                       let shopList = JSON(nsDict)["data"]["list"].array
                 else { done?([]); return }
-                
                 var favorites: [FavoriteShop] = []
                 shopList.forEach { data in
                     guard let wineCnt = data["uh_wine_cnt"].int,
@@ -265,7 +264,6 @@ extension AFHandler {
                           let type = data["shop"]["sh_category"].string,
                           let bookmark = data["uh_bookmark"].bool
                     else { return }
-                    
                     favorites.append(FavoriteShop(wineCnt: wineCnt, shopSummary: ShopSummary(key: key, name: name, categoryType: type), isBookmark: bookmark))
                 }
                 
@@ -273,6 +271,36 @@ extension AFHandler {
                 return
             default:
                 done?([]); return
+            }
+        }
+    }
+    
+    class func searchShop(byKeyword: String, done:(([Shop]) -> Void)?) {
+        let url = "http://125.6.36.157:3001/v1/shop"
+        let params = ["type":"keyword",
+                      "keyword":byKeyword]
+        session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                guard let nsDict = nsDict as? NSDictionary,
+                      let shopList = JSON(nsDict)["data"].array
+                else { done?([]); return }
+                let responseJson = JSON(nsDict)
+                var shops = [Shop]()
+                var searhingShopViewModel: [SearhingShopViewModel] = []
+                
+                shopList.forEach { data in
+                    let dict = responseJson["data"]
+                    guard let key = data["sh_no"].string,
+                          let name = data["sh_name"].string
+                    else {
+                        return
+                    }
+                    searhingShopViewModel.append(SearhingShopViewModel(sh_no: name, sh_name: key))
+                }
+                done?(shops)
+            default:
+                break
             }
         }
     }
@@ -290,34 +318,6 @@ extension AFHandler {
                 return
             default:
                 done?(nil); return
-            }
-        }
-    }
-    
-    class func searchShop(byKeyword: String, done:(([Shop]) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/shop"
-        let params = ["type":"keyword",
-                      "keyword":byKeyword]
-        session.request(url, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { res in
-            switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?([]); return }
-
-                let responseJson = JSON(nsDict)
-                print("responseJson: \(responseJson.count)")
-                var shops = [Shop]()
-                responseJson["data"].array?.forEach {
-                    guard $0["sh_no"].string != nil,
-                          $0["sh_latitude"].double != nil,
-                          $0["sh_longitude"].double != nil
-                    else { return }
-
-                    shops.append(Shop($0))
-                }
-                done?(shops)
-            default:
-                break
             }
         }
     }
@@ -472,36 +472,5 @@ final class RequestInterceptor: Alamofire.RequestInterceptor {
         var req = urlRequest
         req.setValue("Bearer " + UserData.accessToken, forHTTPHeaderField: "Authorization")
         completion(.success(req))
-    }
-}
-
-
-// MARK: Search View Controller
-extension AFHandler {
-
-    class func searchWineShop(byKeyword: String, done:((SearchShop?) -> Void)?) {
-        let url = "http://125.6.36.157:3001/v1/shop?type=keyword"
-        let param = ["keyword":byKeyword]
-        session.request(url, method: .get,
-                        parameters: param,
-                        encoding: URLEncoding.default).responseJSON { res in
-            switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?(nil); return }
-               let dict = JSON(nsDict)["data"]
-               var searchingViewModel: [SearhingShopViewModel] = []
-
-                dict["data"].array?.forEach { res in
-                    searchingViewModel.append(SearhingShopViewModel(sh_no: res["sh_no"].string ?? "",
-                                                               sh_name: res["sh_name"].string ?? ""))
-                    
-                }
-                done?(nil)
-                return
-            default:
-                done?(nil); return
-            }
-        }
     }
 }

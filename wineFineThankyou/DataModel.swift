@@ -239,11 +239,11 @@ enum WineType: Int, CaseIterable {
 
 class Shop {
     let key: String
-    private let homepage: String?
-    private let address: String?
-    private let name: String?
-    private let tellNumber: String?
-    private var bookmark: Bool
+     let homepage: String?
+     let address: String?
+     let name: String?
+     let tellNumber: String?
+     var bookmark: Bool
     let type: ShopType
     let latitude: Double
     let longtitude: Double
