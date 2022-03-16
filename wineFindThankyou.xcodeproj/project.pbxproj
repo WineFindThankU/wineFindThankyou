@@ -82,7 +82,6 @@
 		BAA4031827BA945700C50221 /* WineListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4031727BA945700C50221 /* WineListTitle.swift */; };
 		BAAAAE5327C8E53600DFEB59 /* UsersWineShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAAAE5227C8E53600DFEB59 /* UsersWineShopListViewController.swift */; };
 		BAAAAE5527C8E58B00DFEB59 /* UserWineShopListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAAAE5427C8E58B00DFEB59 /* UserWineShopListTableViewCell.swift */; };
-		BAB4079327A7900000B6E352 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = BAB4079227A7900000B6E352 /* SwiftSMTP */; };
 		BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB4079527A7B20A00B6E352 /* MyPageViewController.swift */; };
 		BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB4079827A7B4C500B6E352 /* ConnectUsViewController.swift */; };
 		BABB595727C50415000E24C5 /* ReadWine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BABB595627C50415000E24C5 /* ReadWine.storyboard */; };
@@ -101,6 +100,7 @@
 		C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A494C27AD220A0080CBE2 /* StartViewController.swift */; };
 		C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */; };
 		C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */; };
+		FD532A4227E179A700BE3D47 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = FD532A4127E179A700BE3D47 /* SwiftSMTP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,7 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAB4079327A7900000B6E352 /* SwiftSMTP in Frameworks */,
+				FD532A4227E179A700BE3D47 /* SwiftSMTP in Frameworks */,
 				00785FDA164D0001573592F1 /* Pods_wineFindThankyou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,7 +643,7 @@
 			);
 			name = wineFindThankyou;
 			packageProductDependencies = (
-				BAB4079227A7900000B6E352 /* SwiftSMTP */,
+				FD532A4127E179A700BE3D47 /* SwiftSMTP */,
 			);
 			productName = wineFineThankyou;
 			productReference = 44FF1CBB278471A700FD8567 /* wineFindThankyou.app */;
@@ -723,7 +723,7 @@
 			mainGroup = 44FF1CB2278471A700FD8567;
 			packageReferences = (
 				44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				BAB4079127A7900000B6E352 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
+				FD532A4027E179A700BE3D47 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
 			);
 			productRefGroup = 44FF1CBC278471A700FD8567 /* Products */;
 			projectDirPath = "";
@@ -1171,7 +1171,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 385Y9B45N8;
+				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1208,7 +1208,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 385Y9B45N8;
+				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
@@ -1386,20 +1386,20 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		BAB4079127A7900000B6E352 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+		FD532A4027E179A700BE3D47 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/IBM-Swift/Swift-SMTP";
+			repositoryURL = "https://github.com/Kitura/Swift-SMTP";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BAB4079227A7900000B6E352 /* SwiftSMTP */ = {
+		FD532A4127E179A700BE3D47 /* SwiftSMTP */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BAB4079127A7900000B6E352 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
+			package = FD532A4027E179A700BE3D47 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
 			productName = SwiftSMTP;
 		};
 /* End XCSwiftPackageProductDependency section */
