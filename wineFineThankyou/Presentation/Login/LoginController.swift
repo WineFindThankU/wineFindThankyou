@@ -181,7 +181,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
                     "2": secondData,
                     "3": thirdData
                 ],
-            ] as [String : Any]
+            ] as Dictionary
             
             AFHandler.signBySNS(params) {
                 guard $0 == AfterSign.success else {

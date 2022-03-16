@@ -40,7 +40,7 @@ class SettingsViewController: UIViewController{
     private func configure() {
         let topView = getGlobalTopView(self.view, height: 44)
         topView.titleLabel?.text = "설정"
-        topView.rightButton?.setBackgroundImage(UIImage(named: "close"), for: .normal)
+        topView.rightButton?.setBackgroundImage(UIImage(named: "Close"), for: .normal)
         topView.rightButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
         self.topView.addSubview(topView)
         
