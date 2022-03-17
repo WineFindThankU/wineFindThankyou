@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import UIKit
 
 enum AfterSign {
     case success
@@ -424,24 +425,90 @@ extension AFHandler {
     }
 }
 
+class WineAtServer {
+    private var key: String
+    private var korName: String?
+    private var engName: String?
+    private var brand: String?
+    private var cepage: String?
+    private var from: String?
+    private var alcohol: String?
+    
+    var img: UIImage?
+    init() {
+        self.key = ""
+        self.korName = ""
+        self.engName = ""
+        self.brand = ""
+        self.cepage = ""
+        self.from = ""
+        self.alcohol = ""
+        self.img = nil
+    }
+    
+    init(_ data: JSON) {
+        self.key = data["wn_no"].string ?? ""
+        self.korName = data["wn_name"].string
+        self.engName = data["wn_name_en"].string
+        self.brand = data["wn_brand"].string
+        self.cepage = data["wn_kind"].string
+        self.from = data["wn_country"].string
+        self.alcohol = data["wn_alcohol"].string
+        
+        guard let imgData = try? data["wn_img"].rawData(), let uiImg = UIImage(data: imgData) else {
+            self.img = nil
+            return
+        }
+        self.img = uiImg
+    }
+    
+    var koreanName: String {
+        guard let korName = korName, !korName.isEmpty else { return "정보없음" }
+        return korName
+    }
+    var englishName: String {
+        guard let engName = engName, !engName.isEmpty else { return "정보없음" }
+        return engName
+    }
+    var grapeKind: String {
+        guard let cepage = cepage, !cepage.isEmpty else {
+            return "정보없음"
+        }
+        return cepage
+    }
+    var wineCountry: String {
+        guard let from = from, !from.isEmpty else {
+            return "정보없음"
+        }
+        return from
+    }
+    var alcoholInfo: String {
+        guard let alcohol = alcohol, !alcohol.isEmpty else {
+            return "정보없음"
+        }
+        return alcohol
+    }
+}
 // MARK: Wine
 extension AFHandler {
-    class func searchWine(byKeyword: String, done:((ReadWineInfo?) -> Void)?) {
-        guard !byKeyword.isEmpty else { done?(nil); return }
+    class func searchWine(byKeyword: String, done:(([WineAtServer]) -> Void)?) {
+        guard !byKeyword.isEmpty else { done?([]); return }
         let url = "http://125.6.36.157:3001/v1/wine"
         let param = ["keyword":byKeyword]
         session.request(url, method: .get, parameters: param, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
             case .success(let nsDict):
                 guard let nsDict = nsDict as? NSDictionary
-                else { done?(nil); return }
+                else { done?([]); return }
                 
-                let dict = JSON(nsDict)["data"]
-                print(dict)
-                done?(nil)
+                let wineAtServer = JSON(nsDict)["data"].array?.compactMap {
+                    WineAtServer($0)
+                } ?? []
+                
+                done?(wineAtServer)
                 return
             default:
-                done?(nil); return
+                done?([]); return
             }
         }
     }

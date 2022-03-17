@@ -20,21 +20,24 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private var captrueStatus: CaptureStatus = .initial
     private var capturedImg: UIImage?
     private var dataPicker: UIDatePicker?
-    internal var shop: Shop!
-    internal var readWineInfo: ReadWineInfo! {
+    private var additionalWineInfo :(name: String, vintage: String, from: String, date: String) = ("", "", "", "")
+    internal var wineAtServer: WineAtServer! {
         didSet {
             DispatchQueue.main.async { [weak self] in
-                self?.textFieldName?.text = self?.readWineInfo.name
-                self?.textFieldFrom?.text = self?.readWineInfo.from
-                self?.textFieldVintage?.text = self?.readWineInfo.vintage
+                let name = self?.wineAtServer.koreanName ?? ""
+                let from = self?.wineAtServer.wineCountry ?? ""
+                self?.additionalWineInfo = (name, "", from, "")
+                self?.textFieldName?.text = self?.additionalWineInfo.name
+                self?.textFieldFrom?.text = self?.additionalWineInfo.from
+                self?.textFieldVintage?.text = self?.additionalWineInfo.vintage
             }
         }
     }
+    internal var shop: Shop!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
-        readWineInfo = ReadWineInfo(name: "", from: "", vintage: "", dateStr: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,16 +108,18 @@ extension AddWineInfomationViewController: CapturedImageProtocol {
             return
         }
         captrueStatus = .ok
-        WineLabelReader.doStartToOCR(uiImage) {
+        WineLabelReader.doStartToOCR(uiImage) { winesAtServer in
         //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
             self.capturedImg = uiImage
-            let readData: ReadWineInfo?
-            if $0 == nil {
-                readData = ReadWineInfo(name: "", from: "", vintage: "", dateStr: "")
-            } else {
-                readData = $0
+            guard winesAtServer.count > 0 else {
+                self.wineAtServer = WineAtServer()
+                return
             }
-            self.readWineInfo = readData
+            guard winesAtServer.count > 1 else {
+                //온 와인의 정보를 alert로 보여주고 선택하게끔 함.
+                self.wineAtServer = WineAtServer()
+                return
+            }
             done?()
         }
     }
@@ -136,9 +141,9 @@ extension AddWineInfomationViewController {
         midView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        let wineName = DescAndTxtField("와인 명", readWineInfo.name, superView: midView)
-        let wineFrom = DescAndTxtField("원산지", readWineInfo.from, superView: midView)
-        let wineVintage = DescAndTxtField("빈티지", readWineInfo.vintage, superView: midView)
+        let wineName = DescAndTxtField("와인 명", additionalWineInfo.name, superView: midView)
+        let wineFrom = DescAndTxtField("원산지", additionalWineInfo.from, superView: midView)
+        let wineVintage = DescAndTxtField("빈티지", additionalWineInfo.vintage, superView: midView)
         
         NSLayoutConstraint.activate([
             midView.topAnchor.constraint(equalTo: topView.bottomAnchor),
@@ -308,8 +313,8 @@ extension AddWineInfomationViewController {
         guard let date = self.dataPicker?.date else { return }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.readWineInfo.dateStr = dateFormatter.string(from: date)
-        self.textFieldBoughtDate?.text = dateFormatter.string(from: date)
+        self.additionalWineInfo.date = dateFormatter.string(from: date)
+        self.textFieldBoughtDate?.text = self.additionalWineInfo.date
         
         chkRegisterBtnUI()
     }
@@ -326,24 +331,29 @@ extension AddWineInfomationViewController {
     
     @objc
     func completeRegister() {
-        guard readWineInfo.setComplete() else {
-            return
-        }
+        guard !additionalWineInfo.name.isEmpty,
+              !additionalWineInfo.from.isEmpty,
+              !additionalWineInfo.vintage.isEmpty,
+              !additionalWineInfo.date.isEmpty
+        else { return }
         
-        let param = ["sh_no": shop.key,
-                     "name": readWineInfo.name,
-                     "country": readWineInfo.from,
-                     "vintage": readWineInfo.vintage,
-                     "purchased_at": readWineInfo.dateStr] as [String : Any]
-        AFHandler.addWine(param) { isSuccess in
-            //와인추가 완료. 실패/성공 판단 후 dismiss.
-            guard isSuccess else {
-                print("와인 등록 실패")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.dismiss(animated: true)
+        AFHandler.searchWine(byKeyword: additionalWineInfo.name) { [self] _ in
+            let param = ["sh_no": shop.key,
+                         //"wn_no": $0이 하나 이상인 경우 key값 바로, 아니면 말고.
+                         "name": additionalWineInfo.name,
+                         "country": additionalWineInfo.from,
+                         "vintage": additionalWineInfo.vintage,
+                         "purchased_at": additionalWineInfo.date] as [String : Any]
+            AFHandler.addWine(param) { isSuccess in
+                //와인추가 완료. 실패/성공 판단 후 dismiss.
+                guard isSuccess else {
+                    print("와인 등록 실패")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true)
+                }
             }
         }
     }
@@ -352,11 +362,11 @@ extension AddWineInfomationViewController {
 extension AddWineInfomationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.isEqual(textFieldName) {
-            readWineInfo.name = textFieldName?.text ?? ""
+            additionalWineInfo.name = textFieldName?.text ?? ""
         } else if textField.isEqual(textFieldFrom) {
-            readWineInfo.from = textFieldFrom?.text ?? ""
+            additionalWineInfo.from = textFieldFrom?.text ?? ""
         } else if textField.isEqual(textFieldVintage) {
-            readWineInfo.vintage = textFieldVintage?.text ?? ""
+            additionalWineInfo.vintage = textFieldVintage?.text ?? ""
         }
     }
 }

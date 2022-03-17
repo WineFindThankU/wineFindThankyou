@@ -11,45 +11,21 @@ import MLKitTextRecognitionKorean
 import MLKitVision
 import AVFoundation
 
-class ReadWineInfo {
-    var name: String
-    var from: String
-    var vintage: String
-    var dateStr: String
-    init(name: String, from: String, vintage: String, dateStr: String) {
-        self.name = name
-        self.from = from
-        self.vintage = vintage
-        self.dateStr = dateStr
-    }
-    
-    func setComplete() -> Bool {
-        guard !name.isEmpty, !from.isEmpty,
-                !vintage.isEmpty, !dateStr.isEmpty
-        else { return false }
-        return true
-    }
-}
-
 class WineLabelReader {
-    class func doStartToOCR(_ image: UIImage, ocrDone: ((ReadWineInfo?) -> Void)?) {
+    class func doStartToOCR(_ image: UIImage, ocrDone: (([WineAtServer]) -> Void)?) {
         let koreanOptions = KoreanTextRecognizerOptions()
         let koreanTextRecognizer = TextRecognizer.textRecognizer(options: koreanOptions)
         let visionImage = VisionImage(image: image)
         visionImage.orientation = getImageOrientation(UIDevice.current.orientation, cameraPosition: .back)
         koreanTextRecognizer.process(visionImage) { result, error in
             guard error == nil, let result = result else {
-                ocrDone?(nil)
+                ocrDone?([])
                 return
             }
             
-            guard let name = parsingReadText(result.text)?.name else {
-                ocrDone?(nil)
-                return
-            }
-            AFHandler.searchWine(byKeyword: name.trimmingCharacters(in: .whitespaces), done: {
+            AFHandler.searchWine(byKeyword: parsingReadText(result.text)) {
                 ocrDone?($0)
-            })
+            }
         }
     }
     
@@ -70,32 +46,16 @@ class WineLabelReader {
         }
     }
     
-    class func parsingReadText(_ txt: String?) -> ReadWineInfo? {
+    class func parsingReadText(_ txt: String?) -> String {
         guard let parsingArr = txt?.components(separatedBy: "\n"),
               !parsingArr.isEmpty
-        else { return nil }
+        else { return "" }
         
-        //제품명
-        let from = parsingArr.first {
-            $0.contains("원산지")
-        }?.trimmingCharacters(in: .whitespaces)
-            .components(separatedBy: ":").last ?? ""
-        
-        let name = parsingArr.first {
+        return parsingArr.first {
             $0.contains("제품명")
         }?.trimmingCharacters(in: .whitespaces)
             .components(separatedBy: ":").last ?? ""
         
-        let vintage = parsingArr.first {
-            $0.contains("병입연월일")
-        }?.trimmingCharacters(in: .whitespaces)
-            .components(separatedBy: ":").last
-
-        if let nnVintage = vintage, nnVintage.contains(where: {$0.isNumber}) {
-            return ReadWineInfo(name: name, from: from, vintage: nnVintage, dateStr: "")
-        } else {
-            return ReadWineInfo(name: name, from: from, vintage: "", dateStr: "")
-        }
     }
 }
 
