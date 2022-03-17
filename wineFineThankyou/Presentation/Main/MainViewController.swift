@@ -272,7 +272,7 @@ extension MainViewController: NMFMapViewCameraDelegate {
                 guard let key = overlay.userInfo["key"] as? String,
                       let lat = overlay.userInfo["lat"] as? Double,
                       let long = overlay.userInfo["long"] as? Double,
-                      let img = UIImage(named: "shopDetail")
+                      let img = UIImage(named: "ShopDetail")
                 else { return false }
                 
                 marker.iconImage = NMFOverlayImage(image: img)

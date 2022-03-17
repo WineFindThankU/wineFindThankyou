@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "78f7087fd5d48eb7c36e299f330b6dddccd647b2",
-          "version": "8.12.1"
+          "revision": "d4c4e8c7b8898ea771e90beab71112ea279d73a5",
+          "version": "8.13.0"
         }
       },
       {
@@ -165,11 +165,11 @@
       },
       {
         "package": "SwiftSMTP",
-        "repositoryURL": "https://github.com/IBM-Swift/Swift-SMTP",
+        "repositoryURL": "https://github.com/Kitura/Swift-SMTP",
         "state": {
-          "branch": null,
-          "revision": "4b7666bb8cee33f0cb367786af17b9a2ebb63047",
-          "version": "6.0.0"
+          "branch": "master",
+          "revision": "0501eae561a4331b9d4328acd52091eb9fcb989e",
+          "version": null
         }
       }
     ]
