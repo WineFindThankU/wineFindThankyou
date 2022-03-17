@@ -62,7 +62,7 @@ class WalkthroughFirstViewController: UIViewController {
         let button = UIButton()
         button.setTitle(WhenDoSelect.cost.str, for: .normal)
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("firstValue", forKey: "1")
+            UserDefaults.standard.set("1", forKey: "firstValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -72,7 +72,7 @@ class WalkthroughFirstViewController: UIViewController {
         let button = UIButton()
         button.setTitle(WhenDoSelect.grape.str, for: .normal)
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("firstValue", forKey: "2")
+            UserDefaults.standard.set("2", forKey: "firstValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -82,7 +82,7 @@ class WalkthroughFirstViewController: UIViewController {
         let button = UIButton()
         button.setTitle(WhenDoSelect.brand.str, for: .normal)
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("firstValue", forKey: "3")
+            UserDefaults.standard.set("3", forKey: "firstValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -93,7 +93,7 @@ class WalkthroughFirstViewController: UIViewController {
         let button = UIButton()
         button.setTitle(WhenDoSelect.loc.str, for: .normal)
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("firstValue", forKey: "4")
+            UserDefaults.standard.set("4", forKey: "firstValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -103,7 +103,7 @@ class WalkthroughFirstViewController: UIViewController {
         let button = UIButton()
         button.setTitle(WhenDoSelect.type.str, for: .normal)
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("firstValue", forKey: "5")
+            UserDefaults.standard.set("5", forKey: "firstValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -113,7 +113,7 @@ class WalkthroughFirstViewController: UIViewController {
         let button = UIButton()
         button.setTitle(WhenDoSelect.etc.str, for: .normal)
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("firstValue", forKey: "-1")
+            UserDefaults.standard.set("-1", forKey: "firstValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button

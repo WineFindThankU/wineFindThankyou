@@ -195,6 +195,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         print("======> \(indexPath.row)")
         let keyword = searchingShopViewModel[indexPath.row].sh_no
+        print(keyword)
         MainViewController().openShop(keyword)
     }
 }
@@ -224,6 +225,11 @@ final class SearchingTableViewCell: UITableViewCell {
         titleLabel.text = searhingShopViewModel?.sh_name
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel = .none
+    }
+    
 }
 
 

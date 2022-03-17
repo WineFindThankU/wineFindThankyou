@@ -58,7 +58,7 @@ class WalkthroughSecondViewController: UIViewController {
         button.setTitle(PriceOfWine.one2Two.str, for: .normal)
         
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("secondValue", forKey: "1")
+            UserDefaults.standard.set("1", forKey: "secondValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -69,7 +69,7 @@ class WalkthroughSecondViewController: UIViewController {
         button.setTitle(PriceOfWine.thr2Four.str, for: .normal)
         
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("secondValue", forKey: "2")
+            UserDefaults.standard.set("2", forKey: "secondValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -80,7 +80,7 @@ class WalkthroughSecondViewController: UIViewController {
         button.setTitle(PriceOfWine.five2Seven.str, for: .normal)
         
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("secondValue", forKey: "3")
+            UserDefaults.standard.set("3", forKey: "secondValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -92,7 +92,7 @@ class WalkthroughSecondViewController: UIViewController {
         button.setTitle(PriceOfWine.eig2Ten.str, for: .normal)
         
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("secondValue", forKey: "4")
+            UserDefaults.standard.set("4", forKey: "secondValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -103,7 +103,7 @@ class WalkthroughSecondViewController: UIViewController {
         button.setTitle(PriceOfWine.quality.str, for: .normal)
         
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("secondValue", forKey: "5")
+            UserDefaults.standard.set("5", forKey: "secondValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button

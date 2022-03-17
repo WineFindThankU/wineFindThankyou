@@ -56,7 +56,7 @@ class WalkthroughThirdViewController: UIViewController {
         button.setTitle(ReasonOfBought.forMe.str, for: .normal)
         
         let action = UIAction(handler: { _ in
-            UserDefaults.standard.set("thirdValue", forKey: "1")
+            UserDefaults.standard.set("1", forKey: "thirdValue")
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -77,7 +77,7 @@ class WalkthroughThirdViewController: UIViewController {
             button.setTitleColor(.standardColor, for: .normal)
             button.layer.borderWidth = 1.5
             
-            UserDefaults.standard.set("thirdValue", forKey: "2")
+            UserDefaults.standard.set("2", forKey: "thirdValue")
             
         }
         button.addAction(action, for: .touchUpInside)
@@ -98,7 +98,7 @@ class WalkthroughThirdViewController: UIViewController {
             button.layer.borderColor = UIColor.standardColor.cgColor
             button.setTitleColor(.standardColor, for: .normal)
             button.layer.borderWidth = 1.5
-            UserDefaults.standard.set("thirdValue", forKey: "3")
+            UserDefaults.standard.set("3", forKey: "thirdValue")
         }
         button.addAction(action, for: .touchUpInside)
         return button

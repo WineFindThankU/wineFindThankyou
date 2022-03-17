@@ -166,6 +166,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             let nick = givenName.isEmpty ? "User" : givenName
             let email = appleIDCredential.email ?? "WTFUser@wineThankU.com"
             let type = "apple"
+            print(UserDefaults.standard.string(forKey: "firstValue") ?? "없음")
             let firstData:[String: String] = ["value": UserDefaults.standard.string(forKey: "firstValue") ?? ""]
             let secondData:[String: String] = ["value": UserDefaults.standard.string(forKey: "secondValue") ?? ""]
             let thirdData:[String: String] = ["value": UserDefaults.standard.string(forKey: "thirdValue") ?? ""]
