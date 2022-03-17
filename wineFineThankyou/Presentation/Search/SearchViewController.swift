@@ -10,14 +10,14 @@ import SnapKit
 import Alamofire
 import SwiftyJSON
 
-struct SearhingShopViewModel {
-    var sh_no: String = ""
-    var sh_name:String = ""
+struct SearchingShopViewModel {
+    var sh_no: String
+    var sh_name: String
 }
 
 protocol SearchingShopDisplayLogic: AnyObject
 {
-    func displaySearchProduct(viewModel: SearhingShopViewModel)
+    func displaySearchProduct(viewModel: SearchingShopViewModel)
 }
 
 
@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
     var responseDataCount = 0
     var shop: Shop?
     
-    var searhingShopViewModel: [SearhingShopViewModel] = []
+    var searchingShopViewModel: [SearchingShopViewModel] = []
     
     private weak var topView: TopView?
     
@@ -79,7 +79,9 @@ class SearchViewController: UIViewController {
     
     private func getSearchWineShop() {
         if textField.text?.count ?? 0 >= 2 {
-            AFHandler.searchShop(byKeyword: textField.text ?? "", done: { _ in
+            AFHandler.searchShop(byKeyword: textField.text ?? "", done: { response in
+                self.searchingShopViewModel.removeAll()
+                self.searchingShopViewModel.append(contentsOf: response)
                 DispatchQueue.main.async {
                     self.searchingTableView.reloadData()
                 }
@@ -177,14 +179,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return searchingShopViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      //  let searhingShopViewModel = searhingShopViewModel[indexPath.row]
+        let searhingShop_ViewModel = searchingShopViewModel[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
-        cell.initSetting(name: shop?.name ?? "", number: shop?.key ?? "")
-    //    cell.configureSetting(item: searhingShopViewModel)
+        cell.searhingShopViewModel = searchingShopViewModel[indexPath.row]
         return cell
     }
     
@@ -193,7 +194,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         tableView.deselectRow(at: indexPath, animated: false)
         print("======> \(indexPath.row)")
-    //    MainViewController.openShop(keyword)
+        let keyword = searchingShopViewModel[indexPath.row].sh_no
+        print(keyword)
+        MainViewController().openShop(keyword)
     }
 }
 
@@ -203,7 +206,12 @@ final class SearchingTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     var item: Shop? = nil
-    var testItem: SearhingShopViewModel? = nil
+    var searhingShopViewModel: SearchingShopViewModel? = nil {
+        didSet {
+            configureSetting()
+        }
+    }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -213,11 +221,15 @@ final class SearchingTableViewCell: UITableViewCell {
         titleLabel.text = name
     }
     
-    func configureSetting(item: SearhingShopViewModel) {
-        self.testItem = item
-        titleLabel.text = item.sh_name
+    func configureSetting() {
+        titleLabel.text = searhingShopViewModel?.sh_name
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel = .none
+    }
+    
 }
 
 
