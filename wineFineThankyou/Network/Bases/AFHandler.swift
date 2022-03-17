@@ -275,7 +275,7 @@ extension AFHandler {
         }
     }
     
-    class func searchShop(byKeyword: String, done:(([Shop]) -> Void)?) {
+    class func searchShop(byKeyword: String, done:(([SearchingShopViewModel]) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/shop"
         let params = ["type":"keyword",
                       "keyword":byKeyword]
@@ -287,18 +287,18 @@ extension AFHandler {
                 else { done?([]); return }
                 let responseJson = JSON(nsDict)
                 var shops = [Shop]()
-                var searhingShopViewModel: [SearhingShopViewModel] = []
+                var searchingShopViewModel: [SearchingShopViewModel] = []
                 
                 shopList.forEach { data in
-                    let dict = responseJson["data"]
+                  //  let dict = responseJson["data"]
                     guard let key = data["sh_no"].string,
                           let name = data["sh_name"].string
                     else {
                         return
                     }
-                    searhingShopViewModel.append(SearhingShopViewModel(sh_no: name, sh_name: key))
+                    searchingShopViewModel.append(SearchingShopViewModel(sh_no: key, sh_name: name))
                 }
-                done?(shops)
+                done?(searchingShopViewModel)
             default:
                 break
             }

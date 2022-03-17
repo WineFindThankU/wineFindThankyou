@@ -36,5 +36,5 @@ enum ShCategory: String, Codable {
 // MARK: ViewModel
 struct ViewModel
 {
-    var viewModel: [SearhingShopViewModel]
+    var viewModel: [SearchingShopViewModel]
 }
