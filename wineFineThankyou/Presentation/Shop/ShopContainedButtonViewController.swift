@@ -15,7 +15,7 @@ class ShopContainedButtonViewController: UIViewController{
     }
     var shop: Shop! {
         didSet {
-            print("munyong > ")
+        
         }
     }
     internal unowned var shopBtnsView: ShopButtonsView! {

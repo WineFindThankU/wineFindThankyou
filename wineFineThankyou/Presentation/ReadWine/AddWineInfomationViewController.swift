@@ -21,20 +21,12 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private var capturedImg: UIImage?
     private var dataPicker: UIDatePicker?
     private var additionalWineInfo :(name: String, vintage: String, from: String, date: String) = ("", "", "", "")
+    private var wineListDialog: WineListDialog?
     internal var wineAtServer: WineAtServer! {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                let name = self?.wineAtServer.koreanName ?? ""
-                let from = self?.wineAtServer.wineCountry ?? ""
-                self?.additionalWineInfo = (name, "", from, "")
-                self?.textFieldName?.text = self?.additionalWineInfo.name
-                self?.textFieldFrom?.text = self?.additionalWineInfo.from
-                self?.textFieldVintage?.text = self?.additionalWineInfo.vintage
-            }
-        }
+        didSet { setValueOnTextFields() }
     }
     internal var shop: Shop!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
@@ -109,17 +101,21 @@ extension AddWineInfomationViewController: CapturedImageProtocol {
         }
         captrueStatus = .ok
         WineLabelReader.doStartToOCR(uiImage) { winesAtServer in
-        //MARK: uiimage넘겨서 텍스트 읽어야 함. Test code
             self.capturedImg = uiImage
-            guard winesAtServer.count > 0 else {
+            guard !winesAtServer.isEmpty,
+                  let wineAtServer = winesAtServer.first
+            else {
                 self.wineAtServer = WineAtServer()
+                done?()
                 return
             }
-            guard winesAtServer.count > 1 else {
+            
+            guard winesAtServer.count == 1 else {
                 //온 와인의 정보를 alert로 보여주고 선택하게끔 함.
-                self.wineAtServer = WineAtServer()
+                done?()
                 return
             }
+            self.wineAtServer = wineAtServer
             done?()
         }
     }
@@ -298,6 +294,17 @@ extension AddWineInfomationViewController {
         self.dataPicker = datePicker
     }
     
+    private func setValueOnTextFields(){
+        DispatchQueue.main.async { [weak self] in
+            let name = self?.wineAtServer.koreanName ?? ""
+            let from = self?.wineAtServer.wineCountry ?? ""
+            self?.additionalWineInfo = (name, "", from, "")
+            self?.textFieldName?.text = self?.additionalWineInfo.name
+            self?.textFieldFrom?.text = self?.additionalWineInfo.from
+            self?.textFieldVintage?.text = self?.additionalWineInfo.vintage
+        }
+    }
+    
     @objc
     func close() {
         self.dismiss(animated: true)
@@ -337,13 +344,23 @@ extension AddWineInfomationViewController {
               !additionalWineInfo.date.isEmpty
         else { return }
         
-        AFHandler.searchWine(byKeyword: additionalWineInfo.name) { [self] _ in
+        AFHandler.searchWine(byKeyword: additionalWineInfo.name) {
+            guard $0.count > 1 else {
+                register()
+                return
+            }
+            self.showWinesInfoServer($0) { wine in
+                register(selectedKey: wine.key)
+            }
+        }
+        
+        func register(selectedKey: String = ""){
             let param = ["sh_no": shop.key,
-                         //"wn_no": $0이 하나 이상인 경우 key값 바로, 아니면 말고.
+                         "wn_no": selectedKey.isEmpty ? wineAtServer.key : selectedKey,
                          "name": additionalWineInfo.name,
                          "country": additionalWineInfo.from,
                          "vintage": additionalWineInfo.vintage,
-                         "purchased_at": additionalWineInfo.date] as [String : Any]
+                         "purchased_at": additionalWineInfo.date] as Dictionary
             AFHandler.addWine(param) { isSuccess in
                 //와인추가 완료. 실패/성공 판단 후 dismiss.
                 guard isSuccess else {
@@ -351,10 +368,36 @@ extension AddWineInfomationViewController {
                     return
                 }
                 
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true)
-                }
+                AFHandler.shopDetail(self.shop.key, done: { resShop in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true) {
+                            guard let top = topViewController() as? ShopContainedButtonViewController
+                            else { return }
+                            top.shop = resShop
+                        }
+                    }
+                })
             }
+        }
+    }
+    
+    private func showWinesInfoServer(_ winesAtServer: [WineAtServer], done:((WineAtServer) -> Void)?) {
+        let wineListDialog = WineListDialog()
+        
+        let nameArr = winesAtServer.compactMap {$0.koreanName}
+        wineListDialog.wineListArray.removeAll()
+        wineListDialog.wineListArray.append(contentsOf: nameArr)
+        
+        let keyWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
+        wineListDialog.frame = keyWindow!.bounds
+        DispatchQueue.main.async {
+            keyWindow!.addSubview(wineListDialog)
+            self.wineListDialog = wineListDialog
+        }
+        wineListDialog.selectedTableRow = {
+            wineListDialog.removeFromSuperview()
+            self.wineListDialog = nil
+            done?(winesAtServer[$0])
         }
     }
 }

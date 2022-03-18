@@ -426,7 +426,7 @@ extension AFHandler {
 }
 
 class WineAtServer {
-    private var key: String
+    var key: String
     private var korName: String?
     private var engName: String?
     private var brand: String?

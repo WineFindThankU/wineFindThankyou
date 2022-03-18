@@ -42,6 +42,8 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         
         emptyView.isHidden = true
         winesCollectionView.isHidden = false
+        
+        self.winesCollectionView.reloadData()
     }
     
     private func setContentsView() {

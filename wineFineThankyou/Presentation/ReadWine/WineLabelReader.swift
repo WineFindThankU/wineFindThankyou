@@ -55,7 +55,6 @@ class WineLabelReader {
             $0.contains("제품명")
         }?.trimmingCharacters(in: .whitespaces)
             .components(separatedBy: ":").last ?? ""
-        
     }
 }
 
