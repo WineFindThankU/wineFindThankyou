@@ -81,12 +81,14 @@ extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             else { return UICollectionViewCell() }
             
             cell.tupleVal = (boughtWine.name, boughtWine.img)
+            cell.backgroundView?.backgroundColor = .clear
             return cell
         case .recentlyVisitedShop, .favoriteShop:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineShopCell", for: indexPath) as? WineShopCell
             else { return UICollectionViewCell() }
             
             cell.shop = self.cellInfos[indexPath.row] as? VisitedShop
+            cell.backgroundView?.backgroundColor = .clear
             return cell
         }
     }

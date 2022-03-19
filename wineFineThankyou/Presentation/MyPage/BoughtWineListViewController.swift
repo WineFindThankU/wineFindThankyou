@@ -15,16 +15,20 @@ class BoughtWineListViewController: MyPageListViewController {
         setTableView()
         setShopInfo()
     }
+    
     private func setShopInfo() {
         shopsDetail.removeAll()
         shopsDetail.append(contentsOf: self.boughtWines.compactMap {
             $0.shopDetail
         })
     }
+    
     private func deleteWine(_ key: String) {
         AFHandler.deleteWine(key) {
             //MARK: 삭제 성공/실패에 따라 다르게 적용
-            
+            guard $0 == true else { return }
+            self.boughtWines = self.boughtWines.filter { $0.wineInfo?.key != key}
+            self.setShopInfo()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

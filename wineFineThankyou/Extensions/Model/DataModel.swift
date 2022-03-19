@@ -167,135 +167,30 @@ enum WineType: Int, CaseIterable {
     }
 }
 
-class BoughtWine {
-    let wineInfo: WineInfo?
-    let from: String
-    let vintage: String
-    let date: String
-    let shopDetail: ShopDetail?
-    
+enum AfterSign {
+    case success
+    case fail
+}
+
+class User {
+    let id: String
+    let nick: String
+    let number: String
+    let tasteType: String
     init(_ param: JSON) {
-        self.wineInfo = WineInfo(param)
-        self.from = param["uw_country"].string ?? ""
-        self.vintage = param["uw_vintage"].string ?? ""
-        self.date = param["purchased_at"].string ?? ""
-        self.shopDetail = ShopDetail(param["shop"])
-    }
-    
-    var name: String? {
-        return self.wineInfo?.wineAtServer?.korName ?? self.wineInfo?.name
-    }
-    
-    var img: UIImage? {
-        return self.wineInfo?.wineAtServer?.img
+        self.id = param["us_id"].string ?? ""
+        let nickAndNum = param["us_nick"].string?.components(separatedBy: "-")
+        self.nick = nickAndNum?.first ?? ""
+        self.number = nickAndNum?.last ?? ""
+        self.tasteType = param["taste_type"].string ?? ""
     }
 }
 
-class WineInfo {
-    let key: String
-    let name: String
-    let wineAtServer: WineAtServer?
-    let img: UIImage?
-    init(_ params: JSON) {
-        self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
-        self.name = params["uw_name"].string ?? ""   //"",
-        self.wineAtServer = WineAtServer(params["wine"])
-        guard let data = try? params["wn_img"].rawData(),
-              let img = UIImage(data: data)
-        else { self.img = nil; return }
-        self.img = img
-    }
-}
-
-class Shop {
-    let key: String
-    let homepage: String?
-    let address: String?
-    let name: String?
-    let tellNumber: String?
-    var bookmark: Bool
-    let type: ShopType?
-    let latitude: Double
-    let longtitude: Double
-    var userWines = [WineInfo]()
-    init(_ param: JSON) {
-        self.key = param["sh_no"].string ?? ""
-        self.homepage = param["sh_url"].string
-        self.bookmark = param["sh_bookmark"].bool ?? false
-        self.address = param["sh_address"].string
-        self.name = param["sh_name"].string
-        self.tellNumber = param["sh_tell"].string
-        self.latitude = param["sh_latitude"].double ?? 0.0
-        self.longtitude = param["sh_longitude"].double ?? 0.0
-        
-        let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
-        self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr})
-        self.userWines = param["userWines"].array?.compactMap { WineInfo($0) } ?? []
-    }
-    
-    var isBookmarked: Bool {
-        get {
-            return self.bookmark
-        } set(val) {
-            self.bookmark = val
-        }
-    }
-    
-    var imgName: String {
-        switch type {
-        case .all:
-            return ""
-        case .privateShop:
-            return "privateShop"
-        case .warehouse:
-            return "warehouse"
-        case .mart:
-            return "mart"
-        case .convenience:
-            return "convenience"
-        case .chain:
-            return "chain"
-        case .department:
-            return "department"
-        default:
-            return ""
-        }
-    }
-    
-    var nnName: String {
-        guard let name = name, !name.isEmpty
-        else { return "이름 없음" }
-        return name
-    }
-    
-    var nnTellNumber: String {
-        guard let tellNumber = tellNumber, !tellNumber.isEmpty
-        else { return "저장된 번호 없음" }
-        return tellNumber
-    }
-    
-    var nnAddress: String {
-        guard let address = address, !address.isEmpty
-        else { return "저장된 주소 없음" }
-        return address
-    }
-    var nnHomepage: String {
-        guard let homepage = homepage, !homepage.isEmpty
-        else { return "저장된 홈페이지 없음" }
-        return homepage
-    }
-}
-
-struct FavoriteShop {
-    let wineCnt: Int
-    let shopSummary: ShopSummary
-    let isBookmark: Bool
-}
-
-struct ShopSummary {
-    let key: String
-    let name: String
-    let categoryType: String
+struct MyPageData {
+    let user: User
+    let boughtWines: [BoughtWine]
+    let visitedShops: [VisitedShop]
+    let bookmarkedShops: [VisitedShop]
 }
 
 class UserData {
