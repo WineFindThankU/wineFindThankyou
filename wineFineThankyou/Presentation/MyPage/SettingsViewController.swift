@@ -62,6 +62,9 @@ class SettingsViewController: UIViewController{
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return SettingSection0.allCases.count

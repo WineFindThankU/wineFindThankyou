@@ -59,10 +59,7 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
             guard let shopKey = boughtWine.shopDetail?.key else { return }
             self.goToShop(shopKey)
         }
+        cell.selectionStyle = .none
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
     }
 }

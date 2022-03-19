@@ -183,6 +183,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         cell.touchRightBtn = { [weak self] in
             self?.goToNextStep(type)
         }
+        cell.selectedBackgroundView?.backgroundColor = .clear
         return cell
     }
     

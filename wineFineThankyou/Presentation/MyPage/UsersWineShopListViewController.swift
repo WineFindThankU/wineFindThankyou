@@ -32,6 +32,7 @@ extension UsersWineShopListViewController: UITableViewDelegate, UITableViewDataS
         let shop = shops[indexPath.row]
         cell.wineCount = shop.wineCount
         cell.shop = shop
+        cell.selectionStyle = .none
         return cell
     }
 }
