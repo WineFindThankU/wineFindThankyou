@@ -40,10 +40,17 @@ extension String {
         attributedString.addAttribute(.font, value: bold, range: (self as NSString).range(of: range))
         return attributedString
     }
+    
     func rangeSizeUp(_ size: CGFloat, font: UIFont.Weight = .regular, range: String) -> NSMutableAttributedString {
         let bold = UIFont.systemFont(ofSize: size, weight: font)
         let attributedString = NSMutableAttributedString(string: self)
         attributedString.addAttribute(.font, value: bold, range: (self as NSString).range(of: range))
+        return attributedString
+    }
+    
+    func rangeSetColor(color: UIColor, range: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: self)
+        attributedString.addAttribute(.foregroundColor, value: color, range: (self as NSString).range(of: range))
         return attributedString
     }
 }

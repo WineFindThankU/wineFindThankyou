@@ -14,6 +14,7 @@ class BoughtWineListViewController: MyPageListViewController {
         super.viewDidLoad()
         setTableView()
         setShopInfo()
+        setAdditionalUI()
     }
     
     private func setShopInfo() {
@@ -21,6 +22,11 @@ class BoughtWineListViewController: MyPageListViewController {
         shopsDetail.append(contentsOf: self.boughtWines.compactMap {
             $0.shopDetail
         })
+    }
+    
+    private func setAdditionalUI(){
+        self.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        self.titleLabel?.attributedText = "내가 구매한 와인 \(boughtWines.count)".rangeSetColor(color: UIColor(rgb: 0x7B61FF), range: "\(boughtWines.count)")
     }
     
     private func deleteWine(_ key: String) {

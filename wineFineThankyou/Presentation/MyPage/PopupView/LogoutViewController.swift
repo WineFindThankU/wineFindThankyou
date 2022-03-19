@@ -51,6 +51,7 @@ final class PopupViewController: UIViewController {
         button.layer.cornerRadius = 10
         let action = UIAction { _ in
             AFHandler.getLogout(UserData.accessToken) { _ in
+                UserData.isUserLogin = false
                 goToStartViewController()
             }
             

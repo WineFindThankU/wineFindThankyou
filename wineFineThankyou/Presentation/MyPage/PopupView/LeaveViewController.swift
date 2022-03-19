@@ -55,12 +55,16 @@ final class LeaveViewController: UIViewController {
         button.backgroundColor = .standardColor
         button.layer.cornerRadius = 10
         let action = UIAction { _ in
-            AFHandler.getLeave(UserData.accessToken) { _ in
+            AFHandler.getLeave(UserData.accessToken) {
+                guard $0 else {
+                    return
+                }
+                UserData.isUserLogin = false
                 goToStartViewController()
             }
             
             func goToStartViewController() {
-                guard let vc = UIStoryboard(name: StoryBoard.shop.name,
+                guard let vc = UIStoryboard(name: StoryBoard.main.name,
                                             bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController  else { return }
                 vc.modalPresentationStyle = .overFullScreen
                 DispatchQueue.main.async { [weak self] in
@@ -81,6 +85,7 @@ final class LeaveViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         view.addSubview(alertView)
+        titleLabel.numberOfLines = 0
         alertView.addSubview(titleLabel)
         alertView.addSubview(cancelButton)
         alertView.addSubview(logoutButton)

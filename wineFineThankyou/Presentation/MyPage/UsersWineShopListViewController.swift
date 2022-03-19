@@ -12,6 +12,11 @@ class UsersWineShopListViewController: MyPageListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setAdditionalUI()
+    }
+    private func setAdditionalUI(){
+        self.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        self.titleLabel?.attributedText = "다녀온 와인샵 \(shops.count)".rangeSetColor(color: UIColor(rgb: 0x7B61FF), range: "\(shops.count)")
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 class MyPageListViewController: UIViewController {
     unowned var tableView: UITableView!
-    
+    internal var titleLabel: UILabel?
     internal var shops: [VisitedShop] = []
     internal var boughtWines: [BoughtWine] = []
     override func viewDidLoad() {
@@ -48,6 +48,7 @@ class MyPageListViewController: UIViewController {
         topView.backgroundColor = .clear
         topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
+        titleLabel = topView.titleLabel
         
         plusButton.backgroundColor = .clear
         plusButton.setBackgroundImage(UIImage(named: "PlusButton"), for: .normal)

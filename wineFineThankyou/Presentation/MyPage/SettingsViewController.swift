@@ -102,9 +102,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource{
     }
     private func doSomethingBySection1(_ row: Int) {
         if SettingSection1.logout.rawValue == row {
-            
+            let vc = PopupViewController()
+            DispatchQueue.main.async {
+                self.present(vc, animated: false)
+            }
         } else if SettingSection1.withdraw.rawValue == row{
-            
+            let vc = LeaveViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            DispatchQueue.main.async {
+                self.present(vc, animated: false)
+            }
         }
     }
 }
