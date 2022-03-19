@@ -323,6 +323,7 @@ extension AFHandler {
         }
     }
 }
+
 class User {
     let id: String
     let nick: String
@@ -353,23 +354,6 @@ class ShopDetail {
     }
 }
 
-class BoughtWine {
-    let key: String
-    let name: String
-    let from: String
-    let vintage: String
-    let date: String
-    let shopDetail: ShopDetail?
-    init(_ param: JSON) {
-        self.key = param["uw_no"].string ?? ""
-        self.name = param["uw_name"].string ?? ""
-        self.from = param["uw_country"].string ?? ""
-        self.vintage = param["uw_vintage"].string ?? ""
-        self.date = param["purchased_at"].string ?? ""
-        self.shopDetail = ShopDetail(param["shop"])
-    }
-}
-
 class VisitedShop {
     let bookmark: Bool
     let wineCount: Int
@@ -383,7 +367,7 @@ class VisitedShop {
 
 struct MyPageData {
     let user: User
-    let boughtWine: [BoughtWine]
+    let boughtWines: [BoughtWine]
     let visitedShops: [VisitedShop]
     let bookmarkedShops: [VisitedShop]
 }
@@ -400,22 +384,18 @@ extension AFHandler {
                 let bShops = JSON(nsDict)["data"]["bookmark"]["data"].array?.compactMap {
                     VisitedShop($0)
                 } ?? []
-                bShops.forEach({
-                    print("\($0.bookmark), \($0.wineCount), \($0.shopDetail?.key), \($0.shopDetail?.name), \($0.shopDetail?.time), \($0.shopDetail?.url), \($0.shopDetail?.shopType)")
-                })
                 
                 let vShops = JSON(nsDict)["data"]["shop"]["data"].array?.compactMap {
                     VisitedShop($0)
                 } ?? []
-                print(vShops)
                 let bWines = JSON(nsDict)["data"]["wine"]["data"].array?.compactMap {
                     BoughtWine($0)
                 } ?? []
-                print(bWines)
+                
                 let user = User(JSON(nsDict)["data"]["user"])
                 
                 print(user)
-                done?(MyPageData(user: user, boughtWine: bWines,
+                done?(MyPageData(user: user, boughtWines: bWines,
                                  visitedShops: vShops, bookmarkedShops: bShops))
                 return
             default:
@@ -427,14 +407,16 @@ extension AFHandler {
 
 class WineAtServer {
     var key: String
-    private var korName: String?
-    private var engName: String?
-    private var brand: String?
-    private var cepage: String?
-    private var from: String?
-    private var alcohol: String?
+    var korName: String
+    var engName: String
+    var brand: String
+    var cepage: String
+    var from: String
+    var alcohol: String
     
+    var type: WineType?
     var img: UIImage?
+    
     init() {
         self.key = ""
         self.korName = ""
@@ -443,50 +425,25 @@ class WineAtServer {
         self.cepage = ""
         self.from = ""
         self.alcohol = ""
+        self.type = nil
         self.img = nil
     }
     
     init(_ data: JSON) {
         self.key = data["wn_no"].string ?? ""
-        self.korName = data["wn_name"].string
-        self.engName = data["wn_name_en"].string
-        self.brand = data["wn_brand"].string
-        self.cepage = data["wn_kind"].string
-        self.from = data["wn_country"].string
-        self.alcohol = data["wn_alcohol"].string
+        self.korName = data["wn_name"].string ?? ""
+        self.engName = data["wn_name_en"].string ?? ""
+        self.brand = data["wn_brand"].string ?? ""
+        self.cepage = data["wn_kind"].string ?? ""
+        self.from = data["wn_country"].string ?? ""
+        self.alcohol = data["wn_alcohol"].string ?? ""
+        self.type = WineType.allCases.first { $0.str == data["wn_category"].string }
         
         guard let imgData = try? data["wn_img"].rawData(), let uiImg = UIImage(data: imgData) else {
             self.img = nil
             return
         }
         self.img = uiImg
-    }
-    
-    var koreanName: String {
-        guard let korName = korName, !korName.isEmpty else { return "정보없음" }
-        return korName
-    }
-    var englishName: String {
-        guard let engName = engName, !engName.isEmpty else { return "정보없음" }
-        return engName
-    }
-    var grapeKind: String {
-        guard let cepage = cepage, !cepage.isEmpty else {
-            return "정보없음"
-        }
-        return cepage
-    }
-    var wineCountry: String {
-        guard let from = from, !from.isEmpty else {
-            return "정보없음"
-        }
-        return from
-    }
-    var alcoholInfo: String {
-        guard let alcohol = alcohol, !alcohol.isEmpty else {
-            return "정보없음"
-        }
-        return alcohol
     }
 }
 // MARK: Wine

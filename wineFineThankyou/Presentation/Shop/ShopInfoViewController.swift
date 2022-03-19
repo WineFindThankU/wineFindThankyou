@@ -100,9 +100,10 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ShopInfoCell", for: indexPath) as? ShopInfoCell else { return UITableViewCell() }
             return setSection0OfCell(cell, indexPath.row)
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllOfWineInfoTableViewCell", for: indexPath) as? AllOfWineInfoTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllOfWineInfoTableViewCell", for: indexPath) as? AllOfWineInfoTableViewCell
+            else { return UITableViewCell() }
             cell.delegate = self
-//            cell.wineInfos = wineInfos2
+            cell.winesAtServer = self.shop.userWines.compactMap { $0.wineAtServer }
             return cell
         }
     }

@@ -55,6 +55,7 @@
 		BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47878B27B7880400AAB5EA /* ExtFunc.swift */; };
 		BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47878D27B78E3600AAB5EA /* CameraCaptureViewController.swift */; };
 		BA47879027B7B15700AAB5EA /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA47878F27B7B15700AAB5EA /* Shop.storyboard */; };
+		BA5866A127E57CAD007EA21C /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = BA5866A027E57CAD007EA21C /* Test.json */; };
 		BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */; };
 		BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */; };
 		BA70B7C827E3EB5D00EA5118 /* WineListDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70B7C727E3EB5D00EA5118 /* WineListDialog.swift */; };
@@ -182,6 +183,7 @@
 		BA47878B27B7880400AAB5EA /* ExtFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtFunc.swift; sourceTree = "<group>"; };
 		BA47878D27B78E3600AAB5EA /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		BA47878F27B7B15700AAB5EA /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
+		BA5866A027E57CAD007EA21C /* Test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test.json; sourceTree = "<group>"; };
 		BA5B79EA27BD1F68002C0155 /* WineImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineImageCell.xib; sourceTree = "<group>"; };
 		BA5B79EC27BD1F73002C0155 /* WineImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineImageCell.swift; sourceTree = "<group>"; };
 		BA70B7C727E3EB5D00EA5118 /* WineListDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineListDialog.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				442BE5B227CE521900448478 /* LoginResponse.swift */,
 				44233A3227D5D211008BD963 /* Logout.swift */,
 				4455BADA27DA45E500C9E089 /* SearchShop.swift */,
+				BA5866A027E57CAD007EA21C /* Test.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				44FF1CCB278471A900FD8567 /* LaunchScreen.storyboard in Resources */,
 				BA1EE24D27A4177D00FDE9BD /* WineInfoView.xib in Resources */,
 				BABB595727C50415000E24C5 /* ReadWine.storyboard in Resources */,
+				BA5866A127E57CAD007EA21C /* Test.json in Resources */,
 				BAA4031627BA944A00C50221 /* WineListTitle.xib in Resources */,
 				BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */,
 				C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */,

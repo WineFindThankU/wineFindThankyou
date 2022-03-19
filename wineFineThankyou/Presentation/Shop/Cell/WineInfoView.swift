@@ -21,9 +21,10 @@ class WineInfoView: UIView{
     @IBOutlet private weak var engName: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
-    internal var wineInfo: WineInfo? = nil {
+    internal var wineInfo: (vintage: String, info: WineInfo?)? = nil {
         didSet{ updateUI() }
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -49,12 +50,11 @@ class WineInfoView: UIView{
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 150
     }
     
     private func updateUI() {
-        self.korName.text = wineInfo?.wine?.korName
-        self.engName.text = wineInfo?.wine?.engName
+        self.korName.text = wineInfo?.info?.wineAtServer?.korName
+        self.engName.text = wineInfo?.info?.wineAtServer?.engName
         self.tableView.reloadData()
     }
 }
@@ -67,7 +67,10 @@ extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineDetailCell", for: indexPath) as? WineDetailCell
         else { return UITableViewCell() }
-        guard let item = TableItem(rawValue: indexPath.row), let wine = self.wineInfo?.wine else { return UITableViewCell() }
+        guard let item = TableItem(rawValue: indexPath.row),
+              let vintage = self.wineInfo?.vintage,
+              let wine = self.wineInfo?.info?.wineAtServer
+        else { return UITableViewCell() }
         
         switch item {
         case .cepage:
@@ -75,7 +78,9 @@ extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
         case .from:
             cell.update(("생산지", wine.from)); return cell
         case .vintage:
-            cell.update(("빈티지", wine.vintage)); return cell
+            //TODO: 문용: 빈티지 어디서 받아오나요?
+            cell.update(("빈티지", vintage));
+            return cell
         case .alchol:
             cell.update(("도수", wine.alcohol)); return cell
         }

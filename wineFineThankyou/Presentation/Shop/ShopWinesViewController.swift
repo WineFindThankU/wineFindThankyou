@@ -42,7 +42,7 @@ class ShopWinesViewController: UIViewController {
     
     private func setUpWineTypeLabel(){
         let info = wineInfos[crntIndex]
-        guard let wineType = info.wine?.type else {
+        guard let wineType = info.wineAtServer?.type else {
             wineTypeLabel.isHidden = true
             return
         }
@@ -112,14 +112,15 @@ class ShopWinesViewController: UIViewController {
 extension ShopWinesViewController {
     private func updateUI(){
         self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wineInfos.count)"
-        self.wineInfoView.wineInfo = wineInfos[self.crntIndex]
-        guard let wine = wineInfos[self.crntIndex].wine else {
+        let wineInfo = wineInfos[self.crntIndex]
+        self.wineInfoView.wineInfo = ("", wineInfo)
+        guard let wineType = wineInfos[self.crntIndex].wineAtServer?.type else {
             wineTypeLabel.isHidden = true
             return
         }
         wineTypeLabel.isHidden = false
-        wineTypeLabel.text = wine.type.str
-        wineTypeLabel.backgroundColor = wine.type.color
+        wineTypeLabel.text = wineType.str
+        wineTypeLabel.backgroundColor = wineType.color
     }
 }
 

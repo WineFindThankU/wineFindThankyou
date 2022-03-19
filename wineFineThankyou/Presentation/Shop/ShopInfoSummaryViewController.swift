@@ -84,7 +84,7 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         shopName.text = shop.nnName
         shopName.font = .boldSystemFont(ofSize: 20)
         shopName.textColor = Theme.blacktext.color
-        shopClassification.text = shop.type.str
+        shopClassification.text = shop.type?.str
         shopClassification.font = .systemFont(ofSize: 13)
         shopClassification.textColor = Theme.blacktext.color
         imageView.image = UIImage(named: "rightArrow")
@@ -106,7 +106,11 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell
         else { return UICollectionViewCell() }
-        cell.wineInfo = shop.userWines[indexPath.row]
+        //TODO: 문용. 무엇을 넘겨야 하는가?
+        let userWine = shop.userWines[indexPath.row]
+        let name = userWine.wineAtServer?.korName ?? userWine.name
+        let img = userWine.wineAtServer?.img
+        cell.tupleVal = (name, img)
         
         if indexPath.row == 2, isMoreThree {
             cell.setMoreView(shop.userWines.count - 3)

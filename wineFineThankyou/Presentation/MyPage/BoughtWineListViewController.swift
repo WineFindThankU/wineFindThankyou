@@ -8,13 +8,19 @@
 import UIKit
 
 class BoughtWineListViewController: MyPageListViewController {
-    //MARK: TEST
+    var shopsDetail = [ShopDetail]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setShopInfo()
     }
-    
+    private func setShopInfo() {
+        shopsDetail.removeAll()
+        shopsDetail.append(contentsOf: self.boughtWines.compactMap {
+            $0.shopDetail
+        })
+    }
     private func deleteWine(_ key: String) {
         AFHandler.deleteWine(key) {
             //MARK: 삭제 성공/실패에 따라 다르게 적용
@@ -36,21 +42,22 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wineInfos2.count
+        return boughtWines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineInfoTableViewCell", for: indexPath) as? WineInfoTableViewCell else { return UITableViewCell() }
+        cell.shopDetail = self.shopsDetail[indexPath.row]
         
-//        let wineInfo = wineInfos2[indexPath.row]
-//        cell.shop = shops.first{ $0.key == wineInfo.shopFk }
-//        cell.wineInfo = wineInfo
+        let boughtWine = boughtWines[indexPath.row]
+        cell.wineInfo = boughtWine.wineInfo
         cell.shopDeleteBtnClosure = { [weak self] in
-            //MARK: wineKEY 전달
-            self?.deleteWine("WINEINFO KEY STRING")
+            self?.deleteWine(boughtWine.wineInfo?.key ?? "")
         }
-        cell.shopBtnClosure = { [weak self] in
-//            self?.goToShop()
+        
+        cell.shopBtnClosure = {
+            guard let shopKey = boughtWine.shopDetail?.key else { return }
+            self.goToShop(shopKey)
         }
         return cell
     }

@@ -16,7 +16,7 @@ class WineInfoTableViewCell: UITableViewCell {
         let alchol : WineInfoDetailView
     }
     
-    var shop: Shop?
+    var shopDetail: ShopDetail?
     var wineInfo: WineInfo? {
         didSet { updateUI() }
     }
@@ -47,19 +47,25 @@ class WineInfoTableViewCell: UITableViewCell {
     
     private func updateUI() {
         wineImg?.image = wineInfo?.img
-        guard let wine = wineInfo?.wine else { return }
+        guard let wineInfo = wineInfo else { return }
         
-        tagLabel?.backgroundColor = wine.type.color
-        tagLabel?.text = wine.type.str
-        wineKorName?.text = wine.korName
-        wineEngName?.text = wine.engName
         
-        wineInfoDetailsView?.cepage.info = ("품종", wine.cepage)
-        wineInfoDetailsView?.from.info = ("생산지", wine.from)
-        wineInfoDetailsView?.vintage.info = ("빈티지", wine.vintage)
-        wineInfoDetailsView?.alchol.info = ("도수", wine.alcohol)
-        wineShopName?.text = shop?.nnName
-        boughtDate?.text = wine.boughtDate?.yyyyMMdd()
+        guard let wineAtServer = wineInfo.wineAtServer else { return }
+        wineInfoDetailsView?.cepage.info = ("품종", wineAtServer.cepage)
+        wineInfoDetailsView?.from.info = ("생산지", wineAtServer.from)
+        wineInfoDetailsView?.alchol.info = ("도수", wineAtServer.alcohol)
+        wineKorName?.text = wineAtServer.korName
+        wineEngName?.text = wineAtServer.engName
+        
+        guard let wineType = wineAtServer.type else { return }
+        tagLabel?.backgroundColor = wineType.color
+        tagLabel?.text = wineType.str
+        wineShopName?.text = shopDetail?.name
+        
+        //TODO: 문용
+        // 빈티지와 구입일자는 어디서 받아오는가?
+//        wineInfoDetailsView?.vintage.info = ("빈티지", wine.vintage)
+//        boughtDate?.text = wine.boughtDate?.yyyyMMdd()
     }
     
     private func setConstraint() {

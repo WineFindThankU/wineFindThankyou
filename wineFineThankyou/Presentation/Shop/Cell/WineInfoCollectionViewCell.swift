@@ -12,10 +12,11 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var img: UIImageView!
     @IBOutlet private weak var name: UILabel!
     @IBOutlet weak var labelMore: UILabel!
-    
-    internal var wineInfo: WineInfo? {
+
+    internal var tupleVal: (name: String?, img: UIImage?)? {
         didSet { updateUI() }
     }
+    
     internal func setBackgroundColor() {
         self.layer.cornerRadius = 12
         self.back.layer.cornerRadius = 12
@@ -37,14 +38,13 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateUI() {
-        guard let wineInfo = wineInfo else {
-            return
-        }
+        guard let tupleVal = tupleVal else { return }
+        
         img.isHidden = false
         //MARK: 와인이미지 데이터는 어떻게 처리할 것인가 고민 필요.
         img.contentMode = .scaleAspectFit
-        name.text = wineInfo.name
-        guard let wImg = wineInfo.img else {
+        name.text = tupleVal.name
+        guard let wImg = tupleVal.img else {
             return
         }
         img.image = wImg

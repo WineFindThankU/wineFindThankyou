@@ -76,16 +76,17 @@ extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         
         switch buttonType {
         case .recentlyBoughtWine:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell,
+                  let boughtWine = self.cellInfos[indexPath.row] as? BoughtWine
             else { return UICollectionViewCell() }
             
-            cell.wineInfo = self.cellInfos[indexPath.row] as? WineInfo
+            cell.tupleVal = (boughtWine.name, boughtWine.img)
             return cell
         case .recentlyVisitedShop, .favoriteShop:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineShopCell", for: indexPath) as? WineShopCell
             else { return UICollectionViewCell() }
             
-            cell.shop = self.cellInfos[indexPath.row] as? Shop
+            cell.shop = self.cellInfos[indexPath.row] as? VisitedShop
             return cell
         }
     }

@@ -1,0 +1,56 @@
+"sh_url" : null,
+    "sh_bookmark" : false,
+    "sh_category" : "CONVENIENCE",
+    "sh_latitude" : 37.350214999999999,
+    "userWines" : [
+      {
+        "uw_no" : "cl0x30sv415056h62yq2yd1gt",
+        "uw_name" : "요리오",
+        "uw_img" : null,
+        "wine" : {
+          "wn_img" : null,
+          "wn_kind" : "몬테풀치아노 (Montepulciano) 100%",
+          "wn_category" : "레드",
+          "wn_name" : "우마니론끼, 요리오 몬텔풀치아노 다부르쪼",
+          "wn_country" : "이탈리아(Italia)",
+          "wn_name_en" : "Umani Ronchi, Jorio Montepulciano d'Abruzzo",
+          "wn_alcohol" : "13.5 %",
+          "wn_no" : "cl096cp821148831m0hdqhh7i3"
+        }
+      }
+    ],
+    "sh_address" : "경기도 성남시 분당구 구미로173번길 82, (구미동)",
+    "sh_no" : "cl09oopqe0215eh4r5year3jq",
+    "sh_name" : "CU분당서울대학교병원점",
+    "sh_tell" : "031-716-3323",
+    "sh_longitude" : 127.123588
+}
+
+"wine" : {
+  "count" : 7,
+  "data" : [
+    {
+        "uw_no" : "cl0x30sv415056h62yq2yd1gt",
+        "uw_name" : "요리오",
+        "uw_country" : "이탈리아",
+        "uw_vintage" : "2009",
+        "purchased_at" : "2021-03-18T15:00:00.000Z",
+        "shop" : {
+            "sh_time" : null,
+            "sh_name" : "CU분당서울대학교병원점",
+            "sh_category" : "CONVENIENCE",
+            "sh_url" : null,
+            "sh_no" : "cl09oopqe0215eh4r5year3jq"
+        },
+        "wine" : {
+            "wn_img" : null,
+            "wn_kind" : "몬테풀치아노 (Montepulciano) 100%",
+            "wn_category" : "레드",
+            "wn_name" : "우마니론끼, 요리오 몬텔풀치아노 다부르쪼",
+            "wn_country" : "이탈리아(Italia)",
+            "wn_name_en" : "Umani Ronchi, Jorio Montepulciano d'Abruzzo",
+            "wn_alcohol" : "13.5 %",
+            "wn_no" : "cl096cp821148831m0hdqhh7i3"
+        }
+    },
+

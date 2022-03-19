@@ -17,7 +17,6 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet weak var myProfileViewHeight: NSLayoutConstraint!
     var originHeight: CGFloat! = 0
     var user: User!
-    var wineInfos = [WineInfo]()
     var boughtWines = [BoughtWine]()
     var visitedWineShops = [VisitedShop]()
     var favoritesWineShops = [VisitedShop]()
@@ -114,12 +113,9 @@ extension MyPageViewController {
         }
         
         func getBoughtWine() -> [Int] {
-            var wines = [Int]()
-            WineType.allCases.forEach { type in
-                boughtWines.compactMap({ $0})
-                wines.append(wineInfos.compactMap { $0.wine?.type }.filter { $0 == type }.count)
+            return WineType.allCases.compactMap { type in
+                boughtWines.compactMap { $0.wineInfo?.wineAtServer?.type }.filter { $0 == type }.count
             }
-            return wines
         }
     }
     
@@ -129,13 +125,12 @@ extension MyPageViewController {
         case .recentlyBoughtWine:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
-            vc.wineInfos2 = self.wineInfos
-            vc.shops = self.visitedWineShops
+            vc.boughtWines = self.boughtWines
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
-            vc.wineInfos2 = wineInfos
+            vc.boughtWines = boughtWines
             vc.shops = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
             presentVc(vc)
         }
@@ -181,7 +176,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         cell.sectionType = MypageTableViewSection(rawValue: indexPath.section) ?? MypageTableViewSection.recentlyBoughtWine
         
         if type == .recentlyBoughtWine {
-            cell.cellInfos = self.wineInfos
+            cell.cellInfos = self.boughtWines
         } else {
             cell.cellInfos = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
         }

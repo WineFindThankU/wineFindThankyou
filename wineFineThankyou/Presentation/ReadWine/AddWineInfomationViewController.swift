@@ -296,9 +296,9 @@ extension AddWineInfomationViewController {
     
     private func setValueOnTextFields(){
         DispatchQueue.main.async { [weak self] in
-            let name = self?.wineAtServer.koreanName ?? ""
-            let from = self?.wineAtServer.wineCountry ?? ""
-            self?.additionalWineInfo = (name, "", from, "")
+            let name = self?.wineAtServer.korName
+            let from = self?.wineAtServer.from
+            self?.additionalWineInfo = (name ?? "", "", from ?? "", "")
             self?.textFieldName?.text = self?.additionalWineInfo.name
             self?.textFieldFrom?.text = self?.additionalWineInfo.from
             self?.textFieldVintage?.text = self?.additionalWineInfo.vintage
@@ -384,7 +384,7 @@ extension AddWineInfomationViewController {
     private func showWinesInfoServer(_ winesAtServer: [WineAtServer], done:((WineAtServer) -> Void)?) {
         let wineListDialog = WineListDialog()
         
-        let nameArr = winesAtServer.compactMap {$0.koreanName}
+        let nameArr = winesAtServer.compactMap { $0.korName }
         wineListDialog.wineListArray.removeAll()
         wineListDialog.wineListArray.append(contentsOf: nameArr)
         

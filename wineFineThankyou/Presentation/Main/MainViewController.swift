@@ -96,7 +96,7 @@ extension MainViewController {
             vc.user = myPageData.user
             vc.visitedWineShops = myPageData.visitedShops ?? []
             vc.favoritesWineShops = myPageData.bookmarkedShops ?? []
-            vc.wineInfos
+            vc.boughtWines = myPageData.boughtWines
             DispatchQueue.main.async {
                 self.present(vc, animated: true)
             }

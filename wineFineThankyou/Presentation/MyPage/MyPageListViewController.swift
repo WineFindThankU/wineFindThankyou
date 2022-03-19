@@ -12,7 +12,7 @@ class MyPageListViewController: UIViewController {
     unowned var tableView: UITableView!
     
     internal var shops: [VisitedShop] = []
-    internal var wineInfos2: [WineInfo] = []
+    internal var boughtWines: [BoughtWine] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraint()
@@ -70,10 +70,17 @@ class MyPageListViewController: UIViewController {
     
     @objc
     func goToShop(_ shopKey: String) {
-        guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoViewController.identifier) as? ShopInfoViewController else { return }
-//        vc.wineInfos = wineInfos.filter { $0.shopFk == shopKey }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoViewController.identifier) as? ShopInfoViewController
+        else { return }
+        
+        AFHandler.shopDetail(shopKey) {
+            guard let shop = $0 else { return }
+            vc.shop = shop
+            vc.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async {
+                self.present(vc, animated: true)
+            }
+        }
     }
     
     @objc
