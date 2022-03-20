@@ -193,10 +193,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
         cell.selectionStyle = .none
         tableView.deselectRow(at: indexPath, animated: false)
-        print("======> \(indexPath.row)")
+        
         let keyword = searchingShopViewModel[indexPath.row].sh_no
-        print(keyword)
-        MainViewController().openShop(keyword)
+        AFHandler.shopDetail(keyword) { shop in
+            guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
+
+            vc.modalPresentationStyle = .overFullScreen
+            vc.shop = shop
+            DispatchQueue.main.async { [weak self] in
+                self?.present(vc, animated: true)
+            }
+        }
     }
 }
 
