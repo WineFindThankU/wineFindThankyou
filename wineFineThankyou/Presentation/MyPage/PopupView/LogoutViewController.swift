@@ -34,6 +34,7 @@ final class PopupViewController: UIViewController {
         button.backgroundColor = .white
         button.layer.cornerRadius = 1
         button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.red.cgColor
         let action = UIAction { _ in
             self.dismiss(animated: true)
@@ -84,7 +85,7 @@ final class PopupViewController: UIViewController {
 
     private func setupLayout() {
         alertView.snp.makeConstraints { make in
-            make.width.equalTo(310)
+            make.width.equalTo(280)
             make.height.equalTo(194)
             make.centerY.centerX.equalToSuperview()
         }
@@ -95,16 +96,16 @@ final class PopupViewController: UIViewController {
         }
     
         cancelButton.snp.makeConstraints { make in
-            make.height.equalTo(127)
-            make.width.equalTo(44)
-            make.leading.equalToSuperview().inset(20)
+            make.height.equalTo(37)
+            make.width.equalTo(100)
+            make.leading.equalToSuperview().offset(30)
             make.bottom.equalToSuperview().offset(-24)
         }
 
         logoutButton.snp.makeConstraints { make in
-            make.height.equalTo(127)
-            make.width.equalTo(44)
-            make.trailing.equalToSuperview().offset(20)
+            make.height.equalTo(37)
+            make.width.equalTo(100)
+            make.leading.equalTo(cancelButton.snp.trailing).offset(20)
             make.bottom.equalToSuperview().offset(-24)
         }
     }
