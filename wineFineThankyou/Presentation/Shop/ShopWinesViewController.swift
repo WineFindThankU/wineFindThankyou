@@ -113,7 +113,7 @@ extension ShopWinesViewController {
     private func updateUI(){
         self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wineInfos.count)"
         let wineInfo = wineInfos[self.crntIndex]
-        self.wineInfoView.wineInfo = ("", wineInfo)
+        self.wineInfoView.wineInfo = (wineInfo.vintage, wineInfo)
         guard let wineType = wineInfos[self.crntIndex].wineAtServer?.type else {
             wineTypeLabel.isHidden = true
             return

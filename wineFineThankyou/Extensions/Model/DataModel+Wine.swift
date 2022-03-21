@@ -35,11 +35,13 @@ class BoughtWine {
 class WineInfo {
     let key: String
     let name: String
+    let vintage: String
     let wineAtServer: WineAtServer?
     let img: UIImage?
     init(_ params: JSON) {
         self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
         self.name = params["uw_name"].string ?? ""   //"",
+        self.vintage = params["uw_vintage"].string ?? ""
         self.wineAtServer = WineAtServer(params["wine"])
         guard let data = try? params["wn_img"].rawData(),
               let img = UIImage(data: data)

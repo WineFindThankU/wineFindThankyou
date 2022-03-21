@@ -106,7 +106,7 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell
         else { return UICollectionViewCell() }
-        //TODO: 문용. 무엇을 넘겨야 하는가?
+        
         let userWine = shop.userWines[indexPath.row]
         let name = userWine.wineAtServer?.korName ?? userWine.name
         let img = userWine.wineAtServer?.img
