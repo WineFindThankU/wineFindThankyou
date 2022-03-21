@@ -163,6 +163,7 @@ final class WalkthroughFourthViewController: UIViewController {
         }
         
         nextButton.snp.makeConstraints { make in
+            make.top.equalTo(thirdLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(50)
             make.height.width.equalTo(69)
