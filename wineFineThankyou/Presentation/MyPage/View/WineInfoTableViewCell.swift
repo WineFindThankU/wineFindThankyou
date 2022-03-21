@@ -48,7 +48,8 @@ class WineInfoTableViewCell: UITableViewCell {
     private func updateUI() {
         wineImg?.image = wineInfo?.img
         guard let wineInfo = wineInfo else { return }
-        
+        wineInfoDetailsView?.vintage.info = ("빈티지", wineInfo.vintage)
+//        boughtDate?.text = wineInfo.boughtDate?.yyyyMMdd()
         
         guard let wineAtServer = wineInfo.wineAtServer else { return }
         wineInfoDetailsView?.cepage.info = ("품종", wineAtServer.cepage)
@@ -61,11 +62,6 @@ class WineInfoTableViewCell: UITableViewCell {
         tagLabel?.backgroundColor = wineType.color
         tagLabel?.text = wineType.str
         wineShopName?.text = shopDetail?.name
-        
-        //TODO: 문용
-        // 빈티지와 구입일자는 어디서 받아오는가?
-//        wineInfoDetailsView?.vintage.info = ("빈티지", wine.vintage)
-//        boughtDate?.text = wine.boughtDate?.yyyyMMdd()
     }
     
     private func setConstraint() {
