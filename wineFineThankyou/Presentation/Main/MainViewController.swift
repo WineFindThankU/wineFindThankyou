@@ -276,6 +276,8 @@ extension MainViewController: NMFMapViewCameraDelegate {
                 else { return false }
                 
                 marker.iconImage = NMFOverlayImage(image: img)
+                marker.width = 48
+                marker.height = 59
                 marker.captionText = shop.nnName
                 self?.updateFocus(lat, long)
                 self?.openShop(key)
