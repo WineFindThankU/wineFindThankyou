@@ -240,4 +240,31 @@ class UserData {
             UserDefaults.standard.setValue(jsonData, forKey: "LoginInfo")
         }
     }
+    
+    static var beforeSearched: String {
+        get {
+            guard let savedData = UserDefaults.standard.string(forKey: "BeforeSearched")
+            else { return "" }
+            return savedData
+        }
+        set(val) {
+            guard val != "NULL" else {
+                UserDefaults.standard.set("", forKey: "BeforeSearched")
+                return
+            }
+            
+            guard let prevSaved = UserDefaults.standard.string(forKey: "BeforeSearched")
+            else {
+                UserDefaults.standard.set(val, forKey: "BeforeSearched")
+                return
+            }
+            
+            var newSavedVal = ""
+            Array(Set(prevSaved.components(separatedBy: ","))).forEach {
+                newSavedVal += ("," + $0)
+            }
+            newSavedVal += ("," + val)
+            UserDefaults.standard.set(newSavedVal, forKey: "BeforeSearched")
+        }
+    }
 }

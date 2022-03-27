@@ -20,16 +20,23 @@ protocol SearchingShopDisplayLogic: AnyObject {
 }
 
 class SearchViewController: UIViewController {
-    var shop: Shop?
-    var searchingShopViewModel: [SearchingShopViewModel] = []
-    private weak var topView: TopView?
-    @IBOutlet weak var searchCollectionView: UICollectionView!
-    @IBOutlet weak var searchingTableView: UITableView!
-    @IBOutlet weak var emptySearchHistory: UIView!
-    @IBOutlet weak var searchingView: UIView!
-    @IBOutlet weak var viewLine: UIView!
-    @IBOutlet weak var textField: UITextField!
-    
+    @IBOutlet private weak var searchCollectionView: UICollectionView!
+    @IBOutlet private weak var searchingTableView: UITableView!
+    @IBOutlet private weak var emptySearchHistory: UIView!
+    @IBOutlet private weak var searchingView: UIView!
+    @IBOutlet private weak var viewLine: UIView!
+    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet weak var beforeSearchedTitle: UILabel!
+    @IBOutlet private weak var searchingViewTop: NSLayoutConstraint!
+    private var searchingShopViewModel: [SearchingShopViewModel] = []
+    private var isBeforeSearchedPrint = true
+    private var beforeSearched: [String] {
+        if isBeforeSearchedPrint {
+            return UserData.beforeSearched.components(separatedBy: ",").filter{ !$0.isEmpty }.reversed()
+        } else {
+            return []
+        }
+    }
     private let shopNames: [String] = [
             "서현동",
             "행정동",
@@ -41,6 +48,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupTableView()
+        setAdditionalView()
     }
     
     @IBAction func onClickDismiss(_ sender: Any) {
@@ -49,29 +57,33 @@ class SearchViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        emptySearchHistory.isHidden = false
-        searchingView.isHidden = true
         setupCollectionView()
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        searchingView.isHidden = false
-        DispatchQueue.main.async {
-            self.searchingTableView.reloadData()
+        if textField.text?.isEmpty == true {
+            self.isBeforeSearchedPrint = true
+        } else {
+            self.isBeforeSearchedPrint = false
         }
-        getSearchWineShop()
+        searchingView.isHidden = false
+        searchingViewTop.constant = isBeforeSearchedPrint ? 150 + beforeSearchedTitle.frame.height : 20
+        
+        getSearchWineShop {
+            DispatchQueue.main.async {
+                self.searchingTableView.reloadData()
+            }
+        }
     }
     
-    private func getSearchWineShop() {
+    private func getSearchWineShop(done: (() -> Void)?) {
         guard let text = textField.text else { return }
         
         AFHandler.searchShop(byKeyword: text, done: { response in
             self.searchingShopViewModel.removeAll()
             self.searchingShopViewModel.append(contentsOf: response)
-            DispatchQueue.main.async {
-                self.searchingTableView.reloadData()
-            }
+            done?()
         })
     }
     
@@ -90,6 +102,20 @@ class SearchViewController: UIViewController {
     private func setupTableView() {
         searchingTableView.delegate = self
         searchingTableView.dataSource = self
+    }
+    
+    private func setAdditionalView() {
+        if beforeSearched.isEmpty {
+            emptySearchHistory.isHidden = false
+            searchingView.isHidden = true
+            searchingViewTop.constant = 20
+        } else {
+            emptySearchHistory.isHidden = true
+            searchingView.isHidden = false
+            searchingViewTop.constant = 150 + beforeSearchedTitle.frame.height
+            
+            self.searchingTableView.reloadData()
+        }
     }
 }
 
@@ -163,17 +189,26 @@ final class SearchCollectionViewCell: UICollectionViewCell {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchingShopViewModel.count
+        guard isBeforeSearchedPrint else {
+            return searchingShopViewModel.count
+        }
+        
+        return beforeSearched.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
-        cell.searhingShopViewModel = searchingShopViewModel[indexPath.row]
+        cell.isDelete = isBeforeSearchedPrint
+        guard !isBeforeSearchedPrint else {
+            cell.labelText = beforeSearched[indexPath.row]
+            cell.closeBtnClosure = {
+                DispatchQueue.main.async { tableView.reloadData() }
+            }
+            return cell
+        }
+        cell.labelText = searchingShopViewModel[indexPath.row].sh_name
+        
         return cell
     }
     
@@ -181,8 +216,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
         cell.selectionStyle = .none
         tableView.deselectRow(at: indexPath, animated: false)
+        guard !isBeforeSearchedPrint else {
+            let searched = beforeSearched[indexPath.row]
+            textField.text = searched
+            self.textFieldDidChange(textField)
+            return
+        }
+        
         let keyword = searchingShopViewModel[indexPath.row].sh_no
         guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
+        
+        if let txt = textField.text {
+            UserData.beforeSearched = txt
+        }
         
         DispatchQueue.main.async {
             AFHandler.shopDetail(keyword) { shop in
@@ -190,7 +236,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                     guard let topVC = topViewController() else { return }
                     vc.modalPresentationStyle = .overFullScreen
                     vc.shop = shop
-                    DispatchQueue.main.async { [weak self] in
+                    DispatchQueue.main.async {
                         topVC.present(vc, animated: true)
                     }
                 }
@@ -202,23 +248,41 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 final class SearchingTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
-    var searhingShopViewModel: SearchingShopViewModel? = nil {
-        didSet {
-            guard titleLabel != nil else { return }
-            configureSetting()
+    @IBOutlet private weak var imgView: UIImageView!
+    @IBOutlet private weak var rightBtn: UIButton!
+    internal var closeBtnClosure: (() -> Void)?
+    internal var isDelete: Bool = false
+    internal var labelText: String = "" {
+        didSet { configure() }
+    }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func configure() {
+        guard let titleLabel = titleLabel else { return }
+        titleLabel.text = labelText
+        imgView.image = UIImage(named: "leftTopArrow")
+        imgView.contentMode = .scaleAspectFill
+        if isDelete {
+            imgView.isHidden = true
+            rightBtn.isHidden = false
+        } else {
+            imgView.isHidden = false
+            rightBtn.isHidden = true
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    func configureSetting() {
-        titleLabel.text = searhingShopViewModel?.sh_name
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        titleLabel = .none
+    @IBAction func rightBtnAction(_ sender: UIButton) {
+        let newValues = UserData.beforeSearched.components(separatedBy: ",").filter { $0 != labelText }
+        UserData.beforeSearched = "NULL"
+        newValues.forEach {
+             UserData.beforeSearched = $0
+        }
+        closeBtnClosure?()
     }
 }
