@@ -61,9 +61,6 @@ class MainViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: 27),
         ])
         button.contentEdgeInsets = UIEdgeInsets(top: 4.0, left: 8.0, bottom: 4.0, right: 8.0)
-        button.setTitle("TEST", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        
         button.setTitle(title: "이 지역에서 재검색", colorHex: 0x00,
                         backColor: .white, font: .systemFont(ofSize: 12))
         button.layer.cornerRadius = 11

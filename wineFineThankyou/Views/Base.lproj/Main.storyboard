@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ik4-fZ-hmg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ik4-fZ-hmg">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Xd-d4-Joe">
-                                        <rect key="frame" x="110" y="12" width="155.5" height="26"/>
+                                        <rect key="frame" x="130" y="12" width="115.5" height="26"/>
                                         <color key="pageIndicatorTintColor" red="0.87833553549999999" green="0.87848657370000005" blue="0.8783260584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -459,48 +459,43 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchingTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchingTableViewCell" id="E2d-Bs-Hrn" customClass="SearchingTableViewCell" customModule="wineFindThankyou" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="338" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="338" height="50.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E2d-Bs-Hrn" id="Oou-ND-xIe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="338" height="52.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="338" height="50.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40G-Oi-Xay">
-                                                            <rect key="frame" x="16" y="16" width="20.5" height="20.5"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="Y7y-vO-r2E">
+                                                            <rect key="frame" x="9" y="13.5" width="24" height="24"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="RUE-KH-y5b"/>
+                                                                <constraint firstAttribute="height" constant="24" id="6ap-Xv-qB7"/>
+                                                                <constraint firstAttribute="width" constant="24" id="FzU-Sf-jca"/>
                                                             </constraints>
-                                                            <color key="tintColor" red="0.078431375319999996" green="0.1019607931" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="magnifyingglass" catalog="system"/>
-                                                        </button>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뱅가드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPs-R4-OZ6">
-                                                            <rect key="frame" x="44.5" y="16" width="253.5" height="20.5"/>
+                                                            <rect key="frame" x="40" y="16" width="258" height="18.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.082352943720000002" green="0.1019607931" blue="0.1294117719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-w0-v3T">
-                                                            <rect key="frame" x="306" y="16" width="16" height="20.5"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SR1-9V-WRu">
+                                                            <rect key="frame" x="294" y="16" width="24" height="18.5"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="eXs-S0-COd"/>
+                                                                <constraint firstAttribute="width" constant="24" id="F9B-HH-dWT"/>
+                                                                <constraint firstAttribute="height" constant="24" id="RLI-po-ExN"/>
                                                             </constraints>
-                                                            <color key="tintColor" red="0.078431375319999996" green="0.1019607931" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="arrow.up.backward" catalog="system"/>
-                                                        </button>
+                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="40G-Oi-Xay" firstAttribute="top" secondItem="Oou-ND-xIe" secondAttribute="top" constant="16" id="1nu-qK-vZp"/>
-                                                        <constraint firstItem="q8C-w0-v3T" firstAttribute="top" secondItem="Oou-ND-xIe" secondAttribute="top" constant="16" id="7TZ-sh-gU3"/>
+                                                        <constraint firstItem="Y7y-vO-r2E" firstAttribute="centerY" secondItem="Oou-ND-xIe" secondAttribute="centerY" id="9gd-VO-1Zt"/>
                                                         <constraint firstAttribute="bottom" secondItem="TPs-R4-OZ6" secondAttribute="bottom" constant="16" id="DB0-Nz-0Dv"/>
-                                                        <constraint firstAttribute="trailing" secondItem="q8C-w0-v3T" secondAttribute="trailing" constant="16" id="Wzr-uX-g7Y"/>
-                                                        <constraint firstItem="TPs-R4-OZ6" firstAttribute="leading" secondItem="40G-Oi-Xay" secondAttribute="trailing" constant="8" id="bFt-8G-txA"/>
+                                                        <constraint firstItem="SR1-9V-WRu" firstAttribute="centerY" secondItem="Oou-ND-xIe" secondAttribute="centerY" id="Dfy-BK-QH1"/>
+                                                        <constraint firstItem="TPs-R4-OZ6" firstAttribute="leading" secondItem="Y7y-vO-r2E" secondAttribute="trailing" constant="7" id="Fl6-k6-GcF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SR1-9V-WRu" secondAttribute="trailing" constant="20" id="Puf-de-Xf2"/>
                                                         <constraint firstItem="TPs-R4-OZ6" firstAttribute="top" secondItem="Oou-ND-xIe" secondAttribute="top" constant="16" id="bH7-1q-glO"/>
-                                                        <constraint firstAttribute="bottom" secondItem="q8C-w0-v3T" secondAttribute="bottom" constant="16" id="obD-lS-TKh"/>
+                                                        <constraint firstItem="Y7y-vO-r2E" firstAttribute="leading" secondItem="Oou-ND-xIe" secondAttribute="leading" constant="9" id="khe-fp-gkV"/>
                                                         <constraint firstAttribute="trailing" secondItem="TPs-R4-OZ6" secondAttribute="trailing" constant="40" id="tUv-8h-OVp"/>
-                                                        <constraint firstItem="40G-Oi-Xay" firstAttribute="leading" secondItem="Oou-ND-xIe" secondAttribute="leading" constant="16" id="ucu-gB-REn"/>
-                                                        <constraint firstAttribute="bottom" secondItem="40G-Oi-Xay" secondAttribute="bottom" constant="16" id="wOX-cD-odw"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -581,13 +576,12 @@
         <image name="EmptySearch" width="34" height="34"/>
         <image name="LaunchTitle" width="175" height="70"/>
         <image name="Quetion" width="69" height="69"/>
-        <image name="Search Box2" width="37" height="36"/>
+        <image name="Search Box2" width="343" height="36"/>
         <image name="Search bar" width="343" height="36"/>
-        <image name="Tag" width="20.5" height="20"/>
+        <image name="Tag" width="54" height="54"/>
         <image name="arrow-left" width="24" height="24"/>
         <image name="arrow.up.backward" catalog="system" width="128" height="112"/>
         <image name="houseIcon" width="24" height="24"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="personIcon" width="24" height="24"/>
         <image name="search" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">

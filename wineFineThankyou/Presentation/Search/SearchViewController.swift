@@ -15,40 +15,27 @@ struct SearchingShopViewModel {
     var sh_name: String
 }
 
-protocol SearchingShopDisplayLogic: AnyObject
-{
+protocol SearchingShopDisplayLogic: AnyObject {
     func displaySearchProduct(viewModel: SearchingShopViewModel)
 }
 
-
 class SearchViewController: UIViewController {
-    
-    var responseDataCount = 0
     var shop: Shop?
-    
     var searchingShopViewModel: [SearchingShopViewModel] = []
-    
     private weak var topView: TopView?
-    
     @IBOutlet weak var searchCollectionView: UICollectionView!
-    
     @IBOutlet weak var searchingTableView: UITableView!
-    
     @IBOutlet weak var emptySearchHistory: UIView!
-    
     @IBOutlet weak var searchingView: UIView!
-    
     @IBOutlet weak var viewLine: UIView!
-    
     @IBOutlet weak var textField: UITextField!
     
-    private let items: [String] = [
+    private let shopNames: [String] = [
             "서현동",
             "행정동",
             "법정동",
             "이매동"
     ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +46,6 @@ class SearchViewController: UIViewController {
     @IBAction func onClickDismiss(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
-
     
     private func setupView() {
         view.backgroundColor = .white
@@ -78,15 +64,15 @@ class SearchViewController: UIViewController {
     }
     
     private func getSearchWineShop() {
-        if textField.text?.count ?? 0 >= 2 {
-            AFHandler.searchShop(byKeyword: textField.text ?? "", done: { response in
-                self.searchingShopViewModel.removeAll()
-                self.searchingShopViewModel.append(contentsOf: response)
-                DispatchQueue.main.async {
-                    self.searchingTableView.reloadData()
-                }
-            })
-        }
+        guard let text = textField.text else { return }
+        
+        AFHandler.searchShop(byKeyword: text, done: { response in
+            self.searchingShopViewModel.removeAll()
+            self.searchingShopViewModel.append(contentsOf: response)
+            DispatchQueue.main.async {
+                self.searchingTableView.reloadData()
+            }
+        })
     }
     
     private func setupCollectionView() {
@@ -105,28 +91,32 @@ class SearchViewController: UIViewController {
         searchingTableView.delegate = self
         searchingTableView.dataSource = self
     }
-    
 }
 
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return shopNames.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as! SearchCollectionViewCell
-            cell.configure(name: items[indexPath.item])
+            cell.configure(name: shopNames[indexPath.item])
         return cell
     }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return SearchCollectionViewCell.fittingSize(availableHeight: 32, name: items[indexPath.item])
+        return SearchCollectionViewCell.fittingSize(availableHeight: 32, name: shopNames[indexPath.item])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let shopName = shopNames[indexPath.row]
+        textField.text = shopName
+        self.textFieldDidChange(textField)
     }
 }
 
 final class SearchCollectionViewCell: UICollectionViewCell {
-    
     static func fittingSize(availableHeight: CGFloat, name: String?) -> CGSize {
         let cell = SearchCollectionViewCell()
         cell.configure(name: name)
@@ -170,7 +160,6 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     func configure(name: String?) {
         titleLabel.text = name
     }
-    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -183,7 +172,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searhingShop_ViewModel = searchingShopViewModel[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
         cell.searhingShopViewModel = searchingShopViewModel[indexPath.row]
         return cell
@@ -193,15 +181,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchingTableViewCell", for: indexPath) as! SearchingTableViewCell
         cell.selectionStyle = .none
         tableView.deselectRow(at: indexPath, animated: false)
-        
         let keyword = searchingShopViewModel[indexPath.row].sh_no
-        AFHandler.shopDetail(keyword) { shop in
-            guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
-
-            vc.modalPresentationStyle = .overFullScreen
-            vc.shop = shop
-            DispatchQueue.main.async { [weak self] in
-                self?.present(vc, animated: true)
+        guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
+        
+        DispatchQueue.main.async {
+            AFHandler.shopDetail(keyword) { shop in
+                self.dismiss(animated: true) {
+                    guard let topVC = topViewController() else { return }
+                    vc.modalPresentationStyle = .overFullScreen
+                    vc.shop = shop
+                    DispatchQueue.main.async { [weak self] in
+                        topVC.present(vc, animated: true)
+                    }
+                }
             }
         }
     }
@@ -209,23 +201,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 final class SearchingTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    var item: Shop? = nil
+    @IBOutlet private weak var titleLabel: UILabel!
     var searhingShopViewModel: SearchingShopViewModel? = nil {
         didSet {
+            guard titleLabel != nil else { return }
             configureSetting()
         }
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-    }
-        
-    func initSetting(name: String, number: String) {
-        titleLabel.text = name
     }
     
     func configureSetting() {
@@ -236,25 +221,4 @@ final class SearchingTableViewCell: UITableViewCell {
         super.prepareForReuse()
         titleLabel = .none
     }
-    
-}
-
-
-
-extension SearchViewController: UITextFieldDelegate{
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        doSearchShop()
-        return true
-    }
-    
-    func doSearchShop() {
-        let text = textField.text ?? ""
-        AFHandler.searchShop(byKeyword: text, done: { _ in
-            DispatchQueue.main.async {
-                self.searchingTableView.reloadData()
-            }
-        })
-    }
-    
 }
