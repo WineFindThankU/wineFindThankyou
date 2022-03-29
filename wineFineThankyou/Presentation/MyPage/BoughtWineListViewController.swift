@@ -8,20 +8,10 @@
 import UIKit
 
 class BoughtWineListViewController: MyPageListViewController {
-    var shopsDetail = [ShopDetail]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        setShopInfo()
         setAdditionalUI()
-    }
-    
-    private func setShopInfo() {
-        shopsDetail.removeAll()
-        shopsDetail.append(contentsOf: self.boughtWines.compactMap {
-            $0.shopDetail
-        })
     }
     
     private func setAdditionalUI(){
@@ -33,10 +23,17 @@ class BoughtWineListViewController: MyPageListViewController {
         AFHandler.deleteWine(key) {
             //MARK: 삭제 성공/실패에 따라 다르게 적용
             guard $0 == true else { return }
-            self.boughtWines = self.boughtWines.filter { $0.wineInfo?.key != key}
-            self.setShopInfo()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            AFHandler.getMyPageData {
+                guard let myPageData = $0 else { return }
+                self.boughtWines = myPageData.boughtWines
+                self.shops = myPageData.visitedShops
+                self.setAdditionalUI()
+                self.deleteProtocol?.reload(arr: self.boughtWines, type: .boughWine)
+                self.deleteProtocol?.reload(arr: self.shops, type: .recentVisited)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -57,7 +54,7 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineInfoTableViewCell", for: indexPath) as? WineInfoTableViewCell else { return UITableViewCell() }
-        cell.shopDetail = self.shopsDetail[indexPath.row]
+        cell.shopDetail = self.shops[indexPath.row].shopDetail
         
         let boughtWine = boughtWines[indexPath.row]
         cell.wineInfo = boughtWine.wineInfo

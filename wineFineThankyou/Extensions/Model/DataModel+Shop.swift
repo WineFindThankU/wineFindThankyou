@@ -14,6 +14,7 @@ class ShopDetail {
     let shopType: ShopType
     let url: String
     let time: String
+    let imgUrlStr: String?
     init(_ param: JSON) {
         self.key = param["sh_no"].string ?? ""
         self.name = param["sh_name"].string ?? ""
@@ -21,6 +22,7 @@ class ShopDetail {
         self.time = param["sh_time"].string ?? ""
         let typeStr = param["sh_category"].string ?? ""
         self.shopType = ShopType.allOfCases.first(where:  { $0.typeStr == typeStr }) ?? .privateShop
+        self.imgUrlStr = param["sh_img"].string
     }
 }
 

@@ -8,7 +8,34 @@
 import Foundation
 import UIKit
 
-class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
+protocol DeleteProtocol: AnyObject {
+    func reload(arr: [Any], type: MyPageType)
+}
+
+class MyPageViewController : UIViewController, DeleteProtocol {
+    func reload(arr: [Any], type: MyPageType) {
+        switch type {
+        case .boughWine:
+            guard let boughtWines = arr as? [BoughtWine] else { return }
+            self.boughtWines.removeAll()
+            self.boughtWines.append(contentsOf: boughtWines)
+        case .recentVisited:
+            guard let visitedShops = arr as? [VisitedShop] else { return }
+            self.visitedWineShops.removeAll()
+            self.visitedWineShops.append(contentsOf: visitedShops)
+        case .favorites:
+            guard let favorites = arr as? [VisitedShop] else { return }
+            self.favoritesWineShops.removeAll()
+            self.favoritesWineShops.append(contentsOf: favorites)
+        }
+        
+        DispatchQueue.main.async {
+            self.setGraphView()
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     private weak var topView: TopView?
     @IBOutlet private weak var myProfileView: UIView!
     @IBOutlet private weak var leftStatisticsView: UIView!
@@ -100,13 +127,23 @@ extension MyPageViewController {
         case .recentlyBoughtWine:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: BoughtWineListViewController.identifier) as? BoughtWineListViewController
             else { return }
+            vc.deleteProtocol = self
             vc.boughtWines = self.boughtWines
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
             else { return }
+            vc.deleteProtocol = self
             vc.boughtWines = boughtWines
-            vc.shops = type == .recentlyVisitedShop ? self.visitedWineShops : self.favoritesWineShops
+
+            if type == .recentlyVisitedShop {
+                vc.myShopType = .recentVisited
+                vc.shops = self.visitedWineShops
+            } else if type == .favoriteShop {
+                vc.myShopType = .favorites
+                vc.shops = self.favoritesWineShops
+            }
+            
             presentVc(vc)
         }
         

@@ -13,6 +13,7 @@ class MyPageListViewController: UIViewController {
     internal var titleLabel: UILabel?
     internal var shops: [VisitedShop] = []
     internal var boughtWines: [BoughtWine] = []
+    internal var deleteProtocol: DeleteProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraint()

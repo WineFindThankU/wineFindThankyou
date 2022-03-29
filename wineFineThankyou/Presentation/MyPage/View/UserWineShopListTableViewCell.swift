@@ -9,12 +9,19 @@ import Foundation
 import UIKit
 
 class UserWineShopListTableViewCell: UITableViewCell {
+    private unowned var imgView: UIImageView!
     private unowned var deleteBtn: UIButton!
     private unowned var tagLabel: TagLabel!
     private unowned var shopName: UILabel!
     private unowned var registeredWineCount: UILabel!
     
+    internal var isVisitedType = false {
+        didSet {
+            self.deleteBtn.isHidden = !isVisitedType
+        }
+    }
     internal var wineCount = 0
+    internal var deleteClosure: (() -> Void)?
     internal var shop: VisitedShop? {
         didSet { updateUI() }
     }
@@ -29,6 +36,11 @@ class UserWineShopListTableViewCell: UITableViewCell {
         setDetailConstraint(detailView: setConstraint())
     }
     
+    @objc
+    private func deleteBtnAction() {
+        deleteClosure?()
+    }
+    
     private func updateUI() {
         guard let shop = shop?.shopDetail else { return }
         
@@ -37,6 +49,11 @@ class UserWineShopListTableViewCell: UITableViewCell {
                           font: .systemFont(ofSize: 11))
         shopName.setTitle(title: shop.name, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 13))
         registeredWineCount.setTitle(title: "등록한 와인 \(wineCount)", colorHex: 0x757575, font: .systemFont(ofSize: 11))
+        
+        guard let imgUrlStr = shop.imgUrlStr
+        else { return }
+        
+        self.imgView.setImage(by: imgUrlStr)
     }
     
     private func setDetailConstraint(detailView: UIView) {
@@ -66,6 +83,7 @@ class UserWineShopListTableViewCell: UITableViewCell {
             registeredWineCount.heightAnchor.constraint(equalToConstant: 13)
             ])
         deleteBtn.setTitle(title: "삭제", colorHex: 0x9e9e9e, font: .systemFont(ofSize: 11))
+        deleteBtn.addTarget(self, action: #selector(deleteBtnAction), for: .touchUpInside)
         
         tagLabel.clipsToBounds = true
         tagLabel.layer.cornerRadius = 7
@@ -96,10 +114,8 @@ class UserWineShopListTableViewCell: UITableViewCell {
             detailView.heightAnchor.constraint(equalToConstant: 80),
             detailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
-        
-        imgView.image = UIImage(named: "icon")
-        imgView.contentMode = .scaleAspectFit
 
+        self.imgView = imgView
         return detailView
     }
 }
