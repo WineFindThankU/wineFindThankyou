@@ -55,7 +55,11 @@ class UsersWineShopListViewController: MyPageListViewController {
                 
                 self.setAdditionalUI()
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    if self.shops.isEmpty {
+                        self.dismiss(animated: true)
+                    } else {
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }

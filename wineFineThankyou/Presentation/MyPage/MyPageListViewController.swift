@@ -53,22 +53,15 @@ class MyPageListViewController: UIViewController {
         
         plusButton.backgroundColor = .clear
         plusButton.setBackgroundImage(UIImage(named: "PlusButton"), for: .normal)
-        plusButton.addTarget(self, action: #selector(touchPlusButton), for: .touchUpInside)
+        plusButton.addAction(UIAction { _ in
+            touchPlusButton(self)
+        }, for: .touchUpInside)
         self.view.bringSubviewToFront(plusButton)
         
         self.tableView = tableView
     }
     
-    @objc
-    func touchPlusButton() {
-        guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
-        else { return }
-        
-        vc.modalPresentationStyle = .fullScreen
-        DispatchQueue.main.async {
-            self.present(vc, animated: true)
-        }
-    }
+    
     
     @objc
     func goToShop(_ shopKey: String) {

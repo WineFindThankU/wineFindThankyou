@@ -32,7 +32,11 @@ class BoughtWineListViewController: MyPageListViewController {
                 self.deleteProtocol?.reload(arr: self.shops, type: .recentVisited)
                 
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    if self.boughtWines.isEmpty {
+                        self.dismiss(animated: true)
+                    } else {
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }

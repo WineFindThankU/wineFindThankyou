@@ -12,36 +12,15 @@ protocol DeleteProtocol: AnyObject {
     func reload(arr: [Any], type: MyPageType)
 }
 
-class MyPageViewController : UIViewController, DeleteProtocol {
-    func reload(arr: [Any], type: MyPageType) {
-        switch type {
-        case .boughWine:
-            guard let boughtWines = arr as? [BoughtWine] else { return }
-            self.boughtWines.removeAll()
-            self.boughtWines.append(contentsOf: boughtWines)
-        case .recentVisited:
-            guard let visitedShops = arr as? [VisitedShop] else { return }
-            self.visitedWineShops.removeAll()
-            self.visitedWineShops.append(contentsOf: visitedShops)
-        case .favorites:
-            guard let favorites = arr as? [VisitedShop] else { return }
-            self.favoritesWineShops.removeAll()
-            self.favoritesWineShops.append(contentsOf: favorites)
-        }
-        
-        DispatchQueue.main.async {
-            self.setGraphView()
-            self.tableView.reloadData()
-        }
-    }
-    
-    
+class MyPageViewController : UIViewController {
     private weak var topView: TopView?
-    @IBOutlet private weak var myProfileView: UIView!
+    @IBOutlet private weak var statisticsView: UIView!
     @IBOutlet private weak var leftStatisticsView: UIView!
     @IBOutlet private weak var rightStatisticsView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var scrollViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var whenBeEmptySuperView: UIView!
+    
     private var welcomeView: WelcomeView?
     var user: User!
     var boughtWines = [BoughtWine]()
@@ -71,12 +50,21 @@ class MyPageViewController : UIViewController, DeleteProtocol {
     }
     
     private func setAdditional() {
-        scrollViewHeight.constant = myProfileView.frame.height + tableView.frame.height
+        scrollViewHeight.constant = statisticsView.frame.height + tableView.frame.height
+        
+        if boughtWines.isEmpty, visitedWineShops.isEmpty {
+            let whenBeEmptyView = WhenBeEmptyView()
+            whenBeEmptyView.superView = whenBeEmptySuperView
+            whenBeEmptySuperView.isHidden = false
+            whenBeEmptyView.isOnlyImg = false
+        } else {
+            whenBeEmptySuperView.isHidden = true
+        }
     }
 }
 
 //profileView
-extension MyPageViewController {
+extension MyPageViewController: DeleteProtocol {
     private func setUpTopView() {
         let topView = getGlobalTopView(self.view, height: 44)
         topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
@@ -92,10 +80,24 @@ extension MyPageViewController {
         let welcomeView = WelcomeView()
         self.view.addSubview(welcomeView)
         welcomeView.configure(superView: self.view)
-        let tasteType = Int(user.tasteType) ?? 1
-        //TODO: 마이페이지 이미지 설정 화면
-        welcomeView.userInfo = UserInfo(userImage: UIImage(named: "TestUserImage")!, userType: user.nick, wineType: "로제", userId: "guest\(user.number)")
+        let userTasteType = Int(user.tasteType) ?? 1
+        let imgName = GrapeCase.allCases.first { $0.tasteType == userTasteType }?.getImageName() ?? "costGrape"
+        welcomeView.userInfo = UserInfo(userImage: UIImage(named: imgName)!, userType: user.nick, wineType: calculatingMaxWineType(), userId: "guest\(user.number)")
         self.welcomeView = welcomeView
+        
+        func calculatingMaxWineType() -> String{
+            let boughtWineTypes = boughtWines.compactMap { $0.wineInfo?.wineAtServer?.type }
+            var maxType = WineType.white
+            var maxVal = 0
+            WineType.allCases.forEach { type in
+                let crntVal = boughtWineTypes.filter { type == $0 }.count
+                if maxVal < crntVal  {
+                    maxType = type
+                    maxVal = crntVal
+                }
+            }
+            return maxType.str
+        }
     }
     
     private func setGraphView() {
@@ -129,6 +131,7 @@ extension MyPageViewController {
             else { return }
             vc.deleteProtocol = self
             vc.boughtWines = self.boughtWines
+            vc.shops = visitedWineShops
             presentVc(vc)
         case .recentlyVisitedShop, .favoriteShop:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: UsersWineShopListViewController.identifier) as? UsersWineShopListViewController
@@ -153,6 +156,29 @@ extension MyPageViewController {
                 vc.modalTransitionStyle = .flipHorizontal
                 self.present(vc, animated: true)
             }
+        }
+    }
+    
+    func reload(arr: [Any], type: MyPageType) {
+        switch type {
+        case .boughWine:
+            guard let boughtWines = arr as? [BoughtWine] else { return }
+            self.boughtWines.removeAll()
+            self.boughtWines.append(contentsOf: boughtWines)
+        case .recentVisited:
+            guard let visitedShops = arr as? [VisitedShop] else { return }
+            self.visitedWineShops.removeAll()
+            self.visitedWineShops.append(contentsOf: visitedShops)
+        case .favorites:
+            guard let favorites = arr as? [VisitedShop] else { return }
+            self.favoritesWineShops.removeAll()
+            self.favoritesWineShops.append(contentsOf: favorites)
+        }
+        
+        DispatchQueue.main.async {
+            self.setGraphView()
+            self.setAdditional()
+            self.tableView.reloadData()
         }
     }
 }

@@ -23,7 +23,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXT-JL-2M0">
                                         <rect key="frame" x="0.0" y="20" width="375" height="1000"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JB6-g0-SXB">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JB6-g0-SXB" userLabel="StatisticsView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIJ-Wh-vOP">
@@ -42,12 +42,20 @@
                                                             <constraint firstAttribute="width" constant="168" id="LZy-nE-dnk"/>
                                                         </constraints>
                                                     </view>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKb-v3-3Z5">
+                                                        <rect key="frame" x="8" y="8" width="359" height="289"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="qKb-v3-3Z5" secondAttribute="bottom" constant="8" id="9qV-uC-pBd"/>
                                                     <constraint firstAttribute="height" constant="305" id="D03-rv-B4y"/>
                                                     <constraint firstAttribute="trailing" secondItem="ZQm-wm-77n" secondAttribute="trailing" constant="15" id="G3H-IU-uFY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qKb-v3-3Z5" secondAttribute="trailing" constant="8" id="L0X-aA-80a"/>
+                                                    <constraint firstItem="qKb-v3-3Z5" firstAttribute="top" secondItem="JB6-g0-SXB" secondAttribute="top" constant="8" id="MV7-3o-l7f"/>
                                                     <constraint firstItem="GIJ-Wh-vOP" firstAttribute="top" secondItem="JB6-g0-SXB" secondAttribute="top" constant="8" id="Wc7-Am-QPV"/>
+                                                    <constraint firstItem="qKb-v3-3Z5" firstAttribute="leading" secondItem="JB6-g0-SXB" secondAttribute="leading" constant="8" id="XAK-Vc-7wK"/>
                                                     <constraint firstItem="ZQm-wm-77n" firstAttribute="top" secondItem="JB6-g0-SXB" secondAttribute="top" constant="8" id="k3M-rc-oFT"/>
                                                     <constraint firstItem="GIJ-Wh-vOP" firstAttribute="leading" secondItem="JB6-g0-SXB" secondAttribute="leading" constant="15" id="r1i-Hl-Eqo"/>
                                                 </constraints>
@@ -93,10 +101,11 @@
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="leftStatisticsView" destination="GIJ-Wh-vOP" id="dhf-to-uYF"/>
-                        <outlet property="myProfileView" destination="JB6-g0-SXB" id="m8o-Th-86w"/>
                         <outlet property="rightStatisticsView" destination="ZQm-wm-77n" id="zCF-ar-lFb"/>
                         <outlet property="scrollViewHeight" destination="Chm-bG-ucg" id="VHx-fJ-yIm"/>
+                        <outlet property="statisticsView" destination="JB6-g0-SXB" id="f7I-mS-aVU"/>
                         <outlet property="tableView" destination="oJv-zc-JQJ" id="RRg-wK-vtU"/>
+                        <outlet property="whenBeEmptySuperView" destination="qKb-v3-3Z5" id="Epo-xq-TcG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4h-R7-0Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

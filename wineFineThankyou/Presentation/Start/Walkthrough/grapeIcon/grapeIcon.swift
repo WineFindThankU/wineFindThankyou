@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum GrapeCase {
+enum GrapeCase: CaseIterable {
     case costGrape
     case dionysusGrape
     case analystGrape

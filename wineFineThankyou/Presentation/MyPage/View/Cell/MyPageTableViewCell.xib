@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,6 +63,23 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8z8-Sx-HoB">
+                                <rect key="frame" x="20" y="58" width="374" height="145"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyPageEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="Kz5-fL-KzC">
+                                        <rect key="frame" x="161" y="31.5" width="52" height="82"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="82" id="Adq-EY-Bgm"/>
+                                            <constraint firstAttribute="width" constant="52" id="j0B-CO-uNM"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Kz5-fL-KzC" firstAttribute="centerY" secondItem="8z8-Sx-HoB" secondAttribute="centerY" id="d0F-aq-jiz"/>
+                                    <constraint firstItem="Kz5-fL-KzC" firstAttribute="centerX" secondItem="8z8-Sx-HoB" secondAttribute="centerX" id="gLz-9L-yhl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -70,8 +87,12 @@
                             <constraint firstItem="TCb-RY-oVv" firstAttribute="top" secondItem="Up5-Ut-r70" secondAttribute="top" constant="8" id="4jf-aZ-KXp"/>
                             <constraint firstItem="TCb-RY-oVv" firstAttribute="leading" secondItem="Up5-Ut-r70" secondAttribute="leading" id="FvY-gc-MpS"/>
                             <constraint firstItem="nE3-kJ-Dgv" firstAttribute="top" secondItem="TCb-RY-oVv" secondAttribute="bottom" id="IRC-kd-skS"/>
+                            <constraint firstAttribute="trailing" secondItem="8z8-Sx-HoB" secondAttribute="trailing" constant="20" id="KWs-0v-ULf"/>
                             <constraint firstAttribute="height" constant="227" id="SJZ-wv-XS1"/>
+                            <constraint firstItem="8z8-Sx-HoB" firstAttribute="leading" secondItem="Up5-Ut-r70" secondAttribute="leading" constant="20" id="dQO-PB-soG"/>
                             <constraint firstItem="nE3-kJ-Dgv" firstAttribute="leading" secondItem="Up5-Ut-r70" secondAttribute="leading" constant="20" id="h8x-cR-1FZ"/>
+                            <constraint firstItem="8z8-Sx-HoB" firstAttribute="top" secondItem="nE3-kJ-Dgv" secondAttribute="top" id="lLr-v7-jqS"/>
+                            <constraint firstItem="8z8-Sx-HoB" firstAttribute="bottom" secondItem="nE3-kJ-Dgv" secondAttribute="bottom" id="oZ4-Qj-mEH"/>
                             <constraint firstAttribute="trailing" secondItem="TCb-RY-oVv" secondAttribute="trailing" id="yTP-f0-cDK"/>
                         </constraints>
                     </view>
@@ -85,6 +106,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="nE3-kJ-Dgv" id="yUw-s8-4cI"/>
+                <outlet property="emptyView" destination="8z8-Sx-HoB" id="xBk-fy-aao"/>
                 <outlet property="rightBtn" destination="uxa-jX-Wvd" id="Rcb-5l-CDH"/>
                 <outlet property="sectionTitle" destination="wE6-gD-c9s" id="aUu-2u-btN"/>
             </connections>
@@ -92,6 +114,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="MyPageEmpty" width="52" height="82"/>
         <image name="rightArrow" width="7" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

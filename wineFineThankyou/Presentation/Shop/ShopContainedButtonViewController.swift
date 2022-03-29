@@ -13,11 +13,7 @@ class ShopContainedButtonViewController: UIViewController{
         case naver
         case kakao
     }
-    var shop: Shop! {
-        didSet {
-        
-        }
-    }
+    var shop: Shop!
     internal unowned var shopBtnsView: ShopButtonsView! {
         didSet { addTargetOnButton() }
     }
@@ -104,6 +100,9 @@ class ShopContainedButtonViewController: UIViewController{
         guard let vc = UIStoryboard(name: StoryBoard.readWine.name, bundle: nil).instantiateViewController(withIdentifier: AddWineInfomationViewController.identifier) as? AddWineInfomationViewController else { return }
         vc.modalPresentationStyle = .overFullScreen
         vc.shop = shop
+        if let summaryVC = self as? ShopInfoSummaryViewController {
+            vc.delegate = summaryVC
+        }
         self.present(vc, animated: false)
     }
     

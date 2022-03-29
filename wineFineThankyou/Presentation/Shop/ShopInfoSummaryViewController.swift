@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol ReloadShopDetail: AnyObject {
+    func addShopDetail(_ shop: Shop)
+}
+
 class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestureRecognizerDelegate {
     @IBOutlet private weak var backgroundView: UIView!
     @IBOutlet private weak var contentsView: UIView!
@@ -33,6 +37,10 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         super.viewWillAppear(animated)
     
         viewTopAnchor.constant = UIScreen.main.bounds.height - 267
+        reloadCollectionView()
+    }
+    
+    private func reloadCollectionView() {
         guard shop.userWines.count > 0 else {
             emptyView.isHidden = false
             winesCollectionView.isHidden = true
@@ -45,7 +53,6 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         
         self.winesCollectionView.reloadData()
     }
-    
     private func setContentsView() {
         self.view.backgroundColor = .clear
         backgroundView.backgroundColor = .clear
@@ -138,5 +145,14 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
+    }
+}
+
+extension ShopInfoSummaryViewController: ReloadShopDetail {
+    func addShopDetail(_ shop: Shop) {
+        self.shop = shop
+        DispatchQueue.main.async {
+            self.reloadCollectionView()
+        }
     }
 }

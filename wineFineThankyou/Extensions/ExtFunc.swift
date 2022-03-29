@@ -33,6 +33,17 @@ func topViewController(baseParam: UIViewController? = nil) -> UIViewController? 
     return base
 }
 
+func touchPlusButton(_ crntVc: UIViewController?) {
+    guard let crntVc = crntVc,
+          let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
+    else { return }
+    
+    vc.modalPresentationStyle = .fullScreen
+    DispatchQueue.main.async {
+        crntVc.present(vc, animated: true)
+    }
+}
+
 extension String {
     func rangeBoldString(_ size: CGFloat, range: String) -> NSMutableAttributedString {
         let bold = UIFont.boldSystemFont(ofSize: size)

@@ -27,7 +27,8 @@ enum MypageTableViewSection: Int, CaseIterable {
 class MyPageTableViewCell: UITableViewCell{
     @IBOutlet private weak var sectionTitle: UILabel!
     @IBOutlet private weak var rightBtn: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var emptyView: UIView!
     internal var touchRightBtn: (() -> Void)?
     internal var sectionType: MypageTableViewSection? {
         didSet{ setCell() }
@@ -48,11 +49,23 @@ class MyPageTableViewCell: UITableViewCell{
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "WineInfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WineInfoCollectionViewCell")
         collectionView.register(UINib(nibName: "WineShopCell", bundle: nil), forCellWithReuseIdentifier: "WineShopCell")
+        
+        let whenBeEmptyView = WhenBeEmptyView()
+        emptyView.addSubview(whenBeEmptyView)
+        whenBeEmptyView.superView = emptyView
+        whenBeEmptyView.isOnlyImg = true
     }
     
     private func updateUI() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [self] in
+            if cellInfos.isEmpty {
+                emptyView.isHidden = false
+                rightBtn.isHidden = true
+            } else {
+                emptyView.isHidden = true
+                rightBtn.isHidden = false
+                collectionView.reloadData()
+            }
         }
     }
         
@@ -79,7 +92,7 @@ extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell,
                   let boughtWine = self.cellInfos[indexPath.row] as? BoughtWine
             else { return UICollectionViewCell() }
-            
+        
             cell.tupleVal = (boughtWine.name, boughtWine.wineInfo?.wineAtServer?.imgUrlStr)
             cell.backgroundView?.backgroundColor = .clear
             return cell

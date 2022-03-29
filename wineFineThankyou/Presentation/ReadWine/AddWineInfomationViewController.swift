@@ -22,11 +22,13 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private var dataPicker: UIDatePicker?
     private var additionalWineInfo :(name: String, vintage: String, from: String, date: String) = ("", "", "", "")
     private var wineListDialog: WineListDialog?
+    
+    internal var shop: Shop!
+    internal var delegate: ReloadShopDetail?
     internal var wineAtServer: WineAtServer! {
         didSet { setValueOnTextFields() }
     }
-    internal var shop: Shop!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
@@ -50,9 +52,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
             })
             return
         case .cancel:
-            DispatchQueue.main.async {
-                self.dismiss(animated: true)
-            }
+            close()
         case .ok:
             DispatchQueue.main.async {
                 self.configure()
@@ -307,7 +307,9 @@ extension AddWineInfomationViewController {
     
     @objc
     func close() {
-        self.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true)
+        }
     }
     
     @objc
@@ -362,20 +364,15 @@ extension AddWineInfomationViewController {
                          "vintage": additionalWineInfo.vintage,
                          "purchased_at": additionalWineInfo.date] as Dictionary
             AFHandler.addWine(param) { isSuccess in
-                //와인추가 완료. 실패/성공 판단 후 dismiss.
                 guard isSuccess else {
                     print("와인 등록 실패")
                     return
                 }
                 
-                AFHandler.shopDetail(self.shop.key, done: { resShop in
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true) {
-                            guard let top = topViewController() as? ShopContainedButtonViewController
-                            else { return }
-                            top.shop = resShop
-                        }
-                    }
+                AFHandler.shopDetail(self.shop.key, done: {
+                    guard let resShop = $0 else { return }
+                    self.delegate?.addShopDetail(resShop)
+                    self.close()
                 })
             }
         }

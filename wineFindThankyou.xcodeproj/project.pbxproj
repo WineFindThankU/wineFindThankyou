@@ -68,6 +68,7 @@
 		BA70C85C27C9DCF80013BC23 /* MyPageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70C85B27C9DCF80013BC23 /* MyPageListViewController.swift */; };
 		BA70C85F27CA0CDC0013BC23 /* CaptureRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70C85E27CA0CDC0013BC23 /* CaptureRectView.swift */; };
 		BA70C86127CAFF9C0013BC23 /* ShopContainedButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70C86027CAFF9C0013BC23 /* ShopContainedButtonViewController.swift */; };
+		BA736D9927F3240C00321EAC /* WhenBeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA736D9827F3240C00321EAC /* WhenBeEmptyView.swift */; };
 		BA77CFE0279EF80800832389 /* ShopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFDF279EF80800832389 /* ShopInfoViewController.swift */; };
 		BA77CFE5279EF94A00832389 /* ExtUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFE4279EF94A00832389 /* ExtUIView.swift */; };
 		BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77CFE6279EFA5600832389 /* ExtUIColor.swift */; };
@@ -199,6 +200,7 @@
 		BA70C85B27C9DCF80013BC23 /* MyPageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageListViewController.swift; sourceTree = "<group>"; };
 		BA70C85E27CA0CDC0013BC23 /* CaptureRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureRectView.swift; sourceTree = "<group>"; };
 		BA70C86027CAFF9C0013BC23 /* ShopContainedButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopContainedButtonViewController.swift; sourceTree = "<group>"; };
+		BA736D9827F3240C00321EAC /* WhenBeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBeEmptyView.swift; sourceTree = "<group>"; };
 		BA77CFDF279EF80800832389 /* ShopInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoViewController.swift; sourceTree = "<group>"; };
 		BA77CFE4279EF94A00832389 /* ExtUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIView.swift; sourceTree = "<group>"; };
 		BA77CFE6279EFA5600832389 /* ExtUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIColor.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */,
 				BA1CAAA527CDE606002375A5 /* WineInfoDetailView.swift */,
 				BAAAAE5427C8E58B00DFEB59 /* UserWineShopListTableViewCell.swift */,
+				BA736D9827F3240C00321EAC /* WhenBeEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1035,6 +1038,7 @@
 				BAAAAE5327C8E53600DFEB59 /* UsersWineShopListViewController.swift in Sources */,
 				BA8BB7BC27A44E430010F05A /* ShopInfoSummaryViewController.swift in Sources */,
 				BAAAAE5527C8E58B00DFEB59 /* UserWineShopListTableViewCell.swift in Sources */,
+				BA736D9927F3240C00321EAC /* WhenBeEmptyView.swift in Sources */,
 				BAE7965027C1C21200D2AC1F /* MyPageTableViewCell.swift in Sources */,
 				BA77CFE5279EF94A00832389 /* ExtUIView.swift in Sources */,
 			);
