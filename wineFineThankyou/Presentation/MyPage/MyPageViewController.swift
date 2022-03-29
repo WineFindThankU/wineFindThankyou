@@ -11,52 +11,22 @@ import UIKit
 class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
     private weak var topView: TopView?
     @IBOutlet private weak var myProfileView: UIView!
-    @IBOutlet weak var leftStatisticsView: UIView!
-    @IBOutlet weak var rightStatisticsView: UIView!
+    @IBOutlet private weak var leftStatisticsView: UIView!
+    @IBOutlet private weak var rightStatisticsView: UIView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var myProfileViewHeight: NSLayoutConstraint!
-    var originHeight: CGFloat! = 0
+    @IBOutlet private weak var scrollViewHeight: NSLayoutConstraint!
+    private var welcomeView: WelcomeView?
     var user: User!
     var boughtWines = [BoughtWine]()
     var visitedWineShops = [VisitedShop]()
     var favoritesWineShops = [VisitedShop]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        setTouchGesture()
-    }
-    
-    private func configure() {
         setUpTopView()
         setWelcomeView()
         setGraphView()
         setTableView()
-        originHeight = myProfileViewHeight.constant
-    }
-    
-    private func setTouchGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchMyProfileView))
-        tapGesture.delegate = self
-        self.myProfileView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc
-    private func touchMyProfileView() {
-        myProfileViewHeight.constant < originHeight ? showMyProfileView() : hiddenMyProfileView()
-    }
-    
-    private func showMyProfileView() {
-        UIView.animate(withDuration: 0.5) {
-            self.myProfileViewHeight.constant = self.originHeight
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    private func hiddenMyProfileView() {
-        UIView.animate(withDuration: 0.5) {
-            self.myProfileViewHeight.constant = 137
-            self.view.layoutIfNeeded()
-        }
+        setAdditional()
     }
     
     @objc
@@ -71,6 +41,10 @@ class MyPageViewController : UIViewController, UIGestureRecognizerDelegate{
         vc.modalTransitionStyle = .flipHorizontal
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
+    }
+    
+    private func setAdditional() {
+        scrollViewHeight.constant = myProfileView.frame.height + tableView.frame.height
     }
 }
 
@@ -89,11 +63,12 @@ extension MyPageViewController {
     
     private func setWelcomeView() {
         let welcomeView = WelcomeView()
-        self.myProfileView.addSubview(welcomeView)
-        welcomeView.configure(superView: myProfileView)
+        self.view.addSubview(welcomeView)
+        welcomeView.configure(superView: self.view)
         let tasteType = Int(user.tasteType) ?? 1
         //TODO: 마이페이지 이미지 설정 화면
         welcomeView.userInfo = UserInfo(userImage: UIImage(named: "TestUserImage")!, userType: user.nick, wineType: "로제", userId: "guest\(user.number)")
+        self.welcomeView = welcomeView
     }
     
     private func setGraphView() {
@@ -185,18 +160,5 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         }
         cell.selectedBackgroundView?.backgroundColor = .clear
         return cell
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        hiddenMyProfileView()
-    }
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        showMyProfileView()
-    }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if Int(scrollView.contentOffset.y) <= 0 {
-            showMyProfileView()
-        }
     }
 }

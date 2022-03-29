@@ -35,7 +35,7 @@ class WelcomeView: UIView {
         super.init(coder: coder)
     }
     
-    func configure(superView: UIView) {
+    func configure(superView: UIView, constant: CGFloat = 44) {
         let welcomeView = UIView()
         let welcomelabel = UILabel()
         let userImageView = UIImageView()
@@ -55,7 +55,7 @@ class WelcomeView: UIView {
         userIdLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            welcomeView.topAnchor.constraint(equalTo: superView.topAnchor, constant: 8),
+            welcomeView.topAnchor.constraint(equalTo: superView.safeAreaLayoutGuide.topAnchor, constant: constant + 8),
             welcomeView.leftAnchor.constraint(equalTo: superView.leftAnchor, constant: 18),
             welcomeView.rightAnchor.constraint(equalTo: superView.rightAnchor, constant: -18),
             welcomeView.heightAnchor.constraint(equalToConstant: 137),
