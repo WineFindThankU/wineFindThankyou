@@ -80,7 +80,7 @@ extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
                   let boughtWine = self.cellInfos[indexPath.row] as? BoughtWine
             else { return UICollectionViewCell() }
             
-            cell.tupleVal = (boughtWine.name, boughtWine.img)
+            cell.tupleVal = (boughtWine.name, boughtWine.wineInfo?.wineAtServer?.imgUrlStr)
             cell.backgroundView?.backgroundColor = .clear
             return cell
         case .recentlyVisitedShop, .favoriteShop:

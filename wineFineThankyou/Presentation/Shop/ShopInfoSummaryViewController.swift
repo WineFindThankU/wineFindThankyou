@@ -109,8 +109,7 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
         
         let userWine = shop.userWines[indexPath.row]
         let name = userWine.wineAtServer?.korName ?? userWine.name
-        let img = userWine.wineAtServer?.img
-        cell.tupleVal = (name, img)
+        cell.tupleVal = (name, userWine.wineAtServer?.imgUrlStr)
         
         if indexPath.row == 2, isMoreThree {
             cell.setMoreView(shop.userWines.count - 3)

@@ -13,7 +13,7 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet weak var labelMore: UILabel!
 
-    internal var tupleVal: (name: String?, img: UIImage?)? {
+    internal var tupleVal: (name: String?, imgUrlStr: String?)? {
         didSet { updateUI() }
     }
     
@@ -44,10 +44,10 @@ class WineInfoCollectionViewCell: UICollectionViewCell {
         //MARK: 와인이미지 데이터는 어떻게 처리할 것인가 고민 필요.
         img.contentMode = .scaleAspectFit
         name.text = tupleVal.name
-        guard let wImg = tupleVal.img else {
+        guard let wImgUrlStr = tupleVal.imgUrlStr else {
             return
         }
-        img.image = wImg
+        img.setImage(by: wImgUrlStr)
     }
     
     internal func setMoreView(_ cnt: Int) {

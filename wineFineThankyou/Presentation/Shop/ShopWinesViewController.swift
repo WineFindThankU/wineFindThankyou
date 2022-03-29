@@ -130,8 +130,10 @@ extension ShopWinesViewController: UICollectionViewDelegateFlowLayout, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineImageCell", for: indexPath) as? WineImageCell else { return UICollectionViewCell() }
-        cell.wineImage.image = wineInfos[indexPath.row].img
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineImageCell", for: indexPath) as? WineImageCell,
+        let imgUrlStr = wineInfos[indexPath.row].wineAtServer?.imgUrlStr
+            else { return UICollectionViewCell() }
+        cell.wineImage.setImage(by: imgUrlStr)
         return cell
     }
     

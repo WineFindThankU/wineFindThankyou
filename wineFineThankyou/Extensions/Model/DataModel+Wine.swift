@@ -26,10 +26,6 @@ class BoughtWine {
     var name: String? {
         return self.wineInfo?.wineAtServer?.korName ?? self.wineInfo?.name
     }
-    
-    var img: UIImage? {
-        return self.wineInfo?.wineAtServer?.img
-    }
 }
 
 class WineInfo {
@@ -37,16 +33,11 @@ class WineInfo {
     let name: String
     let vintage: String
     let wineAtServer: WineAtServer?
-    let img: UIImage?
     init(_ params: JSON) {
         self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
         self.name = params["uw_name"].string ?? ""   //"",
         self.vintage = params["uw_vintage"].string ?? ""
         self.wineAtServer = WineAtServer(params["wine"])
-        guard let data = try? params["wn_img"].rawData(),
-              let img = UIImage(data: data)
-        else { self.img = nil; return }
-        self.img = img
     }
 }
 
@@ -58,9 +49,8 @@ class WineAtServer {
     var cepage: String
     var from: String
     var alcohol: String
-    
     var type: WineType?
-    var img: UIImage?
+    var imgUrlStr: String?
     
     init() {
         self.key = ""
@@ -71,7 +61,7 @@ class WineAtServer {
         self.from = ""
         self.alcohol = ""
         self.type = nil
-        self.img = nil
+        self.imgUrlStr = nil
     }
     
     init(_ data: JSON) {
@@ -83,11 +73,6 @@ class WineAtServer {
         self.from = data["wn_country"].string ?? ""
         self.alcohol = data["wn_alcohol"].string ?? ""
         self.type = WineType.allCases.first { $0.str == data["wn_category"].string }
-        
-        guard let imgData = try? data["wn_img"].rawData(), let uiImg = UIImage(data: imgData) else {
-            self.img = nil
-            return
-        }
-        self.img = uiImg
+        self.imgUrlStr = data["wn_img"].string ?? nil
     }
 }

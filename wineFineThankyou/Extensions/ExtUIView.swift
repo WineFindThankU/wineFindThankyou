@@ -246,3 +246,21 @@ extension UILabel {
         self.backgroundColor = back
     }
 }
+
+extension UIImageView {
+    func setImage(by link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        contentMode = mode
+        
+        DispatchQueue.global().async {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data,
+                        let image = UIImage(data: data)
+                    else { return }
+                DispatchQueue.main.async() { [weak self] in
+                    self?.image = image
+                }
+            }.resume()
+        }
+    }
+}

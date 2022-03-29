@@ -34,6 +34,7 @@ class VisitedShop {
         self.shopDetail = ShopDetail(param["shop"])
     }
 }
+
 class Shop {
     let key: String
     let homepage: String?

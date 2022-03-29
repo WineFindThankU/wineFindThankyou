@@ -39,7 +39,7 @@ extension AllOfWineInfoTableViewCell: UICollectionViewDelegate, UICollectionView
             return UICollectionViewCell()
         }
         let wineAtServer = winesAtServer[indexPath.row]
-        cell.tupleVal = (wineAtServer.korName, wineAtServer.img)
+        cell.tupleVal = (wineAtServer.korName, wineAtServer.imgUrlStr)
         cell.setBackgroundColor()
         return cell
     }

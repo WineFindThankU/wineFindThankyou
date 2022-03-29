@@ -46,7 +46,6 @@ class WineInfoTableViewCell: UITableViewCell {
     }
     
     private func updateUI() {
-        wineImg?.image = wineInfo?.img
         guard let wineInfo = wineInfo else { return }
         wineInfoDetailsView?.vintage.info = ("빈티지", wineInfo.vintage)
 //        boughtDate?.text = wineInfo.boughtDate?.yyyyMMdd()
@@ -62,6 +61,9 @@ class WineInfoTableViewCell: UITableViewCell {
         tagLabel?.backgroundColor = wineType.color
         tagLabel?.text = wineType.str
         wineShopName?.text = shopDetail?.name
+        
+        guard let imgUrlStr = wineInfo.wineAtServer?.imgUrlStr else { return }
+        wineImg?.setImage(by: imgUrlStr)
     }
     
     private func setConstraint() {
