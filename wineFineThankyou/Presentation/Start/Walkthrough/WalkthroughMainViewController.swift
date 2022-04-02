@@ -23,11 +23,10 @@ public class Storage {
 protocol SelectWalkThroughOption: AnyObject {
     func selected(_ idx: Int, _ item: Any)
 }
+
 final class WalkthroughMainViewController: UIViewController, SelectWalkThroughOption {
     func selected(_ idx: Int, _ item: Any) {
-        DispatchQueue.main.async {
-            self.setNextButton(idx)
-        }
+        DispatchQueue.main.async { self.setNextButton(idx) }
         
         guard idx < 3 else { return }
         switch idx {

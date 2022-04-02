@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum ReasonOfBought: String, CaseIterable {
-    case forMe = "내가 마시기위해서"
-    case forParty = "모임과 파티를 위해서"
-    case forPresent = "선물하기 위해서"
-    var str: String { return self.rawValue }
-}
 
 class WalkthroughThirdViewController: UIViewController {
     

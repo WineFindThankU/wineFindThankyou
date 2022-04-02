@@ -46,6 +46,7 @@ enum AfterLogin {
 
 enum StoryBoard: String {
     case launch = "Launch"
+    case start = "Start"
     case main = "Main"
     case shop = "Shop"
     case myPage = "MyPage"

@@ -10,17 +10,7 @@ protocol SelectQuestionProtocol {
      func renewButtons(_ sender: UIButton, btns: [UIButton])
  }
 
-enum WhenDoSelect: String, CaseIterable {
-    case cost = "가성비"
-    case grape = "포도 품종"
-    case brand = "와인 브랜드"
-    case loc = "생산 지역"
-    case type = "와인 종류 (레드/화이트/내추럴 등)"
-    case etc = "기타 (직접 입력)"
-    var str: String{
-        return self.rawValue
-    }
-}
+
 
 class WalkthroughFirstViewController: UIViewController {
     

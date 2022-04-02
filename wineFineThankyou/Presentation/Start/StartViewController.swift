@@ -32,11 +32,7 @@ class StartViewController: UIViewController {
         button.setTitle("시작하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         let action = UIAction(handler: { _ in
-            let view = WalkthroughMainViewController()
-            view.modalPresentationStyle = .overFullScreen
-            DispatchQueue.main.async {
-                self.present(view, animated: true)
-            }
+            self.goToWalkthroughVC()
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -83,7 +79,6 @@ class StartViewController: UIViewController {
                     return
                 }
                 
-                
                 self.goToMain()
             }
         }
@@ -119,16 +114,12 @@ class StartViewController: UIViewController {
         }
     }
     
-    private func goToQuestionVC() {
-        let view = WalkthroughMainViewController()
-        view.modalPresentationStyle = .overFullScreen
+    private func goToWalkthroughVC() {
+        guard let vc = UIStoryboard(name: StoryBoard.start.name, bundle: nil).instantiateViewController(withIdentifier: WalkthroughViewController.identifier) as? WalkthroughViewController
+        else { return }
+        vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
-            self.present(view, animated: true)
+            self.present(vc, animated: true)
         }
-    }
-    
-    private func loadUserDataFromServer(downDone: ((Bool) -> Void)?) {
-        // MARK: 서버로부터 유저 데이터 받아오는 곳.
-        downDone?(true)
     }
 }

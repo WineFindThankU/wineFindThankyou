@@ -7,15 +7,6 @@
 
 import UIKit
 
-enum PriceOfWine: String, CaseIterable {
-    case one2Two = "2만원 이하"
-    case thr2Four = "3 ~ 4만원대"
-    case five2Seven = "5 ~ 7만원 대"
-    case eig2Ten = "8 ~ 10만원 대"
-    case quality = "퀄리티가 된다면 가격은 상관없음!"
-    var str: String { return self.rawValue }
-}
-
 class WalkthroughSecondViewController: UIViewController {
     
     lazy var numberLabel: UILabel = {

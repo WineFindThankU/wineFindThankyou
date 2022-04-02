@@ -97,6 +97,11 @@
 		BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */; };
 		BABB595B27C62EB3000E24C5 /* BoughtWineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */; };
 		BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */; };
+		BABFCE7F27F80B5D00E097DF /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFCE7E27F80B5D00E097DF /* WalkthroughViewController.swift */; };
+		BABFCE8127F80BAD00E097DF /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BABFCE8027F80BAD00E097DF /* Start.storyboard */; };
+		BABFCE8327F84FE800E097DF /* WalkthroughView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABFCE8227F84FE800E097DF /* WalkthroughView.xib */; };
+		BABFCE8527F84FF700E097DF /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFCE8427F84FF600E097DF /* WalkthroughView.swift */; };
+		BABFCE8727F852B100E097DF /* DataModel+Walkthrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFCE8627F852B100E097DF /* DataModel+Walkthrough.swift */; };
 		BAD8866627D6FCE600E7AD5C /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD8866527D6FCE600E7AD5C /* NetworkChecker.swift */; };
 		BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01327D42FFA00296234 /* AFHandler.swift */; };
 		BAE0C01627D4301D00296234 /* ExtNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01527D4301D00296234 /* ExtNetworking.swift */; };
@@ -230,6 +235,11 @@
 		BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWineInfomationViewController.swift; sourceTree = "<group>"; };
 		BABB595A27C62EB3000E24C5 /* BoughtWineListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtWineListViewController.swift; sourceTree = "<group>"; };
 		BABB595C27C63005000E24C5 /* WineInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoTableViewCell.swift; sourceTree = "<group>"; };
+		BABFCE7E27F80B5D00E097DF /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		BABFCE8027F80BAD00E097DF /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		BABFCE8227F84FE800E097DF /* WalkthroughView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkthroughView.xib; sourceTree = "<group>"; };
+		BABFCE8427F84FF600E097DF /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
+		BABFCE8627F852B100E097DF /* DataModel+Walkthrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataModel+Walkthrough.swift"; sourceTree = "<group>"; };
 		BAD8866527D6FCE600E7AD5C /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
 		BAE0C01327D42FFA00296234 /* AFHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHandler.swift; sourceTree = "<group>"; };
 		BAE0C01527D4301D00296234 /* ExtNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNetworking.swift; sourceTree = "<group>"; };
@@ -617,10 +627,23 @@
 			path = ReadWine;
 			sourceTree = "<group>";
 		};
+		BABFCE7D27F80B3B00E097DF /* WalkthroughView */ = {
+			isa = PBXGroup;
+			children = (
+				BABFCE8027F80BAD00E097DF /* Start.storyboard */,
+				BABFCE8227F84FE800E097DF /* WalkthroughView.xib */,
+				BABFCE8427F84FF600E097DF /* WalkthroughView.swift */,
+				BABFCE8627F852B100E097DF /* DataModel+Walkthrough.swift */,
+			);
+			path = WalkthroughView;
+			sourceTree = "<group>";
+		};
 		BAD8866427D6FC0C00E7AD5C /* Start */ = {
 			isa = PBXGroup;
 			children = (
 				C56A494C27AD220A0080CBE2 /* StartViewController.swift */,
+				BABFCE7E27F80B5D00E097DF /* WalkthroughViewController.swift */,
+				BABFCE7D27F80B3B00E097DF /* WalkthroughView */,
 				4429F37B27CFC45600402D0C /* Walkthrough */,
 			);
 			path = Start;
@@ -789,6 +812,7 @@
 				BABB595727C50415000E24C5 /* ReadWine.storyboard in Resources */,
 				BA5866A127E57CAD007EA21C /* Test.json in Resources */,
 				BAA4031627BA944A00C50221 /* WineListTitle.xib in Resources */,
+				BABFCE8127F80BAD00E097DF /* Start.storyboard in Resources */,
 				BA5B79EB27BD1F68002C0155 /* WineImageCell.xib in Resources */,
 				C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */,
 				BA8BB7B427A4256F0010F05A /* AllOfWineInfoTableViewCell.xib in Resources */,
@@ -799,6 +823,7 @@
 				BA913C0F27C0C2450055B2A4 /* StatisticsOfWineView.xib in Resources */,
 				449107D827D1F143006A4FA7 /* WinefindThankU_motion.json in Resources */,
 				BA8BB7B327A4256F0010F05A /* WineInfoCollectionViewCell.xib in Resources */,
+				BABFCE8327F84FE800E097DF /* WalkthroughView.xib in Resources */,
 				44FF1CC8278471A900FD8567 /* Assets.xcassets in Resources */,
 				BA70B7CC27E3EE5D00EA5118 /* WineListCell.xib in Resources */,
 				BA70B7CA27E3EB6B00EA5118 /* WineListDialog.xib in Resources */,
@@ -976,6 +1001,7 @@
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
 				BA1CAAA627CDE606002375A5 /* WineInfoDetailView.swift in Sources */,
 				BA913C0927C0B6050055B2A4 /* DonutGraphView.swift in Sources */,
+				BABFCE8527F84FF700E097DF /* WalkthroughView.swift in Sources */,
 				BA8BB7CB27A529D40010F05A /* Login.swift in Sources */,
 				C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */,
 				C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */,
@@ -989,6 +1015,7 @@
 				BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */,
 				BA5866A627E5A9B4007EA21C /* DataModel+Wine.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
+				BABFCE7F27F80B5D00E097DF /* WalkthroughViewController.swift in Sources */,
 				BAD8866627D6FCE600E7AD5C /* NetworkChecker.swift in Sources */,
 				BA8BB7C927A5280B0010F05A /* LoginController.swift in Sources */,
 				BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */,
@@ -1030,6 +1057,7 @@
 				BA2A337C27D883C0005706EA /* MainCollectionViewCell.swift in Sources */,
 				BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */,
 				BA913C0D27C0BDA90055B2A4 /* WelcomeView.swift in Sources */,
+				BABFCE8727F852B100E097DF /* DataModel+Walkthrough.swift in Sources */,
 				4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */,
 				4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */,
 				BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */,
