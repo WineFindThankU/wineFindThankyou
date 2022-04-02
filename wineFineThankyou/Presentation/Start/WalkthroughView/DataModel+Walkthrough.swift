@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum QuestionList: Int, CaseIterable {
     case question0 = 0
@@ -58,4 +59,64 @@ enum ReasonOfBought: String, CaseIterable {
     case forParty = "모임과 파티를 위해서"
     case forPresent = "선물하기 위해서"
     var str: String { return self.rawValue }
+}
+
+enum GrapeCase: CaseIterable {
+    case costGrape
+    case dionysusGrape
+    case analystGrape
+    case artistGrape
+    case childGrape
+    case basic
+    
+    var tasteType: Int {
+        switch self {
+        case .basic:
+            return 0
+        case .costGrape:
+            return 1
+        case .dionysusGrape:
+            return 2
+        case .analystGrape:
+            return 3
+        case .artistGrape:
+            return 4
+        case .childGrape:
+            return 5
+        }
+    }
+    
+    var grapeName: String {
+        switch self {
+        case .basic:
+            return "기본 포도알"
+        case .costGrape:
+            return "가성비 포도알"
+        case .dionysusGrape:
+            return "디오니소스 포도알"
+        case .analystGrape:
+            return "분석가 포도알"
+        case .artistGrape:
+            return "예술가 포도알"
+        case .childGrape:
+            return "와린이 포도알"
+        }
+    }
+    
+    var grapeImage: UIImage? {
+        switch self {
+        case .basic:
+            return UIImage(named: "basic")
+        case .costGrape:
+            return UIImage(named: "costGrape")
+        case .dionysusGrape:
+            return UIImage(named: "dionysusGrape")
+        case .analystGrape:
+            return UIImage(named: "analystGrape")
+        case .artistGrape:
+            return UIImage(named: "artistGrape")
+        case .childGrape:
+            return UIImage(named: "childGrape")
+        }
+    }
 }

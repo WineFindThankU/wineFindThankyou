@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		044DD309B914F559A2BE2E65 /* Pods_wineFindThankyou_wineFindThankyouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */; };
 		44233A3327D5D211008BD963 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44233A3227D5D211008BD963 /* Logout.swift */; };
-		4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */; };
-		4429F37F27CFC4AF00402D0C /* WalkthroughFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */; };
-		4429F38127CFC4C400402D0C /* WalkthroughSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */; };
-		4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */; };
-		4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */; };
 		4429F38727CFCCA100402D0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429F38627CFCCA100402D0C /* LoginViewController.swift */; };
 		442BE5B327CE521900448478 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BE5B227CE521900448478 /* LoginResponse.swift */; };
 		4433C01627CB8ADB00119931 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433C01527CB8ADB00119931 /* LogoutViewController.swift */; };
@@ -25,10 +20,7 @@
 		4444248B279D374C00903DC7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444248A279D374C00903DC7 /* MainViewController.swift */; };
 		4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */; };
 		4447E73527E616EF000DFB08 /* Pods_wineFindThankyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DD02FEB19584B1B6F73DBC /* Pods_wineFindThankyou.framework */; };
-		4455BAD927DA303300C9E089 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4455BAD827DA303300C9E089 /* BottomSheetViewController.swift */; };
 		4455BADB27DA45E500C9E089 /* SearchShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4455BADA27DA45E500C9E089 /* SearchShop.swift */; };
-		44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44779C6427BA4A940049BE50 /* QABottomSheet.swift */; };
-		448FB0D227D6394000375267 /* grapeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448FB0D127D6394000375267 /* grapeIcon.swift */; };
 		449107D827D1F143006A4FA7 /* WinefindThankU_motion.json in Resources */ = {isa = PBXBuildFile; fileRef = 449107D627D1F142006A4FA7 /* WinefindThankU_motion.json */; };
 		44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A98627B921F8004C8E6C /* LoginModel.swift */; };
 		44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF1CBE278471A700FD8567 /* AppDelegate.swift */; };
@@ -139,11 +131,6 @@
 		0CAD72638637C4A02F4625AE /* Pods-wineFindThankyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou/Pods-wineFindThankyou.release.xcconfig"; sourceTree = "<group>"; };
 		32DD02FEB19584B1B6F73DBC /* Pods_wineFindThankyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44233A3227D5D211008BD963 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
-		4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughMainViewController.swift; sourceTree = "<group>"; };
-		4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFirstViewController.swift; sourceTree = "<group>"; };
-		4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughSecondViewController.swift; sourceTree = "<group>"; };
-		4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughThirdViewController.swift; sourceTree = "<group>"; };
-		4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFourthViewController.swift; sourceTree = "<group>"; };
 		4429F38627CFCCA100402D0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		442BE5B227CE521900448478 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4433C01527CB8ADB00119931 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -154,10 +141,7 @@
 		4433C04C27CBBB1800119931 /* ShopListKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListKeyword.swift; sourceTree = "<group>"; };
 		4444248A279D374C00903DC7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4446AEBB27B2CABD006BA5DF /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		4455BAD827DA303300C9E089 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		4455BADA27DA45E500C9E089 /* SearchShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShop.swift; sourceTree = "<group>"; };
-		44779C6427BA4A940049BE50 /* QABottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QABottomSheet.swift; sourceTree = "<group>"; };
-		448FB0D127D6394000375267 /* grapeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = grapeIcon.swift; sourceTree = "<group>"; };
 		449107D627D1F142006A4FA7 /* WinefindThankU_motion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WinefindThankU_motion.json; sourceTree = "<group>"; };
 		44A8A98627B921F8004C8E6C /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		44FF1CBB278471A700FD8567 /* wineFindThankyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineFindThankyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,21 +285,6 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		4429F37B27CFC45600402D0C /* Walkthrough */ = {
-			isa = PBXGroup;
-			children = (
-				448FB0D027D6333C00375267 /* grapeIcon */,
-				44779C6427BA4A940049BE50 /* QABottomSheet.swift */,
-				4429F37C27CFC48A00402D0C /* WalkthroughMainViewController.swift */,
-				4429F37E27CFC4AF00402D0C /* WalkthroughFirstViewController.swift */,
-				4429F38027CFC4C400402D0C /* WalkthroughSecondViewController.swift */,
-				4429F38227CFC4D200402D0C /* WalkthroughThirdViewController.swift */,
-				4429F38427CFC4E600402D0C /* WalkthroughFourthViewController.swift */,
-				4455BAD827DA303300C9E089 /* BottomSheetViewController.swift */,
-			);
-			path = Walkthrough;
-			sourceTree = "<group>";
-		};
 		4429F38827CFE65F00402D0C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,14 +323,6 @@
 				4444248A279D374C00903DC7 /* MainViewController.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		448FB0D027D6333C00375267 /* grapeIcon */ = {
-			isa = PBXGroup;
-			children = (
-				448FB0D127D6394000375267 /* grapeIcon.swift */,
-			);
-			path = grapeIcon;
 			sourceTree = "<group>";
 		};
 		44FF1CB2278471A700FD8567 = {
@@ -647,7 +608,6 @@
 				BABFCE7E27F80B5D00E097DF /* WalkthroughViewController.swift */,
 				BABFCE8827F8841000E097DF /* WalkthroughResulViewController.swift */,
 				BABFCE7D27F80B3B00E097DF /* WalkthroughView */,
-				4429F37B27CFC45600402D0C /* Walkthrough */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -1015,7 +975,6 @@
 				BA86ADF127B7E02700580511 /* WineLabelReader.swift in Sources */,
 				4446AEBC27B2CABD006BA5DF /* AlertViewController.swift in Sources */,
 				BA8BB7C027A46FB70010F05A /* ShopWinesViewController.swift in Sources */,
-				4429F38527CFC4E600402D0C /* WalkthroughFourthViewController.swift in Sources */,
 				BAB4079927A7B4C500B6E352 /* ConnectUsViewController.swift in Sources */,
 				BA5866A627E5A9B4007EA21C /* DataModel+Wine.swift in Sources */,
 				BA8BB7BE27A45CDC0010F05A /* DataModel.swift in Sources */,
@@ -1025,15 +984,11 @@
 				BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */,
 				44233A3327D5D211008BD963 /* Logout.swift in Sources */,
 				4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */,
-				4429F37F27CFC4AF00402D0C /* WalkthroughFirstViewController.swift in Sources */,
 				4455BADB27DA45E500C9E089 /* SearchShop.swift in Sources */,
 				BA913C0B27C0BD410055B2A4 /* StatisticsOfWineView.swift in Sources */,
-				4429F38127CFC4C400402D0C /* WalkthroughSecondViewController.swift in Sources */,
 				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
-				448FB0D227D6394000375267 /* grapeIcon.swift in Sources */,
 				BA5866A827E5A9DC007EA21C /* DataModel+Shop.swift in Sources */,
 				442BE5B327CE521900448478 /* LoginResponse.swift in Sources */,
-				44779C6527BA4A940049BE50 /* QABottomSheet.swift in Sources */,
 				4433C01827CB8CEC00119931 /* UIColor+Extensions.swift in Sources */,
 				BA70B7C827E3EB5D00EA5118 /* WineListDialog.swift in Sources */,
 				BA70C86127CAFF9C0013BC23 /* ShopContainedButtonViewController.swift in Sources */,
@@ -1041,7 +996,6 @@
 				4433C04727CBB9A700119931 /* ShopList.swift in Sources */,
 				4433C01A27CB947400119931 /* LeaveViewController.swift in Sources */,
 				BA5B79ED27BD1F73002C0155 /* WineImageCell.swift in Sources */,
-				4455BAD927DA303300C9E089 /* BottomSheetViewController.swift in Sources */,
 				BAB4079627A7B20A00B6E352 /* MyPageViewController.swift in Sources */,
 				BA77CFE7279EFA5600832389 /* ExtUIColor.swift in Sources */,
 				BA47878E27B78E3600AAB5EA /* CameraCaptureViewController.swift in Sources */,
@@ -1062,8 +1016,6 @@
 				BABB595927C5048E000E24C5 /* AddWineInfomationViewController.swift in Sources */,
 				BA913C0D27C0BDA90055B2A4 /* WelcomeView.swift in Sources */,
 				BABFCE8727F852B100E097DF /* DataModel+Walkthrough.swift in Sources */,
-				4429F37D27CFC48A00402D0C /* WalkthroughMainViewController.swift in Sources */,
-				4429F38327CFC4D200402D0C /* WalkthroughThirdViewController.swift in Sources */,
 				BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */,
 				44FF1CBF278471A700FD8567 /* AppDelegate.swift in Sources */,
 				44FF1CC1278471A700FD8567 /* SceneDelegate.swift in Sources */,

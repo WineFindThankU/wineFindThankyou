@@ -51,7 +51,7 @@ class WalkthroughViewController: UIViewController {
             walkthroughView.nextBtnClosure = {
                 guard let xPos = self.pageIdx2Xpos[idx + 1]
                 else {
-                    // 3번째 화면 결과 화면으로 보내기
+                    self.goToResult()
                     return
                 }
                 
@@ -93,7 +93,7 @@ class WalkthroughViewController: UIViewController {
         etceteraOkBtn.layer.cornerRadius = 18
         etceteraViewBottomConstraint.constant = 0 + self.keyboardHeight
         etceteraOkBtn.addAction(UIAction { _ in
-            self.question2Answer[QuestionList.question0.rawValue] = self.txtFieldEtcetera.text
+            self.question2Answer[QuestionList.question0.rawValue] = "기타" + "(" + (self.txtFieldEtcetera.text ?? "") + ")"
             self.txtFieldEtcetera.resignFirstResponder()
             backgroundView.removeFromSuperview()
             self.etceteraViewBottomConstraint.constant = -100
@@ -101,10 +101,20 @@ class WalkthroughViewController: UIViewController {
         }, for: .touchUpInside)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc
+    private func keyboardWillShow(notification: NSNotification) {
         guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else { return }
         
         self.keyboardHeight = keyboardHeight
+    }
+    
+    private func goToResult() {
+        guard let vc = UIStoryboard(name: StoryBoard.start.name, bundle: nil).instantiateViewController(identifier: WalkthroughResulViewController.identifier) as? WalkthroughResulViewController else { return }
+        vc.question2Answer = self.question2Answer
+        vc.modalPresentationStyle = .fullScreen
+        DispatchQueue.main.async {
+            self.present(vc, animated: true)
+        }
     }
 }
 

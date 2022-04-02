@@ -81,8 +81,8 @@ extension MyPageViewController: DeleteProtocol {
         self.view.addSubview(welcomeView)
         welcomeView.configure(superView: self.view)
         let userTasteType = Int(user.tasteType) ?? 1
-        let imgName = GrapeCase.allCases.first { $0.tasteType == userTasteType }?.getImageName() ?? "costGrape"
-        welcomeView.userInfo = UserInfo(userImage: UIImage(named: imgName)!, userType: user.nick, wineType: calculatingMaxWineType(), userId: "guest\(user.number)")
+        let imgName = GrapeCase.allCases.first { $0.tasteType == userTasteType }?.grapeImage
+        welcomeView.userInfo = UserInfo(userImage: imgName!, userType: user.nick, wineType: calculatingMaxWineType(), userId: "guest\(user.number)")
         self.welcomeView = welcomeView
         
         func calculatingMaxWineType() -> String{
