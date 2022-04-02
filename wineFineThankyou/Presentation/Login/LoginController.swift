@@ -176,12 +176,6 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
                 "type": type,
                 "sns_id": userIdentifier,
                 "nick": nick,
-                "taste_type": 1,
-                "taste_data": [
-                    "1": firstData,
-                    "2": secondData,
-                    "3": thirdData
-                ],
             ] as Dictionary
             
             AFHandler.signBySNS(params) {

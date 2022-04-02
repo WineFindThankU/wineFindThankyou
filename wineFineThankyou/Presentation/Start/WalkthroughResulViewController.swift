@@ -18,9 +18,19 @@ class WalkthroughResulViewController: UIViewController {
     }
     
     @IBAction private func nextStep(_ sender: UIButton) {
+        guard let nextVC = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(identifier: LoginViewController.identifier) as? LoginViewController else { return }
+        nextVC.modalPresentationStyle = .fullScreen
         
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: {
+            guard let top = topViewController() else { return }
+            top.present(nextVC, animated: true) // 루트뷰를 제외한 모든뷰 제거
+        })
     }
-    private var grapeCase: GrapeCase!
+    private var grapeCase: GrapeCase! {
+        didSet {
+            UserData.userTasteType = grapeCase.tasteType
+        }
+    }
     internal var question2Answer: [Int: String] = [:]
     
     override func viewDidLoad() {
@@ -47,6 +57,7 @@ class WalkthroughResulViewController: UIViewController {
               let answer2 = question2Answer[QuestionList.question2.rawValue]
         else { return [] }
         
+        UserData.userOptions = [answer0, answer1, answer2]
         if answer0 == WhenDoSelect.cost.str
             || answer1 == PriceOfWine.one2Two.str
             || answer1 == PriceOfWine.thr2Four.str {

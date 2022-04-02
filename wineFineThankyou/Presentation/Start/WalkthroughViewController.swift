@@ -131,7 +131,6 @@ extension WalkthroughViewController: UIScrollViewDelegate {
 
 extension WalkthroughViewController: AfterWalkthroughAnswer{
     func selected(_ idx: Int, _ str: String?, _ isEtcetera: Bool) {
-        print(question2Answer)
         guard isEtcetera else {
             self.question2Answer[idx] = str
             return

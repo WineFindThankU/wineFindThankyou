@@ -204,6 +204,15 @@ class UserData {
             UserDefaults.standard.setValue(val, forKey: "IsUserLoginBefore")
         }
     }
+    static var userTasteType: Int {
+        get {
+            //MARK: TEST
+            return UserDefaults.standard.integer(forKey: "UserTasteType")
+        }
+        set(val) {
+            UserDefaults.standard.set(val, forKey: "UserTasteType")
+        }
+    }
     
     static var userOptions: [String] {
         get {

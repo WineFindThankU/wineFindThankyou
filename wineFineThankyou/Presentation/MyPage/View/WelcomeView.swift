@@ -78,6 +78,8 @@ class WelcomeView: UIView {
         
         welcomeView.backgroundColor = UIColor(rgb: 0xE5E0FF)
         welcomeView.layer.cornerRadius = 12
+        userImageView.contentMode = .scaleAspectFit
+        
         self.welcomeLabel = welcomelabel
         self.userImageView = userImageView
         self.userWineTypeLabel = userWineTypeLabel

@@ -27,6 +27,7 @@ class AFHandler {
         let userOptions = UserData.userOptions
         
         var dict = params
+        dict["taste_type"] = UserData.userTasteType
         dict["taste_data"] = [
             "1": [ "value":  userOptions[0]],
             "2": [ "value": userOptions[1]],
