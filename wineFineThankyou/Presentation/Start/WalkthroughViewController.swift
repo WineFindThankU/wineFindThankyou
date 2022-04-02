@@ -9,24 +9,34 @@ import Foundation
 import UIKit
 
 protocol AfterWalkthroughAnswer: AnyObject {
-    func selected(_ idx: Int, _ str: String?)
+    func selected(_ idx: Int, _ str: String?, _ isEtcetera: Bool)
 }
 
 class WalkthroughViewController: UIViewController {
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBAction func leftArrowAction(_ sender: UIButton) {
+    @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var txtFieldEtcetera: UITextField!
+    @IBOutlet private weak var etceteraView: UIView!
+    @IBOutlet private weak var etceteraViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var etceteraOkBtn: UIButton!
+    @IBAction private func leftArrowAction(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
     
     private var question2Answer = [Int: String]()
     private var pageIdx2Xpos = [Int: CGFloat]()
-    
+    private var keyboardHeight: CGFloat = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
         addContentsToScrollView()
         setPageControl()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     private func addContentsToScrollView() {
@@ -41,7 +51,6 @@ class WalkthroughViewController: UIViewController {
             walkthroughView.nextBtnClosure = {
                 guard let xPos = self.pageIdx2Xpos[idx + 1]
                 else {
-                    
                     // 3번째 화면 결과 화면으로 보내기
                     return
                 }
@@ -58,6 +67,45 @@ class WalkthroughViewController: UIViewController {
         pageControl.preferredIndicatorImage = UIImage(named: "_page_control")
         pageControl.numberOfPages = QuestionList.allCases.count
     }
+    
+    private func setEtceteraView() {
+        let backgroundView = UIView()
+        self.view.addSubview(backgroundView)
+        backgroundView.backgroundColor = .black.withAlphaComponent(0.5)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
+        
+        txtFieldEtcetera.placeholder = "입력해주세요"
+        txtFieldEtcetera.borderStyle = .none
+        
+        self.view.bringSubviewToFront(etceteraView)
+        txtFieldEtcetera.becomeFirstResponder()
+        
+        etceteraOkBtn.setTitle(title: "확인", colorHex: 0x0, font: .systemFont(ofSize: 13))
+        etceteraOkBtn.contentEdgeInsets = UIEdgeInsets(top: 9, left: 16, bottom: 9, right: 16)
+        etceteraOkBtn.layer.borderWidth = 1
+        etceteraOkBtn.layer.borderColor = UIColor.black.cgColor
+        etceteraOkBtn.layer.cornerRadius = 18
+        etceteraViewBottomConstraint.constant = 0 + self.keyboardHeight
+        etceteraOkBtn.addAction(UIAction { _ in
+            self.question2Answer[QuestionList.question0.rawValue] = self.txtFieldEtcetera.text
+            self.txtFieldEtcetera.resignFirstResponder()
+            backgroundView.removeFromSuperview()
+            self.etceteraViewBottomConstraint.constant = -100
+            
+        }, for: .touchUpInside)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else { return }
+        
+        self.keyboardHeight = keyboardHeight
+    }
 }
 
 extension WalkthroughViewController: UIScrollViewDelegate {
@@ -72,7 +120,15 @@ extension WalkthroughViewController: UIScrollViewDelegate {
 }
 
 extension WalkthroughViewController: AfterWalkthroughAnswer{
-    func selected(_ idx: Int, _ str: String?) {
-        self.question2Answer[idx] = str
+    func selected(_ idx: Int, _ str: String?, _ isEtcetera: Bool) {
+        print(question2Answer)
+        guard isEtcetera else {
+            self.question2Answer[idx] = str
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.setEtceteraView()
+        }
     }
 }

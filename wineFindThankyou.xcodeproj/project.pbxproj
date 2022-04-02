@@ -102,6 +102,7 @@
 		BABFCE8327F84FE800E097DF /* WalkthroughView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BABFCE8227F84FE800E097DF /* WalkthroughView.xib */; };
 		BABFCE8527F84FF700E097DF /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFCE8427F84FF600E097DF /* WalkthroughView.swift */; };
 		BABFCE8727F852B100E097DF /* DataModel+Walkthrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFCE8627F852B100E097DF /* DataModel+Walkthrough.swift */; };
+		BABFCE8927F8841000E097DF /* WalkthroughResulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABFCE8827F8841000E097DF /* WalkthroughResulViewController.swift */; };
 		BAD8866627D6FCE600E7AD5C /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD8866527D6FCE600E7AD5C /* NetworkChecker.swift */; };
 		BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01327D42FFA00296234 /* AFHandler.swift */; };
 		BAE0C01627D4301D00296234 /* ExtNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0C01527D4301D00296234 /* ExtNetworking.swift */; };
@@ -240,6 +241,7 @@
 		BABFCE8227F84FE800E097DF /* WalkthroughView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkthroughView.xib; sourceTree = "<group>"; };
 		BABFCE8427F84FF600E097DF /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		BABFCE8627F852B100E097DF /* DataModel+Walkthrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataModel+Walkthrough.swift"; sourceTree = "<group>"; };
+		BABFCE8827F8841000E097DF /* WalkthroughResulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughResulViewController.swift; sourceTree = "<group>"; };
 		BAD8866527D6FCE600E7AD5C /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
 		BAE0C01327D42FFA00296234 /* AFHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHandler.swift; sourceTree = "<group>"; };
 		BAE0C01527D4301D00296234 /* ExtNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtNetworking.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 			children = (
 				C56A494C27AD220A0080CBE2 /* StartViewController.swift */,
 				BABFCE7E27F80B5D00E097DF /* WalkthroughViewController.swift */,
+				BABFCE8827F8841000E097DF /* WalkthroughResulViewController.swift */,
 				BABFCE7D27F80B3B00E097DF /* WalkthroughView */,
 				4429F37B27CFC45600402D0C /* Walkthrough */,
 			);
@@ -999,6 +1002,7 @@
 				BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */,
 				BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
+				BABFCE8927F8841000E097DF /* WalkthroughResulViewController.swift in Sources */,
 				BA1CAAA627CDE606002375A5 /* WineInfoDetailView.swift in Sources */,
 				BA913C0927C0B6050055B2A4 /* DonutGraphView.swift in Sources */,
 				BABFCE8527F84FF700E097DF /* WalkthroughView.swift in Sources */,

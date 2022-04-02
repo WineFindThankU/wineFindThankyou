@@ -43,10 +43,10 @@ class WalkthroughView: UIView{
         self.labelQuestion.text = question.str
         
         buttons.removeAll()
-        question.optionList.forEach {
+        question.optionList.enumerated().forEach { idx, optionObj in
             let btn = UIButton()
             stackView.addArrangedSubview(btn)
-            btn.setTitle(title: $0, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 15))
+            btn.setTitle(title: optionObj, colorHex: 0x1e1e1e, font: .systemFont(ofSize: 15))
             btn.layer.borderWidth = 1
             btn.layer.borderColor = UIColor(rgb: 0x1e1e1e).cgColor
             btn.contentEdgeInsets = UIEdgeInsets(top: 9, left: 16, bottom: 9, right: 16)
@@ -56,7 +56,7 @@ class WalkthroughView: UIView{
                 btn.layer.borderColor = UIColor.standardColor.cgColor
                 btn.layer.borderWidth = 1.5
                 btn.setTitleColor(.standardColor, for: .normal)
-                self.selectedBtn(btn)
+                self.selectedBtn(idx, btn)
             }, for: .touchUpInside)
             
             buttons.append(btn)
@@ -91,7 +91,7 @@ extension WalkthroughView {
         nextBtn.setImage(UIImage(named: "UnselectedWalkthroughNextBtn"), for: .normal)
     }
     
-    private func selectedBtn(_ btn: UIButton) {
+    private func selectedBtn(_ idx: Int, _ btn: UIButton) {
         btn.layer.borderColor = UIColor(rgb: 0x7B61FF).cgColor
         btn.setTitleColor(UIColor(rgb: 0x7B61FF), for: .normal)
         
@@ -103,7 +103,10 @@ extension WalkthroughView {
         }
         
         nextBtn.setImage(UIImage(named: "SelectedWalkthroughNextBtn"), for: .normal)
-        delegate?.selected(questionNumber, btn.titleLabel?.text)
+        
+        let isEtcetera: Bool = (questionNumber == QuestionList.question0.rawValue &&
+            idx == QuestionList.question0.optionList.count - 1)
+        delegate?.selected(questionNumber, btn.titleLabel?.text, isEtcetera)
     }
 }
 
