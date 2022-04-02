@@ -224,21 +224,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let keyword = searchingShopViewModel[indexPath.row].sh_no
-        guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
-        
         if let txt = textField.text {
             UserData.beforeSearched = txt
         }
         
-        DispatchQueue.main.async {
-            AFHandler.shopDetail(keyword) { shop in
+        AFHandler.shopDetail(keyword) { shop in
+            DispatchQueue.main.async {
                 self.dismiss(animated: true) {
-                    guard let topVC = topViewController() else { return }
-                    vc.modalPresentationStyle = .overFullScreen
-                    vc.shop = shop
-                    DispatchQueue.main.async {
-                        topVC.present(vc, animated: true)
-                    }
+                    guard let shop = shop,
+                          let topVC = topViewController() as? MainViewController
+                    else { return }
+                    topVC.whenBeSelectedMarker(shop)
                 }
             }
         }

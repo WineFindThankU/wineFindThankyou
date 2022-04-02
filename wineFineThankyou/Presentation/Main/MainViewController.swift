@@ -72,6 +72,25 @@ class MainViewController: UIViewController {
         searchBtn.isHidden = true
     }
     
+    internal func whenBeSelectedMarker(_ shop: Shop) {
+        guard let img = UIImage(named: "ShopDetail") else { return }
+        let marker = allOfMarkers.first(where: {
+            Int($0.position.lat) == Int(shop.latitude)
+            && Int($0.position.lng) == Int(shop.longtitude)
+        }) ?? NMFMarker()
+        
+        marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
+        marker.mapView = self.nmfNaverMapView.mapView
+        marker.iconImage = NMFOverlayImage(image: img)
+        marker.width = 48
+        marker.height = 59
+        marker.captionText = shop.nnName
+        DispatchQueue.main.async {
+            self.updateFocus(shop.latitude, shop.longtitude)
+            self.openShop(shop.key)
+        }
+    }
+    
     @IBAction func onClickSearchBar(_ sender: UIButton) {
         print(sender)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
@@ -114,7 +133,6 @@ extension MainViewController {
         }
     }
     
-    @objc
     func openShop(_ key: String) {
         AFHandler.shopDetail(key) { shop in
             guard let vc = UIStoryboard(name: StoryBoard.shop.name, bundle: nil).instantiateViewController(withIdentifier: ShopInfoSummaryViewController.identifier) as? ShopInfoSummaryViewController  else { return }
@@ -253,9 +271,7 @@ extension MainViewController: NMFMapViewCameraDelegate {
     }
     
     private func updateMaker() {
-        allOfMarkers.forEach {
-            $0.mapView = nil
-        }
+        allOfMarkers.forEach { $0.mapView = nil }
         allOfMarkers.removeAll()
         shownWineShops.forEach { shop in
             let marker = NMFMarker()
