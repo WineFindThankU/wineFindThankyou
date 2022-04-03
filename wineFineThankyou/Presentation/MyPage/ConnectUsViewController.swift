@@ -5,11 +5,12 @@
 //  Created by mun on 2022/01/31.
 //
 
-import Foundation
 import UIKit
-import SwiftSMTP
+import Foundation
+import MessageUI
 
-class ConnectUsViewController: UIViewController {
+
+class ConnectUsViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var inquireView: UIView!
@@ -19,6 +20,8 @@ class ConnectUsViewController: UIViewController {
     private unowned var emailTxtField: UITextField!
     private unowned var inquireTxtField: UITextField!
     private unowned var inquireTxtView: UITextView!
+    
+    private var keyboardHeight: CGFloat = 0.0
     
     private var mailTitle: String?
     private var mailText: String?
@@ -35,7 +38,7 @@ class ConnectUsViewController: UIViewController {
         topView = getGlobalTopView(self.view, height: 44)
         topView.titleLabel?.text = "1:1문의하기"
         topView.rightButton?.setBackgroundImage(UIImage(named: "Close"), for: .normal)
-        topView.rightButton?.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
+            //   topView.rightButton?.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
         
         let emailView = setLabelTextField(self.emailView)
         emailView.label.text = "이메일 주소"
@@ -73,7 +76,8 @@ class ConnectUsViewController: UIViewController {
             txtField.heightAnchor.constraint(equalToConstant: 40)
         ])
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        txtField.layer.borderWidth = 1
+        txtField.layer.borderWidth = 0.2
+        txtField.layer.cornerRadius = 13
         txtField.font = UIFont.systemFont(ofSize: 13)
         txtField.addLeftPadding()
         
@@ -95,26 +99,52 @@ class ConnectUsViewController: UIViewController {
         
         txtView.text = "내용을 입력해주세요."
         txtView.delegate = self
-        txtView.layer.borderWidth = 1
+        txtView.layer.borderWidth = 0.2
+        txtView.layer.cornerRadius = 13
         txtView.font = UIFont.systemFont(ofSize: 13)
         txtView.textColor = Theme.gray.color
     }
     
     @objc
     private func sendEmail() {
-        guard let usersEmail = usersEmail else { return }
-        let mailFrom = Mail.User(name: "사용자", email: usersEmail) //보내는 사람 이름/이메일, 이메일 형식 유효하지 않은 경우 error.
-        let mailTo = Mail.User(name: "받는사람", email: "winefindthankyou@gmail.com") // WFT 이름/이메일 주소
-        let mail = Mail(from: mailFrom, to: [mailTo], subject: "subject", text: "text")
-        SMTP(hostname: "smtp.gmail.com",
-                       email: "winefindthankyou@gmail.com", //WFT 이메일 주소, 비밀번호
-                       password: "q1w2e3!@#").send(mail, completion: { error in
-            guard let error = error else {
-                self.closeVC()
-                return
+        if MFMailComposeViewController.canSendMail() {
+                let composeViewController = MFMailComposeViewController()
+                composeViewController.mailComposeDelegate = self
+                
+                let bodyString = """
+                                 이곳에 내용을 작성해주세요.
+                                 -------------------
+                                 WineFindThankU
+                                 -------------------
+                                 """
+                
+                composeViewController.setToRecipients(["winefindthankyou@gmail.com"])
+                composeViewController.setSubject("[와인파인땡큐] 문의 및 의견")
+                composeViewController.setMessageBody(bodyString, isHTML: false)
+                
+                self.present(composeViewController, animated: true, completion: nil)
+            } else {
+                print("메일 보내기 실패")
+                let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패",
+                                                           message: "메일을 보내려면 'Mail' 앱이 필요합니다. App Store에서 해당 앱을 복원하거나 이메일 설정을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+                let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
+                    if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"), UIApplication.shared.canOpenURL(url) {
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(url)
+                        }
+                    }
+                }
+                let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+                
+                sendMailErrorAlert.addAction(goAppStoreAction)
+                sendMailErrorAlert.addAction(cancleAction)
+                self.present(sendMailErrorAlert, animated: true, completion: nil)
             }
-        })
-    }
+        }
+    
+    
     @objc
     private func closeVC(){
         DispatchQueue.main.async {
@@ -125,8 +155,9 @@ class ConnectUsViewController: UIViewController {
         self.emailTxtField.resignFirstResponder()
         self.inquireTxtField.resignFirstResponder()
         self.inquireTxtView.resignFirstResponder()
+        self.view.endEditing(true)
     }
-}
+ }
 
 extension ConnectUsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -151,3 +182,4 @@ extension ConnectUsViewController: UITextViewDelegate{
         mailText = textView.text
     }
 }
+

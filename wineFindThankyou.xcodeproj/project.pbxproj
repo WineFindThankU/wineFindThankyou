@@ -107,7 +107,6 @@
 		C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A494C27AD220A0080CBE2 /* StartViewController.swift */; };
 		C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */; };
 		C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */; };
-		FD532A4227E179A700BE3D47 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = FD532A4127E179A700BE3D47 /* SwiftSMTP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,7 +245,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD532A4227E179A700BE3D47 /* SwiftSMTP in Frameworks */,
 				4447E73527E616EF000DFB08 /* Pods_wineFindThankyou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,7 +670,6 @@
 			);
 			name = wineFindThankyou;
 			packageProductDependencies = (
-				FD532A4127E179A700BE3D47 /* SwiftSMTP */,
 			);
 			productName = wineFineThankyou;
 			productReference = 44FF1CBB278471A700FD8567 /* wineFindThankyou.app */;
@@ -752,7 +749,7 @@
 			mainGroup = 44FF1CB2278471A700FD8567;
 			packageReferences = (
 				44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				FD532A4027E179A700BE3D47 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
+				44EE969127F9999000C019E6 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
 			);
 			productRefGroup = 44FF1CBC278471A700FD8567 /* Products */;
 			projectDirPath = "";
@@ -1207,7 +1204,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1244,7 +1241,7 @@
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = 4UY2M9TWUY;
+				DEVELOPMENT_TEAM = 385Y9B45N8;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wineFineThankyou/Info.plist;
@@ -1414,6 +1411,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		44EE969127F9999000C019E6 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-SMTP";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.0;
+			};
+		};
 		44FF1CF82786C03000FD8567 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1422,23 +1427,7 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		FD532A4027E179A700BE3D47 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kitura/Swift-SMTP";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FD532A4127E179A700BE3D47 /* SwiftSMTP */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FD532A4027E179A700BE3D47 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
-			productName = SwiftSMTP;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 44FF1CB3278471A700FD8567 /* Project object */;
 }
