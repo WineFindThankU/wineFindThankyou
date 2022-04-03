@@ -50,10 +50,7 @@ class WalkthroughViewController: UIViewController {
             walkthroughView.delegate = self
             walkthroughView.nextBtnClosure = {
                 guard let xPos = self.pageIdx2Xpos[idx + 1]
-                else {
-                    self.goToResult()
-                    return
-                }
+                else { self.goToResult(); return }
                 
                 self.scrollView.setContentOffset(CGPoint(x: xPos, y: 0), animated: true)
             }
@@ -109,7 +106,12 @@ class WalkthroughViewController: UIViewController {
     }
     
     private func goToResult() {
-        guard let vc = UIStoryboard(name: StoryBoard.start.name, bundle: nil).instantiateViewController(identifier: WalkthroughResulViewController.identifier) as? WalkthroughResulViewController else { return }
+        guard let _ = question2Answer[QuestionList.question0.rawValue],
+              let _ = question2Answer[QuestionList.question1.rawValue],
+              let _ = question2Answer[QuestionList.question2.rawValue],
+              let vc = UIStoryboard(name: StoryBoard.start.name, bundle: nil).instantiateViewController(identifier: WalkthroughResulViewController.identifier) as? WalkthroughResulViewController
+        else { return }
+        
         vc.question2Answer = self.question2Answer
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {

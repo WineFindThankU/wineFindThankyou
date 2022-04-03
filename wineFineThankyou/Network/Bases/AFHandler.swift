@@ -122,16 +122,14 @@ class AFHandler {
         }
     }
     
-    class func getLogout(_ key: String, done:((Logout?) -> Void)?) {
+    class func getLogout(_ key: String, done:((Bool) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/auth/sign"
         session.request(url, method: .delete, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?(nil); return }
-                return
+            case .success(_):
+                done?(true); return
             default:
-                done?(nil); return
+                done?(false); return
             }
         }
     }
@@ -140,10 +138,8 @@ class AFHandler {
         let url = "http://125.6.36.157:3001/v1/user"
         session.request(url, method: .delete, encoding: URLEncoding.default).responseJSON { res in
             switch res.result {
-            case .success(let nsDict):
-                guard let nsDict = nsDict as? NSDictionary
-                else { done?(true); return }
-                return
+            case .success(_):
+                done?(true); return
             default:
                 done?(false); return
             }

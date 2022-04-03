@@ -61,15 +61,19 @@ final class LeaveViewController: UIViewController {
                     return
                 }
                 UserData.isUserLogin = false
-                goToStartViewController()
+                UserData.accessToken = ""
+                DispatchQueue.main.async {
+                    goToStartViewController()
+                }
             }
             
             func goToStartViewController() {
-                guard let vc = UIStoryboard(name: StoryBoard.main.name,
-                                            bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController  else { return }
-                vc.modalPresentationStyle = .overFullScreen
-                DispatchQueue.main.async { [weak self] in
-                    self?.present(vc, animated: true)
+                guard let vc = UIStoryboard(name: StoryBoard.start.name,
+                                            bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController
+                else { return }
+                vc.modalPresentationStyle = .fullScreen
+                DispatchQueue.main.async {
+                    self.present(vc, animated: true)
                 }
             }
         }

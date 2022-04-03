@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ik4-fZ-hmg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,100 +24,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5081" y="15"/>
-        </scene>
-        <!--MainQA View Controller-->
-        <scene sceneID="uK5-4Z-hO2">
-            <objects>
-                <viewController storyboardIdentifier="MainQAViewController" id="0s7-9n-J6W" customClass="MainQAViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h2g-cy-IAh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2n-tf-yWY">
-                                <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKd-8J-2z6">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
-                                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="arrow-left"/>
-                                        <connections>
-                                            <action selector="onClickback:" destination="0s7-9n-J6W" eventType="touchUpInside" id="PTG-DM-FMJ"/>
-                                        </connections>
-                                    </button>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Xd-d4-Joe">
-                                        <rect key="frame" x="130" y="12" width="115.5" height="26"/>
-                                        <color key="pageIndicatorTintColor" red="0.87833553549999999" green="0.87848657370000005" blue="0.8783260584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="pageChanged:" destination="0s7-9n-J6W" eventType="valueChanged" id="off-Yb-mda"/>
-                                        </connections>
-                                    </pageControl>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="sKd-8J-2z6" firstAttribute="leading" secondItem="p2n-tf-yWY" secondAttribute="leading" id="0qL-S9-bx4"/>
-                                    <constraint firstAttribute="bottom" secondItem="sKd-8J-2z6" secondAttribute="bottom" id="ISy-bA-W06"/>
-                                    <constraint firstItem="sKd-8J-2z6" firstAttribute="top" secondItem="p2n-tf-yWY" secondAttribute="top" id="aEl-oq-N4s"/>
-                                    <constraint firstItem="7Xd-d4-Joe" firstAttribute="centerY" secondItem="p2n-tf-yWY" secondAttribute="centerY" id="lXi-FN-dSL"/>
-                                    <constraint firstAttribute="height" constant="50" id="yGR-Wa-ih2"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIa-we-TyZ">
-                                <rect key="frame" x="0.0" y="70" width="375" height="442"/>
-                                <connections>
-                                    <segue destination="77n-1T-n3W" kind="embed" id="spS-nP-3HV"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cG-k0-Hc6">
-                                <rect key="frame" x="153" y="522" width="69" height="69"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="MpQ-s8-xI6"/>
-                                    <constraint firstAttribute="height" constant="69" id="zcy-Vz-GNE"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Ellipse 1"/>
-                                <state key="selected" image="Quetion"/>
-                                <connections>
-                                    <action selector="onClickNext:" destination="0s7-9n-J6W" eventType="touchUpInside" id="L89-fw-MAX"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="U7F-Uo-a0z"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="dIa-we-TyZ" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="7DH-R6-Xv2"/>
-                            <constraint firstItem="p2n-tf-yWY" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="DvR-et-vUy"/>
-                            <constraint firstItem="dIa-we-TyZ" firstAttribute="top" secondItem="p2n-tf-yWY" secondAttribute="bottom" constant="20" id="Hnn-Iu-XyV"/>
-                            <constraint firstItem="1cG-k0-Hc6" firstAttribute="centerX" secondItem="U7F-Uo-a0z" secondAttribute="centerX" id="Smi-TL-6Z3"/>
-                            <constraint firstItem="U7F-Uo-a0z" firstAttribute="bottom" secondItem="1cG-k0-Hc6" secondAttribute="bottom" constant="76" id="X9e-XK-kx6"/>
-                            <constraint firstItem="p2n-tf-yWY" firstAttribute="leading" secondItem="U7F-Uo-a0z" secondAttribute="leading" id="fTG-ak-8NZ"/>
-                            <constraint firstItem="7Xd-d4-Joe" firstAttribute="centerX" secondItem="U7F-Uo-a0z" secondAttribute="centerX" id="g6p-Jg-lLS"/>
-                            <constraint firstItem="p2n-tf-yWY" firstAttribute="top" secondItem="U7F-Uo-a0z" secondAttribute="top" id="jCe-qc-gmk"/>
-                            <constraint firstItem="1cG-k0-Hc6" firstAttribute="top" secondItem="dIa-we-TyZ" secondAttribute="bottom" constant="10" id="ksQ-mB-LoA"/>
-                            <constraint firstItem="U7F-Uo-a0z" firstAttribute="trailing" secondItem="dIa-we-TyZ" secondAttribute="trailing" id="nyn-b0-hpA"/>
-                            <constraint firstItem="U7F-Uo-a0z" firstAttribute="trailing" secondItem="p2n-tf-yWY" secondAttribute="trailing" constant="20" id="zY7-hX-iX2"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="backButton" destination="sKd-8J-2z6" id="1fh-xT-eIx"/>
-                        <outlet property="contentView" destination="dIa-we-TyZ" id="4UY-CE-NRm"/>
-                        <outlet property="nextButton" destination="1cG-k0-Hc6" id="X7f-jT-pM8"/>
-                        <outlet property="pageControl" destination="7Xd-d4-Joe" id="ld0-BY-W9k"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="21C-yi-juq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="929" y="15"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="ZkS-C3-tsQ">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="77n-1T-n3W" customClass="PageViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XvO-yF-fts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1689" y="-77"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="n2u-Ug-8ID">
@@ -565,27 +471,10 @@
             </objects>
             <point key="canvasLocation" x="6032.8000000000002" y="685.00749625187416"/>
         </scene>
-        <!--Start View Controller-->
-        <scene sceneID="VGk-nA-j7c">
-            <objects>
-                <viewController storyboardIdentifier="StartViewController" id="Ik4-fZ-hmg" customClass="StartViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gGE-Fs-tR2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="zvi-hA-jKr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gNl-h8-D9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="272.80000000000001" y="14.842578710644679"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Close" width="24" height="24"/>
-        <image name="Ellipse 1" width="69" height="69"/>
         <image name="EmptySearch" width="34" height="34"/>
-        <image name="Quetion" width="69" height="69"/>
         <image name="Search Box2" width="343" height="36"/>
         <image name="Search bar" width="343" height="36"/>
         <image name="Tag" width="54" height="54"/>

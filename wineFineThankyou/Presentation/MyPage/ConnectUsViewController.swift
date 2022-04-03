@@ -104,11 +104,11 @@ class ConnectUsViewController: UIViewController {
     private func sendEmail() {
         guard let usersEmail = usersEmail else { return }
         let mailFrom = Mail.User(name: "사용자", email: usersEmail) //보내는 사람 이름/이메일, 이메일 형식 유효하지 않은 경우 error.
-        let mailTo = Mail.User(name: "받는사람", email: "munyong.heo@timeblocks.com") // WFT 이름/이메일 주소
+        let mailTo = Mail.User(name: "받는사람", email: "winefindthankyou@gmail.com") // WFT 이름/이메일 주소
         let mail = Mail(from: mailFrom, to: [mailTo], subject: "subject", text: "text")
         SMTP(hostname: "smtp.gmail.com",
-                       email: "", //WFT 이메일 주소, 비밀번호
-                       password: "").send(mail, completion: { error in
+                       email: "winefindthankyou@gmail.com", //WFT 이메일 주소, 비밀번호
+                       password: "q1w2e3!@#").send(mail, completion: { error in
             guard let error = error else {
                 self.closeVC()
                 return

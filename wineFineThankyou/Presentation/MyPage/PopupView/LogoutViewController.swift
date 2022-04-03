@@ -53,15 +53,19 @@ final class PopupViewController: UIViewController {
         let action = UIAction { _ in
             AFHandler.getLogout(UserData.accessToken) { _ in
                 UserData.isUserLogin = false
-                goToStartViewController()
+                UserData.accessToken = ""
+                DispatchQueue.main.async {
+                    goToStartViewController()
+                }
             }
             
             func goToStartViewController() {
-                guard let vc = UIStoryboard(name: StoryBoard.shop.name,
-                                            bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController  else { return }
-                vc.modalPresentationStyle = .overFullScreen
-                DispatchQueue.main.async { [weak self] in
-                    self?.present(vc, animated: true)
+                guard let vc = UIStoryboard(name: StoryBoard.start.name,
+                                            bundle: nil).instantiateViewController(withIdentifier: StartViewController.identifier) as? StartViewController
+                else { return }
+                vc.modalPresentationStyle = .fullScreen
+                DispatchQueue.main.async {
+                    self.present(vc, animated: true)
                 }
             }
         }
