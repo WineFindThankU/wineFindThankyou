@@ -95,7 +95,7 @@ class MainViewController: UIViewController {
         marker.captionText = shop.nnName
         
         DispatchQueue.main.async {
-            self.updateFocus(shop.latitude, shop.longtitude)
+            self.updateFocus(shop.latitude, shop.longtitude, setZoomLevel: true)
             self.openShop(shop.key)
         }
     }
@@ -275,9 +275,11 @@ extension MainViewController: NMFMapViewCameraDelegate {
         nmfNaverMapView.showLocationButton = true
     }
     
-    internal func updateFocus(_ lat: Double, _ lng: Double) {
+    internal func updateFocus(_ lat: Double, _ lng: Double, setZoomLevel: Bool = false) {
         let camPosition =  NMGLatLng(lat: lat, lng: lng)
-        let position = NMFCameraPosition(camPosition, zoom: 14, tilt: 0, heading: 0)
+        
+        let zoomLevel: Double = setZoomLevel ? 12 : nmfNaverMapView.mapView.cameraPosition.zoom
+        let position = NMFCameraPosition(camPosition, zoom: zoomLevel, tilt: 0, heading: 0)
         nmfNaverMapView.mapView.moveCamera(NMFCameraUpdate(position: position))
     }
     
