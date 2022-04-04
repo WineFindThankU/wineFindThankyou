@@ -89,7 +89,7 @@ class SearchViewController: UIViewController {
     
     private func setupCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = .zero
+        flowLayout.minimumLineSpacing = 4
         flowLayout.minimumInteritemSpacing = 12
         flowLayout.scrollDirection = .horizontal
         searchCollectionView.setCollectionViewLayout(flowLayout, animated: false)
@@ -97,6 +97,7 @@ class SearchViewController: UIViewController {
         searchCollectionView.dataSource = self
         searchCollectionView.backgroundColor = .white
         searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
+        
     }
     
     private func setupTableView() {
