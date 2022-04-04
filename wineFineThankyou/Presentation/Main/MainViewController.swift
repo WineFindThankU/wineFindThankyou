@@ -74,22 +74,25 @@ class MainViewController: UIViewController {
     
     internal func whenBeSelectedMarker(_ shop: Shop) {
         guard let img = UIImage(named: "ShopDetail") else { return }
-        var marker = allOfMarkers.first(where: {
+        let marker = allOfMarkers.first(where: {
             Int($0.position.lat) == Int(shop.latitude)
             && Int($0.position.lng) == Int(shop.longtitude)
-        })
+        }) ?? NMFMarker()
         
-        if marker == nil {
-            marker = NMFMarker()
-            self.allOfMarkers.append(marker!)
+        
+        if self.allOfMarkers.first(where: {
+            Int($0.position.lat) == Int(marker.position.lat)
+                && Int($0.position.lng) == Int(marker.position.lng)
+        }) == nil {
+            self.allOfMarkers.append(marker)
         }
         
-        marker?.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
-        marker?.mapView = self.nmfNaverMapView.mapView
-        marker?.iconImage = NMFOverlayImage(image: img)
-        marker?.width = 48
-        marker?.height = 59
-        marker?.captionText = shop.nnName
+        marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
+        marker.mapView = self.nmfNaverMapView.mapView
+        marker.iconImage = NMFOverlayImage(image: img)
+        marker.width = 48
+        marker.height = 59
+        marker.captionText = shop.nnName
         
         DispatchQueue.main.async {
             self.updateFocus(shop.latitude, shop.longtitude)
@@ -129,9 +132,9 @@ extension MainViewController {
     func showShopsAtCrntLoc() {
         let crntLoc = self.nmfNaverMapView.mapView.cameraPosition.target
         DispatchQueue.global().async {
-            AFHandler.shopList(crntLoc.lat, crntLoc.lng) {
+            AFHandler.shopList(crntLoc.lat, crntLoc.lng) { shopList in
                 self.allOfWineShopsNearBy.removeAll()
-                self.allOfWineShopsNearBy = $0
+                self.allOfWineShopsNearBy.append(contentsOf: shopList)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -280,6 +283,8 @@ extension MainViewController: NMFMapViewCameraDelegate {
         allOfMarkers.forEach { $0.mapView = nil }
         allOfMarkers.removeAll()
         shownWineShops.forEach { shop in
+            guard !shop.imgName.isEmpty else { return }
+        
             let marker = NMFMarker()
             marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
             marker.mapView = self.nmfNaverMapView.mapView
