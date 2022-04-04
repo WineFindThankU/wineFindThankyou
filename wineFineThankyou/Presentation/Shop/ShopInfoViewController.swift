@@ -71,6 +71,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         shopInfoTableView.register(UINib(nibName: "WineListTitle", bundle: nil), forHeaderFooterViewReuseIdentifier: "WineListTitle")
         shopInfoTableView.rowHeight = UITableView.automaticDimension
         shopInfoTableView.estimatedRowHeight = UITableView.automaticDimension
+        shopInfoTableView.isUserInteractionEnabled = false
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

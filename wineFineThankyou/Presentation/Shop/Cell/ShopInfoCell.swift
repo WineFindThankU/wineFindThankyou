@@ -63,6 +63,7 @@ class ShopInfoCell: UITableViewCell{
             info.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.5),
             info.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8.5),
         ])
+        info.isEditable = false
         self.imgView = imageView
         self.info = info
     }
