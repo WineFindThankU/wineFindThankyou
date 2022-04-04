@@ -22,11 +22,11 @@ var defaultSession: Session {
 class AFHandler {
     static let session = defaultSession
     static let queue = DispatchQueue(label: "AFHandlerQueue")
-    class func signBySNS(_ params: [String:Any], done: ((AfterSign) -> Void)?) {
+    class func signBySNS(_ params: [String:String], done: ((AfterSign) -> Void)?) {
         let url = "http://125.6.36.157:3001/v1/user"
         let userOptions = UserData.userOptions
         
-        var dict = params
+        var dict: [String:Any] = params
         dict["taste_type"] = UserData.userTasteType
         dict["taste_data"] = [
             "1": [ "value":  userOptions[0]],

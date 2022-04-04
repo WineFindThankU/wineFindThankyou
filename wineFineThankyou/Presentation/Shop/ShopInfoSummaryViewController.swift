@@ -74,7 +74,6 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         NSLayoutConstraint.activate([
             shopName.topAnchor.constraint(equalTo: contentsTopView.topAnchor),
             shopName.leftAnchor.constraint(equalTo: contentsTopView.leftAnchor, constant: 17),
-            shopName.widthAnchor.constraint(equalToConstant: 217),
             
             shopClassification.leftAnchor.constraint(equalTo: shopName.rightAnchor, constant: 8),
             shopClassification.bottomAnchor.constraint(equalTo: shopName.bottomAnchor),
