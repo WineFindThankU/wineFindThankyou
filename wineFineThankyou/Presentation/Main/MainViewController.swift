@@ -157,6 +157,12 @@ extension MainViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     private func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 4
+        flowLayout.minimumInteritemSpacing = 12
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.estimatedItemSize = CGSize(width: 120, height: 32)
+        collectionView.setCollectionViewLayout(flowLayout, animated: false)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.showsVerticalScrollIndicator = false
@@ -186,10 +192,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return true
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = collectionView.frame.width / 3 - 1.0
-        return CGSize(width: width, height: width)
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4.0
