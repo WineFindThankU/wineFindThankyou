@@ -162,21 +162,17 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             let userIdentifier = appleIDCredential.user
-            let givenName = String(describing: appleIDCredential.fullName?.givenName)
+            let givenName = appleIDCredential.fullName?.givenName as? String ?? ""
             let nick = givenName.isEmpty ? "User" : givenName
             let email = appleIDCredential.email ?? "WTFUser@wineThankU.com"
             let type = "apple"
-            print(UserDefaults.standard.string(forKey: "firstValue") ?? "없음")
-            let firstData:[String: String] = ["value": UserDefaults.standard.string(forKey: "firstValue") ?? ""]
-            let secondData:[String: String] = ["value": UserDefaults.standard.string(forKey: "secondValue") ?? ""]
-            let thirdData:[String: String] = ["value": UserDefaults.standard.string(forKey: "thirdValue") ?? ""]
-            
+
             let params = [
                 "id": email,
                 "type": type,
                 "sns_id": userIdentifier,
                 "nick": nick,
-            ] as Dictionary
+            ] as [String:String]
             
             AFHandler.signBySNS(params) {
                 guard $0 == AfterSign.success else {
