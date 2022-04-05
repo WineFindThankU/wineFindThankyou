@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ohh-a3-sDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rPV-bp-qlF">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -224,25 +224,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rp3-42-q6s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="917" y="102"/>
+            <point key="canvasLocation" x="905" y="81"/>
         </scene>
         <!--Start View Controller-->
-        <scene sceneID="zIu-sf-cNz">
+        <scene sceneID="fhF-aO-NVi">
             <objects>
-                <viewController storyboardIdentifier="StartViewController" id="Ohh-a3-sDf" customClass="StartViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ln3-Yf-pIJ">
+                <viewController storyboardIdentifier="StartViewController" id="rPV-bp-qlF" customClass="StartViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aSZ-4c-Kff">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Fip-0b-fc5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle0" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-de-Ewe">
+                                <rect key="frame" x="100" y="195" width="175" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="jrm-eX-L3T"/>
+                                    <constraint firstAttribute="width" constant="175" id="lcd-jh-xgc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eAR-NI-msA"/>
+                        <color key="backgroundColor" red="0.40392156862745099" green="0.25882352941176467" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UeY-de-Ewe" firstAttribute="centerX" secondItem="aSZ-4c-Kff" secondAttribute="centerX" id="8pr-px-8ws"/>
+                            <constraint firstItem="UeY-de-Ewe" firstAttribute="top" secondItem="eAR-NI-msA" secondAttribute="top" constant="195" id="VKn-XF-FEh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgViewLaunchTitle" destination="UeY-de-Ewe" id="jQm-of-2SE"/>
+                        <outlet property="launchTitleTopAnchor" destination="VKn-XF-FEh" id="N31-bY-Mzy"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qNW-cr-KPx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYn-NR-hcx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-969" y="101"/>
+            <point key="canvasLocation" x="-1706" y="101"/>
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchTitle0" width="175" height="70"/>
         <image name="SelectedWalkthroughNextBtn" width="69" height="69"/>
         <image name="arrow-left" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">

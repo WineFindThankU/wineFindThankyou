@@ -15,8 +15,30 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle0" translatesAutoresizingMaskIntoConstraints="NO" id="76J-J7-IKP">
+                                <rect key="frame" x="119.5" y="239" width="175" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="kXM-nz-14j"/>
+                                    <constraint firstAttribute="height" constant="70" id="ys4-Nl-o4S"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="EXF-up-RHq">
+                                <rect key="frame" x="132" y="343" width="150" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="OZS-AT-E1Y"/>
+                                    <constraint firstAttribute="height" constant="91.200000000000003" id="a4d-1f-3s2"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.40392156862745099" green="0.25882352941176467" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="EXF-up-RHq" firstAttribute="top" secondItem="76J-J7-IKP" secondAttribute="bottom" constant="34" id="0cO-1d-G1q"/>
+                            <constraint firstItem="76J-J7-IKP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="195" id="JUL-xE-84n"/>
+                            <constraint firstItem="EXF-up-RHq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Js5-vn-ArZ"/>
+                            <constraint firstItem="76J-J7-IKP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OMb-pY-eOA"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +46,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchImage" width="375" height="375"/>
+        <image name="LaunchTitle0" width="175" height="70"/>
+    </resources>
 </document>

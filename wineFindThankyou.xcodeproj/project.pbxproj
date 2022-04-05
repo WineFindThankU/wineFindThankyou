@@ -104,9 +104,9 @@
 		BAE7965027C1C21200D2AC1F /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7964F27C1C21200D2AC1F /* MyPageTableViewCell.swift */; };
 		BAE7965227C1E5AD00D2AC1F /* WineShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7965127C1E5AD00D2AC1F /* WineShopCell.swift */; };
 		BAE7965427C1E5B800D2AC1F /* WineShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE7965327C1E5B800D2AC1F /* WineShopCell.xib */; };
-		C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A494C27AD220A0080CBE2 /* StartViewController.swift */; };
 		C57EF2A627D980D000BA0C31 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */; };
 		C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */; };
+		FDA3696727FBE72700A7CF7F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA3696627FBE72700A7CF7F /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,10 +234,10 @@
 		BAE7964F27C1C21200D2AC1F /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		BAE7965127C1E5AD00D2AC1F /* WineShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineShopCell.swift; sourceTree = "<group>"; };
 		BAE7965327C1E5B800D2AC1F /* WineShopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineShopCell.xib; sourceTree = "<group>"; };
-		C56A494C27AD220A0080CBE2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C57EF2A527D980D000BA0C31 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
 		C57EF2A727D9818900BA0C31 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E75DB512D21DE9B759314DDB /* Pods_wineFindThankyou_wineFindThankyouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyou_wineFindThankyouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDA3696627FBE72700A7CF7F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,7 +602,7 @@
 		BAD8866427D6FC0C00E7AD5C /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				C56A494C27AD220A0080CBE2 /* StartViewController.swift */,
+				FDA3696627FBE72700A7CF7F /* StartViewController.swift */,
 				BABFCE7E27F80B5D00E097DF /* WalkthroughViewController.swift */,
 				BABFCE8827F8841000E097DF /* WalkthroughResulViewController.swift */,
 				BABFCE7D27F80B3B00E097DF /* WalkthroughView */,
@@ -965,7 +965,6 @@
 				BABFCE8527F84FF700E097DF /* WalkthroughView.swift in Sources */,
 				BA8BB7CB27A529D40010F05A /* Login.swift in Sources */,
 				C57EF2A827D9818900BA0C31 /* UIFont+Extension.swift in Sources */,
-				C56A494D27AD220A0080CBE2 /* StartViewController.swift in Sources */,
 				BA70B7CE27E3EE6D00EA5118 /* WineListCell.swift in Sources */,
 				BAA4031827BA945700C50221 /* WineListTitle.swift in Sources */,
 				BA8BB7B227A4256F0010F05A /* WineInfoCollectionViewCell.swift in Sources */,
@@ -981,6 +980,7 @@
 				BAE0C01427D42FFA00296234 /* AFHandler.swift in Sources */,
 				44233A3327D5D211008BD963 /* Logout.swift in Sources */,
 				4433C04D27CBBB1800119931 /* ShopListKeyword.swift in Sources */,
+				FDA3696727FBE72700A7CF7F /* StartViewController.swift in Sources */,
 				4455BADB27DA45E500C9E089 /* SearchShop.swift in Sources */,
 				BA913C0B27C0BD410055B2A4 /* StatisticsOfWineView.swift in Sources */,
 				44A8A98727B921F8004C8E6C /* LoginModel.swift in Sources */,
