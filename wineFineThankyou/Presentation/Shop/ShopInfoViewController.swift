@@ -69,9 +69,8 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         shopInfoTableView.register(ShopInfoCell.self, forCellReuseIdentifier: "ShopInfoCell")
         shopInfoTableView.register(UINib(nibName: "AllOfWineInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AllOfWineInfoTableViewCell")
         shopInfoTableView.register(UINib(nibName: "WineListTitle", bundle: nil), forHeaderFooterViewReuseIdentifier: "WineListTitle")
+        shopInfoTableView.estimatedRowHeight = 45
         shopInfoTableView.rowHeight = UITableView.automaticDimension
-        shopInfoTableView.estimatedRowHeight = UITableView.automaticDimension
-        shopInfoTableView.isUserInteractionEnabled = false
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,6 +98,8 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if TableSection(rawValue: indexPath.section) == .ShopInfo {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ShopInfoCell", for: indexPath) as? ShopInfoCell else { return UITableViewCell() }
+            
+            cell.isUserInteractionEnabled = false
             return setSection0OfCell(cell, indexPath.row)
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllOfWineInfoTableViewCell", for: indexPath) as? AllOfWineInfoTableViewCell
@@ -112,6 +113,10 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if TableSection(rawValue: indexPath.section) == .ShopInfo {
             switch ShopInfo(rawValue: indexPath.row) {
+            case .homepage:
+                return CGFloat(45 + (self.shop.nnHomepage.count / 30) * 20)
+            case .location:
+                return CGFloat(45 + (self.shop.nnAddress.count / 30) * 20)
             default: return 45
             }
         } else {

@@ -22,7 +22,7 @@ enum ShopInfo: Int, CaseIterable{
         case .time:
             return "clock"
         case .homepage:
-            return "call"
+            return "homepage"
         }
     }
 }
