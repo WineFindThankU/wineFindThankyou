@@ -73,7 +73,10 @@ class MainViewController: UIViewController {
     }
     
     internal func whenBeSelectedMarker(_ shop: Shop) {
-        guard let img = UIImage(named: "ShopDetail") else { return }
+        guard let shopTypeStr = shop.type?.typeStr,
+              let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
+        else { return }
+        
         let marker = allOfMarkers.first(where: {
             Int($0.position.lat) == Int(shop.latitude)
             && Int($0.position.lng) == Int(shop.longtitude)
@@ -300,7 +303,8 @@ extension MainViewController: NMFMapViewCameraDelegate {
                 guard let key = overlay.userInfo["key"] as? String,
                       let lat = overlay.userInfo["lat"] as? Double,
                       let long = overlay.userInfo["long"] as? Double,
-                      let img = UIImage(named: "ShopDetail")
+                      let shopTypeStr = shop.type?.typeStr,
+                      let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
                 else { return false }
                 
                 marker.iconImage = NMFOverlayImage(image: img)
