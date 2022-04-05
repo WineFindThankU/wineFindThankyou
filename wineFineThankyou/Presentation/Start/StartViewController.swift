@@ -32,6 +32,7 @@ class StartViewController: UIViewController{
             self.goToWalkthroughVC()
         })
         button.addAction(action, for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
     
