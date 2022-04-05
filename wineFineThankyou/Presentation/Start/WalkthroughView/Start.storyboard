@@ -12,7 +12,7 @@
         <!--Walkthrough View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughViewController" id="Y6W-OH-hqX" customClass="WalkthroughViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughViewController" id="Y6W-OH-hqX" customClass="WalkthroughViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +126,7 @@
         <!--Walkthrough Resul View Controller-->
         <scene sceneID="Fa3-aK-Z7K">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughResulViewController" id="ynh-9h-9Td" customClass="WalkthroughResulViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughResulViewController" id="ynh-9h-9Td" customClass="WalkthroughResulViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8jx-eh-5OL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,7 +229,7 @@
         <!--Start View Controller-->
         <scene sceneID="zIu-sf-cNz">
             <objects>
-                <viewController storyboardIdentifier="StartViewController" id="Ohh-a3-sDf" customClass="StartViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" id="Ohh-a3-sDf" customClass="StartViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ln3-Yf-pIJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

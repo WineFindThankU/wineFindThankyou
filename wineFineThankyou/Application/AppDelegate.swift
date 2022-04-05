@@ -9,6 +9,7 @@ import UIKit
 import KakaoSDKCommon
 import GoogleSignIn
 import NaverThirdPartyLogin
+import KakaoSDKAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // MARK: Kakao 로그인
         KakaoSDK.initSDK(appKey: "229dde6eaa35c651b0bc5ccfa474c5e9")
-        
         
         // MARK: Google 로그인
         // FirebaseApp.configure()
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
         NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
         
         return (GIDSignIn.sharedInstance()?.handle(url))!

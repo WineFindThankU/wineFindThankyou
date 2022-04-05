@@ -15,21 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-
-        // MARK: Kakao Login
-        func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-            if let url = URLContexts.first?.url {
-                if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                    _ = AuthController.handleOpenUrl(url: url)
-                    
-                }
-            }
+        guard let url = URLContexts.first?.url, AuthApi.isKakaoTalkLoginUrl(url) else {
+            // MARK: Naver Login
+            NaverThirdPartyLoginConnection
+                .getSharedInstance()?
+                .receiveAccessToken(URLContexts.first?.url)
+            return
         }
-        
-        // MARK: Naver Login
-        NaverThirdPartyLoginConnection
-            .getSharedInstance()?
-            .receiveAccessToken(URLContexts.first?.url)
+        _ = AuthController.handleOpenUrl(url: url)
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

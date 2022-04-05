@@ -63,22 +63,23 @@ class LoginController: NSObject {
     
     internal func loginByKakao() {
         UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-            if let error = error {
+            guard error == nil else {
+                print(error)
+                return
+            }
+
+            UserApi.shared.me() {(user, error) in
+                guard error == nil else {
                     print(error)
-            } else {
-                UserApi.shared.me() {(user, error) in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        _ = user
-                        let email = user?.kakaoAccount?.email ?? ""
-                        let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
-                        print(email)
-                        print(nickname)
-                        AFHandler.loginBySNS(loginId: email, snsID: nickname, authType: "kakao") {
-                            self.delegate?.endLogin($0)
-                        }
-                    }
+                    return
+                }
+                
+                _ = user
+                let email = user?.kakaoAccount?.email ?? ""
+                let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
+
+                AFHandler.loginBySNS(loginId: email, snsID: nickname, authType: "kakao") {
+                    self.delegate?.endLogin($0)
                 }
             }
         }
