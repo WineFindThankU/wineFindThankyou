@@ -62,40 +62,50 @@ class LoginController: NSObject {
 
     
     internal func loginByKakao() {
+        guard UserApi.isKakaoTalkLoginAvailable() else {
+            UserApi.shared.loginWithKakaoAccount {(authToken, error) in
+                guard error == nil else { print(error); return }
+                self.sendUserInfoAfterKakaoLogin()
+            }
+            return
+        }
+        
         UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
             guard error == nil else {
                 print(error)
                 return
             }
-
-            UserApi.shared.me() {(user, error) in
-                guard error == nil else {
-                    print(error)
-                    return
-                }
-                
-                _ = user
-                let email = user?.kakaoAccount?.email ?? ""
-                let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
-
-                AFHandler.loginBySNS(loginId: email, snsID: nickname, authType: "kakao") {
-                    self.delegate?.endLogin($0)
-                }
-            }
+            self.sendUserInfoAfterKakaoLogin()
         }
     }
     
-    func setUserInfo() {
+    private func sendUserInfoAfterKakaoLogin() {
         UserApi.shared.me() {(user, error) in
-            if let error = error {
+            guard error == nil, let userIdInt64Val = user?.id else {
                 print(error)
-            } else {
-                _ = user
-                let email = user?.kakaoAccount?.email ?? ""
-                let nickname = user?.kakaoAccount?.profile?.nickname ?? ""
-                print(email)
-                print(nickname)
-                AFHandler.loginBySNS(loginId: email, snsID: nickname, authType: "kakao") {
+                return
+            }
+            
+            let userIdentifer = String(userIdInt64Val)
+            let email = user?.kakaoAccount?.email ?? "WTFUser@wineThankU.com"
+            let type = "kakao"
+            let nick = user?.kakaoAccount?.profile?.nickname ?? "User"
+            
+            let params = [
+                "id": email,
+                "type": type,
+                "sns_id": userIdentifer,
+                "nick": nick,
+            ] as [String:String]
+            
+            AFHandler.signBySNS(params) { result in
+                guard result == AfterSign.success else {
+                    self.delegate?.endLogin(.fail)
+                    
+                    return
+                }
+                
+                AFHandler.loginBySNS(loginId: email, snsID: userIdentifer, authType: type) {
                     self.delegate?.endLogin($0)
                 }
             }
@@ -175,8 +185,8 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
                 "nick": nick,
             ] as [String:String]
             
-            AFHandler.signBySNS(params) {
-                guard $0 == AfterSign.success else {
+            AFHandler.signBySNS(params) { result in
+                guard result == AfterSign.success else {
                     self.delegate?.endLogin(.fail)
                     
                     return
