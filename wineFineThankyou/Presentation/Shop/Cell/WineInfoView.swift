@@ -50,6 +50,7 @@ class WineInfoView: UIView{
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.isUserInteractionEnabled = false
     }
     
     private func updateUI() {
@@ -62,6 +63,24 @@ class WineInfoView: UIView{
 extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let item = TableItem(rawValue: indexPath.row),
+              let wine = self.wineInfo?.info?.wineAtServer
+        else { return 24 }
+        
+        switch item {
+        case .cepage:
+            if wine.cepage.count > 30 {
+                return CGFloat(wine.cepage.count / 30) * 24 + 24
+            }
+            return 24
+        case .from:
+            return CGFloat(wine.from.count / 30) * 20 + 24
+        default: return 24
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +97,6 @@ extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
         case .from:
             cell.update(("생산지", wine.from)); return cell
         case .vintage:
-            //TODO: 문용: 빈티지 어디서 받아오나요?
             cell.update(("빈티지", vintage));
             return cell
         case .alchol:
@@ -136,12 +154,14 @@ class WineDetailCell: UITableViewCell {
             self.itemLabel.widthAnchor.constraint(equalToConstant: 36),
             
             self.itemContent.leftAnchor.constraint(equalTo: self.itemLabel.rightAnchor, constant: 8),
+            self.itemContent.rightAnchor.constraint(equalTo: self.containerView.rightAnchor, constant: -8),
             self.itemContent.centerYAnchor.constraint(equalTo: self.itemLabel.centerYAnchor)
         ])
         itemLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         itemLabel.textColor = UIColor(rgb: 0x9E9E9E)
         itemContent.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         itemContent.textColor = UIColor(rgb: 0xEEEEEE)
+        itemContent.numberOfLines = 0
     }
     
     internal func update(_ labelTxt: (item: String, contents: String)) {

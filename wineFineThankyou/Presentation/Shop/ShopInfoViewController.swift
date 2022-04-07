@@ -90,7 +90,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard TableSection(rawValue: section) == .WineList else { return nil }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "WineListTitle") as? WineListTitle
-        header?.label.text = "와인리스트 \(shop.userWines.count)"
+        header?.label.attributedText = "와인리스트 \(shop.userWines.count)".rangeSetColor(color: UIColor(rgb: 0x7B61FF), range: "\(shop.userWines.count)")
         header?.backgroundColor = .red
         return header
     }
@@ -114,9 +114,15 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         if TableSection(rawValue: indexPath.section) == .ShopInfo {
             switch ShopInfo(rawValue: indexPath.row) {
             case .homepage:
-                return CGFloat(45 + (self.shop.nnHomepage.count / 30) * 20)
+                if self.shop.nnHomepage.count > 30 {
+                    return CGFloat(( self.shop.nnHomepage.count / 30) * 20 + 45)
+                }
+                return 45
             case .location:
-                return CGFloat(45 + (self.shop.nnAddress.count / 30) * 20)
+                if self.shop.nnAddress.count > 30 {
+                    return CGFloat((self.shop.nnAddress.count / 30) * 20 + 45)
+                }
+                return 45
             default: return 45
             }
         } else {
@@ -135,7 +141,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             cell.info?.text = shop.nnAddress
         case 2:
-            cell.info?.text = ""
+            cell.info?.text = shop.nnOpeningHours
         case 3:
             cell.info?.text = shop.nnHomepage
         default:

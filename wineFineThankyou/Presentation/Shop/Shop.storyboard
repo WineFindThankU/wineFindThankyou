@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Shop Info View Controller-->
         <scene sceneID="t9X-9e-Ffo">
             <objects>
-                <viewController storyboardIdentifier="ShopInfoViewController" id="zxt-UW-3Ou" customClass="ShopInfoViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopInfoViewController" id="zxt-UW-3Ou" customClass="ShopInfoViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mJz-vt-0ro">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
         <!--Shop Wines View Controller-->
         <scene sceneID="Mw4-D4-xkl">
             <objects>
-                <viewController storyboardIdentifier="ShopWinesViewController" id="kTa-O6-Mj5" customClass="ShopWinesViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopWinesViewController" id="kTa-O6-Mj5" customClass="ShopWinesViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uXJ-ie-gyQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,7 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-N0-AiH" customClass="TagLabel" customModule="wineFindThankyou" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBN-N0-AiH" customClass="TagLabel" customModule="WineFindThankU" customModuleProvider="target">
                                 <rect key="frame" x="160.66666666666666" y="433" width="54" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="1Sf-e9-mJ8"/>
@@ -90,7 +90,7 @@
         <!--Shop Info Summary View Controller-->
         <scene sceneID="TVn-uo-wz1">
             <objects>
-                <viewController storyboardIdentifier="ShopInfoSummaryViewController" id="ThI-R6-Jr4" customClass="ShopInfoSummaryViewController" customModule="wineFindThankyou" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopInfoSummaryViewController" id="ThI-R6-Jr4" customClass="ShopInfoSummaryViewController" customModule="WineFindThankU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hXy-go-HaY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,7 +193,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="wineEmpty" width="205" height="113"/>
+        <image name="wineEmpty" width="203" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

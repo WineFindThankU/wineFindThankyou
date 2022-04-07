@@ -36,7 +36,7 @@ class ShopWinesViewController: UIViewController {
     }
     
     private func detailConfigure() {
-        self.view.backgroundColor = Theme.black.color.withAlphaComponent(0.8)
+        self.view.backgroundColor = Theme.black.color.withAlphaComponent(0.9)
         self.updateUI()
     }
     
@@ -94,7 +94,7 @@ class ShopWinesViewController: UIViewController {
         self.view.addSubview(wineInfoView)
         wineInfoView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            wineInfoView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 20),
+            wineInfoView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor),
             wineInfoView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             wineInfoView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
             wineInfoView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
@@ -111,7 +111,7 @@ class ShopWinesViewController: UIViewController {
 
 extension ShopWinesViewController {
     private func updateUI(){
-        self.crntIndexLabel.text = "\(self.crntIndex + 1) / \(wineInfos.count)"
+        self.crntIndexLabel.attributedText = "\(self.crntIndex + 1) / \(wineInfos.count)".rangeSetColor(color: UIColor(rgb: 0x9e9e9e), range: "\(self.crntIndex + 1)")
         let wineInfo = wineInfos[self.crntIndex]
         self.wineInfoView.wineInfo = (wineInfo.vintage, wineInfo)
         guard let wineType = wineInfos[self.crntIndex].wineAtServer?.type else {

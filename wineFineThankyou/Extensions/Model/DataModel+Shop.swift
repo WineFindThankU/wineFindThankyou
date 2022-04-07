@@ -109,6 +109,9 @@ class Shop {
         else { return "저장된 주소 없음" }
         return address
     }
+    var nnOpeningHours: String {
+        return "저장된 영업시간 없음"
+    }
     var nnHomepage: String {
         guard let homepage = homepage, !homepage.isEmpty
         else { return "저장된 홈페이지 없음" }
