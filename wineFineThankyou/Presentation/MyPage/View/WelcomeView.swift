@@ -55,10 +55,10 @@ class WelcomeView: UIView {
         userIdLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            welcomeView.topAnchor.constraint(equalTo: superView.safeAreaLayoutGuide.topAnchor, constant: constant + 8),
+            welcomeView.topAnchor.constraint(equalTo: superView.topAnchor, constant: constant + 8),
             welcomeView.leftAnchor.constraint(equalTo: superView.leftAnchor, constant: 18),
             welcomeView.rightAnchor.constraint(equalTo: superView.rightAnchor, constant: -18),
-            welcomeView.heightAnchor.constraint(equalToConstant: 137),
+            welcomeView.bottomAnchor.constraint(equalTo: superView.bottomAnchor),
             
             userImageView.topAnchor.constraint(equalTo: welcomeView.topAnchor, constant: 15),
             userImageView.rightAnchor.constraint(equalTo: welcomeView.rightAnchor, constant: -21),

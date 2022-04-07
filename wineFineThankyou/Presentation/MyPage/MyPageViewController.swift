@@ -14,6 +14,7 @@ protocol DeleteProtocol: AnyObject {
 
 class MyPageViewController : UIViewController {
     private weak var topView: TopView?
+    @IBOutlet private weak var welcomeSuperView: UIView!
     @IBOutlet private weak var statisticsView: UIView!
     @IBOutlet private weak var leftStatisticsView: UIView!
     @IBOutlet private weak var rightStatisticsView: UIView!
@@ -49,7 +50,7 @@ class MyPageViewController : UIViewController {
     }
     
     private func setAdditional() {
-        scrollViewHeight.constant = statisticsView.frame.height + tableView.frame.height
+        scrollViewHeight.constant = welcomeSuperView.frame.height + statisticsView.frame.height + tableView.frame.height
         
         if boughtWines.isEmpty, visitedWineShops.isEmpty {
             let whenBeEmptyView = WhenBeEmptyView()
@@ -59,6 +60,8 @@ class MyPageViewController : UIViewController {
         } else {
             whenBeEmptySuperView.isHidden = true
         }
+        
+        self.view.layoutIfNeeded()
     }
 }
 
@@ -77,8 +80,7 @@ extension MyPageViewController: DeleteProtocol {
     
     private func setWelcomeView() {
         let welcomeView = WelcomeView()
-        self.view.addSubview(welcomeView)
-        welcomeView.configure(superView: self.view)
+        welcomeView.configure(superView: self.welcomeSuperView)
         let userTasteType = Int(user.tasteType) ?? 1
         let imgName = GrapeCase.allCases.first { $0.tasteType == userTasteType }?.grapeImage ?? UIImage(named: "childGrape")
         welcomeView.userInfo = UserInfo(userImage: imgName!, userType: user.nick, wineType: calculatingMaxWineType(), userId: "guest\(user.number)")
