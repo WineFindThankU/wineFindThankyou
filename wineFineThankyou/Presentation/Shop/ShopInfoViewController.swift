@@ -114,19 +114,19 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         if TableSection(rawValue: indexPath.section) == .ShopInfo {
             switch ShopInfo(rawValue: indexPath.row) {
             case .homepage:
-                if self.shop.nnHomepage.count > 30 {
-                    return CGFloat(( self.shop.nnHomepage.count / 30) * 20 + 45)
+                if self.shop.nnHomepage.count > 40 {
+                    return CGFloat(( self.shop.nnHomepage.count / 30) * 20 + 44)
                 }
-                return 45
+                return 44
             case .location:
-                if self.shop.nnAddress.count > 30 {
-                    return CGFloat((self.shop.nnAddress.count / 30) * 20 + 45)
+                if self.shop.nnAddress.count > 40 {
+                    return CGFloat((self.shop.nnAddress.count / 30) * 20 + 44)
                 }
-                return 45
-            default: return 45
+                return 44
+            default: return 44
             }
         } else {
-            return UIScreen.main.bounds.height - (45 * 4)
+            return UIScreen.main.bounds.height - (44 * 4)
         }
     }
     

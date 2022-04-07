@@ -55,13 +55,13 @@ class ShopInfoCell: UITableViewCell{
         NSLayoutConstraint.activate([
             imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 20),
-            imageView.heightAnchor.constraint(equalToConstant: 20),
+            imageView.widthAnchor.constraint(equalToConstant: 22),
+            imageView.heightAnchor.constraint(equalToConstant: 22),
             
             info.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 8),
-            info.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 21),
-            info.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.5),
-            info.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8.5),
+            info.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8),
+            info.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+            info.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
         ])
         info.isEditable = false
         self.imgView = imageView
