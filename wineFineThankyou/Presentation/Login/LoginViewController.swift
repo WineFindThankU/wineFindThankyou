@@ -123,7 +123,6 @@ final class LoginViewController: UIViewController, EndLoginProtocol {
         guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier)
                 as? MainViewController else { return }
         DispatchQueue.main.async { [weak self] in
-            vc.modalTransitionStyle = .flipHorizontal
             vc.modalPresentationStyle = .fullScreen
             self?.present(vc, animated: true, completion: nil)
         }

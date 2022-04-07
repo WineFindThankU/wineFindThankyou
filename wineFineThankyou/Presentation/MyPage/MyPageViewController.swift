@@ -152,7 +152,6 @@ extension MyPageViewController: DeleteProtocol {
         func presentVc(_ vc: UIViewController) {
             DispatchQueue.main.async {
                 vc.modalPresentationStyle = .fullScreen
-                vc.modalTransitionStyle = .flipHorizontal
                 self.present(vc, animated: true)
             }
         }

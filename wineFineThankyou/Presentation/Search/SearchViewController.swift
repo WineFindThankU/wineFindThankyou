@@ -230,11 +230,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         AFHandler.shopDetail(keyword) { shop in
+            guard let shop = shop else { return }
             DispatchQueue.main.async {
                 self.dismiss(animated: true) {
-                    guard let shop = shop,
-                          let topVC = topViewController() as? MainViewController
-                    else { return }
+                    guard let topVC = topViewController() as? MainViewController else {
+                        topViewController()?.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+                            guard let topVC = topViewController() as? MainViewController else { return }
+                            topVC.whenBeSelectedMarker(shop)
+                        }
+                        return
+                    }
                     topVC.whenBeSelectedMarker(shop)
                 }
             }
