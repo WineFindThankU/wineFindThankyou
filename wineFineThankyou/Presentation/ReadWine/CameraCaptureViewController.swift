@@ -32,7 +32,6 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
     }()
     
     internal var delegate: CapturedImageProtocol?
-    private var capturedRect = CGRect.init(x: 107, y: 93, width: 180, height: 488)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,6 +98,7 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
         }
         
         func setCaputureView() {
+            let capturedRect = CGRect.init(x: 100, y: 100, width: self.view.bounds.maxX - (100 * 2), height: self.view.bounds.maxY - (100 * 2))
             let captureRectView = CaptureRectView.init(frame: self.view.bounds, bgColor: UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5), transRect: capturedRect)
             let captureBtn = UIButton()
             let label = UILabel()
@@ -108,7 +108,7 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
             
             NSLayoutConstraint.activate([
                 label.centerXAnchor.constraint(equalTo: captureRectView.centerXAnchor, constant: -111),
-                label.centerYAnchor.constraint(equalTo: captureRectView.centerYAnchor, constant: -70),
+                label.centerYAnchor.constraint(equalTo: captureRectView.centerYAnchor),
                 captureBtn.widthAnchor.constraint(equalToConstant: 66),
                 captureBtn.heightAnchor.constraint(equalToConstant: 66),
                 captureBtn.centerXAnchor.constraint(equalTo: captureRectView.centerXAnchor),
