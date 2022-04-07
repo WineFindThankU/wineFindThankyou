@@ -17,7 +17,7 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     private weak var textFieldBoughtDate: UITextField?
     private weak var boughtDateBtn: UIButton!
     private weak var registerOkButton: UIButton!
-    private var captrueStatus: CaptureStatus = .initial
+    private var captureStatus: CaptureStatus = .initial
     private var capturedImg: UIImage?
     private var dataPicker: UIDatePicker?
     private var additionalWineInfo :(name: String, vintage: String, from: String, date: String) = ("", "", "", "")
@@ -40,14 +40,14 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
     }
     
     private func nextStepByCaptureStatus(){
-        switch captrueStatus {
+        switch captureStatus {
         case .initial:
             guard let vc = UIStoryboard(name: StoryBoard.readWine.rawValue, bundle: nil).instantiateViewController(withIdentifier: CameraCaptureViewController.identifier) as? CameraCaptureViewController
             else { return }
             
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: {
-                self.captrueStatus = .cancel
+                self.captureStatus = .cancel
                 vc.delegate = self
             })
             return
@@ -99,7 +99,7 @@ extension AddWineInfomationViewController: CapturedImageProtocol {
         guard let uiImage = uiImage else {
             return
         }
-        captrueStatus = .ok
+        captureStatus = .ok
         WineLabelReader.doStartToOCR(uiImage) { winesAtServer in
             self.capturedImg = uiImage
             guard !winesAtServer.isEmpty,
@@ -126,7 +126,7 @@ extension AddWineInfomationViewController {
         self.topView = getGlobalTopView(self.view, height: 44)
         topView.backgroundColor = .white
         topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
-        topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
+        topView.leftButton?.addTarget(self, action: #selector(goToPreviousStep), for: .touchUpInside)
     }
     
     private func setMidContentsView() {
@@ -186,6 +186,7 @@ extension AddWineInfomationViewController {
         midView.backgroundColor = .white
         imageView.contentMode = .scaleAspectFit
         imageView.image = self.capturedImg
+        wineVintage.txtField.keyboardType = .numberPad
         self.midView = midView
         textFieldName = wineName.txtField
         textFieldFrom = wineFrom.txtField
@@ -306,7 +307,12 @@ extension AddWineInfomationViewController {
     }
     
     @objc
-    func close() {
+    private func goToPreviousStep() {
+        self.captureStatus = .initial
+        nextStepByCaptureStatus()
+    }
+    
+    private func close() {
         DispatchQueue.main.async {
             self.dismiss(animated: true)
         }
@@ -400,6 +406,17 @@ extension AddWineInfomationViewController {
 }
 
 extension AddWineInfomationViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard !string.isEmpty, textField.isEqual(textFieldVintage),
+              let currentString  = textField.text
+        else { return true }
+        
+        let rtnVal: Bool = currentString.count < 4
+        if !rtnVal { textFieldVintage?.resignFirstResponder() }
+        
+        return rtnVal
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.isEqual(textFieldName) {
             additionalWineInfo.name = textFieldName?.text ?? ""
@@ -407,6 +424,9 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
             additionalWineInfo.from = textFieldFrom?.text ?? ""
         } else if textField.isEqual(textFieldVintage) {
             additionalWineInfo.vintage = textFieldVintage?.text ?? ""
+            if let text = textField.text, text.count >= 4 {
+                textField.resignFirstResponder()
+            }
         }
     }
 }

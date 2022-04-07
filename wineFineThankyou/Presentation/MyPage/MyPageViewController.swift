@@ -44,7 +44,6 @@ class MyPageViewController : UIViewController {
     private func goToSettings() {
         guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: SettingsViewController.identifier) as? SettingsViewController
         else { return }
-        vc.modalTransitionStyle = .flipHorizontal
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }

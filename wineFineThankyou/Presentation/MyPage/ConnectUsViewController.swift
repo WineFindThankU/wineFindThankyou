@@ -37,8 +37,8 @@ class ConnectUsViewController: UIViewController, MFMailComposeViewControllerDele
     private func configure() {
         topView = getGlobalTopView(self.view, height: 44)
         topView.titleLabel?.text = "1:1문의하기"
-        topView.rightButton?.setBackgroundImage(UIImage(named: "Close"), for: .normal)
-            //   topView.rightButton?.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
+        topView.leftButton?.setBackgroundImage(UIImage(named: "leftArrow"), for: .normal)
+        topView.leftButton?.addAction(UIAction { _ in self.dismiss(animated: true) }, for: .touchUpInside)
         
         let emailView = setLabelTextField(self.emailView)
         emailView.label.text = "이메일 주소"
@@ -77,7 +77,7 @@ class ConnectUsViewController: UIViewController, MFMailComposeViewControllerDele
         ])
         label.font = UIFont.boldSystemFont(ofSize: 13)
         txtField.layer.borderWidth = 0.2
-        txtField.layer.cornerRadius = 13
+        txtField.layer.cornerRadius = 4
         txtField.font = UIFont.systemFont(ofSize: 13)
         txtField.addLeftPadding()
         
@@ -100,9 +100,10 @@ class ConnectUsViewController: UIViewController, MFMailComposeViewControllerDele
         txtView.text = "내용을 입력해주세요."
         txtView.delegate = self
         txtView.layer.borderWidth = 0.2
-        txtView.layer.cornerRadius = 13
+        txtView.layer.cornerRadius = 4
         txtView.font = UIFont.systemFont(ofSize: 13)
-        txtView.textColor = Theme.gray.color
+        txtView.textColor = UIColor(rgb: 0xbdbdbd)
+        txtView.textContainerInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10);
     }
     
     @objc

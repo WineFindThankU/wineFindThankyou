@@ -57,6 +57,7 @@ class SettingsViewController: UIViewController{
     @objc
     private func goToConnectUs(){
         guard let vc = UIStoryboard(name: StoryBoard.myPage.name, bundle: nil).instantiateViewController(withIdentifier: ConnectUsViewController.identifier) as? ConnectUsViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
 }

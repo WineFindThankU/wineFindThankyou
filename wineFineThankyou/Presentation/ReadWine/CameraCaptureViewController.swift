@@ -46,9 +46,12 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
     
     private func showDescribeView() {
         topView = getGlobalTopView(self.describeView, height: 44)
+        topView.titleLabel?.text = "라벨촬영가이드"
+        topView.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         topView.rightButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
         topView.rightButton?.setBackgroundImage(UIImage(named: "Close"), for: .normal)
         okButton.setTitle(title: "확인했어요!", colorHex: 0xFFFFFF, backColor: UIColor(rgb: 0x7b61ff), font: .systemFont(ofSize: 17))
+        okButton.layer.cornerRadius = 20
     }
     
     private func setCamera() {
