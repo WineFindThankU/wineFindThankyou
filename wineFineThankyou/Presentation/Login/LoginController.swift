@@ -87,7 +87,7 @@ class LoginController: NSObject {
             }
             
             let userIdentifer = String(userIdInt64Val)
-            let email = user?.kakaoAccount?.email ?? "WTFUser@wineThankU.com"
+            let email = user?.kakaoAccount?.email ?? getUniqueEmail()
             let type = "kakao"
             let nick = user?.kakaoAccount?.profile?.nickname ?? "User"
             
@@ -175,7 +175,7 @@ extension LoginController: ASAuthorizationControllerDelegate, ASAuthorizationCon
             let userIdentifier = appleIDCredential.user
             let givenName = appleIDCredential.fullName?.givenName as? String ?? ""
             let nick = givenName.isEmpty ? "User" : givenName
-            let email = appleIDCredential.email ?? "WTFUser@wineThankU.com"
+            let email = appleIDCredential.email ?? getUniqueEmail()
             let type = "apple"
 
             let params = [

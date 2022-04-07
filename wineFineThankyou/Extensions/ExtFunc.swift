@@ -44,6 +44,18 @@ func touchPlusButton(_ crntVc: UIViewController?) {
     }
 }
 
+func getUniqueEmail() -> String {
+    let timeIntervalStr = String(Int(Date().timeIntervalSince1970))
+    let firstIdx = timeIntervalStr.index(timeIntervalStr.endIndex, offsetBy: -5)
+    let lastIdx = timeIntervalStr.index(timeIntervalStr.endIndex, offsetBy: 0)
+    
+    var usrUniqueEmail = "usr\(timeIntervalStr[firstIdx ..< lastIdx])"
+    if let keyChar = UUID().uuidString.randomElement() {
+        usrUniqueEmail += "+" + String(keyChar)
+    }
+    return usrUniqueEmail + "@wineThankU.com"
+}
+
 extension String {
     func rangeBoldString(_ size: CGFloat, range: String) -> NSMutableAttributedString {
         let bold = UIFont.boldSystemFont(ofSize: size)
