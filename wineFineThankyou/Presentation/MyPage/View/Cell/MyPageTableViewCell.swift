@@ -90,10 +90,11 @@ extension MyPageTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         switch buttonType {
         case .recentlyBoughtWine:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WineInfoCollectionViewCell", for: indexPath) as? WineInfoCollectionViewCell,
-                  let boughtWine = self.cellInfos[indexPath.row] as? BoughtWine
+                  let boughtWine = self.cellInfos[indexPath.row] as? BoughtWine,
+                  let wineInfo = boughtWine.wineInfo
             else { return UICollectionViewCell() }
         
-            cell.tupleVal = (boughtWine.name, boughtWine.wineInfo?.wineAtServer?.imgUrlStr)
+            cell.tupleVal = (wineInfo.nnKorName, wineInfo.wineAtServer?.imgUrlStr)
             cell.backgroundView?.backgroundColor = .clear
             return cell
         case .recentlyVisitedShop, .favoriteShop:

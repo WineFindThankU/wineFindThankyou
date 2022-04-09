@@ -58,9 +58,8 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WineInfoTableViewCell", for: indexPath) as? WineInfoTableViewCell else { return UITableViewCell() }
-        cell.shopDetail = self.shops[indexPath.row].shopDetail
-        
         let boughtWine = boughtWines[indexPath.row]
+        cell.shopDetail = boughtWine.shopDetail
         cell.wineInfo = boughtWine.wineInfo
         cell.shopDeleteBtnClosure = { [weak self] in
             self?.checkIsOk(boughtWine.wineInfo?.key ?? "")

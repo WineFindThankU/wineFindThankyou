@@ -114,7 +114,7 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
         else { return UICollectionViewCell() }
         
         let userWine = shop.userWines[indexPath.row]
-        let name = userWine.wineAtServer?.korName ?? userWine.name
+        let name = userWine.nnKorName
         cell.tupleVal = (name, userWine.wineAtServer?.imgUrlStr)
         
         if indexPath.row == 2, isMoreThree {

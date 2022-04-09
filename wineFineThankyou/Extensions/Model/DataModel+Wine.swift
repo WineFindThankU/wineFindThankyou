@@ -24,20 +24,34 @@ class BoughtWine {
     }
     
     var name: String? {
-        return self.wineInfo?.wineAtServer?.korName ?? self.wineInfo?.name
+        return self.wineInfo?.wineAtServer?.korName ?? self.wineInfo?.nnKorName
     }
 }
 
 class WineInfo {
     let key: String
-    let name: String
     let vintage: String
+    private let name: String
+    private let userWineFrom: String
     let wineAtServer: WineAtServer?
     init(_ params: JSON) {
         self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
         self.name = params["uw_name"].string ?? ""   //"",
         self.vintage = params["uw_vintage"].string ?? ""
+        self.userWineFrom = params["uw_country"].string ?? ""
         self.wineAtServer = WineAtServer(params["wine"])
+    }
+    
+    var nnKorName: String {
+        guard let korName = wineAtServer?.korName, !korName.isEmpty
+        else { return name}
+        return korName
+    }
+    
+    var nnFrom: String {
+        guard let from = wineAtServer?.from, !from.isEmpty
+        else { return userWineFrom }
+        return from
     }
 }
 
