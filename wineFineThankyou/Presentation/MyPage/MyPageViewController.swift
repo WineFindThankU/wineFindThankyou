@@ -79,11 +79,20 @@ extension MyPageViewController: DeleteProtocol {
     }
     
     private func setWelcomeView() {
+        if self.welcomeView != nil {
+            self.welcomeView?.removeFromSuperview()
+            self.welcomeView = nil
+        }
         let welcomeView = WelcomeView()
         welcomeView.configure(superView: self.welcomeSuperView)
-        let userTasteType = Int(user.tasteType) ?? 1
+        let userTasteType = user.tasteType
         let imgName = GrapeCase.allCases.first { $0.tasteType == userTasteType }?.grapeImage ?? UIImage(named: "childGrape")
-        welcomeView.userInfo = UserInfo(userImage: imgName!, userType: user.nick, wineType: calculatingMaxWineType(), userId: "guest\(user.number)")
+        let wineTypeStr = boughtWines.count == 0 ? "" : calculatingMaxWineType()
+        welcomeView.userInfo = UserInfo(userImage: imgName!,
+                                        userType: user.nick,
+                                        wineType: wineTypeStr,
+                                        userId: "guest\(user.number)")
+        
         self.welcomeView = welcomeView
         
         func calculatingMaxWineType() -> String {
@@ -176,6 +185,7 @@ extension MyPageViewController: DeleteProtocol {
         }
         
         DispatchQueue.main.async {
+            self.setWelcomeView()
             self.setGraphView()
             self.setAdditional()
             self.tableView.reloadData()

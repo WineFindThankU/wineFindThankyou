@@ -17,9 +17,7 @@ struct UserInfo {
 
 class WelcomeView: UIView {
     var userInfo: UserInfo? {
-        didSet {
-            updateUI()
-        }
+        didSet { updateUI() }
     }
     
     private unowned var welcomeLabel: UILabel!
@@ -89,7 +87,16 @@ class WelcomeView: UIView {
     private func updateUI() {
         guard let userInfo = userInfo else { return }
         self.welcomeLabel.font = UIFont.systemFont(ofSize: 22, weight: .regular)
-        self.welcomeLabel.attributedText = "안녕하세요, \(userInfo.userType)님.\n\(userInfo.wineType) 와인을\n즐겨마시는군요!".rangeBoldString(22, range: "\(userInfo.wineType) 와인")
+        var welcomeLabelTxt = "안녕하세요, \(userInfo.userType)님.\n"
+        var boldingTxt = ""
+        if userInfo.wineType.isEmpty{
+            welcomeLabelTxt += "어떤 와인을\n즐기고 계시나요?"
+            boldingTxt = "어떤 와인"
+        } else {
+            welcomeLabelTxt += "\(userInfo.wineType) 와인을\n즐기고 계시군요!"
+            boldingTxt = "\(userInfo.wineType) 와인"
+        }
+        self.welcomeLabel.attributedText = welcomeLabelTxt.rangeBoldString(22, range: boldingTxt)
         self.welcomeLabel.textColor = .black
         self.welcomeLabel.numberOfLines = 0
         

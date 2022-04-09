@@ -177,13 +177,13 @@ class User {
     let id: String
     let nick: String
     let number: String
-    let tasteType: String
+    let tasteType: Int
     init(_ param: JSON) {
         self.id = param["us_id"].string ?? ""
         let nickAndNum = param["us_nick"].string?.components(separatedBy: "-")
         self.nick = nickAndNum?.first ?? ""
         self.number = nickAndNum?.last ?? ""
-        self.tasteType = param["taste_type"].string ?? ""
+        self.tasteType = param["taste_type"].intValue
     }
 }
 
