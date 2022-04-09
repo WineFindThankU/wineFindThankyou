@@ -20,7 +20,11 @@ class WalkthroughViewController: UIViewController {
     @IBOutlet private weak var etceteraViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var etceteraOkBtn: UIButton!
     @IBAction private func leftArrowAction(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        guard pageControl.currentPage > 0,
+            let xPos = self.pageIdx2Xpos[pageControl.currentPage - 1]
+        else { return }
+        
+        self.scrollView.setContentOffset(CGPoint(x: xPos, y: 0), animated: true)
     }
     
     private var question2Answer = [Int: String]()

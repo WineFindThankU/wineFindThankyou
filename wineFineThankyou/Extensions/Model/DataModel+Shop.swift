@@ -104,10 +104,11 @@ class Shop {
         return tellNumber
     }
     
+    let cellLabelCharCount = 48
     var nnAddress: String {
         guard let address = address, !address.isEmpty
         else { return "저장된 주소 없음" }
-        return address
+        return insertEnterAtIdx48(str: address)
     }
     var nnOpeningHours: String {
         return "저장된 영업시간 없음"
@@ -115,7 +116,17 @@ class Shop {
     var nnHomepage: String {
         guard let homepage = homepage, !homepage.isEmpty
         else { return "저장된 홈페이지 없음" }
-        return homepage
+        print(homepage.count)
+        return insertEnterAtIdx48(str: homepage)
+    }
+    
+    func insertEnterAtIdx48(str: String) -> String {
+        var rtnStr = ""
+        str.enumerated().forEach{ idx, chr in
+            let str = idx == cellLabelCharCount ? "\n" + String(chr) : String(chr)
+            rtnStr.append(str)
+        }
+        return rtnStr
     }
 }
 

@@ -35,7 +35,7 @@ final class PopupViewController: UIViewController {
         button.layer.cornerRadius = 1
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
-        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.borderColor = UIColor(rgb: 0x424242).cgColor
         let action = UIAction { _ in
             self.dismiss(animated: true)
         }

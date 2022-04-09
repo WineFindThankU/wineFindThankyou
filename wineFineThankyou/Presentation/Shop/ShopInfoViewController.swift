@@ -15,6 +15,7 @@ class ShopInfoViewController: ShopContainedButtonViewController, SelectedWineCel
     }
     private unowned var topView: TopView?
     private unowned var shopInfoTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTopView()
@@ -111,22 +112,24 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellHeight: CGFloat = 44
+        
         if TableSection(rawValue: indexPath.section) == .ShopInfo {
             switch ShopInfo(rawValue: indexPath.row) {
             case .homepage:
-                if self.shop.nnHomepage.count > 40 {
-                    return CGFloat(( self.shop.nnHomepage.count / 30) * 20 + 44)
+                if self.shop.nnHomepage.count > shop.cellLabelCharCount {
+                    return CGFloat((self.shop.nnHomepage.count / shop.cellLabelCharCount) * 20) + cellHeight
                 }
-                return 44
+                return cellHeight
             case .location:
-                if self.shop.nnAddress.count > 40 {
-                    return CGFloat((self.shop.nnAddress.count / 30) * 20 + 44)
+                if self.shop.nnAddress.count > shop.cellLabelCharCount {
+                    return CGFloat((self.shop.nnAddress.count / shop.cellLabelCharCount) * 20) + cellHeight
                 }
-                return 44
-            default: return 44
+                return cellHeight
+            default: return cellHeight
             }
         } else {
-            return UIScreen.main.bounds.height - (44 * 4)
+            return UIScreen.main.bounds.height - (cellHeight * 4)
         }
     }
     
