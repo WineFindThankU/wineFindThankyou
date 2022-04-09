@@ -191,6 +191,19 @@ extension AddWineInfomationViewController {
         textFieldName = wineName.txtField
         textFieldFrom = wineFrom.txtField
         textFieldVintage = wineVintage.txtField
+        
+        let toolBarKeyboard = UIToolbar()
+        toolBarKeyboard.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let btnDoneBar = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneBtnClicked))
+        toolBarKeyboard.items = [flexibleSpace, btnDoneBar]
+        toolBarKeyboard.tintColor = UIColor(rgb: 0x7b61ff)
+        textFieldVintage?.inputAccessoryView = toolBarKeyboard
+    }
+    
+    @objc
+    private func doneBtnClicked (sender: Any) {
+        self.view.endEditing(true)
     }
     
     private func setBottomView() {

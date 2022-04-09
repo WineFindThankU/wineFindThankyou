@@ -11,7 +11,7 @@
 			<string>KakaoLogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao229dde6eaa35c651b0bc5ccfa474c5e9</string>
+				<string>kakaod9e14f140e99e729ceb0aada8dde9677</string>
 			</array>
 		</dict>
 		<dict>
@@ -34,7 +34,7 @@
 		</dict>
 	</array>
 	<key>KAKAO_APP_KEY</key>
-	<string>229dde6eaa35c651b0bc5ccfa474c5e9</string>
+	<string>d9e14f140e99e729ceb0aada8dde9677</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaomap</string>
@@ -45,7 +45,7 @@
 		<string>kakaolink</string>
 	</array>
 	<key>NMFClientId</key>
-	<string>n19w8fu40u</string>
+	<string>uob41kjymp</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
         // MARK: Kakao 로그인
-        KakaoSDK.initSDK(appKey: "229dde6eaa35c651b0bc5ccfa474c5e9")
+        KakaoSDK.initSDK(appKey: "d9e14f140e99e729ceb0aada8dde9677")
         
         // MARK: Google 로그인
         // FirebaseApp.configure()
