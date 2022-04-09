@@ -12,7 +12,8 @@ import Lottie
 class StartViewController: UIViewController{
     @IBOutlet private weak var imgViewLaunchTitle: UIImageView!
     @IBOutlet weak var launchTitleTopAnchor: NSLayoutConstraint!
-    
+    private weak var aniViewWidthAnchor: NSLayoutConstraint!
+    private weak var aniViewHeightAnchor: NSLayoutConstraint!
     lazy var lottieAnimationView: AnimationView = {
         let animationView = AnimationView()
         animationView.animation = Animation.named("WinefindThankU_motion_eyes")
@@ -38,10 +39,6 @@ class StartViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setLottie()
     }
     
@@ -80,18 +77,24 @@ class StartViewController: UIViewController{
 extension StartViewController {
     private func setLottie() {
         self.view.addSubViews(subViews: lottieAnimationView)
-        
+        self.aniViewWidthAnchor = lottieAnimationView.widthAnchor.constraint(equalToConstant: 150)
+        self.aniViewHeightAnchor = lottieAnimationView.heightAnchor.constraint(equalToConstant: 91.2)
         NSLayoutConstraint.activate([
             lottieAnimationView.topAnchor.constraint(equalTo: imgViewLaunchTitle.bottomAnchor, constant: 34),
-            lottieAnimationView.widthAnchor.constraint(equalToConstant: 150),
-            lottieAnimationView.heightAnchor.constraint(equalToConstant: 91.2),
-            lottieAnimationView.centerXAnchor.constraint(equalTo: imgViewLaunchTitle.centerXAnchor)
+            lottieAnimationView.centerXAnchor.constraint(equalTo: imgViewLaunchTitle.centerXAnchor),
+            aniViewWidthAnchor, aniViewHeightAnchor
         ])
     }
     
     private func changeUI() {
         self.launchTitleTopAnchor.constant = 94
-        lottieAnimationView.constraints.forEach { lottieAnimationView.removeConstraint($0) }
+        self.aniViewWidthAnchor.isActive = false
+        self.aniViewHeightAnchor.isActive = false
+        self.aniViewWidthAnchor = lottieAnimationView.widthAnchor.constraint(equalToConstant: 266)
+        self.aniViewHeightAnchor = lottieAnimationView.heightAnchor.constraint(equalToConstant: 266)
+        self.aniViewWidthAnchor.isActive = true
+        self.aniViewHeightAnchor.isActive = true
+        
         lottieAnimationView.animation = nil
         lottieAnimationView.animation = Animation.named("WinefindThankU_motion")
         lottieAnimationView.play()
@@ -100,8 +103,6 @@ extension StartViewController {
         self.view.addSubViews(subViews: startButton)
         NSLayoutConstraint.activate([
             lottieAnimationView.topAnchor.constraint(equalTo: imgViewLaunchTitle.bottomAnchor, constant: 34),
-            lottieAnimationView.widthAnchor.constraint(equalToConstant: 266),
-            lottieAnimationView.heightAnchor.constraint(equalToConstant: 266),
             lottieAnimationView.centerXAnchor.constraint(equalTo: imgViewLaunchTitle.centerXAnchor),
             
             startButton.topAnchor.constraint(equalTo: lottieAnimationView.bottomAnchor, constant: 29),
@@ -113,7 +114,6 @@ extension StartViewController {
         UIView.animate(withDuration: 0.8, animations: {
             self.view.backgroundColor = UIColor(rgb: 0xffffff)
             self.imgViewLaunchTitle.image = UIImage(named: "LaunchTitle")
-            self.view.layoutIfNeeded()
         }, completion: {_ in
             self.determineNextStep()
         })
