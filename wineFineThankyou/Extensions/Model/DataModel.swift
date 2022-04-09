@@ -175,7 +175,7 @@ enum AfterSign {
 
 class User {
     let id: String
-    let nick: String
+    private let nick: String
     let number: String
     let tasteType: Int
     init(_ param: JSON) {
@@ -184,6 +184,17 @@ class User {
         self.nick = nickAndNum?.first ?? ""
         self.number = nickAndNum?.last ?? ""
         self.tasteType = param["taste_type"].intValue
+    }
+    
+    var typeOrNick: String {
+        if self.nick == "User" {
+            guard let grapeCase = GrapeCase.allCases.first(where: { $0.tasteType == self.tasteType})
+            else { return "User" }
+            
+            return grapeCase.grapeName
+        }
+        
+        return self.nick
     }
 }
 

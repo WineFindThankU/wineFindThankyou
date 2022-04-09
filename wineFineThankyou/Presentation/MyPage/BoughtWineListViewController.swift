@@ -63,7 +63,7 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
         let boughtWine = boughtWines[indexPath.row]
         cell.wineInfo = boughtWine.wineInfo
         cell.shopDeleteBtnClosure = { [weak self] in
-            self?.deleteWine(boughtWine.wineInfo?.key ?? "")
+            self?.checkIsOk(boughtWine.wineInfo?.key ?? "")
         }
         
         cell.shopBtnClosure = {
@@ -72,5 +72,19 @@ extension BoughtWineListViewController: UITableViewDelegate, UITableViewDataSour
         }
         cell.selectionStyle = .none
         return cell
+    }
+    
+    private func checkIsOk(_ key: String) {
+        let alert = UIAlertController(title: "와인 샵 삭제",
+                                      message: "정말 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            self.deleteWine(key)
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
     }
 }

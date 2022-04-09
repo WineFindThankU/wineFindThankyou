@@ -51,6 +51,7 @@ class MyPageListViewController: UIViewController {
         topView.leftButton?.addTarget(self, action: #selector(close), for: .touchUpInside)
         titleLabel = topView.titleLabel
         
+        plusButton.layer.cornerRadius = 33
         plusButton.backgroundColor = .clear
         plusButton.setBackgroundImage(UIImage(named: "PlusButton"), for: .normal)
         plusButton.addAction(UIAction { _ in

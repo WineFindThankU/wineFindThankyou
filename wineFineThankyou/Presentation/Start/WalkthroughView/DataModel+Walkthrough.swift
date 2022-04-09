@@ -89,17 +89,17 @@ enum GrapeCase: CaseIterable {
     var grapeName: String {
         switch self {
         case .basic:
-            return "기본 포도알"
+            return "기본"
         case .costGrape:
-            return "가성비 포도알"
+            return "가성비"
         case .dionysusGrape:
-            return "디오니소스 포도알"
+            return "디오니소스"
         case .analystGrape:
-            return "분석가 포도알"
+            return "분석가"
         case .artistGrape:
-            return "예술가 포도알"
+            return "예술가"
         case .childGrape:
-            return "와린이 포도알"
+            return "와린이"
         }
     }
     

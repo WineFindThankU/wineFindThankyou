@@ -525,6 +525,7 @@
 		BA77CFE3279EF91A00832389 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BABCA64A280177DB00FB77FA /* View */,
 				BA5866A227E5A946007EA21C /* Model */,
 				BA77CFE4279EF94A00832389 /* ExtUIView.swift */,
 				BA77CFE6279EFA5600832389 /* ExtUIColor.swift */,
@@ -586,6 +587,13 @@
 				BABB595827C5048E000E24C5 /* AddWineInfomationViewController.swift */,
 			);
 			path = ReadWine;
+			sourceTree = "<group>";
+		};
+		BABCA64A280177DB00FB77FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BABFCE7D27F80B3B00E097DF /* WalkthroughView */ = {
@@ -1203,7 +1211,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
@@ -1240,7 +1248,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = wineFindThankyou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 4UY2M9TWUY;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;

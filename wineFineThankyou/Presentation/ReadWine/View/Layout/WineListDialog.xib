@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WineListDialog" customModule="wineFindThankyou" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WineListDialog" customModule="WineFindThankU" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="7eS-d0-xF3" id="TUF-La-VQL"/>
                 <outlet property="wineListDialogSet" destination="ycN-ye-LNj" id="Vih-ek-AaQ"/>

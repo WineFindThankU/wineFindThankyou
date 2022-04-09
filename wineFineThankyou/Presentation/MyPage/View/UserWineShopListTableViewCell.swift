@@ -38,7 +38,7 @@ class UserWineShopListTableViewCell: UITableViewCell {
     
     @objc
     private func deleteBtnAction() {
-        deleteClosure?()
+        self.deleteClosure?()
     }
     
     private func updateUI() {

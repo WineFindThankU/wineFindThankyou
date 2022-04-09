@@ -41,7 +41,7 @@ class WalkthroughResulViewController: UIViewController {
     
     private func updateUI(_ answers: [String]) {
         imgView.image = grapeCase.grapeImage
-        labelIntroduce.text = "나는야\n" + grapeCase.grapeName
+        labelIntroduce.text = "나는야\n" + grapeCase.grapeName + " 포도알"
         guard answers.count > 0 else { return }
         
         var hashTags: String = ""

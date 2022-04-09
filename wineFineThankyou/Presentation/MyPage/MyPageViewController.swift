@@ -89,7 +89,7 @@ extension MyPageViewController: DeleteProtocol {
         let imgName = GrapeCase.allCases.first { $0.tasteType == userTasteType }?.grapeImage ?? UIImage(named: "childGrape")
         let wineTypeStr = boughtWines.count == 0 ? "" : calculatingMaxWineType()
         welcomeView.userInfo = UserInfo(userImage: imgName!,
-                                        userType: user.nick,
+                                        userType: user.typeOrNick,
                                         wineType: wineTypeStr,
                                         userId: "guest\(user.number)")
         

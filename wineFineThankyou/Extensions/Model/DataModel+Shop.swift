@@ -60,7 +60,13 @@ class Shop {
         
         let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
         self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr})
-        self.userWines = param["userWines"].array?.compactMap { WineInfo($0) } ?? []
+        self.userWines = param["userWines"].array?.compactMap {
+            let wineInfo = WineInfo($0)
+            guard let wineServerKey = wineInfo.wineAtServer?.key,
+                    !wineServerKey.isEmpty
+            else { return nil }
+            return wineInfo
+        } ?? []
     }
     
     var isBookmarked: Bool {
@@ -116,7 +122,7 @@ class Shop {
     var nnHomepage: String {
         guard let homepage = homepage, !homepage.isEmpty
         else { return "저장된 홈페이지 없음" }
-        print(homepage.count)
+
         return insertEnterAtIdx48(str: homepage)
     }
     

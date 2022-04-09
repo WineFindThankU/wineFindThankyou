@@ -85,10 +85,21 @@ extension UsersWineShopListViewController: UITableViewDelegate, UITableViewDataS
         cell.shop = shop
         cell.selectionStyle = .none
         cell.deleteClosure = {
-            let filtered = self.boughtWines.filter { $0.shopDetail?.key == shop.shopDetail?.key }.compactMap { $0.wineInfo?.key }
-            self.deleteShop(filtered)
+            self.checkIsOk(shop)
         }
         cell.isVisitedType = self.myShopType == .recentVisited
         return cell
+    }
+    
+    private func checkIsOk(_ shop: VisitedShop) {
+        let alert = UIAlertController(title: "와인 샵 삭제", message: "정말 삭제하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            let filtered = self.boughtWines.filter { $0.shopDetail?.key == shop.shopDetail?.key }.compactMap { $0.wineInfo?.key }
+            self.deleteShop(filtered)
+        })
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
     }
 }

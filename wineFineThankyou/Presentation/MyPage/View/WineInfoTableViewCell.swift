@@ -23,7 +23,7 @@ class WineInfoTableViewCell: UITableViewCell {
     var shopBtnClosure: (() -> Void)?
     var shopDeleteBtnClosure: (() -> Void)?
     
-    private weak var wineImg: UIImageView?
+    private weak var wineImg: UIImageView!
     private weak var tagLabel: UILabel?
     private weak var deleteBtn: UIButton?
     private weak var wineKorName: UILabel?
@@ -102,7 +102,7 @@ class WineInfoTableViewCell: UITableViewCell {
         wineInfoView.addSubViews(subViews: tagLabel, deleteBtn, wineKorName, wineEngName, wineInfoDetailsView)
         NSLayoutConstraint.activate([
             wineInfoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            wineInfoView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 113),
+            wineInfoView.leftAnchor.constraint(equalTo: wineImg.rightAnchor, constant: 8),
             wineInfoView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
             wineInfoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -67),
             
