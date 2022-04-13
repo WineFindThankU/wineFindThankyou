@@ -201,6 +201,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource, UISc
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "MyPageTableViewCell", bundle: nil), forCellReuseIdentifier: "MyPageTableViewCell")
         tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = .clear
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

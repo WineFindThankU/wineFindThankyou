@@ -72,6 +72,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         shopInfoTableView.register(UINib(nibName: "WineListTitle", bundle: nil), forHeaderFooterViewReuseIdentifier: "WineListTitle")
         shopInfoTableView.estimatedRowHeight = 45
         shopInfoTableView.rowHeight = UITableView.automaticDimension
+        shopInfoTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -107,6 +108,7 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
             else { return UITableViewCell() }
             cell.delegate = self
             cell.winesAtServer = self.shop.userWines.compactMap { $0.wineAtServer }
+            cell.backgroundColor = .white
             return cell
         }
     }
@@ -117,13 +119,13 @@ extension ShopInfoViewController: UITableViewDelegate, UITableViewDataSource {
         if TableSection(rawValue: indexPath.section) == .ShopInfo {
             switch ShopInfo(rawValue: indexPath.row) {
             case .homepage:
-                if self.shop.nnHomepage.count > shop.cellLabelCharCount {
-                    return CGFloat((self.shop.nnHomepage.count / shop.cellLabelCharCount) * 20) + cellHeight
+                if self.shop.nnHomepage.utf8.count > shop.cellLabelCharCount {
+                    return CGFloat((self.shop.nnHomepage.utf8.count / shop.cellLabelCharCount) * 20) + cellHeight
                 }
                 return cellHeight
             case .location:
-                if self.shop.nnAddress.count > shop.cellLabelCharCount {
-                    return CGFloat((self.shop.nnAddress.count / shop.cellLabelCharCount) * 20) + cellHeight
+                if self.shop.nnAddress.utf8.count > shop.cellLabelCharCount {
+                    return CGFloat((self.shop.nnAddress.utf8.count / shop.cellLabelCharCount) * 20) + cellHeight
                 }
                 return cellHeight
             default: return cellHeight

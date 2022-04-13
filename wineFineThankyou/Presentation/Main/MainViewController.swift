@@ -77,25 +77,23 @@ class MainViewController: UIViewController {
               let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
         else { return }
         
-        let marker = allOfMarkers.first(where: {
+        var marker = allOfMarkers.first(where: {
             Int($0.position.lat) == Int(shop.latitude)
             && Int($0.position.lng) == Int(shop.longtitude)
-        }) ?? NMFMarker()
+        })
         
-        
-        if self.allOfMarkers.first(where: {
-            Int($0.position.lat) == Int(marker.position.lat)
-                && Int($0.position.lng) == Int(marker.position.lng)
-        }) == nil {
-            self.allOfMarkers.append(marker)
+        if marker == nil {
+            marker = NMFMarker()
+            self.allOfMarkers.append(marker!)
         }
         
-        marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
-        marker.mapView = self.nmfNaverMapView.mapView
-        marker.iconImage = NMFOverlayImage(image: img)
-        marker.width = 48
-        marker.height = 59
-        marker.captionText = shop.nnName
+        
+        marker?.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
+        marker?.mapView = self.nmfNaverMapView.mapView
+        marker?.iconImage = NMFOverlayImage(image: img)
+        marker?.width = 48
+        marker?.height = 59
+        marker?.captionText = shop.nnName
         
         DispatchQueue.main.async {
             self.updateFocus(shop.latitude, shop.longtitude, setZoomLevel: true)
@@ -306,7 +304,7 @@ extension MainViewController: NMFMapViewCameraDelegate {
                       let shopTypeStr = shop.type?.typeStr,
                       let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
                 else { return false }
-                
+
                 marker.iconImage = NMFOverlayImage(image: img)
                 marker.width = 48
                 marker.height = 59

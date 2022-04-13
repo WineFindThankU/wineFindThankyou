@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPageTableViewCell" rowHeight="227" id="zWT-In-0Lm" customClass="MyPageTableViewCell" customModule="wineFindThankyou" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPageTableViewCell" rowHeight="227" id="zWT-In-0Lm" customClass="MyPageTableViewCell" customModule="WineFindThankU" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zWT-In-0Lm" id="8kM-eX-NWc">
@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="uxa-jX-Wvd" secondAttribute="trailing" constant="20" id="TZq-La-an4"/>
                                     <constraint firstItem="wE6-gD-c9s" firstAttribute="leading" secondItem="TCb-RY-oVv" secondAttribute="leading" constant="20" id="Z5Q-WG-5XZ"/>
@@ -52,7 +52,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nE3-kJ-Dgv">
                                 <rect key="frame" x="20" y="58" width="374" height="145"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="145" id="Psa-Ov-Eb3"/>
                                 </constraints>
@@ -81,7 +81,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nE3-kJ-Dgv" secondAttribute="trailing" constant="20" id="166-hu-mcD"/>
                             <constraint firstItem="TCb-RY-oVv" firstAttribute="top" secondItem="Up5-Ut-r70" secondAttribute="top" constant="8" id="4jf-aZ-KXp"/>
