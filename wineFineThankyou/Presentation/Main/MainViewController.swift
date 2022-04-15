@@ -77,26 +77,26 @@ class MainViewController: UIViewController {
               let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
         else { return }
         
-        var marker = allOfMarkers.first(where: {
+        let marker: NMFMarker
+        if let nnMarker = allOfMarkers.first(where: {
             Int($0.position.lat) == Int(shop.latitude)
             && Int($0.position.lng) == Int(shop.longtitude)
-        })
-        
-        if marker == nil {
+        }) {
+            marker = nnMarker
+        } else {
             marker = NMFMarker()
-            self.allOfMarkers.append(marker!)
+            self.allOfMarkers.append(marker)
         }
         
-        
-        marker?.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
-        marker?.mapView = self.nmfNaverMapView.mapView
-        marker?.iconImage = NMFOverlayImage(image: img)
-        marker?.width = 48
-        marker?.height = 59
-        marker?.captionText = shop.nnName
+        marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
+        marker.mapView = self.nmfNaverMapView.mapView
+        marker.iconImage = NMFOverlayImage(image: img)
+        marker.width = 48
+        marker.height = 59
+        marker.captionText = shop.nnName
         
         DispatchQueue.main.async {
-            self.updateFocus(shop.latitude, shop.longtitude, setZoomLevel: true)
+            self.updateFocus(shop.latitude, shop.longtitude)
             self.openShop(shop.key)
         }
     }
@@ -276,10 +276,10 @@ extension MainViewController: NMFMapViewCameraDelegate {
         nmfNaverMapView.showLocationButton = true
     }
     
-    internal func updateFocus(_ lat: Double, _ lng: Double, setZoomLevel: Bool = false) {
+    internal func updateFocus(_ lat: Double, _ lng: Double) {
         let camPosition =  NMGLatLng(lat: lat, lng: lng)
-        
-        let zoomLevel: Double = setZoomLevel ? 12 : nmfNaverMapView.mapView.cameraPosition.zoom
+        let crntZoomLevel = nmfNaverMapView.mapView.cameraPosition.zoom
+        let zoomLevel: Double = crntZoomLevel > 14 ? crntZoomLevel : 14
         let position = NMFCameraPosition(camPosition, zoom: zoomLevel, tilt: 0, heading: 0)
         nmfNaverMapView.mapView.moveCamera(NMFCameraUpdate(position: position))
     }
@@ -294,23 +294,9 @@ extension MainViewController: NMFMapViewCameraDelegate {
             marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
             marker.mapView = self.nmfNaverMapView.mapView
             marker.iconImage = NMFOverlayImage(name: shop.imgName)
-            marker.userInfo = ["key": shop.key,
-                               "lat": Double(shop.latitude),
-                               "long": Double(shop.longtitude)]
+            
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                guard let key = overlay.userInfo["key"] as? String,
-                      let lat = overlay.userInfo["lat"] as? Double,
-                      let long = overlay.userInfo["long"] as? Double,
-                      let shopTypeStr = shop.type?.typeStr,
-                      let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
-                else { return false }
-
-                marker.iconImage = NMFOverlayImage(image: img)
-                marker.width = 48
-                marker.height = 59
-                marker.captionText = shop.nnName
-                self?.updateFocus(lat, long)
-                self?.openShop(key)
+                self?.whenBeSelectedMarker(shop)
                 return true
             }
             allOfMarkers.append(marker)
