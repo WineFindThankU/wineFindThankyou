@@ -11,5 +11,9 @@ import UIKit
 class SettingCell: UITableViewCell{
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var arrow: UIImageView!
-    
+    @IBOutlet weak var onOffSwitch: UISwitch!
+
+    @IBAction func onOffAction(_ sender: UISwitch) {
+        UserData.isConvenienceOn = sender.isOn
+    }
 }

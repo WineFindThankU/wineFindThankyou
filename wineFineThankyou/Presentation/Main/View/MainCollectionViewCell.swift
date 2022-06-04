@@ -22,12 +22,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet{
-            if isSelected {
-                selected()
-            }
-            else {
-                deselected()
-            }
+            isSelected ? selected() : deselected()
         }
     }
     override init(frame: CGRect) {
@@ -75,7 +70,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     func deselected() {
         guard let str = titleLabel.text,
-                let type = ShopType.allCases.first(where: {$0.str == str})
+                let type = ShopType.filteredAllOfCases.first(where: {$0.str == str})
         else { return }
         
         titleLabel.setTitle(title: type.str, txtColor: type.color, font: .systemFont(ofSize: 15))

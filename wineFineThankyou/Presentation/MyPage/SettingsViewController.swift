@@ -11,10 +11,13 @@ import UIKit
 class SettingsViewController: UIViewController{
     enum SettingSection0: Int, CaseIterable{
         case connectUs = 0
+        case isConvenienceOn = 1
         var text: String {
             switch self {
             case .connectUs:
                 return "1:1문의하기"
+            case .isConvenienceOn:
+                return "매장 검색 시, 편의점 포함하기"
             }
         }
     }
@@ -82,7 +85,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 0{
             guard let opt = SettingSection0(rawValue: indexPath.row) else { return UITableViewCell() }
             cell.label.text = opt.text
-            cell.arrow.isHidden = false
+            if indexPath.row == SettingSection0.connectUs.rawValue {
+                cell.arrow.isHidden = false
+                cell.onOffSwitch.isHidden = true
+                cell.onOffSwitch.isOn = UserData.isConvenienceOn
+            }else if indexPath.row == SettingSection0.isConvenienceOn.rawValue {
+                cell.arrow.isHidden = true
+                cell.onOffSwitch.isHidden = false
+                cell.onOffSwitch.isOn = UserData.isConvenienceOn
+            }
         } else if indexPath.section == 1{
             guard let opt = SettingSection1(rawValue: indexPath.row) else { return UITableViewCell() }
             cell.label.text = opt.text

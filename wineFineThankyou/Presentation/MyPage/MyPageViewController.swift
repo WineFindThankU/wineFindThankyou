@@ -38,7 +38,11 @@ class MyPageViewController : UIViewController {
     
     @objc
     private func close() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            guard let top = topViewController() as? MainViewController
+            else { return }
+            top.showShopsAtCrntLoc()
+        }
     }
     
     @objc
@@ -120,7 +124,7 @@ extension MyPageViewController: DeleteProtocol {
         
         func getShopsByType() -> [Int] {
             var wineShopCount = [Int]()
-            ShopType.allOfCases.forEach { type in
+            ShopType.filteredAllOfCases.forEach { type in
                 wineShopCount.append(visitedWineShops.filter { $0.shopDetail?.shopType == type}.count)
             }
             return wineShopCount

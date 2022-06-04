@@ -59,12 +59,12 @@ enum StoryBoard: String {
 
 enum ShopType: Int, CaseIterable {
     case all = 0
-    case privateShop = 1
-    case warehouse = 2
-    case mart = 3
-    case convenience = 4
-    case chain = 5
-    case department = 6
+    case privateShop
+    case warehouse
+    case mart
+    case chain
+    case department
+    case convenience
     
     var str: String {
         switch self {
@@ -125,6 +125,21 @@ enum ShopType: Int, CaseIterable {
     
     static var allOfCases: [ShopType]{
         return [.privateShop, .warehouse, .mart, .convenience, .chain, .department]
+    }
+    //TODO: TEST
+    static var filteredAllOfCases: [ShopType]{
+        if UserData.isConvenienceOn {
+            return [.privateShop, .warehouse, .mart, .convenience, .chain, .department]
+        } else {
+            return [.privateShop, .warehouse, .mart, .chain, .department]
+        }
+    }
+    static var filteredAllCases: [ShopType]{
+        if UserData.isConvenienceOn {
+            return self.allCases
+        } else {
+            return self.allCases.filter({$0 != .convenience })
+        }
     }
 }
 
@@ -286,6 +301,15 @@ class UserData {
             }
             newSavedVal += ("," + val)
             UserDefaults.standard.set(newSavedVal, forKey: "BeforeSearched")
+        }
+    }
+    
+    static var isConvenienceOn: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "IsConvenienceOn")
+        }
+        set(val) {
+            UserDefaults.standard.setValue(val, forKey: "IsConvenienceOn")
         }
     }
 }

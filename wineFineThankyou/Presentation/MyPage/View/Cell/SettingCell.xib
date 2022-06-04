@@ -29,17 +29,31 @@
                             <constraint firstAttribute="width" constant="15" id="LVK-mM-h1t"/>
                         </constraints>
                     </imageView>
+                    <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eBN-9D-lmN">
+                        <rect key="frame" x="347" y="6.5" width="49" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="6mG-D6-tMw"/>
+                            <constraint firstAttribute="width" constant="47" id="lrH-8F-chS"/>
+                        </constraints>
+                        <color key="onTintColor" red="0.4823529411764706" green="0.38039215686274508" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="onOffAction:" destination="3ZV-Vh-A2F" eventType="valueChanged" id="tq7-mH-3Zr"/>
+                        </connections>
+                    </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WPJ-Sa-5SB" firstAttribute="centerY" secondItem="6wA-3i-6bT" secondAttribute="centerY" id="FUv-Tr-szY"/>
+                    <constraint firstItem="WPJ-Sa-5SB" firstAttribute="trailing" secondItem="eBN-9D-lmN" secondAttribute="trailing" id="Hhh-ha-X1O"/>
                     <constraint firstItem="EQ9-VE-ZY9" firstAttribute="leading" secondItem="6wA-3i-6bT" secondAttribute="leading" constant="20" id="JGN-Or-bOS"/>
                     <constraint firstItem="EQ9-VE-ZY9" firstAttribute="centerY" secondItem="6wA-3i-6bT" secondAttribute="centerY" id="ODK-Jo-O4p"/>
+                    <constraint firstItem="eBN-9D-lmN" firstAttribute="centerY" secondItem="6wA-3i-6bT" secondAttribute="centerY" id="OIi-fE-zKZ"/>
                     <constraint firstAttribute="trailing" secondItem="WPJ-Sa-5SB" secondAttribute="trailing" constant="20" id="Rjd-qc-bS5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="arrow" destination="WPJ-Sa-5SB" id="keZ-Va-9UE"/>
                 <outlet property="label" destination="EQ9-VE-ZY9" id="lu7-mM-3u1"/>
+                <outlet property="onOffSwitch" destination="eBN-9D-lmN" id="5f0-bo-XvP"/>
             </connections>
             <point key="canvasLocation" x="99" y="76"/>
         </tableViewCell>

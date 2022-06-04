@@ -22,26 +22,37 @@ class MainViewController: UIViewController {
 
     //근처의 모든 와인샵
     private var allOfWineShopsNearBy: [Shop] = [] {
-        didSet { self.shownWineShops = allOfWineShopsNearBy }
+        didSet {
+            if UserData.isConvenienceOn {
+                self.shownWineShops = allOfWineShopsNearBy
+            } else {
+                self.shownWineShops = allOfWineShopsNearBy.filter({$0.type != .convenience})
+            }
+        }
     }
     
     private var shownWineShops: [Shop] = [] {
         didSet { updateMaker() }
     }
     
-    private let nameArr = ShopType.allCases.compactMap { $0.str }
-    private var cellDic = [Int: MainCollectionViewCell]()
+    private var type2isSelected: [Int: Bool] = [:]
     private var allOfMarkers = [NMFMarker]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setUpData()
         self.setupCollectionView()
         self.setupUI()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUserLocation()
+    }
+    private func setUpData() {
+        ShopType.filteredAllCases.forEach {
+            type2isSelected[$0.rawValue] = ($0 == .all)
+        }
     }
     
     private func setupUI() {
@@ -137,6 +148,7 @@ extension MainViewController {
                 self.allOfWineShopsNearBy.removeAll()
                 self.allOfWineShopsNearBy.append(contentsOf: shopList)
                 DispatchQueue.main.async {
+                    self.setUpData()
                     self.collectionView.reloadData()
                 }
             }
@@ -171,25 +183,45 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return nameArr.count
+        return ShopType.filteredAllCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell
+        else { return UICollectionViewCell() }
 
-        let type = ShopType.allCases[indexPath.row]
+        let type = ShopType.filteredAllCases[indexPath.row]
         cell.configure(type: type)
-        cellDic[indexPath.row] = cell
-        
+        if let isSelected = type2isSelected[indexPath.row] {
+            cell.isSelected = isSelected
+        }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    func collectionView(_ collectionView: UICollectionView,
+                        shouldSelectItemAt indexPath: IndexPath) -> Bool {
         
-        guard let type = ShopType.allCases.first(where: { $0.rawValue == indexPath.row})
-        else { return true }
+        guard let type = ShopType.filteredAllCases.first(where: {
+            $0.rawValue == indexPath.row
+        }) else { return false }
+        
         shownWineShops.removeAll()
-        shownWineShops = allOfWineShopsNearBy.filter{ $0.type == type }
+        if type == .all {
+            if UserData.isConvenienceOn {
+                shownWineShops = allOfWineShopsNearBy
+            } else {
+                shownWineShops = allOfWineShopsNearBy.filter({$0.type != .convenience})
+            }
+        } else {
+            shownWineShops = allOfWineShopsNearBy.filter{ $0.type == type }
+        }
+        
+        type2isSelected.removeAll()
+        ShopType.filteredAllCases.forEach {
+            type2isSelected[$0.rawValue] = ($0 == type)
+        }
+         
+        self.collectionView.reloadData()
         return true
     }
     
