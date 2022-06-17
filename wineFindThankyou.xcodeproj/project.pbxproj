@@ -35,6 +35,7 @@
 		44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FF46FC27A55F420063924D /* SearchViewController.swift */; };
 		86F7F42D4E7CA01839B146FF /* Pods_wineFindThankyouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8DAEE5A0950C8FEC697854 /* Pods_wineFindThankyouTests.framework */; };
 		BA1ABE462855B3760018996D /* DescAndTxtField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1ABE452855B3760018996D /* DescAndTxtField.swift */; };
+		BA1ABE48285C875E0018996D /* WinePriceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1ABE47285C875E0018996D /* WinePriceCalculator.swift */; };
 		BA1CAAA627CDE606002375A5 /* WineInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CAAA527CDE606002375A5 /* WineInfoDetailView.swift */; };
 		BA1E472327AF9D23005C3319 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1E472227AF9D23005C3319 /* MyPage.storyboard */; };
 		BA1E472527AF9F03005C3319 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E472427AF9F03005C3319 /* SettingsViewController.swift */; };
@@ -165,6 +166,7 @@
 		AF8DAEE5A0950C8FEC697854 /* Pods_wineFindThankyouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wineFindThankyouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B161F5A18BCC9E2FC1BD844B /* Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; path = "Target Support Files/Pods-wineFindThankyou-wineFindThankyouUITests/Pods-wineFindThankyou-wineFindThankyouUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BA1ABE452855B3760018996D /* DescAndTxtField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescAndTxtField.swift; sourceTree = "<group>"; };
+		BA1ABE47285C875E0018996D /* WinePriceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinePriceCalculator.swift; sourceTree = "<group>"; };
 		BA1CAAA527CDE606002375A5 /* WineInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoDetailView.swift; sourceTree = "<group>"; };
 		BA1E472227AF9D23005C3319 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		BA1E472427AF9F03005C3319 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				BA8BB7BB27A44E430010F05A /* ShopInfoSummaryViewController.swift */,
 				BA77CFDF279EF80800832389 /* ShopInfoViewController.swift */,
 				BA8BB7BF27A46FB70010F05A /* ShopWinesViewController.swift */,
+				BA1ABE47285C875E0018996D /* WinePriceCalculator.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -977,6 +980,7 @@
 				44FF46FD27A55F420063924D /* SearchViewController.swift in Sources */,
 				BA47878C27B7880400AAB5EA /* ExtFunc.swift in Sources */,
 				BABB595D27C63005000E24C5 /* WineInfoTableViewCell.swift in Sources */,
+				BA1ABE48285C875E0018996D /* WinePriceCalculator.swift in Sources */,
 				4444248B279D374C00903DC7 /* MainViewController.swift in Sources */,
 				BA1ABE462855B3760018996D /* DescAndTxtField.swift in Sources */,
 				BABFCE8927F8841000E097DF /* WalkthroughResulViewController.swift in Sources */,

@@ -31,6 +31,7 @@ class BoughtWine {
 class WineInfo {
     let key: String
     let vintage: String
+    let priceRange: String
     private let name: String
     private let userWineFrom: String
     let wineAtServer: WineAtServer?
@@ -38,6 +39,9 @@ class WineInfo {
         self.key = params["uw_no"].string ?? ""     //"cl0m224l61633om62y0axupke",
         self.name = params["uw_name"].string ?? ""   //"",
         self.vintage = params["uw_vintage"].string ?? ""
+        
+        let price = params["uw_price_range"].intValue
+        self.priceRange = WinePriceCalculator.getRange(price)
         self.userWineFrom = params["uw_country"].string ?? ""
         self.wineAtServer = WineAtServer(params["wine"])
     }

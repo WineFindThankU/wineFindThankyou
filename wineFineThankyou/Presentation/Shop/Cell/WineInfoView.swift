@@ -13,6 +13,7 @@ enum TableItem: Int, CaseIterable {
     case from
     case vintage
     case alchol
+    case price
 }
 
 class WineInfoView: UIView{
@@ -62,7 +63,7 @@ class WineInfoView: UIView{
 
 extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return TableItem.allCases.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,6 +89,7 @@ extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
         else { return UITableViewCell() }
         guard let item = TableItem(rawValue: indexPath.row),
               let vintage = self.wineInfo?.vintage,
+              let price = self.wineInfo?.info?.priceRange,
               let wine = self.wineInfo?.info?.wineAtServer
         else { return UITableViewCell() }
         
@@ -101,6 +103,8 @@ extension WineInfoView: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .alchol:
             cell.update(("도수", wine.alcohol)); return cell
+        case .price:
+            cell.update(("가격", price)); return cell
         }
     }
 }

@@ -12,8 +12,14 @@ class AddWineInfomationViewController: UIViewController, UIGestureRecognizerDele
         var name: String
         var vintage: String
         var from: String
-        var price: String
+        var price: Int
         var date: String
+    }
+    
+    enum CaptureStatus {
+        case initial
+        case cancel
+        case ok
     }
     
     private weak var topView: TopView!
@@ -358,11 +364,11 @@ extension AddWineInfomationViewController {
             self?.additionalWineInfo = AdditionalWineInfo(name: name ?? "",
                                                     vintage: "",
                                                     from: from ?? "",
-                                                    price: "", date: "")
+                                                    price: 0, date: "")
             self?.textFieldName?.text = self?.additionalWineInfo?.name
             self?.textFieldFrom?.text = self?.additionalWineInfo?.from
             self?.textFieldVintage?.text = self?.additionalWineInfo?.vintage
-            self?.textFieldBoughtPrice?.text = self?.additionalWineInfo?.price
+            self?.textFieldBoughtPrice?.text = String(format: "%@", self?.additionalWineInfo?.price ?? 0)
         }
     }
     
@@ -486,7 +492,7 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
             additionalWineInfo = AdditionalWineInfo(name: "",
                                                     vintage: "",
                                                     from: "",
-                                                    price: "",
+                                                    price: 0,
                                                     date: "")
         }
         
@@ -508,7 +514,7 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
                     realValue += ","
                 }
             }
-            additionalWineInfo?.price = val
+            additionalWineInfo?.price = Int(val) ?? 0
             textFieldBoughtPrice?.text = realValue.reversed() + (realValue.isEmpty ? "" : "원")
         }
     }
@@ -556,8 +562,4 @@ extension AddWineInfomationViewController {
     }
 }
 
-enum CaptureStatus {
-    case initial
-    case cancel
-    case ok
-}
+
