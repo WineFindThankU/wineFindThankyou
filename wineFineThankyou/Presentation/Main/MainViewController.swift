@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     private unowned var searchBtn: UIButton!
     private var locationManager : CLLocationManager?
-
+    var isSet: Bool = false
     //근처의 모든 와인샵
     private var allOfWineShopsNearBy: [Shop] = [] {
         didSet {
@@ -32,12 +32,16 @@ class MainViewController: UIViewController {
     }
     
     private var shownWineShops: [Shop] = [] {
-        didSet { updateMaker() }
+        didSet {
+            DispatchQueue.main.async {
+                self.updateMaker()
+            }
+        }
     }
     
     private var type2isSelected: [Int: Bool] = [:]
-    private var allOfMarkers = [NMFMarker]()
-    
+    private var dicType2SelectedNMFImg = [ShopType:(normal: NMFOverlayImage, selected: NMFOverlayImage)]()
+    private var dicShopKey2Marker = [String: NMFMarker]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,13 +49,22 @@ class MainViewController: UIViewController {
         self.setupCollectionView()
         self.setupUI()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUserLocation()
     }
+    
     private func setUpData() {
         ShopType.filteredAllCases.forEach {
             type2isSelected[$0.rawValue] = ($0 == .all)
+            guard let normalImg = UIImage(named: $0.normalImgName),
+                let selectedImage = UIImage(named: "ShopDetail_\($0.typeStr)")
+            else { return }
+            
+            let nNmfImg = NMFOverlayImage(image: normalImg)
+            let sNmfImg = NMFOverlayImage(image: selectedImage)
+            dicType2SelectedNMFImg[$0] = (nNmfImg, sNmfImg)
         }
     }
     
@@ -84,27 +97,18 @@ class MainViewController: UIViewController {
     }
     
     internal func whenBeSelectedMarker(_ shop: Shop) {
-        guard let shopTypeStr = shop.type?.typeStr,
-              let img = UIImage(named: "ShopDetail_\(shopTypeStr)")
+        guard let shopType = shop.type
         else { return }
         
-        let marker: NMFMarker
-        if let nnMarker = allOfMarkers.first(where: {
-            Int($0.position.lat) == Int(shop.latitude)
-            && Int($0.position.lng) == Int(shop.longtitude)
-        }) {
-            marker = nnMarker
-        } else {
-            marker = NMFMarker()
-            self.allOfMarkers.append(marker)
+        dicShopKey2Marker[shop.key]?.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
+        dicShopKey2Marker[shop.key]?.mapView = nil
+        dicShopKey2Marker[shop.key]?.mapView = self.nmfNaverMapView.mapView
+        if let selectedImg = dicType2SelectedNMFImg[shopType]?.selected {
+            dicShopKey2Marker[shop.key]?.iconImage = selectedImg
         }
-        
-        marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
-        marker.mapView = self.nmfNaverMapView.mapView
-        marker.iconImage = NMFOverlayImage(image: img)
-        marker.width = 48
-        marker.height = 59
-        marker.captionText = shop.nnName
+        dicShopKey2Marker[shop.key]?.width = 48
+        dicShopKey2Marker[shop.key]?.height = 59
+        dicShopKey2Marker[shop.key]?.captionText = shop.nnName
         
         DispatchQueue.main.async {
             self.updateFocus(shop.latitude, shop.longtitude)
@@ -145,8 +149,7 @@ extension MainViewController {
         let crntLoc = self.nmfNaverMapView.mapView.cameraPosition.target
         DispatchQueue.global().async {
             AFHandler.shopList(crntLoc.lat, crntLoc.lng) { shopList in
-                self.allOfWineShopsNearBy.removeAll()
-                self.allOfWineShopsNearBy.append(contentsOf: shopList)
+                self.allOfWineShopsNearBy = shopList
                 DispatchQueue.main.async {
                     self.setUpData()
                     self.collectionView.reloadData()
@@ -205,12 +208,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             $0.rawValue == indexPath.row
         }) else { return false }
         
-        shownWineShops.removeAll()
+        dicShopKey2Marker.keys.forEach {
+            dicShopKey2Marker[$0]?.mapView = nil
+        }
         if type == .all {
             if UserData.isConvenienceOn {
                 shownWineShops = allOfWineShopsNearBy
             } else {
-                shownWineShops = allOfWineShopsNearBy.filter({$0.type != .convenience})
+                shownWineShops = allOfWineShopsNearBy.filter { $0.type != .convenience }
             }
         } else {
             shownWineShops = allOfWineShopsNearBy.filter{ $0.type == type }
@@ -252,7 +257,6 @@ extension MainViewController: CLLocationManagerDelegate {
             else { return }
             DispatchQueue.global().async {
                 AFHandler.shopList(lat, lng) {
-                    self.allOfWineShopsNearBy.removeAll()
                     self.allOfWineShopsNearBy = $0
                 }
             }
@@ -274,14 +278,17 @@ extension MainViewController: CLLocationManagerDelegate {
         } else {
             status = CLLocationManager.authorizationStatus()
         }
+        
         setLocationManager(status)
+        print("munyong > findCurrentPosition")
     }
     
     //사용자 권한 허용후 처리
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         setLocationManager(status)
+        print("munyong > didChangeAuthorization")
     }
-    
+
     private func notiUserLocationAuthorized() {
         let alert = UIAlertController(title: "위치 권한",
                                       message: "앱 설정화면에서 위치 권한을 허용으로 바꾸어 주세요",
@@ -317,21 +324,30 @@ extension MainViewController: NMFMapViewCameraDelegate {
     }
     
     private func updateMaker() {
-        allOfMarkers.forEach { $0.mapView = nil }
-        allOfMarkers.removeAll()
         shownWineShops.forEach { shop in
-            guard !shop.imgName.isEmpty else { return }
+            guard let type = shop.type else { return }
         
-            let marker = NMFMarker()
+            let marker: NMFMarker
+            if let nnMarker = dicShopKey2Marker[shop.key] {
+                marker = nnMarker
+            } else {
+                marker = NMFMarker()
+            }
+            
             marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
             marker.mapView = self.nmfNaverMapView.mapView
-            marker.iconImage = NMFOverlayImage(name: shop.imgName)
+            marker.width = 24
+            marker.height = 24
+            if let img = dicType2SelectedNMFImg[type] {
+                marker.iconImage = img.normal
+            }
             
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+                self?.dicShopKey2Marker[shop.key]?.mapView = nil
                 self?.whenBeSelectedMarker(shop)
                 return true
             }
-            allOfMarkers.append(marker)
+            dicShopKey2Marker[shop.key] = marker
         }
     }
     

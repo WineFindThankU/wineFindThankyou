@@ -104,6 +104,26 @@ enum ShopType: Int, CaseIterable {
         }
     }
 
+    var normalImgName: String {
+        switch self {
+        case .all:
+            return ""
+        case .privateShop:
+            return "privateShop"
+        case .warehouse:
+            return "warehouse"
+        case .mart:
+            return "mart"
+        case .convenience:
+            return "convenience"
+        case .chain:
+            return "chain"
+        case .department:
+            return "department"
+        default:
+            return ""
+        }
+    }
     var color: UIColor {
         switch self {
         case .all:
