@@ -55,8 +55,10 @@ class Shop {
         self.address = param["sh_address"].string
         self.name = param["sh_name"].string
         self.tellNumber = param["sh_tell"].string
-        self.latitude = param["sh_latitude"].double ?? 0.0
-        self.longtitude = param["sh_longitude"].double ?? 0.0
+        let lat = param["sh_latitude"].double ?? 0.0
+        let lng = param["sh_longitude"].double ?? 0.0
+        self.latitude = round(lat * 10000000) / 10000000
+        self.longtitude = round(lng * 10000000) / 10000000
         
         let typeStr = param["sh_category"].string ?? ShopType.privateShop.typeStr
         self.type = ShopType.allOfCases.first(where: {$0.typeStr == typeStr})

@@ -149,8 +149,8 @@ extension ShopInfoSummaryViewController: UICollectionViewDelegate, UICollectionV
 
 extension ShopInfoSummaryViewController: ReloadShopDetail {
     func addShopDetail(_ shop: Shop) {
-        self.shop = shop
         DispatchQueue.main.async {
+            self.shop = shop
             self.reloadCollectionView()
         }
     }

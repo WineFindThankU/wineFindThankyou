@@ -99,9 +99,11 @@ class MainViewController: UIViewController {
     internal func whenBeSelectedMarker(_ shop: Shop) {
         guard let shopType = shop.type
         else { return }
-        
-        dicShopKey2Marker[shop.key]?.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
+//        dicShopKey2Marker.keys.forEach {
+//            dicShopKey2Marker[$0]?.mapView = nil
+//        }
         dicShopKey2Marker[shop.key]?.mapView = nil
+        dicShopKey2Marker[shop.key]?.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
         dicShopKey2Marker[shop.key]?.mapView = self.nmfNaverMapView.mapView
         if let selectedImg = dicType2SelectedNMFImg[shopType]?.selected {
             dicShopKey2Marker[shop.key]?.iconImage = selectedImg
@@ -149,6 +151,20 @@ extension MainViewController {
         let crntLoc = self.nmfNaverMapView.mapView.cameraPosition.target
         DispatchQueue.global().async {
             AFHandler.shopList(crntLoc.lat, crntLoc.lng) { shopList in
+                self.allOfWineShopsNearBy = shopList
+                DispatchQueue.main.async {
+                    self.setUpData()
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func showShopsAtSpecificLoc(_ lat: Double, lng: Double) {
+        self.updateFocus(lat, lng)
+        DispatchQueue.global().async {
+            AFHandler.shopList(lat, lng) { shopList in
+                self.allOfWineShopsNearBy.removeAll()
                 self.allOfWineShopsNearBy = shopList
                 DispatchQueue.main.async {
                     self.setUpData()
@@ -256,8 +272,12 @@ extension MainViewController: CLLocationManagerDelegate {
                 let lng = locationManager.location?.coordinate.longitude
             else { return }
             DispatchQueue.global().async {
-                AFHandler.shopList(lat, lng) {
-                    self.allOfWineShopsNearBy = $0
+                AFHandler.shopList(lat, lng) { shops in
+                    self.allOfWineShopsNearBy = shops
+                    let keyName = shops.compactMap({(key: $0.key, name: $0.name, lat: $0.latitude, lng: $0.longtitude)})
+                    keyName.enumerated().forEach { idx, kn in
+                        print("munyong: [\(kn.key)/\(kn.name)] : (\(kn.lat), \(kn.lng))")
+                    }
                 }
             }
             updateFocus(lat, lng)
@@ -324,16 +344,15 @@ extension MainViewController: NMFMapViewCameraDelegate {
     }
     
     private func updateMaker() {
+        dicShopKey2Marker.keys.forEach {
+            dicShopKey2Marker[$0]?.mapView = nil
+        }
+        dicShopKey2Marker.removeAll()
+        
         shownWineShops.forEach { shop in
             guard let type = shop.type else { return }
         
-            let marker: NMFMarker
-            if let nnMarker = dicShopKey2Marker[shop.key] {
-                marker = nnMarker
-            } else {
-                marker = NMFMarker()
-            }
-            
+            let marker = NMFMarker()
             marker.position = NMGLatLng(lat: shop.latitude, lng: shop.longtitude)
             marker.mapView = self.nmfNaverMapView.mapView
             marker.width = 24
@@ -342,9 +361,9 @@ extension MainViewController: NMFMapViewCameraDelegate {
                 marker.iconImage = img.normal
             }
             
-            marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                self?.dicShopKey2Marker[shop.key]?.mapView = nil
-                self?.whenBeSelectedMarker(shop)
+            marker.touchHandler = { (overlay: NMFOverlay) -> Bool in
+                self.dicShopKey2Marker[shop.key]?.mapView = nil
+                self.whenBeSelectedMarker(shop)
                 return true
             }
             dicShopKey2Marker[shop.key] = marker

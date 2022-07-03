@@ -143,4 +143,39 @@ extension AFHandler {
             }
         }
     }
+    
+    class func localList(_ inputTxt: String, done:(([SearchingLocalViewModel]) -> Void)?) {
+        let url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode"
+        let params = ["query": inputTxt]
+        var header = HTTPHeaders()
+        header.add(name: "X-NCP-APIGW-API-KEY-ID", value: "uob41kjymp")
+        header.add(name: "X-NCP-APIGW-API-KEY", value: "Nd1BGVQg3pRdrGBZcR3DbFV754THuSNRgWpqc4H6")
+        AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header).responseJSON { res in
+            switch res.result {
+            case .success(let nsDict):
+                print("munyong > result: \(nsDict)")
+                guard let nsDict = nsDict as? [String: Any],
+                      let addresses = nsDict["addresses"] as? [AnyObject]
+                else { done?([]); return }
+                
+                var list = [SearchingLocalViewModel]()
+                addresses.forEach {
+                    guard let addressElements = $0 as? [String: Any],
+                          let coordinateStrX = addressElements["x"] as? String,
+                          let coordinateX = Double(coordinateStrX),
+                          let coordinateStrY = addressElements["y"] as? String,
+                          let coordinateY = Double(coordinateStrY),
+                          let roadAddress = addressElements["roadAddress"] as? String
+                    else { done?([]); return }
+                    
+                    list.append(SearchingLocalViewModel(name: roadAddress,
+                                                        coordinate: (coordinateY, coordinateX)))
+                }
+                
+                done?(list)
+            default:
+                break
+            }
+        }
+    }
 }

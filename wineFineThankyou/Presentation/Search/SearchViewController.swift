@@ -15,6 +15,11 @@ struct SearchingShopViewModel {
     var sh_name: String
 }
 
+struct SearchingLocalViewModel {
+    var name: String
+    var coordinate: (x: Double, y: Double)
+}
+
 protocol SearchingShopDisplayLogic: AnyObject {
     func displaySearchProduct(viewModel: SearchingShopViewModel)
 }
@@ -28,7 +33,8 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet weak var beforeSearchedTitle: UILabel!
     @IBOutlet private weak var searchingViewTop: NSLayoutConstraint!
-    private var searchingShopViewModel: [SearchingShopViewModel] = []
+//    private var searchingShopViewModel: [SearchingShopViewModel] = []
+    private var searchingLocalViewModelList: [SearchingLocalViewModel] = []
     private var isBeforeSearchedPrint = true
     private var beforeSearched: [String] {
         if isBeforeSearchedPrint {
@@ -70,21 +76,33 @@ class SearchViewController: UIViewController {
         searchingView.isHidden = false
         searchingViewTop.constant = isBeforeSearchedPrint ? 150 + beforeSearchedTitle.frame.height : 20
         
-        getSearchWineShop {
+        getSearchLocalList {
             DispatchQueue.main.async {
                 self.searchingTableView.reloadData()
             }
         }
     }
     
-    private func getSearchWineShop(done: (() -> Void)?) {
-        guard let text = textField.text else { return }
+//    private func getSearchWineShop(done: (() -> Void)?) {
+//        guard let text = textField.text else { return }
+//
+//        AFHandler.searchShop(byKeyword: text, done: { response in
+//            self.searchingLocalViewModel.removeAll()
+//            self.searchingShopViewModel.append(contentsOf: response)
+//            done?()
+//        })
+//    }
+    
+    private func getSearchLocalList(done: (() -> Void)?) {
+        guard let text = textField.text, text.count > 1  else { return }
         
-        AFHandler.searchShop(byKeyword: text, done: { response in
-            self.searchingShopViewModel.removeAll()
-            self.searchingShopViewModel.append(contentsOf: response)
+        print("munyong > text.count: \(text.count)")
+        
+        AFHandler.localList(textField.text ?? "") { response in
+            self.searchingLocalViewModelList.removeAll()
+            self.searchingLocalViewModelList.append(contentsOf: response)
             done?()
-        })
+        }
     }
     
     private func setupCollectionView() {
@@ -192,7 +210,8 @@ final class SearchCollectionViewCell: UICollectionViewCell {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard isBeforeSearchedPrint else {
-            return searchingShopViewModel.count
+//            return searchingShopViewModel.count
+            return searchingLocalViewModelList.count
         }
         
         return beforeSearched.count
@@ -208,8 +227,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         }
-        cell.labelText = searchingShopViewModel[indexPath.row].sh_name
-        
+//        cell.labelText = searchingShopViewModel[indexPath.row].sh_name
+        cell.labelText = searchingLocalViewModelList[indexPath.row].name
         return cell
     }
     
@@ -224,34 +243,53 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        let keyword = searchingShopViewModel[indexPath.row].sh_no
+        let coordinate = searchingLocalViewModelList[indexPath.row].coordinate
         if let txt = textField.text {
             UserData.beforeSearched = txt
         }
         
-        AFHandler.shopDetail(keyword) { shop in
-            guard let shop = shop else { return }
-            DispatchQueue.main.async {
-                self.dismiss(animated: true) {
-                    let topVC = topViewController()
-                    
-                    if let mainVC = topVC as? MainViewController {
-                        mainVC.whenBeSelectedMarker(shop)
-                    } else if let _ = topVC as? MyPageViewController {
-                        topViewController()?.presentingViewController?.dismiss(animated: true) {
-                            guard let topVC = topViewController() as? MainViewController else { return }
-                            topVC.whenBeSelectedMarker(shop)
-                        }
-                    } else {
-                        topViewController()?.presentingViewController?.presentingViewController?.dismiss(animated: true) {
-                            guard let topVC = topViewController() as? MainViewController else { return }
-                            topVC.whenBeSelectedMarker(shop)
-                        }
+        DispatchQueue.main.async {
+            self.dismiss(animated: true) {
+                let topVC = topViewController()
+
+                if let mainVC = topVC as? MainViewController {
+                    mainVC.showShopsAtSpecificLoc(coordinate.x, lng: coordinate.y)
+                } else if let _ = topVC as? MyPageViewController {
+                    topViewController()?.presentingViewController?.dismiss(animated: true) {
+                        guard let topVC = topViewController() as? MainViewController else { return }
+                        topVC.showShopsAtSpecificLoc(coordinate.x, lng: coordinate.y)
                     }
-                    
+                } else {
+                    topViewController()?.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+                        guard let topVC = topViewController() as? MainViewController else { return }
+                        topVC.showShopsAtSpecificLoc(coordinate.x, lng: coordinate.y)
+                    }
                 }
             }
         }
+//        AFHandler.shopDetail(keyword) { shop in
+//            guard let shop = shop else { return }
+//            DispatchQueue.main.async {
+//                self.dismiss(animated: true) {
+//                    let topVC = topViewController()
+//
+//                    if let mainVC = topVC as? MainViewController {
+//                        mainVC.whenBeSelectedMarker(shop)
+//                    } else if let _ = topVC as? MyPageViewController {
+//                        topViewController()?.presentingViewController?.dismiss(animated: true) {
+//                            guard let topVC = topViewController() as? MainViewController else { return }
+//                            topVC.whenBeSelectedMarker(shop)
+//                        }
+//                    } else {
+//                        topViewController()?.presentingViewController?.presentingViewController?.dismiss(animated: true) {
+//                            guard let topVC = topViewController() as? MainViewController else { return }
+//                            topVC.whenBeSelectedMarker(shop)
+//                        }
+//                    }
+//
+//                }
+//            }
+//        }
     }
 }
 

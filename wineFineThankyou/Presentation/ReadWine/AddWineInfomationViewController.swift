@@ -403,6 +403,11 @@ extension AddWineInfomationViewController {
     
     @objc
     func pickBoughtDate() {
+        textFieldName?.endEditing(true)
+        textFieldFrom?.endEditing(true)
+        textFieldVintage?.endEditing(true)
+        textFieldBoughtPrice?.endEditing(true)
+        
         datePickerView.isHidden = false
         self.view.bringSubviewToFront(datePickerView)
         
@@ -510,7 +515,7 @@ extension AddWineInfomationViewController: UITextFieldDelegate {
             var realValue: String = ""
             val.reversed().enumerated().forEach { idx, c in
                 realValue.append(c)
-                if idx % 3 == 2 {
+                if idx % 3 == 2, idx + 1 < val.count {
                     realValue += ","
                 }
             }

@@ -33,7 +33,7 @@ class WinePriceCalculator {
         }
     }
     
-    class func getRange(_ price: Int) -> String {
+    class func getRange(_ price: Int64) -> String {
         if price < 10000 {
             return PriceRange.none.str
         } else if 10000 <= price, price < 30000 {

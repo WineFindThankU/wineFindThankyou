@@ -40,7 +40,7 @@ class WineInfo {
         self.name = params["uw_name"].string ?? ""   //"",
         self.vintage = params["uw_vintage"].string ?? ""
         
-        let price = params["uw_price_range"].intValue
+        let price = params["uw_price_range"].int64Value
         self.priceRange = WinePriceCalculator.getRange(price)
         self.userWineFrom = params["uw_country"].string ?? ""
         self.wineAtServer = WineAtServer(params["wine"])
