@@ -63,20 +63,14 @@ class WalkthroughResulViewController: UIViewController {
             || answer1 == PriceOfWine.thr2Four.str {
             self.grapeCase = GrapeCase.costGrape
             return [answer0, answer1, answer2]
-        } else if answer0 == WhenDoSelect.brand.str
-                    || answer0 == WhenDoSelect.loc.str
-                    || answer0 == WhenDoSelect.grape.str
-                    || answer1 == PriceOfWine.quality.str {
-            self.grapeCase = GrapeCase.artistGrape
-            return [answer0, answer1, answer2]
-        } else if answer2 == ReasonOfBought.forParty.str
-                    || answer2 == ReasonOfBought.forMe.str {
+        } else if answer2 == UsuallyBought.restaurant.str
+                    || answer2 == UsuallyBought.wineBar.str {
             self.grapeCase = GrapeCase.dionysusGrape
             return [answer0, answer1, answer2]
         } else if answer0.contains("기타") {
             self.grapeCase = GrapeCase.analystGrape
             return [answer0, answer1, answer2]
-        } else if answer2 == ReasonOfBought.forPresent.str {
+        } else if answer2 == UsuallyBought.wineShop.str {
             self.grapeCase = GrapeCase.childGrape
             return [answer0, answer1, answer2]
         } else {

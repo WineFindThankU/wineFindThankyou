@@ -11,7 +11,6 @@ import UIKit
 class WalkthroughView: UIView{
     @IBOutlet private var contentsView: UIView!
     @IBOutlet private weak var walkthroughView: UIView!
-    @IBOutlet private weak var labelQuestionNumber: UILabel!
     @IBOutlet private weak var labelQuestion: UILabel!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var stackViewHeight: NSLayoutConstraint!
@@ -39,7 +38,6 @@ class WalkthroughView: UIView{
     
     private func updateUI() {
         guard let question = QuestionList(rawValue: questionNumber) else { return }
-        self.labelQuestionNumber.text = "Q.\(questionNumber + 1)"
         self.labelQuestion.text = question.str
         
         buttons.removeAll()
@@ -73,11 +71,6 @@ extension WalkthroughView {
         contentsView.frame = self.bounds
         walkthroughView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         walkthroughView.layer.cornerRadius = 10
-        
-        labelQuestionNumber.textColor = .black
-        labelQuestionNumber.textAlignment = .center
-        labelQuestionNumber.numberOfLines = 0
-        labelQuestionNumber.font = .systemFont(ofSize: 22, weight: .semibold)
         
         labelQuestion.textColor = .black
         labelQuestion.textAlignment = .center

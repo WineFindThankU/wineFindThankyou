@@ -69,38 +69,38 @@ class WalkthroughViewController: UIViewController {
         pageControl.numberOfPages = QuestionList.allCases.count
     }
     
-    private func setEtceteraView() {
-        let backgroundView = UIView()
-        self.view.addSubview(backgroundView)
-        backgroundView.backgroundColor = .black.withAlphaComponent(0.5)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ])
-        
-        txtFieldEtcetera.placeholder = "입력해주세요"
-        txtFieldEtcetera.borderStyle = .none
-        
-        self.view.bringSubviewToFront(etceteraView)
-        txtFieldEtcetera.becomeFirstResponder()
-        
-        etceteraOkBtn.setTitle(title: "확인", colorHex: 0x0, font: .systemFont(ofSize: 13))
-        etceteraOkBtn.contentEdgeInsets = UIEdgeInsets(top: 9, left: 16, bottom: 9, right: 16)
-        etceteraOkBtn.layer.borderWidth = 1
-        etceteraOkBtn.layer.borderColor = UIColor.black.cgColor
-        etceteraOkBtn.layer.cornerRadius = 18
-        etceteraViewBottomConstraint.constant = 0 + self.keyboardHeight
-        etceteraOkBtn.addAction(UIAction { _ in
-            self.question2Answer[QuestionList.question0.rawValue] = "기타" + "(" + (self.txtFieldEtcetera.text ?? "") + ")"
-            self.txtFieldEtcetera.resignFirstResponder()
-            backgroundView.removeFromSuperview()
-            self.etceteraViewBottomConstraint.constant = -100
-            
-        }, for: .touchUpInside)
-    }
+//    private func setEtceteraView() {
+//        let backgroundView = UIView()
+//        self.view.addSubview(backgroundView)
+//        backgroundView.backgroundColor = .black.withAlphaComponent(0.5)
+//        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            backgroundView.topAnchor.constraint(equalTo: self.view.topAnchor),
+//            backgroundView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+//            backgroundView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+//            backgroundView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+//        ])
+//
+//        txtFieldEtcetera.placeholder = "입력해주세요"
+//        txtFieldEtcetera.borderStyle = .none
+//
+//        self.view.bringSubviewToFront(etceteraView)
+//        txtFieldEtcetera.becomeFirstResponder()
+//
+//        etceteraOkBtn.setTitle(title: "확인", colorHex: 0x0, font: .systemFont(ofSize: 13))
+//        etceteraOkBtn.contentEdgeInsets = UIEdgeInsets(top: 9, left: 16, bottom: 9, right: 16)
+//        etceteraOkBtn.layer.borderWidth = 1
+//        etceteraOkBtn.layer.borderColor = UIColor.black.cgColor
+//        etceteraOkBtn.layer.cornerRadius = 18
+//        etceteraViewBottomConstraint.constant = 0 + self.keyboardHeight
+//        etceteraOkBtn.addAction(UIAction { _ in
+//            self.question2Answer[QuestionList.question0.rawValue] = "기타" + "(" + (self.txtFieldEtcetera.text ?? "") + ")"
+//            self.txtFieldEtcetera.resignFirstResponder()
+//            backgroundView.removeFromSuperview()
+//            self.etceteraViewBottomConstraint.constant = -100
+//
+//        }, for: .touchUpInside)
+//    }
     
     @objc
     private func keyboardWillShow(notification: NSNotification) {
@@ -114,12 +114,28 @@ class WalkthroughViewController: UIViewController {
               let _ = question2Answer[QuestionList.question1.rawValue],
               let _ = question2Answer[QuestionList.question2.rawValue],
               let vc = UIStoryboard(name: StoryBoard.start.name, bundle: nil).instantiateViewController(identifier: WalkthroughResulViewController.identifier) as? WalkthroughResulViewController
-        else { return }
+        else {
+            showAlert()
+            return
+        }
         
         vc.question2Answer = self.question2Answer
         vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
             self.present(vc, animated: true)
+        }
+        
+        func showAlert() {
+            let alert = UIAlertController(title: "전체 질문에 답해주세요.",
+                                          message: "아직 답변하지 않으신 질문이 있습니다.\n확인 후 다시 시도해주세요.",
+                                          preferredStyle: .alert)
+            let okBtn = UIAlertAction(title: "확인", style: .default) {_ in
+                alert.dismiss(animated: true)
+            }
+            alert.addAction(okBtn)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true)
+            }
         }
     }
 }
@@ -143,7 +159,7 @@ extension WalkthroughViewController: AfterWalkthroughAnswer{
         }
         
         DispatchQueue.main.async {
-            self.setEtceteraView()
+//            self.setEtceteraView()
         }
     }
 }
