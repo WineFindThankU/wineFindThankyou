@@ -97,9 +97,7 @@ extension WalkthroughView {
         
         nextBtn.setImage(UIImage(named: "SelectedWalkthroughNextBtn"), for: .normal)
         
-        let isEtcetera: Bool = (questionNumber == QuestionList.question0.rawValue &&
-            idx == QuestionList.question0.optionList.count - 1)
-        delegate?.selected(questionNumber, btn.titleLabel?.text, isEtcetera)
+        delegate?.selected(questionNumber, btn.titleLabel?.text)
     }
 }
 

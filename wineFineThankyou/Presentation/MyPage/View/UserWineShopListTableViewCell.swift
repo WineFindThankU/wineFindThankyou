@@ -61,7 +61,7 @@ class UserWineShopListTableViewCell: UITableViewCell {
         let tagLabel = TagLabel()
         let shopName = UILabel()
         let registeredWineCount = UILabel()
-        detailView.addSubViews(subViews: deleteBtn, tagLabel, shopName, registeredWineCount)
+        detailView.addSubViews(deleteBtn, tagLabel, shopName, registeredWineCount)
         NSLayoutConstraint.activate([
             deleteBtn.topAnchor.constraint(equalTo: detailView.topAnchor),
             deleteBtn.rightAnchor.constraint(equalTo: detailView.rightAnchor),

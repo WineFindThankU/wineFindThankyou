@@ -12,29 +12,15 @@ import KakaoSDKUser
 import KakaoSDKAuth
 import GoogleSignIn
 import AuthenticationServices
-import SwiftyJSON
-
-enum NetworkError: Error {
-    case badUrl
-    case noData
-    case decodingError
-}
-
 
 class LoginController: NSObject {
-    
-    lazy var loginController : LoginViewController = {
-        let controller = LoginViewController()
-        return controller
-    }()
-    
     private lazy var naverConnection : NaverThirdPartyLoginConnection? = {
         let nConn = NaverThirdPartyLoginConnection.getSharedInstance()
         return nConn
     }()
     
-    unowned var viewController : UIViewController!
-    weak var delegate: EndLoginProtocol?
+    private unowned var viewController : UIViewController!
+    private weak var delegate: EndLoginProtocol?
     
     init(_ viewController: UIViewController) {
         super.init()
@@ -58,8 +44,6 @@ class LoginController: NSObject {
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-    
-
     
     internal func loginByKakao() {
         guard UserApi.isKakaoTalkLoginAvailable() else {
@@ -138,7 +122,7 @@ extension LoginController: NaverThirdPartyLoginConnectionDelegate{
     }
     
     private func naverSDKDidLoginSuccess() {
-        Login.shared.loginByNaver(naverConnection)
+//        Login.shared.loginByNaver(naverConnection)
 //        delegate?.endLogin(.success)
 //        RequestNetworking.getLoginCheckAPI()
     }

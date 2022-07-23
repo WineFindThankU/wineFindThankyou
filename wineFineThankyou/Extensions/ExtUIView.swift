@@ -208,7 +208,7 @@ class TagLabel: UILabel {
 }
 
 extension UIView {
-    func addSubViews(subViews: UIView...) {
+    func addSubViews(_ subViews: UIView...) {
         subViews.forEach {
             self.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false

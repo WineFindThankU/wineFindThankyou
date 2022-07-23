@@ -1,86 +1,19 @@
 //
-//  LoginViewController2.swift
+//  LoginViewController.swift
 //  wineFindThankyou
 //
-//  Created by suding on 2022/03/03.
+//  Created by mun on 2022/07/23.
 //
 
 import UIKit
-import SnapKit
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
 
-protocol EndLoginProtocol: AnyObject {
-    func endLogin(_ type: AfterLogin)
-}
-
-final class LoginViewController: UIViewController, EndLoginProtocol {
-    func endLogin(_ type: AfterLogin) {
-        guard type == .success else {
-            return
-        }
-        
-        UserData.isUserLogin = true
-        self.goToMain()
-    }
-
-    var statusCode = 0
-    var data: DataClass?
-    
-    lazy var titleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "LaunchTitle")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    lazy var subView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    lazy var loginController : LoginController = {
+final class LoginViewController: UIViewController {
+    private lazy var loginController : LoginController = {
         let controller = LoginController(self)
         return controller
-    }()
-    
-    lazy var kakaoButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.kakao
-        button.layer.cornerRadius = 18
-        button.setTitle("카카오로 로그인", for: .normal)
-        button.setTitleColor(.kakaoText, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.setImage(#imageLiteral(resourceName: "_login_kakao"), for: .normal)
-        button.contentHorizontalAlignment = .center
-        button.semanticContentAttribute = .forceLeftToRight
-        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 55)
-        let action = UIAction(handler: { _ in
-            self.loginController.loginByKakao()
-        })
-        button.addAction(action, for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var appleButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.black
-        button.layer.cornerRadius = 18
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth  = 0.7
-        button.setTitle("Apple로 로그인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.setImage(#imageLiteral(resourceName: "_login_apple"), for: .normal)
-        button.contentHorizontalAlignment = .center
-        button.semanticContentAttribute = .forceLeftToRight
-        button.imageEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 45)
-        let action = UIAction(handler: { _ in
-            self.loginController.loginByApple()
-        })
-        button.addAction(action, for: .touchUpInside)
-        return button
     }()
     
     override func viewDidLoad() {
@@ -90,36 +23,61 @@ final class LoginViewController: UIViewController, EndLoginProtocol {
     
     private func configure() {
         self.view.backgroundColor = .white
-        view.addSubview(titleImageView)
-        view.addSubview(subView)
-        subView.addSubview(kakaoButton)
-        subView.addSubview(appleButton)
         
-        titleImageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(169)
-            make.leading.trailing.equalToSuperview().inset(100)
+        let imageView = UIImageView()
+        self.view.addSubViews(imageView)
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,
+                                           constant: 129),
+            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 100),
+            imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -100),
+            imageView.heightAnchor.constraint(equalToConstant: 70),
+        ])
+        imageView.image = UIImage(named: "LaunchTitle")
+        imageView.contentMode = .scaleAspectFit
+
+        let loginBtnSuperView = UIView()
+        self.view.addSubViews(loginBtnSuperView)
+        NSLayoutConstraint.activate([
+            loginBtnSuperView.topAnchor.constraint(greaterThanOrEqualTo: imageView.bottomAnchor,
+                                                   constant: 164),
+            loginBtnSuperView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                                      constant: -52),
+            loginBtnSuperView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            loginBtnSuperView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+        ])
+
+        let kakaoButton = LoginButton()
+        loginBtnSuperView.addSubViews(kakaoButton)
+        let appleButton = LoginButton()
+        loginBtnSuperView.addSubViews(appleButton)
+        [kakaoButton, appleButton].forEach {
+            $0.leftAnchor.constraint(equalTo: loginBtnSuperView.leftAnchor,
+                                     constant: 25).isActive = true
+            $0.rightAnchor.constraint(equalTo: loginBtnSuperView.rightAnchor,
+                                      constant: -25).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: 44).isActive = true
+            $0.layer.cornerRadius = 22
         }
+        NSLayoutConstraint.activate([
+            appleButton.bottomAnchor.constraint(equalTo: loginBtnSuperView.bottomAnchor),
+            kakaoButton.bottomAnchor.constraint(equalTo: appleButton.topAnchor, constant: -12)
+        ])
         
-        subView.snp.makeConstraints { make in
-            make.height.equalTo(100)
-            make.leading.trailing.equalToSuperview().inset(25)
-            make.bottom.equalToSuperview().inset(52)
-            
-        }
-        kakaoButton.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(44)
-        }
-        
-        appleButton.snp.makeConstraints { make in
-            make.top.equalTo(kakaoButton.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(44)
-        }
+        kakaoButton.image = UIImage(named: "_login_kakao")
+        kakaoButton.title = "카카오로 로그인"
+        kakaoButton.titleColor = UIColor(rgb: 0x191919)
+        kakaoButton.backColor = UIColor(rgb: 0xFEE500)
+        kakaoButton.addAction(UIAction { [weak self] _ in
+            self?.loginController.loginByKakao()
+        }, for: .touchUpInside)
+        appleButton.image = UIImage(named: "_login_apple")
+        appleButton.title = "Apple로 로그인"
+        appleButton.titleColor = .white
+        appleButton.backColor = .black
     }
     
-    func goToMain() {
+    private func goToMain() {
         guard let vc = UIStoryboard(name: StoryBoard.main.name, bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier)
                 as? MainViewController else { return }
         DispatchQueue.main.async { [weak self] in
@@ -129,7 +87,9 @@ final class LoginViewController: UIViewController, EndLoginProtocol {
     }
     
     private func showCannotLogin() {
-        let alert = UIAlertController(title: "로그인 실패", message: "현재 로그인 할 수 없습니다. 잠시 후 다시 시도해주세요.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "로그인 실패",
+                                      message: "현재 로그인 할 수 없습니다. 잠시 후 다시 시도해주세요.",
+                                      preferredStyle: .alert)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             alert.dismiss(animated: false)
         }
@@ -138,3 +98,13 @@ final class LoginViewController: UIViewController, EndLoginProtocol {
     }
 }
 
+extension LoginViewController: EndLoginProtocol {
+    func endLogin(_ type: AfterLogin) {
+        guard type == .success else {
+            return
+        }
+        
+        UserData.isUserLogin = true
+        self.goToMain()
+    }
+}

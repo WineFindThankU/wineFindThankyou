@@ -76,7 +76,7 @@ class StartViewController: UIViewController{
 //UI
 extension StartViewController {
     private func setLottie() {
-        self.view.addSubViews(subViews: lottieAnimationView)
+        self.view.addSubViews(lottieAnimationView)
         self.aniViewWidthAnchor = lottieAnimationView.widthAnchor.constraint(equalToConstant: 150)
         self.aniViewHeightAnchor = lottieAnimationView.heightAnchor.constraint(equalToConstant: 91.2)
         NSLayoutConstraint.activate([
@@ -100,7 +100,7 @@ extension StartViewController {
         lottieAnimationView.play()
         lottieAnimationView.loopMode = .loop
         
-        self.view.addSubViews(subViews: startButton)
+        self.view.addSubViews(startButton)
         NSLayoutConstraint.activate([
             lottieAnimationView.topAnchor.constraint(equalTo: imgViewLaunchTitle.bottomAnchor, constant: 34),
             lottieAnimationView.centerXAnchor.constraint(equalTo: imgViewLaunchTitle.centerXAnchor),

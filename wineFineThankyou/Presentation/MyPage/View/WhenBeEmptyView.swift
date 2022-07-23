@@ -53,7 +53,7 @@ class WhenBeEmptyView: UIView {
         
         let label = UILabel()
         let btn = UIButton()
-        self.whenBeEmptyView.addSubViews(subViews: label, btn)
+        self.whenBeEmptyView.addSubViews(label, btn)
         
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.whenBeEmptyView.topAnchor, constant: 83),

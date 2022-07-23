@@ -98,7 +98,7 @@ class WineInfoTableViewCell: UITableViewCell {
         let wineEngName = UILabel()
         let wineInfoDetailsView = UIView()
         
-        wineInfoView.addSubViews(subViews: tagLabel, deleteBtn, wineKorName, wineEngName, wineInfoDetailsView)
+        wineInfoView.addSubViews(tagLabel, deleteBtn, wineKorName, wineEngName, wineInfoDetailsView)
         NSLayoutConstraint.activate([
             wineInfoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             wineInfoView.leftAnchor.constraint(equalTo: wineImg.rightAnchor, constant: 8),
@@ -206,7 +206,7 @@ class WineInfoTableViewCell: UITableViewCell {
         let name = UILabel()
         let date = UILabel()
         let btn = UIButton()
-        buttonView.addSubViews(subViews: img, name, date, btn)
+        buttonView.addSubViews(img, name, date, btn)
         
         NSLayoutConstraint.activate([
             buttonView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 20),

@@ -10,16 +10,6 @@ import SnapKit
 import Alamofire
 import SwiftyJSON
 
-struct SearchingShopViewModel {
-    var sh_no: String
-    var sh_name: String
-}
-
-struct SearchingLocalViewModel {
-    var name: String
-    var coordinate: (x: Double, y: Double)
-}
-
 protocol SearchingShopDisplayLogic: AnyObject {
     func displaySearchProduct(viewModel: SearchingShopViewModel)
 }
@@ -33,7 +23,6 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet weak var beforeSearchedTitle: UILabel!
     @IBOutlet private weak var searchingViewTop: NSLayoutConstraint!
-//    private var searchingShopViewModel: [SearchingShopViewModel] = []
     private var searchingLocalViewModelList: [SearchingLocalViewModel] = []
     private var isBeforeSearchedPrint = true
     private var beforeSearched: [String] {
@@ -43,6 +32,7 @@ class SearchViewController: UIViewController {
             return []
         }
     }
+    
     private let shopNames: [String] = [
             "서현동",
             "행정동",
@@ -227,7 +217,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         }
-//        cell.labelText = searchingShopViewModel[indexPath.row].sh_name
         cell.labelText = searchingLocalViewModelList[indexPath.row].name
         return cell
     }
@@ -267,29 +256,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-//        AFHandler.shopDetail(keyword) { shop in
-//            guard let shop = shop else { return }
-//            DispatchQueue.main.async {
-//                self.dismiss(animated: true) {
-//                    let topVC = topViewController()
-//
-//                    if let mainVC = topVC as? MainViewController {
-//                        mainVC.whenBeSelectedMarker(shop)
-//                    } else if let _ = topVC as? MyPageViewController {
-//                        topViewController()?.presentingViewController?.dismiss(animated: true) {
-//                            guard let topVC = topViewController() as? MainViewController else { return }
-//                            topVC.whenBeSelectedMarker(shop)
-//                        }
-//                    } else {
-//                        topViewController()?.presentingViewController?.presentingViewController?.dismiss(animated: true) {
-//                            guard let topVC = topViewController() as? MainViewController else { return }
-//                            topVC.whenBeSelectedMarker(shop)
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
     }
 }
 

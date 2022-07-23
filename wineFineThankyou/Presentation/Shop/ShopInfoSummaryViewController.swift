@@ -68,7 +68,7 @@ class ShopInfoSummaryViewController: ShopContainedButtonViewController, UIGestur
         let shopClassification = UILabel()
         let rightButton = UIButton()
         let imageView = UIImageView()
-        contentsTopView.addSubViews(subViews: shopName, shopClassification,
+        contentsTopView.addSubViews(shopName, shopClassification,
                                     rightButton, imageView)
         
         NSLayoutConstraint.activate([

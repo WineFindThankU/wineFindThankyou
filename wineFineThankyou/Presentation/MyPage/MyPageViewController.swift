@@ -29,6 +29,7 @@ class MyPageViewController : UIViewController {
     var favoritesWineShops = [VisitedShop]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpTopView()
         setWelcomeView()
         setGraphView()

@@ -103,7 +103,7 @@ class CameraCaptureViewController: UIViewController, AVCapturePhotoCaptureDelega
             let captureBtn = UIButton()
             let label = UILabel()
             self.view.addSubview(captureRectView)
-            captureRectView.addSubViews(subViews: label, captureBtn)
+            captureRectView.addSubViews(label, captureBtn)
             self.view.bringSubviewToFront(captureRectView)
             
             NSLayoutConstraint.activate([

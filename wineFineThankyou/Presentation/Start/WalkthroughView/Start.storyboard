@@ -112,9 +112,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="etceteraOkBtn" destination="Yzg-Ax-TOy" id="3bF-WK-wk4"/>
-                        <outlet property="etceteraView" destination="vbL-AT-JXB" id="wlA-vl-y0j"/>
-                        <outlet property="etceteraViewBottomConstraint" destination="ZSg-NA-ods" id="PjG-3y-gdL"/>
                         <outlet property="pageControl" destination="7ws-5G-TgT" id="fNg-pr-cgn"/>
                         <outlet property="scrollView" destination="Cnw-mT-YLK" id="bGV-3D-dPe"/>
                         <outlet property="txtFieldEtcetera" destination="q0P-fS-Jcu" id="4aA-us-Lla"/>
