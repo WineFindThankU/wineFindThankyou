@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: Google 로그인
         // FirebaseApp.configure()
-        GIDSignIn.sharedInstance()?.clientID = "824951586402-6sessam73hmlrg01dpggfotfjkot26kv.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.clientID = "141986173384-77bqpls6cvj7p22qu9u5peq4q0vuetho.apps.googleusercontent.com"
         
         // MARK: Naver 로그인
         setLogin2Naver()

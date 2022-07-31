@@ -10,6 +10,7 @@ import UIKit
 
 struct UserInfo {
     let userImage: UIImage
+    let userNick: String
     let userType: String
     let wineType: String
     let userId: String
@@ -87,7 +88,7 @@ class WelcomeView: UIView {
     private func updateUI() {
         guard let userInfo = userInfo else { return }
         self.welcomeLabel.font = UIFont.systemFont(ofSize: 22, weight: .regular)
-        var welcomeLabelTxt = "안녕하세요, \(userInfo.userType)님.\n"
+        var welcomeLabelTxt = "안녕하세요, \(userInfo.userNick)님.\n"
         var boldingTxt = ""
         if userInfo.wineType.isEmpty{
             welcomeLabelTxt += "어떤 와인을\n즐기고 계시나요?"

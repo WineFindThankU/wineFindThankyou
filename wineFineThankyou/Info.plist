@@ -11,6 +11,7 @@
 			<string>KakaoLogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>com.googleusercontent.apps.141986173384-77bqpls6cvj7p22qu9u5peq4q0vuetho</string>
 				<string>kakaod9e14f140e99e729ceb0aada8dde9677</string>
 			</array>
 		</dict>

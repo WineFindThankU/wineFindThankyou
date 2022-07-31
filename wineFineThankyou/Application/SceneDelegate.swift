@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import GoogleSignIn
 import NaverThirdPartyLogin
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -15,11 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let url = URLContexts.first?.url, AuthApi.isKakaoTalkLoginUrl(url) else {
+        guard let url = URLContexts.first?.url else {
             // MARK: Naver Login
             NaverThirdPartyLoginConnection
                 .getSharedInstance()?
                 .receiveAccessToken(URLContexts.first?.url)
+            return
+        }
+        
+        guard let scheme = url.scheme else { return }
+        if scheme.contains("com.googleusercontent.apps") {
+            GIDSignIn.sharedInstance().handle(URLContexts.first?.url)
             return
         }
         _ = AuthController.handleOpenUrl(url: url)

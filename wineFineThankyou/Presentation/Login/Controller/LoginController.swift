@@ -25,9 +25,9 @@ class LoginController: NSObject {
     init(_ viewController: UIViewController) {
         super.init()
         self.viewController = viewController
-        self.delegate = viewController as? EndLoginProtocol
-        
+        GIDSignIn.sharedInstance()?.presentingViewController = viewController
         GIDSignIn.sharedInstance()?.delegate = self
+        self.delegate = viewController as? EndLoginProtocol
     }
     
     internal func loginByNaver() {
@@ -63,6 +63,9 @@ class LoginController: NSObject {
         }
     }
     
+    internal func loginByGoogle() {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
     private func sendUserInfoAfterKakaoLogin() {
         UserApi.shared.me() {(user, error) in
             guard error == nil, let userIdInt64Val = user?.id else {
@@ -94,10 +97,6 @@ class LoginController: NSObject {
                 }
             }
         }
-    }
-    
-    internal func loginByGoogle() {
-        GIDSignIn.sharedInstance()?.signIn()
     }
 }
 
@@ -131,17 +130,46 @@ extension LoginController: NaverThirdPartyLoginConnectionDelegate{
 // MARK: Google login
 extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
+        guard error == nil, let userIdentifier = user.userID
+        else {
             if(error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 print("not signed in before or signed out")
             } else {
                 print(error.localizedDescription)
             }
-            
-//            delegate?.endLogin(.fail)
-        } else {
-//            delegate?.endLogin(.success)
+            delegate?.endLogin(.fail)
+            return
         }
+        
+        
+        let email = user.profile.email ?? getUniqueEmail()
+        let type = "google"
+        let nick = user.profile.name ?? "User"
+        let user = AppDelegate.user
+        
+        let params: [String:String] = [
+            "id": email,
+            "type": type,
+            "sns_id": userIdentifier,
+            "nick": nick,
+        ]
+        
+        AFHandler.signBySNS(params) { result in
+            guard result == AfterSign.success else {
+                self.delegate?.endLogin(.fail)
+                
+                return
+            }
+            
+            AFHandler.loginBySNS(loginId: email, snsID: userIdentifier, authType: type) {
+                self.delegate?.endLogin($0)
+            }
+        }
+        delegate?.endLogin(.success)
+        
+        
+            
+            
         AppDelegate.user = user
     }
 }

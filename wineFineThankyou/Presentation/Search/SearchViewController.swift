@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import Alamofire
-import SwiftyJSON
 
 protocol SearchingShopDisplayLogic: AnyObject {
     func displaySearchProduct(viewModel: SearchingShopViewModel)

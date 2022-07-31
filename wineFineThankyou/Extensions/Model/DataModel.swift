@@ -221,15 +221,16 @@ class User {
         self.tasteType = param["taste_type"].intValue
     }
     
-    var typeOrNick: String {
-        if self.nick == "User" {
-            guard let grapeCase = GrapeCase.allCases.first(where: { $0.tasteType == self.tasteType})
-            else { return "User" }
-            
-            return grapeCase.grapeName
-        }
+    var type: String {
+        guard let grapeCase = GrapeCase.allCases.first(where: { $0.tasteType == self.tasteType})
+        else { return self.nickname }
         
-        return self.nick
+        return grapeCase.grapeName
+    }
+    
+    var nickname: String {
+        guard self.nick.contains("User") else { return self.nick }
+        return "사용자"
     }
 }
 

@@ -58,25 +58,53 @@ class WalkthroughResulViewController: UIViewController {
         else { return [] }
         
         UserData.userOptions = [answer0, answer1, answer2]
-        if answer0 == WhenDoSelect.cost.str
-            || answer1 == PriceOfWine.one2Two.str
-            || answer1 == PriceOfWine.thr2Four.str {
+        
+        guard answer0 != WhenDoSelect.cost.str else {
             self.grapeCase = GrapeCase.costGrape
             return [answer0, answer1, answer2]
-        } else if answer2 == UsuallyBought.restaurant.str
-                    || answer2 == UsuallyBought.wineBar.str {
-            self.grapeCase = GrapeCase.dionysusGrape
-            return [answer0, answer1, answer2]
-        } else if answer0.contains("기타") {
-            self.grapeCase = GrapeCase.analystGrape
-            return [answer0, answer1, answer2]
-        } else if answer2 == UsuallyBought.wineShop.str {
-            self.grapeCase = GrapeCase.childGrape
-            return [answer0, answer1, answer2]
-        } else {
-            self.grapeCase = GrapeCase.analystGrape
+        }
+        
+        guard answer0 == WhenDoSelect.type.str else {
+            self.grapeCase = GrapeCase.costGrape
             return [answer0, answer1, answer2]
         }
+        
+        guard answer1 != PriceOfWine.one2Two.str else {
+            self.grapeCase = GrapeCase.costGrape
+            return [answer0, answer1, answer2]
+        }
+        
+        guard answer1 != PriceOfWine.quality.str else {
+            self.grapeCase = GrapeCase.artistGrape
+            return [answer0, answer1, answer2]
+        }
+        
+        if answer1 == PriceOfWine.thr2Four.str {
+            if answer2 == UsuallyBought.restaurant.str
+                || answer2 == UsuallyBought.wineBar.str {
+                self.grapeCase = GrapeCase.childGrape
+            } else if answer2 == UsuallyBought.wineShop.str {
+                self.grapeCase = GrapeCase.childGrape
+            } else {
+                self.grapeCase = GrapeCase.childGrape
+            }
+        } else if (answer1 == PriceOfWine.five2Seven.str
+                    || answer1 == PriceOfWine.eig2Ten.str)
+                    && answer2 == UsuallyBought.wineShop.str {
+            self.grapeCase = GrapeCase.analystGrape
+        } else if answer1 == PriceOfWine.eig2Ten.str
+                    && (answer2 == UsuallyBought.restaurant.str
+                        || answer2 == UsuallyBought.wineBar.str) {
+            self.grapeCase = GrapeCase.dionysusGrape
+        } else if answer1 == PriceOfWine.five2Seven.str
+                    && (answer2 == UsuallyBought.restaurant.str
+                        || answer2 == UsuallyBought.wineBar.str) {
+            self.grapeCase = GrapeCase.childGrape
+        } else {
+            self.grapeCase = GrapeCase.childGrape
+        }
+        
+        return [answer0, answer1, answer2]
     }
     
     private func setUI() {

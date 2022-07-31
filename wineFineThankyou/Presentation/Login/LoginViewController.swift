@@ -11,9 +11,9 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 final class LoginViewController: UIViewController {
-    private lazy var loginController : LoginController = {
-        let controller = LoginController(self)
-        return controller
+    private lazy var loginController: LoginController = {
+        let lController = LoginController(self)
+        return lController
     }()
     
     override func viewDidLoad() {
@@ -39,8 +39,7 @@ final class LoginViewController: UIViewController {
         let loginBtnSuperView = UIView()
         self.view.addSubViews(loginBtnSuperView)
         NSLayoutConstraint.activate([
-            loginBtnSuperView.topAnchor.constraint(greaterThanOrEqualTo: imageView.bottomAnchor,
-                                                   constant: 164),
+            loginBtnSuperView.heightAnchor.constraint(equalToConstant: 212),
             loginBtnSuperView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                                                       constant: -52),
             loginBtnSuperView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -49,9 +48,12 @@ final class LoginViewController: UIViewController {
 
         let kakaoButton = LoginButton()
         loginBtnSuperView.addSubViews(kakaoButton)
+        let googleButton = LoginButton()
+        loginBtnSuperView.addSubViews(googleButton)
         let appleButton = LoginButton()
         loginBtnSuperView.addSubViews(appleButton)
-        [kakaoButton, appleButton].forEach {
+        
+        [kakaoButton, googleButton, appleButton].forEach {
             $0.leftAnchor.constraint(equalTo: loginBtnSuperView.leftAnchor,
                                      constant: 25).isActive = true
             $0.rightAnchor.constraint(equalTo: loginBtnSuperView.rightAnchor,
@@ -61,7 +63,8 @@ final class LoginViewController: UIViewController {
         }
         NSLayoutConstraint.activate([
             appleButton.bottomAnchor.constraint(equalTo: loginBtnSuperView.bottomAnchor),
-            kakaoButton.bottomAnchor.constraint(equalTo: appleButton.topAnchor, constant: -12)
+            googleButton.bottomAnchor.constraint(equalTo: appleButton.topAnchor, constant: -12),
+            kakaoButton.bottomAnchor.constraint(equalTo: googleButton.topAnchor, constant: -12)
         ])
         
         kakaoButton.image = UIImage(named: "_login_kakao")
@@ -71,6 +74,17 @@ final class LoginViewController: UIViewController {
         kakaoButton.addAction(UIAction { [weak self] _ in
             self?.loginController.loginByKakao()
         }, for: .touchUpInside)
+        
+        googleButton.image = UIImage(named: "_login_google")
+        googleButton.title = "Google로 로그인"
+        googleButton.titleColor = UIColor(rgb: 0x000000)
+        googleButton.backColor = UIColor(rgb: 0xFFFFFF)
+        googleButton.layer.borderWidth = 1
+        googleButton.layer.borderColor = UIColor(rgb: 0xEEEEEE).cgColor
+        googleButton.addAction(UIAction { [weak self] _ in
+            self?.loginController.loginByGoogle()
+        }, for: .touchUpInside)
+        
         appleButton.image = UIImage(named: "_login_apple")
         appleButton.title = "Apple로 로그인"
         appleButton.titleColor = .white
