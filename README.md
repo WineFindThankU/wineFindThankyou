@@ -6,7 +6,7 @@
 
 ### 📱 Front-end
 
-![img.png](WineFindThankU%202dafd1e24efe4953981f5a32918e4dc6/img.png)
+![img.png](https://user-images.githubusercontent.com/42652886/200713251-59c0e721-3b36-4107-ac46-d395b2341dd7.png)
 
 ### 💾 DB
 
