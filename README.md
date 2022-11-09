@@ -6,7 +6,7 @@
 
 ### 📱 Front-end
 
-![img.png](https://user-images.githubusercontent.com/42652886/200713251-59c0e721-3b36-4107-ac46-d395b2341dd7.png)
+![62c6bc0beee9410fe137d91e](https://user-images.githubusercontent.com/42652886/200713251-59c0e721-3b36-4107-ac46-d395b2341dd7.png)
 
 ### 💾 DB
 
